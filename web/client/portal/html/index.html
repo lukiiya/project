@@ -1,0 +1,49 @@
+<script type="text/html" id="mockUser">
+<style type="text/css">
+	.line {
+		margin-top: 10px;
+		margin-left: 10px;
+		height: 30px;
+		line-height: 30px;
+	}
+	.line select {
+		width: 100px;
+		height: 25px;
+		line-height: 25px;
+	    -webkit-appearance: listbox;
+	    -moz-appearance: listbox;
+	    -ms-appearance: listbox
+	    -o-appearance: listbox;
+	    appearance: listbox;
+	}
+	.line input {
+		height: 20px;
+		line-height: 20px;
+		border: 1px solid #ccc;
+		width: 200px;
+	}
+	ul {
+		margin-left: 30px;
+		list-style-type: none;
+		padding: 0 30px 0 0;
+	}
+	li {
+		height: 30px;
+		line-height: 30px;
+		border-bottom: 1px solid #ccc;
+	}
+	li span {
+		display: inline-block;
+		height: 30px;
+		overflow: hidden;
+	}
+	li span a {
+		color: #ff0000;
+	}
+</style>
+
+<div class="line">　　密码：<input type="text" id="password"/></div>
+<div class="line">用户分组：<select id="groupId"><option value="">全部</option></select></div>
+<div class="line">用户列表：</div>
+<ul id="userList"><ul>
+</script>

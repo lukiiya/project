@@ -1,0 +1,29 @@
+<script type="text/html" id="content">
+<div id="myContent">
+	<div><%= static1 %></div>
+	<div><%= static2 %></div>
+  <div>{{ name1 }}</div>
+  <div>{{ name2 }}</div>
+	<myTag1></myTag1><!-- 自定义标签 -->
+</div>
+</script>
+
+<script type="text/html" id="myTag1">
+  <p>myTag1->{{ message1 }}</p>
+  <myTag2></myTag2><!-- 闭合标签方式 -->
+</script>
+
+<script type="text/html" id="myTag2">
+  <p>myTag2->{{ message2 }}</p>
+  <myTag3/><!-- 单标签方式 -->
+</script>
+
+<script type="text/html" id="myTag3">
+  <p>myTag3->{{ message3 }}</p>
+  <myTag4></myTag4>
+</script>
+
+
+<script type="text/html" id="myTag4">
+  <p>myTag4->{{ message4 }}</p>
+</script>

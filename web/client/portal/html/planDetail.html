@@ -1,0 +1,157 @@
+<script type="text/html" id="content">
+<% 
+	var planNo = plan.planNo || "";
+	var content = plan.content || "";
+	var upCount = plan.upCount || 0;
+	var downCount = plan.downCount || 0;
+	var shareCount = plan.shareCount || 0;
+	var isSale = !!plan.isSale;
+	var maxPrizeRate = plan.maxPrizeRate || 0;
+	var resourceList = plan.resourceList || [];
+	var matchList = plan.matchList || [];
+	var user = plan.user || {};
+	var userNo = user.userNo;
+	var realName = user.realName;
+	var nickName = user.nickName;
+	var profileImg = user.profileImg;
+	var personalImg = user.personalImg;
+	var userImg = personalImg || profileImg || (IMG_PATH + 'user_profile.png');
+	var userName = realName || nickName;
+	var userTag = user.tag || "";
+	var userRemark = user.remark || "";
+	var matchType = plan.matchType;
+%>
+	<div class="matchInfo_box">
+		<div class="expertInfo_top color9" id="userMore" userNo="<%=userNo%>">
+			<div class="clearfix">
+				<img class="icon_span img33 fl" src="<%=userImg%>"/>
+				<div class="expertInfo">
+					<p class="color3 clearfix"><span class="fl">晒米人：<%=userName%></span><span class="fr share" id="focus" style="display: none;">+ 关注</span></p>
+					<p class="size10 color9 ellipsis"><%=userRemark%></p>
+				</div>
+			</div>
+		</div>
+		<% 
+			for (var i = 0, length = matchList.length; i < length; i++) { 
+			var match = matchList[i] || {};
+			var recommend = match.recommend || [];
+			var prize = match.prize || [];
+			var matchId = match.matchId || 0;
+			var oddsId = match.oddsId || 0;
+			var bettypeContent = match.bettypeContent || "";
+			var recommendLength = recommend.length;
+			if (matchId <= 0 || oddsId <= 0 || !recommend || recommendLength <= 0 || !bettypeContent) {
+				continue;
+			}
+			match.beginTime = match.beginTime && match.beginTime.replace(/\d{4}-(\d{2}-\d{2} \d{2}:\d{2}):\d{2}/, "$1") || "";
+			var nullOdds = '--';//赔率为空显示值
+			var concede = match.concede;
+			var bettypeOdds = match.bettypeOdds || {};
+			var bettype = match.bettypeValue || {};
+			var recommendMap = {};
+			for (var j = 0; j < recommendLength; j++) {
+				recommendMap[recommend[j]] = true;
+			}
+			var bettypeResult = match.bettypeResult || {};
+			var number = match.number;
+		%>
+			<div class="matchInfo_wrap">
+				<div class="matchInfo clearfix">
+					<span class="size14 fl match_name" style="<%=matchType == 2 ? 'color:#003cff;' : '' %>"><span class="color3 mr5"><%=number%></span><%=match.league%></span>
+					<div class="size12 color9 ml5"><%=match.beginTime%></div>
+				</div>
+				<div class="ui-flex color3">
+					<div class="ui-flex_item ellipsis"><%=#matchType == 2 ? match.away : match.home %></div>
+					 <% if (match.result) { %>
+						<% if (bettypeContent == "BQC") { %>
+						<span class="score color_red"><%=match.result%>(<%=match.halfResult%>)</span>
+						<% } else { %>
+						<span class="score color_red"><%=match.result%></span>
+						<% } %>
+					<% } else { %>
+						vs
+					<% } %> 
+					<div class="ui-flex_item ellipsis textR"><%=#matchType == 2 ? match.home : match.away %><%=#matchType == 2 ? '(主)' : ''%></div>
+				</div>
+			<% if (bettypeContent == "SPF" || bettypeContent == "RQSPF") { %>
+				<div class="ui-flex flex_wrap pl40">
+					<div class="concede"><%=concede > 0 ? '+'+concede : concede%></div>
+					<div class="textBar ui-flex_item positionR <%=recommendMap["S"]?'active':''%>">胜 <%=bettypeOdds["S"]%><%=#bettypeResult["S"]?'<span class="result icon_result"></span>':""%></div>
+					<div class="textBar ui-flex_item ml10 positionR <%=recommendMap["P"]?'active':''%>">平 <%=bettypeOdds["P"]%><%=#bettypeResult["P"]?'<span class="result icon_result"></span>':""%></div>
+					<div class="textBar ui-flex_item ml10 positionR <%=recommendMap["F"]?'active':''%>">负 <%=bettypeOdds["F"]%><%=#bettypeResult["F"]?'<span class="result icon_result"></span>':""%></div>
+				</div>
+			<% } else if (bettypeContent == "DXF") { %>
+				<div class="ui-flex flex_wrap">
+					<div class="textBar ui-flex_item positionR <%=recommendMap["D"]?'active':''%>">大分 <%=bettypeOdds["D"]%><%=#bettypeResult["D"]?'<span class="result icon_result"></span>':""%></div>
+					<div class="textBar ui-flex_item ml10 positionR" style="color: #f63946;">总分 <%=concede%></div>
+					<div class="textBar ui-flex_item ml10 positionR <%=recommendMap["X"]?'active':''%>">小分 <%=bettypeOdds["X"]%><%=#bettypeResult["X"]?'<span class="result icon_result"></span>':""%></div>
+				</div>
+			<% } else if (bettypeContent == "RFSF" || bettypeContent == "SF") { %>
+				<div class="ui-flex flex_wrap">
+					<div class="textBar ui-flex_item positionR <%=recommendMap["F"]?'active':''%>">客胜 <%=bettypeOdds["F"]%><%=#bettypeResult["F"]?'<span class="result icon_result"></span>':""%></div>
+					<% if (bettypeContent == "RFSF") { %>
+						<div class="textBar ui-flex_item ml10 positionR" style="<%=concede > 0 ? 'color: #f63946' : 'color: #0c9862'%>">主 <%=#concede > 0 ? '+'+concede : concede%></div>
+					<% } %>
+					<div class="textBar ui-flex_item ml10 positionR <%=recommendMap["S"]?'active':''%>">主胜 <%=bettypeOdds["S"]%><%=#bettypeResult["S"]?'<span class="result icon_result"></span>':""%></div>
+				</div>
+			<% } else { %>
+				<div class="ui-flex flex_wrap">
+					<% for (var j = 0; j < recommendLength; j++) { %>
+					<div class="textBar ui-flex_item positionR <%=j>0?'ml10':''%> active"><%=bettype[recommend[j]]||''%> <%=bettypeOdds[recommend[j]]||nullOdds%><%=#bettypeResult[recommend[j]]?'<span class="result icon_result"></span>':""%></div>
+					<% } %>
+					<% 
+					if (prize.length <= 0) {
+						for (var name in bettypeResult) {
+							if (!bettypeResult[name]) {
+								continue;
+							}
+					%>
+						<div class="textBar ui-flex_item positionR ml10"><%=bettype[name]||''%> <%=bettypeOdds[name]||nullOdds%><span class="result icon_result"></span></div>	
+					<%
+						}
+					}
+					%>
+				</div>
+			<% } %>
+			</div>
+		<% } %>
+		<style type="text/css">
+			.plan {
+				-moz-user-select:none;/*火狐*/
+				-webkit-user-select:none;/*webkit浏览器*/
+				-ms-user-select:none;/*IE10*/
+				-khtml-user-select:none;/*早期浏览器*/
+				user-select:none;
+			}
+		</style>
+		<div class="plan" id="planDetail">
+			<% for (var i = 0, length = resourceList.length; i < length; i++) { %>
+			<img class="planpic img-responsive" src="<%=resourceList[i]%>" onerror="this.style.display='none'">
+			<% } %>
+			<p class="planDesc"><pre style="white-space:pre-wrap;line-height:25px;"><%=content%></pre></p>
+			<div class="oprate">
+				<span class="icon_span icon_zan" id="upCount" planNo="<%=planNo%>"></span><span class="num" id="upCountNum"><%=upCount%></span>
+				<span class="icon_span icon_cai" id="downCount" planNo="<%=planNo%>"></span><span class="num" id="downCountNum"><%=downCount%></span>
+				<span class="icon_span icon_share" id="shareCount" planNo="<%=planNo%>"></span><span class="num" id="shareCountNum"><%=shareCount%></span>
+			</div>
+		</div>
+	</div>
+<% if(isSale) { %>
+	<div class="expertInfo_bottom">
+		<div class="ui-flex bet">
+			<div class="ui-flex_item textL">
+				理论最大返奖：<span class="color_red"><%=maxPrizeRate>0?+maxPrizeRate+'%':'未知'%></span>
+			</div>
+			<div class="ui-flex_item textR" id="addTicket">
+				<a class="btn">跟单投注</a>
+			</div>
+		</div>
+	</div>
+<% } %>
+</script>
+
+<script type="text/html" id="mask">
+	<div class="mask" id="ticketOrderMask">
+		<div class="pop5"></div>
+	</div>
+</script>

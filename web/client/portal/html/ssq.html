@@ -1,0 +1,98 @@
+<script type="text/html" id="content">
+	
+</script>
+
+<script type="text/html" id="ssqNum">
+	<p class="close_time"><span id="issue"></span>期投注截止：<span class="size14 color_red" id="endTime"></span></p>
+	<div class="clearfix btn-tips">
+		<span class="fl filter_btn" @click="chooseRandomBall()">
+			<span class="add_sign"></span>
+			机选1注
+		</span>
+		<span class="fr color6 tips">
+			至少选择6个红球 1个篮球
+		</span>
+	</div>
+	<section class="numbox">
+		<ul class="ctrl_ballbox clearfix" id="redBallList">
+			<li class="fl" v-for="item in redBall">
+				<span class="red_ball size18" v-bind:class="item.select ? 'active' : ''" @click="selectBall(item)">{{item.redNum}}</span>
+			</li>
+		</ul>
+	</section>
+	<section class="numbox">
+		<ul class="ctrl_ballbox clearfix" id="blueBallList">
+			<li class="fl" v-for="item in blueBall">
+				<span class="blue_ball size18" v-bind:class="item.select ? 'active' : ''" @click="selectBall(item)">{{item.blueNum}}</span>
+			</li>
+		</ul>
+	</section>
+	<div class="buy_list">
+		<div class="pay_info clearfix">
+			<div class="pay_left fl">
+				<div class="mb10">金额：<span class="colorf5e">{{singleUnit*2}} 元</span></div>
+				<div class="bonus">注数：{{singleUnit}} 注</div>
+			</div>
+			<div class="pay_btn fr" @click="ensureSelect()">
+				确定
+			</div>
+		</div>
+	</div>
+</script>
+
+<script type="text/html" id="ssqBet">
+	<div class="ui-flex btn_wrap">
+		<span class="ui-flex_item filter_btn" @click="addRandomList(1)">
+			<span class="add_sign"></span>
+			机选1注
+		</span>
+		<span class="ui-flex_item filter_btn ml10" @click="addRandomList(5)">
+			<span class="add_sign"></span>
+			机选5注
+		</span>
+		<span class="ui-flex_item filter_btn ml10" @click="backToSsq()">
+			<span class="add_sign"></span>
+			手动选号
+		</span>
+	</div>
+	<div class="num_list mt10"> 
+		<ul class="jxlist">
+			<li v-for="item in ssqItems">
+				<div class="num_wrap">
+					<span class="red_ball">
+						<em class="size20" v-for="redball in item.redballs">{{redball}}</em>
+					</span>
+<!--					--><span class="blue_ball">
+						<em class="size20" v-for="blueball in item.blueballs">{{blueball}}</em>
+					</span>
+				</div>
+				<a class="del_btn">
+					<span class="del" @click="cancel(item)"></span>
+				</a>
+			</li>
+		</ul>
+	</div>
+	<div class="buy_list">
+		<div class="read pl10 pb10">
+			<input class="mr5" type="checkbox" name="tongyi" id="protocol" checked="checked">
+			<label for="protocol">已阅读并同意</label>
+			<span><a href="#userVerifyProtocol&amp;type=2">《用户代购协议》</a></span>
+		</div>
+		<div class="mutiple_warp">
+			<span class="mr5">投</span>
+			<span class="icon_decrease_multiple mr10" @click="changeValue(-1)"></span>
+			<input type="number" v-model="multiple" maxlength="2" value="10" min="10" max="10000" />
+			<span class="icon_add_multiple ml10" @click="changeValue(1)"></span>
+			<span class="ml5">倍</span>
+		</div>
+		<div class="pay_info clearfix">
+			<div class="pay_left fl">
+				<div class="mb10">金额：<span class="colorf5e">{{prize}} 元</span></div>
+				<div class="bonus">注数：{{totalUnit}} 注</div>
+			</div>
+			<div class="pay_btn fr" @click="createSubmit()">
+				确定
+			</div>
+		</div>
+	</div>
+</script>

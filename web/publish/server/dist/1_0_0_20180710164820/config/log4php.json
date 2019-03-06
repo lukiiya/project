@@ -1,0 +1,49 @@
+{
+    "appenders": {
+        "consoleAppender": {
+            "class": "LoggerAppenderConsole"
+        },
+        "commonAppender": {
+            "class": "LoggerAppenderRollingFile",
+            "layout": {
+                "class": "LoggerLayoutPattern",
+                "params": {
+                    "conversionPattern": "%date{Y-m-d H:i:s} [%level] [%logger] %message%newline"
+                }
+            },
+            "params": {
+                "file": "#{path}common.log",
+                "maxFileSize": "256KB"
+            }
+        },
+        "accessAppender": {
+            "class": "LoggerAppenderRollingFile",
+            "layout": {
+                "class": "LoggerLayoutPattern",
+                "params": {
+                    "conversionPattern": "%date{Y-m-d H:i:s} %message%newline"
+                }
+            },
+            "params": {
+                "file": "#{path}access.log",
+                "maxFileSize": "256KB"
+            }
+        }
+    },
+    "loggers": {
+        "access": {
+            "additivity": false,
+            "appenders": [
+                "consoleAppender",
+                "accessAppender"
+            ]
+        }
+    },
+    "rootLogger": {
+        "level": "#{level}",
+        "appenders": [
+            "consoleAppender",
+            "commonAppender"
+        ]
+    }
+}

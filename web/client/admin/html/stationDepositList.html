@@ -1,0 +1,88 @@
+<script type="text/html" id="content">
+<h1 class="title">站点存款</h1>
+<div class="list_box">
+	<div class="search_box">
+		<div>
+			<form onsubmit="return false;">
+				<input class="input_field" placeholder="用户" id="userName" />
+				<input class="input_field ml20" placeholder="开始时间" readonly="1" id="beginTime">
+				<input class="input_field ml20" placeholder="结束时间" readonly="1" id="endTime">
+				<input class="btn ml20" type="reset" value="重置" />
+				<input class="btn ml20" type="submit" value="搜索"  id="searchSubmit"/>
+				<input class="btn ml30 mr30" type="button" value="新增站点存款" id="createStationDeposit">
+			</form>
+		</div>
+	</div>
+	<div class="table_box mt20">
+		<table>
+			<thead>
+				<tr>
+					<th width="200">昵称</th>
+					<th width="120">姓名</th>
+					<th width="120">日期</th>
+					<th width="120">金额</th>
+					<th width="120">最后修改时间</th>
+					<th width="100">操作</th>
+				</tr>
+			</thead>
+			<tbody id="stationDepositList"></tbody>					
+		</table>
+		<div id="pageCodeBox"></div>
+	</div>
+</div>
+</script>
+
+<script type="text/html" id="stationDepositList">
+<% 
+var length = list.length;
+for (var i = 0; i < length; i++) {
+	var deposit = list[i] || {};
+	var depositId = deposit.depositId;
+	var userId = deposit.userId;
+	var nickName = deposit.nickName;
+	var realName = deposit.realName;
+	var date = deposit.date;
+	var amount = deposit.amount/100;
+	var lastTime = deposit.lastTime;
+%>
+	<tr>
+		<td title="<%=nickName%>"><%=nickName%></td>
+		<td title="<%=realName%>"><%=realName%></td>
+		<td><%=date%></td>
+		<td><%=amount%></td>
+		<td><%=lastTime%></td>
+		<td>
+			<a class="examine mr5 modifyStationDeposit" depositId="<%=depositId%>">修改</a>
+			<a class="examine mr5 deleteStationDeposit" depositId="<%=depositId%>">删除</a>
+		</td>
+	</tr>
+<% } %>
+<% if (length > 0) { %>
+	<tr>
+		<td>总计</td>
+		<td></td>
+		<td></td>
+		<td><%=totalAmount/100%></td>
+		<td></td>
+		<td></td>
+	</tr>
+<% } %>
+</script>
+
+<script type="text/html" id="editStationDeposit">
+	<h1><%=title%></h1>
+	<input type="hidden" id="editDepositId" value="<%=depositId%>"/>
+	<div class="mt20">
+		站长：
+		<span class="select_box">
+			<select id="editUserId"></select>
+			<span class="icon_sel"><span class="arrow_down"></span></span>
+		</span>
+	</div>
+	<div class="mt20">日期：<input class="input_field ml5" placeholder="请选择日期" style="width:80px" readonly="1" id="editDate"/></div>
+	<div class="mt20">金额：<input class="input_field ml5" placeholder="请输入金额" style="width:80px" id="editAmount"/></div>
+	<div class="mt20" align="center">
+ 		<input class="btn ml20" type="reset" value="取消" id="cancelEditStationDeposit"/>
+		<input class="btn ml20" type="submit" value="确定" id="sureEditStationDeposit"/>
+	</div>
+</script>

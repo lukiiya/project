@@ -1,0 +1,135 @@
+<script type="text/html" id="content">
+<h1 class="title">后台用户</h1>
+<div class="list_box">
+	<div class="search_box">
+		<div>
+			<form onsubmit="return false;">
+				<input class="input_field ml20" type="text" placeholder="用户名" id="userName">
+				<input class="input_field ml20" type="text" placeholder="登录名" id="loginName">
+				<span class="select_box ml20">
+					<select id="admin">
+						<option>全部</option>
+						<option value="0">普通管理员</option>
+						<option value="1">系统管理员</option>
+					</select>
+					<span class="icon_sel"><span class="arrow_down"></span></span>
+				</span>
+				<input class="btn ml20" type="reset" value="重置" />
+				<input class="btn ml20" type="submit" value="搜索" id="searchSubmit"/>
+				<input class="btn ml30 mr30" type="button" value="新增用户" id="createAdminUser"/>
+			</form>
+		</div>
+	</div>
+	<div class="table_box mt20">
+		<table>
+			<thead>
+				<tr>
+					<th>用户名</th>
+					<th>登录名</th>
+					<th>类型</th>
+					<th>描述</th>
+					<th>最后修改时间</th>
+					<th width="260">操作</th>
+				</tr>
+			</thead>
+			<tbody id="adminUserList"></tbody>			
+		</table>
+		<div id="pageCodeBox"></div>
+	</div>
+</div>
+</script>
+
+<script type="text/html" id="adminUserList">
+<% for (var i = 0, length = list.length; i < length; i++) {
+	var adminUser = list[i] || {};
+	var userId = adminUser.userId;
+	var userName = adminUser.userName;
+	var loginName = adminUser.loginName;
+	var admin = adminUser.admin || 0;
+	var adminMap = {'0': '普通管理员', '1': '系统管理员'};
+	var remark = adminUser.remark || '';
+	var lastTime = adminUser.lastTime;
+%>
+	<tr>
+		<td title="<%=userName%>"><%=userName%></td>
+		<td title="<%=loginName%>"><%=loginName%></td>
+		<td style="<%=admin==1?'color:#ff0000;':''%>"><%=adminMap[admin]%></td>
+		<td><%=remark%></td>
+		<td><%=lastTime%></td>
+		<td>
+			<% if (admin == 0) { %>
+			<a class="examine mr5 setAdminUserRole" userId="<%=userId%>">分配角色</a>
+			<% } %>
+			<a class="examine mr5 editAdminUser" userId="<%=userId%>">修改</a>
+			<a class="examine deleteAdminUser" userId="<%=userId%>">删除</a>
+		</td>
+	</tr>
+<% } %>
+</script>
+
+<script type="text/html" id="editAdminUser">
+	<h1><%=title%></h1>
+	<input type="hidden" id="editUserId" value="<%=userId%>"/>
+	<div class="mt20">用户名：<input class="input_field ml5" placeholder="请输入用户名" id="editUserName"/></div>
+	<div class="mt20">登录名：<input class="input_field ml5" placeholder="请输入登录名" id="editLoginName"/></div>
+	<div class="mt20">　密码：<input class="input_field ml5" type="password" placeholder="请输入密码" id="editPassword"/></div>
+	<div class="mt20">
+		管理员类型：
+		<span class="select_box">
+			<select id="editAdmin">
+				<option value="0">普通管理员</option>
+				<option value="1">系统管理员</option>
+			</select>
+			<span class="icon_sel"><span class="arrow_down"></span></span>
+		</span>
+	</div>
+	<div class="mt20">
+		<div class="mb10">描述：</div>
+		<textarea style="width:100%;height:55px" id="editRemark"></textarea>
+	</div>
+	<div class="mt20" align="center">
+ 		<input class="btn ml20" type="reset" value="取消" id="cancelEditAdminUser"/>
+		<input class="btn ml20" type="submit" value="确定" id="sureEditAdminUser"/>
+	</div>
+</script>
+
+
+<script type="text/html" id="setAdminUserRole">
+	<h1 id="setTilte"></h1>
+	<input type="hidden" id="setUserId" value="<%=userId%>"/>
+	<div class="mt20">
+		参考用户：
+		<span class="select_box">
+			<select id="referUser"></select>
+			<span class="icon_sel"><span class="arrow_down"></span></span>
+		</span>
+		<label class="ml10">
+			<input id="checkAllRole" type="checkbox"/>全选
+		</label>
+		<label class="ml10">
+			<input id="showRoleDetail" type="checkbox"/>详细
+		</label>
+	</div>
+	<div class="mt10" style="width:450px;overflow:hidden;border-top:1px solid #f2f2f2;border-bottom:1px solid #f2f2f2;" id="adminUserRoleList"></div>
+	<div class="mt20" align="center">
+ 		<input class="btn ml20" type="reset" value="取消" id="cancelSetAdminUserRole"/>
+		<input class="btn ml20" type="submit" value="确定" id="sureSetAdminUserRole"/>
+	</div>
+</script>
+
+<script type="text/html" id="adminUserRoleList">
+<% 
+	for(var i = 0, length = list.length; i < length; i++) {
+	var role = list[i] || {};
+%>
+	<span class="mr10" style="line-height:30px;white-space:nowrap;">
+		<label>
+			<input id="roleId<%=role.roleId%>" class="roleId" type="checkbox" value="<%=role.roleId%>"/><span class="label"><%=role.roleName%></span>
+			<span class="remark" style="color:#999;width:100%;display:none;">(<%=role.remark%>)</span>
+		</label>
+	</span>
+<%}%>
+</script>
+
+
+

@@ -1,0 +1,117 @@
+<script type="text/html" id="content">
+	<div class="top_singers clearfix" id="rankBox" style="display: none;">
+		<span class="home_icon_msg"></span>
+		<ul class="msg_move" id="rankList"></ul>
+	</div>
+	<ul class="draw_list" id="drawList"></ul>
+</script>
+
+<script type="text/html" id="drawList">
+	<% for (var i = 0, length = list.length; i < length; i++) {
+		var lottery = list[i] || {};
+		var issue = lottery.issue;
+		var drawNumber = lottery.drawNumber || '';
+		var drawTime = lottery.drawTime || "";
+		drawTime = drawTime.match(/(\d{4}-\d{2}-\d{2}) (\d{2}:\d{2}):\d{2}/);
+		var day = drawTime[1];
+		var time = drawTime[2];
+		var week = new Date(day.replace(/-/g, "/")).getDay();
+		var weekMap = ['星期日','星期一','星期二','星期三','星期四','星期五','星期六'];
+		var lotteryId = lottery.lotteryId;
+		var lotteryName = lottery.lotteryName;
+		var drawFeature = lottery.drawFeature;
+	%>
+		<li class="draw_item" lotteryId='<%=lotteryId%>'>
+			<div class="issue_msg">
+				<span class="lottery_name"><%=lotteryName%></span>
+				<span><%=issue%>期</span> 
+				<% if (lotteryId == 'DLT' || lotteryId == 'SSQ' || lotteryId == 'FC3D') { %>
+					<span><%=day%>(<%=weekMap[week]%>)</span> 
+				<% } else if (lotteryId == 'GD11X5' || lotteryId == 'JSK3' || lotteryId == 'JX11X5' || lotteryId == 'CQSSC' || lotteryId == 'GXK3') { %>
+					<span><%=day%> <%=time%></span> 
+				<% } %>
+			</div>
+			<% if (lotteryId == 'DLT' || lotteryId == 'SSQ') { %>
+				<div class="num_wrap mt10">
+					<span class="red_ball">
+					<% 	var drawNumberRed;
+						if (lotteryId == 'SSQ') {
+							drawNumberRed = drawNumber.split('|')[0].split(",");
+						} else if (lotteryId == 'DLT') {
+							drawNumberRed = drawNumber.split('+')[0].split(",");
+						}
+						for (var j = 0; j < drawNumberRed.length; j++) { 
+							var drawNumberRedUnit = drawNumberRed[j];
+					%>
+						<em><%=drawNumberRedUnit%></em>
+					<% } %>
+					</span> 
+					<span class="blue_ball">
+					<% 	var drawNumberBlue;
+						if (lotteryId == 'SSQ') {
+							drawNumberBlue = drawNumber.split('|')[1].split(",");
+						} else if (lotteryId == 'DLT') {
+							drawNumberBlue = drawNumber.split('+')[1].split(",");
+						}
+						for (var k = 0; k < drawNumberBlue.length; k++) { 
+							var drawNumberBlueUnit = drawNumberBlue[k];
+					%>
+						<em><%=drawNumberBlueUnit%></em>
+					<% } %>
+					</span>
+				</div>
+			<% } else if (lotteryId == 'FC3D') { %>
+				<%
+					var testNum = drawNumber.split('|')[1].split(',').join(' ');
+				%>
+				<div class="num_wrap">
+					<span class="red_ball">
+					<% 	var drawNumberRed;
+						drawNumberRed = drawNumber.split('|')[0].split(",");
+						for (var j = 0; j < drawNumberRed.length; j++) { 
+							var drawNumberRedUnit = drawNumberRed[j];
+					%>
+						<em><%=drawNumberRedUnit%></em>
+					<% } %>
+					</span>
+					<span class="test_num">
+						试机号：<span class=""><%=testNum%></span>
+					</span>
+				</div>
+			<% } else if (lotteryId == 'GD11X5' || lotteryId == 'GX11X5' || lotteryId == 'CQSSC') { %>
+				<div class="num_wrap">
+					<span class="red_ball">
+					<% 	var drawNumberRed = drawNumber.split(",");
+						for (var j = 0; j < drawNumberRed.length; j++) { 
+							var drawNumberRedUnit = drawNumberRed[j];
+					%>
+						<em><%=drawNumberRedUnit%></em>
+					<% } %>
+					</span> 
+				</div>
+			<% } else if (lotteryId == 'JSK3' || lotteryId == 'GXK3') { %>
+				<% drawNumber = drawNumber.split(',');
+				%>
+				<div class="draw_num">
+					<span class="num_icon">
+						<i class="icon_dice_<%=drawNumber[0]%>"></i>
+						<i class="icon_dice_<%=drawNumber[1]%>"></i>
+						<i class="icon_dice_<%=drawNumber[2]%>"></i>
+					</span>
+					<span class="ml15 k3_describe"><%=drawFeature%></span>
+				</div>
+			<% } %>
+		</li>
+	<% } %>
+</script>
+
+<script type="text/html" id="rankList">
+<% for (var i = 0, length = list.length; i < length; i++) {
+	var order = list[i] || {};
+	var nickName = order.nickName;
+	var lotteryName = order.lotteryName;
+	var ticketPrizeAmount = order.ticketPrizeAmount/100;
+%>
+	<li class="ml5 mr5 size12">恭喜【<%=nickName%>】投注<%=lotteryName%>中奖<%=ticketPrizeAmount%>元</li>
+<% } %>
+</script>

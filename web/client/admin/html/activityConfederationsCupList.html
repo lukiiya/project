@@ -1,0 +1,48 @@
+<script type="text/html" id="content">
+<h1 class="title">2017联合会杯冠军竞彩</h1>
+<div class="list_box">
+	<div class="search_box">
+		<div>
+			<form onsubmit="return false;">
+				<input class="input_field" placeholder="用户名" id="userName">
+				<input class="btn ml20" type="reset" value="重置">
+				<input class="btn ml20" type="submit" value="搜索" id="searchSubmit">
+			</form>
+		</div>
+	</div>
+	<div class="table_box mt20">
+		<table>
+			<thead>
+				<tr>
+					<th width="120">昵称</th>
+					<th width="70">姓名</th>
+					<th width="120">球队</th>
+					<th width="140">时间</th>
+				</tr>
+			</thead>
+			<tbody id="activityConfederationsCupList"></tbody>
+		</table>
+		<div id="pageCodeBox"></div>
+	</div>
+</div>
+</script>
+
+<script type="text/html" id="activityConfederationsCupList">
+<% 
+var length = list.length;
+for ( var i = 0; i < length; i++) {
+	var row = list[i] || {};
+	var guessId = row.guessId;
+	var nickName = row.nickName;
+	var realName = row.realName;
+	var teamName = row.teamName;
+	var createTime = row.createTime;
+%>
+	<tr>
+		<td><%=nickName%></td>
+		<td><%=realName%></td>
+		<td><%=teamName%></td>
+		<td><%=createTime%></td>
+	</tr>
+<% } %>
+</script>

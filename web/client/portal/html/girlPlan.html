@@ -1,0 +1,120 @@
+<script type="text/html" id="content">
+	<div class="girl_top">
+		<div class="girl_img36 girl_topl" id="backBtn" >
+			<span class="arrow"></span>
+		</div>
+		<div class="girl_img36 girl_topr" id="homeBtn">
+			<span></span>
+		</div>
+	</div>
+	<ul class="girl_bigbox" id="planList"></ul>
+</script>
+
+<script type="text/html" id="planList">
+<% for (var i=0, length = list.length; i < length; i++) {
+	var plan = list[i] || {};
+	var planNo = plan.planNo;
+	var amount = plan.amount/100 || 0;
+	var hasPic = plan.hasPic || false;
+	var isGirl = plan.isGirl || false;
+	var girlCover = plan.girlCover || '';
+	var isLinChang = plan.isLinChang || false;
+	var access = (plan.access || false)+"";
+	var matchList = plan.matchList || [];
+	var matchNum = matchList.length;
+	var match = (matchNum > 0 && matchList[0]) || {};
+	var user = plan.user || {};
+	var userNo = user.userNo;
+	var realName = user.realName;
+	var nickName = user.nickName;
+	var profileImg = user.profileImg;
+	var personalImg = user.personalImg;
+	var userImg = personalImg || profileImg || (IMG_PATH + 'user_profile.png');
+	var userName = realName || nickName;
+	var userTag = user.tag;
+	var league = match.league;
+	var home = match.home;
+	var away = match.away;
+	var beginTime = match.beginTime && match.beginTime.replace(/\d{4}-(\d{2}-\d{2} \d{2}:\d{2}):\d{2}/, "$1") || "";
+	var continueWin = user.continueWin || 0;
+	var winCount = user.winCount || 0;
+	var profitRate = user.profitRate || 0;
+	var winRate = user.winRate || 0;
+	profitRate = (profitRate+'').replace(/\.\d+/g, '');
+	winRate = (winRate+'').replace(/\.\d+/g, '');
+	var matchType = plan.matchType || 1;
+	var isSale = !!plan.isSale; //false:不能跟单投注 true:可以跟单
+	var maxBettypeOdds = plan.maxBettypeOdds;
+	var recommendCount = plan.recommendCount; 
+%>
+	<li class="girl_box planItem" planNo="<%=planNo%>" amount="<%=amount%>" access="<%=access%>" userNo="<%=userNo%>" matchNum=<%=matchNum%> style="background-image:url(<%=girlCover%>);<%=matchNum<=0?'margin-bottom:10px;':''%>">
+		<div class="bottom_background clearfix">
+			<div class="bottom_background clearfix">
+			<div class="item clearfix">
+				<div class="msg color9 clearfix">
+					<div class="girl_cli">
+						<img class="userProfile" src="<%=userImg%>" userNo="<%=userNo%>"></img>
+					</div>
+					<div class="girl_title">
+						<div class="girl_name">
+							<span class="ellipsis"><%=userName%></span>
+							<% if (continueWin > 1) { %>
+								<span class="match_icon var_middle bg_c_r"><%=continueWin%>连红</span>
+							<% } else if(winCount > 0) { %>
+								<span class="match_icon var_middle bg_c_r">10中<%=winCount%></span>
+							<% } else if (profitRate > 0) { %>
+								<span class="match_icon var_middle bg_c_r">盈<%=profitRate%>%</span>
+							<% } else if (winRate > 0) { %>
+								<span class="match_icon var_middle bg_c_r">胜<%=winRate%>%</span>
+							<% } %>
+						</div>
+						<span class="ellipsis size12"><%=userTag%></span>
+					</div>
+					<% if (isSale) { %>
+					<span class="ticket size10 fr userTicket" planNo="<%=planNo%>" maxBettypeOdds="<%=maxBettypeOdds%>" recommendCount="<%=recommendCount%>" matchNum="<%=matchNum%>" planAmount="<%=amount%>">跟单</span>
+					<% } %>
+				</div>
+				<div class="detailBox <%=matchNum<=0?'hide':''%>">
+					<div class="belle_top">
+							<span class="ellipsis color_yellow" style="<%=matchType == 2 ? 'color: #003cff' : ''%>"><%=league%></span>
+							<span class="ellipsis">: <%=#matchType == 2 ? away : home %></span>
+							<span class="ellipsis">VS</span>
+							<span class="ellipsis"> <%=#matchType == 2 ? home : away %></span>
+							<div class="size12 color9 fr match_time"><%=beginTime%></div>
+					</div>
+					<div class="belle_bottom">
+						<div class="match_left fl">
+							<% if (matchNum > 1 ) { %>
+								<span class="match_icon all_up">串关</span>
+							<% } else { %>
+								<span class="match_icon all_up">单关</span>
+							<% } %>
+							<% if (hasPic) {%>
+								<% if (isGirl) { %>
+								<span class="match_icon bg_c_p">美照</span>
+								<% } else { %>
+								<span class="match_icon bg_c_b">实单</span>
+								<% } %>
+							<% } %>
+								<span class="match_icon w24 bg_c_y <%=isLinChang?'':'hide'%>">临场</span>
+								<!--<span class="match_icon w24 bg_c_g ">语音</span>-->
+						</div>
+						<div class="price">
+							<% if (/^true$/i.test(access)) { %>
+								<% if (amount == 0) { %>
+									<span>免费</span>
+								<% } else { %>
+									<span>查看</span>
+								<% } %>
+							<% } else { %>
+								<span><span><%=amount%></span>粒米</span>
+							<% } %>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		</div>
+	</li>
+<% } %>
+</script>

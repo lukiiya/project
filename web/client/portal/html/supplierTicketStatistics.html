@@ -1,0 +1,31 @@
+<script type="text/html" id="content">
+<%
+	var nickName = ticketStatistics.nickName;
+	var realName = ticketStatistics.realName;
+	var userName = realName || nickName;
+	var ticketTotalAmount = ticketStatistics.ticketTotalAmount/100 || 0;
+	var prizeTotalAmount = (ticketStatistics.prizeTotalAmount/100 || 0).toFixed(2);
+	var depositTotalAmount = ticketStatistics.depositTotalAmount/100 || 0;
+	var spareTotalAmount = (ticketStatistics.spareTotalAmount/100 || 0).toFixed(2);
+	var ticketAmountList = ticketStatistics.ticketAmountList || [];
+	var length = ticketAmountList.length;
+%>
+	<ul class="ticket_detail">
+		<li class="textC mb15">出票人：<%=userName%></li>
+		<li>共出票：<span class="color_red"><%=ticketTotalAmount%></span>元</li>
+		<li>共中奖：<span class="color_red"><%=prizeTotalAmount%></span>元</li>
+		<li>预付出票款：<span class="color_g"><%=depositTotalAmount%></span>元</li>
+		<li>剩余出票款：<span class="color_g"><%=spareTotalAmount%></span>元</li>
+	</ul>
+	<ul class="month_bill">
+		<% for (var i = 0; i < length; i++) { 
+			var date = ticketAmountList[i].date;
+			var amount = ticketAmountList[i].amount/100 || 0;	
+		%>
+			<li class="item ui-flex">
+				<span><%=date%></span>
+				<span class="color6">出票：<%=amount%>元</span>
+			</li>
+		<% } %>
+	</ul>
+</script>

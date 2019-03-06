@@ -1,0 +1,55 @@
+<script type="text/html" id="content">
+	<div class="nav" id="groupList"></div>
+	<div class="mt5 clearfix" id="userList"></div>
+</script>
+
+
+<script type="text/html" id="groupList">
+<% for (var i = 0, length = list.length; i < length; i++) {
+	var group = list[i] || {};
+	var groupNo = group.groupNo;
+	var name = group.name;
+%>
+<span class="item" groupNo="<%=groupNo%>">
+	<span><%=name%></span>
+</span>
+<% } %>
+</script>
+
+<script type="text/html" id="userList">
+<% for (var i = 0, length = list.length; i < length; i++) {
+	var user = list[i] || {};
+	var userNo = user.userNo;
+	var realName = user.realName;
+	var nickName = user.nickName;
+	var profileImg = user.profileImg;
+	var personalImg = user.personalImg;
+	var userImg = personalImg || profileImg || (IMG_PATH + 'user_profile.png');
+	var userName = realName || nickName;
+	var userTag = user.tag;
+	var continueWin = user.continueWin || 0;
+	var winCount = user.winCount || 0;
+	var profitRate = user.profitRate || 0;
+	var winRate = user.winRate || 0;
+	profitRate = (profitRate+'').replace(/\.\d+/g, '');
+	winRate = (winRate+'').replace(/\.\d+/g, '');
+	var redDot = !!user.redDot;
+%>
+<div class="msg" userNo="<%=userNo%>">
+	<img class="icon_span img40 mb10" src="<%=userImg%>"></img>
+	<% if (redDot) {%>
+		<span class="red_dot"></span>
+	<% } %>
+	<br/><%=userName%>
+	<% if (continueWin > 1) { %>
+		<span class="expert_name"><span class="expert_num"><%=continueWin%></span>连红</span>
+	<% } else if(winCount > 0) { %>
+		<span class="expert_name">10中<span class="expert_num"><%=winCount%></span></span>
+	<% } else if (profitRate > 0) { %>
+		<span class="expert_name">盈<span class="expert_num"><%=profitRate%>%</span></span>
+	<% } else if (winRate > 0) { %>
+		<span class="expert_name">胜<span class="expert_num"><%=winRate%>%</span></span>
+	<% } %>
+</div>
+<% } %>
+</script>

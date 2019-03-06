@@ -1,0 +1,93 @@
+<script type="text/html" id="content">
+
+</script>
+
+<script type="text/html" id="coupon">
+	<div class="ui-flex tab_nav" id="tabBox">
+		<div class="ui-flex_item" state="1">可用<span id="availableCount"></span></div>
+		<div class="ui-flex_item" state="2">待派发<span id="distributeCount"></span></div>
+		<div class="ui-flex_item" state="3">已用/过期</div>
+	</div>
+<ul class="coupon_list mt5" id="couponList"></ul>
+</script>
+
+<script type="text/html" id="couponList">
+<% 
+var length = list.length;
+if (length > 0) {
+	for (var i = 0; i < length; i++) {
+	var coupon = list[i] || {};
+	var count = coupon.count || '';
+	var amount = (coupon.amount || 0)/100;
+	var day = coupon.day || 0;
+	var status = coupon.status;
+	var couponType = coupon.couponType;
+	var couponTypeMap = {1:'cpzy',2:'cjzy'};
+	var rule = coupon.rule || {};
+%>
+	<li class="coupon_item ui-flex">
+		<div class="<%=couponTypeMap[couponType]%> <%=state == 3? 'invalid' : ''%>">
+			<div class="lottery_type size13">
+				<%=rule.line1 ? rule.line1 : ''%>
+			</div>
+			<div class="line"></div>
+			<div class="size15 full">
+				<%=rule.line2 ? rule.line2 : ''%>
+			</div>
+			<div class="size15">
+				<%=rule.line3 ? rule.line3 : ''%>
+			</div>
+		</div>
+		<div class="ui-flex_item coupon_detail">
+			<div class="ui-flex">
+				<dl>
+					<dd class="size13">金额：<%=amount%></dd>
+					<dd class="color_red size12">有效期：<%=day%>天</dd>
+					<dd class="color6 size12">优惠券：<%=count%>张</dd>
+				</dl>
+				<% if (status == 1) { %>
+					<% if (state == 1) { %>
+						<a class="use_btn" couponType="<%=couponType%>">
+							马上使用
+						</a>
+					<% } else if (state == 2) { %>
+						<a class="no_payout">
+							未派发
+						</a>
+					<% } else if (state == 3) { %>
+						<div class="invalid_img_wrap">
+							<img class="img-responsive" src="<%=IMG_PATH%>coupon_overdue_img.png" />
+						</div>
+					<% } %>
+				<% } else if (status == 2) { %>
+					<div class="invalid_img_wrap">
+						<img class="img-responsive" src="<%=IMG_PATH%>coupon_used_img.png" />
+					</div>
+				<% } %>
+			</div>
+		</div>
+	</li>
+<%	}
+	 } %>
+</script>
+
+<script type="text/html" id="couponIllustrate">
+	<div class="coupon_illustrate">
+		<h3>使用说明：</h3>
+		<ul class="">
+			<li>1.投注时可使用优惠券抵扣支付金额和充值时可使用优惠券抵扣充值金额，一次投注和充值只能用一张优惠券；</li>
+			<li>2.优惠券应当在有效期内使用，过期则无法使用；</li>
+			<li>3.使用优惠券支付的投注方案，若投注方案交易失败，退款结算按照实际支付的金额退款，同时优惠券将以彩金方式退还给用户，可购彩中奖后可提现，（例如：
+用户支付10元购彩方案时使用满10元减1元优惠券，实际支付为9元，若该方案交易失败，则退还支付本金9元，同时退还优惠券1元彩金）；</li>
+			<li>4.使用充值优惠券充值彩金，若充值失败，充值优惠券将退还，可在我的优惠券中查看。</li>
+		</ul>
+		<h3 class="mt10">优惠券分类：</h3>
+		<ul>
+			<li>1.优惠券分为四大类：竞技彩优惠券、高频彩优惠券、数字彩优惠券和充值优惠券；</li>
+			<li>2.竞技彩优惠券购买竞彩足球、竞彩篮球和竞足亚盘时可使用；</li>
+			<li>3.高频彩优惠券购买老快3、乐11选5时可使用；</li>
+			<li>4.数字彩优惠券购买双色球、大乐透、3D时可使用；</li>
+			<li>5.充值优惠券充值彩金时可使用，不支持充值米粒。</li>
+		</ul>
+	</div>
+</script>

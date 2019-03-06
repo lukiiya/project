@@ -1,0 +1,122 @@
+<script type="text/html" id="content">
+<div class="ui-flex tab_nav" id="typeList">
+	<div class="ui-flex_item" recommendType="0">全部</div>
+	<div class="ui-flex_item" recommendType="1">单关</div>
+	<div class="ui-flex_item" recommendType="2">串关</div>
+</div>
+<p class="clearfix pl10 pr10 mt5" id="countNum">
+	<span class="fl"><span id="recommendIncomeCount">0</span>人购买</span>
+	<span class="fr">收米<span class="num" id="recommendIncomeAmount">0</span></span>
+</p>
+<ul class="infoBox mt5" id="recommendList"></ul>
+</script>
+
+<script type="text/html" id="recommendList">
+<% 
+var length = list.length;
+if (length > 0) {
+	for (var i = 0; i < length; i++) {
+	var plan = list[i] || {};
+	var planNo = plan.planNo;
+	var hasPic = plan.hasPic || false;
+	var isLinChang = plan.isLinChang || false;
+	var isGirl = plan.isGirl || false;
+	var amount = (plan.amount || 0)/100;
+	var readCount = plan.readCount || 0;
+	var matchList = plan.matchList || [];
+	var match = (matchList.length > 0 && matchList[0]) || {};
+	var league = match.league;
+	var home = match.home;
+	var away= match.away;
+	var matchNum = matchList.length;
+	var beginTime = match.beginTime && match.beginTime.replace(/\d{4}-(\d{2}-\d{2} \d{2}:\d{2}):\d{2}/, "$1") || "";
+	var statistics = plan.statistics || {};
+	var sCount = statistics.count || 0;
+	var sAmount = (statistics.amount || 0)/100;
+	var rich = plan.rich || false;
+	var matchType = plan.matchType || 1;
+	var divideStatistics = plan.divideStatistics || {};
+	var dCount = divideStatistics.count || 0;
+	var dAmount = (divideStatistics.amount || 0)/100;
+	var title = plan.title;
+	var saleTicketAmount = plan.saleTicketAmount/100 || 0;
+	var matchBeginTime = plan.matchBeginTime && plan.matchBeginTime.replace(/\d{4}-(\d{2}-\d{2} \d{2}:\d{2}):\d{2}/, "$1") || "";
+%>
+	<li class="item clearfix planItem" planNo="<%=planNo%>" amount="<%=amount%>" access="true">
+		<div class="recommend_cont">
+			<div class="pt10">
+				<div class="recommend_item">
+					<p class="recommend_title">
+						<% if (title) { %>
+							<% if (matchNum >1) { %>
+								<span class="">【串关】</span>
+							<% } else { %>
+								<span class="">【单关】</span>
+							<% } %>
+							<% if (hasPic) {%>
+								<% if (isGirl) { %>
+									<span class="">【美照】</span>
+								<% } else if (rich){ %>
+									<span class="">【豪单】</span>
+								<% } else { %>
+									<span class="">【实单】</span>
+								<% } %>
+							<% } %>
+							<%=title%>
+						<% } else { %>
+							<% 
+								for (var j = 0; j < matchNum; j++) { 
+									var match = matchList[j] || {};
+									var home = match.home;
+									var away = match.away;
+									var number = match.number;
+							%>
+								<span><%=number%><%=home%> vs <%=away%><span>。
+							<% } %>
+						<% } %>
+					</p>
+					<div class="clearfix mt25">
+						<span class="recommend_money fl">
+							<% if (/^true$/i.test(access)) { %>
+								<% if (amount == 0) { %>
+									<span class="color_red">免费</span>
+								<% } else { %>
+									<span class="color_red">查看</span>
+								<% } %>
+							<% } else { %>
+								<span class="color_red"><%=amount%>粒米</span> 查看
+							<% } %>
+						</span>
+						<span class="recommend_time fr">
+							截止：<%=matchBeginTime%>
+						</span>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="ui-flex count_box">
+			<div class="plan_total">
+				<% if(amount <= 0) { %>
+					<span><span class="num"><%=readCount%></span>人阅读</span>
+				<% } else { %>
+					<span><span class="num"><%=sCount%></span>人购买</span>
+				<% } %>
+				<span>收米<span class="num"><%=sAmount%></span></span>
+			</div>
+			<div class="ticket_commission">
+				<span><span class="num"><%=dCount%></span>人跟单</span>
+				<span>提成<span class="num"><%=dAmount%></span></span>
+			</div>
+		</div>
+	</li>
+<% 
+	}
+} else { %>
+	<li>
+		<div class="none">
+			<p>您还没有晒米</p>
+			<span class="btn ellipsis" href="#editPlan">写推荐</span>
+		</div>
+	</li>
+<% } %>
+</script>

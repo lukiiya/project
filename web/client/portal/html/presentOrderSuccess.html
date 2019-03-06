@@ -1,0 +1,21 @@
+<script type="text/html" id="content">
+	<div class="share_head pt50 pb15">
+		<div class="suc_logo_wrap">
+			<span class="share_icon"></span>
+		</div>
+		<p class="mt15 textC">选择分享给好友</p>
+		<p class="mt10 textC">您的祝福将快马加鞭送达</p>
+	</div>
+	<% if (isApp) { %>
+		<div class="share_btn_wrap mt50" id="shareWechat">
+			<a class="share_friends_btn">分享给微信好友</a>
+		</div>
+		<div class="share_btn_wrap mt25" id="shareWechatMoments">
+			<a class="share_group_btn">分享到微信朋友圈</a>
+		</div>
+	<% } else { %>
+		<div class="share_btn_wrap mt50" id="shareBtn">
+			<a class="share_friends_btn">分享给微信好友、朋友圈</a>
+		</div>
+	<% } %>
+</script>

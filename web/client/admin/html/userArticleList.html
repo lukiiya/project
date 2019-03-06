@@ -1,0 +1,66 @@
+<script type="text/html" id="content">
+<h1 class="title" id="title"></h1>
+<div class="list_box">
+	<div class="search_box">
+		<div>
+			<form onsubmit="return false;">
+				<input class="input_field" placeholder="标题" id="articleTitle"/>
+				<input class="btn ml20" type="reset" value="重置"/>
+				<input class="btn ml20" type="submit" value="搜索" id="searchSubmit"/>
+				<input class="btn ml30" type="button" value="新增文章" id="createArticle"/>
+			</form>
+		</div>
+	</div>
+	<div class="table_box mt20">
+		<table>
+			<thead>
+				<tr>
+					<th>标题</th>
+					<th width="160">封面</th>
+					<th>来源</th>
+					<th>链接</th>
+					<th width="120">时间</th>
+					<th width="100">操作</th>
+				</tr>
+			</thead>
+			<tbody id="userArticleList"></tbody>				
+		</table>
+		<div id="pageCodeBox"></div>
+	</div>
+</div>
+</script>
+
+<script type="text/html" id="userArticleList">
+<% for (var i = 0, length = list.length; i < length; i++) {
+	var article = list[i] || {};
+	var articleId = article.articleId;
+	var articleTitle = article.articleTitle;
+	var articleImg = article.articleImg;
+	var articleSource = article.articleSource;
+	var articleLink = article.articleLink;
+	var createTime = article.createTime;
+	var img = "<img style='width: 120px;vertical-align: middle;' src="+articleImg+" onload='this.onload=null;parent.$(window.frameElement).after(this);parent.$(window.frameElement).remove()'/>";
+%>
+	<tr>
+		<td title="<%=articleTitle%>"><%=articleTitle%></td>
+		<td><iframe style="display:none" src="javascript:document.write(&quot;<%=img%>&quot;)"/></td>
+		<td><%=articleSource%></td>
+		<td title="<%=articleLink%>"><a class="examine" href="<%=articleLink%>" target="_blank"><%=articleLink%></a></td>
+		<td><%=createTime%></td>
+		<td>
+			<a class="examine deleteArticle" articleId="<%=articleId%>">删除</a>
+			<a class="examine updateArticle ml10" articleId="<%=articleId%>">更新</a>
+		</td>
+	</tr>
+<% } %>
+</script>
+
+<script type="text/html" id="editArticle">
+<h1><%=articleId>0?'更新':'新增'%>文章</h1>
+<input type="hidden" id="articleId" value="<%=articleId%>"/>
+<div class="mt20">URL：<input class="input_field ml5" placeholder="请输入文章URL：" id="articleLink"/></div>
+<div class="mt20" align="center">
+	<input class="btn ml20" type="reset" value="取消" id="cancelEditArticle"/>
+	<input class="btn ml20" type="submit" value="确定" id="sureEditArticle"/>
+</div>
+</script>

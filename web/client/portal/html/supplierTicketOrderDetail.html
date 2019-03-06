@@ -1,0 +1,223 @@
+<script type="text/html" id="content">
+<%
+	var orderNumeric = ticketOrder.orderNumeric || "";
+	var status = ticketOrder.status;
+	var ticketMultiple = ticketOrder.ticketMultiple || 1;
+	var planRealName = ticketOrder.planRealName || "";
+	var planNickName = ticketOrder.planNickName || "";
+	var planUserName = planRealName || planNickName;
+	var amount = ticketOrder.amount/100 || 0;
+	var ticketPrizeAmount = (ticketOrder.ticketPrizeAmount/100 || 0).toFixed(2);
+	var maxTicketPrizeAmount = (ticketOrder.maxTicketPrizeAmount/100 || 0).toFixed(2);
+	var ticketStatus = ticketOrder.ticketStatus;
+	var imgMap = {"1":"cpsb","2":"dkj","3":"wzj","4":"yzj"};
+	var ticketStatusMap = {"0":"正在出票","1":"出票失败","2":"待开奖","3":"未中奖","4":"已中奖","5":"已派奖","6":"已部分派奖"};
+	var createTime = ticketOrder.createTime && ticketOrder.createTime.replace(/\d{4}-(\d{2}-\d{2} \d{2}:\d{2}):\d{2}/, "$1") || "";
+	var matchList = ticketOrder.matchList || [];
+	var length = matchList.length;
+	var resourceList = ticketOrder.resourceList || [];
+	resourceList = resourceList.join('|');
+	var planMatchType = ticketOrder.planMatchType || 1;
+	var matchBettypeName = ticketOrder.matchBettypeName || '';
+%>
+	<div class="sta_wrap">
+		<div class="win_wrap">
+			<% if (ticketStatus == 0) { %>
+			<span class="btn" id="uploadBtn">
+				上传票样
+				<input type="file" name="" id="ticketSelect" value="" multiple/>
+			</span>
+			<div class="size12 mt5">
+				理论最大奖金：<span class="color_red size12"><%=maxTicketPrizeAmount%></span>元</span>
+			</div>
+			<% } if (ticketStatus == 5) { %>
+				<div class="ypj">
+					<span class="ypj_txt">
+						<i class="icon_ypj"></i>
+						已派奖	
+					</span><br />
+					<span class="bonus"><%=ticketPrizeAmount%></span>
+				</div>
+			<% } else if (ticketStatus == 4 || ticketStatus == 6) { %>
+				<% if (ticketPrizeAmount != 0) { %>
+					<div class="ypj" id="prizeSend">
+						<span class="ypj_txt">
+							<i class="icon_yzj_s"></i>
+							待派奖	
+						</span><br />
+						<span class="bonus" id="prize"><%=ticketPrizeAmount%></span>
+					</div>
+				<% } else { %>
+					<div class="win_amount clearfix" id="ticketPrize">
+						<input class="fl" type="number" name="" id="ticketPrizeAmount" value="" placeholder="请输入中奖金额"/>
+						<span class="fr btn" id="prizeSure">确定</span>
+					</div>
+				<% } %>
+			<% } else if (ticketStatus == 2)　{ %>
+				<div class="win_status">
+					<i class="icon_<%=imgMap[ticketStatus]%>"></i>
+						<%=ticketStatusMap[ticketStatus]%>
+				</div>
+				<div class="size12 mt5">
+					理论最大奖金：<span class="color_red size12"><%=maxTicketPrizeAmount%></span>元</span>
+				</div>
+			<% } else if (ticketStatus == 3) { %>
+				<div class="win_status">
+					<i class="icon_<%=imgMap[ticketStatus]%>"></i>
+						<%=ticketStatusMap[ticketStatus]%>
+				</div>
+			<% }　%>
+		</div>
+	</div>
+	<div class="msg_wrap mb10">
+		<div class="documentary_msg pb10">
+			<div class="con_tit clearfix">
+				<span class="fl color6">方案编号：<span class="color3"><%=orderNumeric%></span></span>
+			<%if (ticketStatus == 0) { %>
+				<span class="fr color_g check_ticket" id="refuseTicket">拒绝此单</span>
+			<% } else if ((ticketStatus == 2 || ticketStatus == 3 || ticketStatus == 4 || ticketStatus == 5 || ticketStatus == 6) && resourceList) { %>
+				<span class="fr color_g check_ticket" id="showTicketImg" ticketStatus="<%=ticketStatus%>" resourceList="<%=resourceList%>">查看票样</span>
+			<% } %>
+			</div>
+			<table border="1">
+				<tr>
+					<th>金额</th>
+					<th>倍数</th>
+					<th>状态</th>
+				</tr>
+				<tr>
+					<td><span class="color_red"><%=amount%></span>元</td>
+					<td><%=ticketMultiple%></td>
+				<% if(ticketStatus == 0) { %>
+					<td>未出票</td>
+				<% } else if(ticketStatus == 1 || status == 3) { %>
+					<td>出票失败</td>
+				<% } else if(ticketStatus == 2 || ticketStatus == 3 || ticketStatus == 4 || ticketStatus == 5 || ticketStatus == 6) { %>
+					<td>已出票</td>
+				<% } %>
+				</tr>
+			</table>
+		</div>
+	</div>
+	<div class="dty_cont">
+		<!--<h3 class="con_tit">跟单内容：</h3>-->
+		<div class="con_tit clearfix">
+			<span class="fl">玩法：<span class="color_g"><%=matchBettypeName%></span></span>
+			<span class="fr">过关方式：
+				<% if(length == 1) { %>
+				<span class="color_g">单关</span>
+				<% } else if (length > 1) { %>
+				<span class="color_g"><%=length%>串1</span>
+				<% } %>			
+			</span>
+		</div>
+		<div class="matchInfo_box">
+		<% 
+			for (var i = 0; i < length; i++) { 
+				var match = matchList[i] || {};
+				var recommend = match.recommend || [];
+				var prize = match.prize || [];
+				var matchId = match.matchId || 0;
+				var oddsId = match.oddsId || 0;
+				var bettypeContent = match.bettypeContent || "";
+				var recommendLength = recommend.length;
+				if (matchId <= 0 || oddsId <= 0 || !recommend || recommendLength <= 0 || !bettypeContent) {
+					continue;
+				}
+				match.beginTime = match.beginTime && match.beginTime.replace(/\d{4}-(\d{2}-\d{2} \d{2}:\d{2}):\d{2}/, "$1") || "";
+				var nullOdds = '--';//赔率为空显示值
+				var concede = match.concede;
+				var bettypeOdds = match.bettypeOdds || {};
+				var bettype = match.bettypeValue || {};
+				var recommendMap = {};
+				for (var j = 0; j < recommendLength; j++) {
+					recommendMap[recommend[j]] = true;
+				}
+				var bettypeResult = match.bettypeResult || {};
+				var number = match.number.replace(/(\D+)(\d+)/g, function(text, $1, $2) {
+					var prefixMap = {'周一':'1','周二':'2','周三':'3','周四':'4','周五':'5','周六':'6','周日':'7'}
+					return prefixMap[$1]+$2;	
+				});
+			%>
+				<div class="matchInfo_wrap">
+					<div class="matchInfo clearfix">
+						<span class="size14 fl match_name" style="<%=planMatchType == 2 ? 'color: #003cff' : ''%>"><span class="color3 mr5"><%=number%></span><%=match.league%></span>
+						<div class="size12 color9 ml5"><%=match.beginTime%></div>
+					</div>
+					<div class="ui-flex color3">
+						<div class="ui-flex_item ellipsis"><%=#planMatchType == 2 ? match.away : match.home %></div>
+						 <% if (match.result) { %>
+							<% if (bettypeContent == "BQC") { %>
+							<span class="score color_red"><%=match.result%>(<%=match.halfResult%>)</span>
+							<% } else { %>
+							<span class="score color_red"><%=match.result%></span>
+							<% } %>
+						<% } else { %>
+							vs
+						<% } %> 
+						<div class="ui-flex_item ellipsis textR"><%=#planMatchType == 2 ? match.home : match.away %></div>
+					</div>
+				<% if (bettypeContent == "SPF" || bettypeContent == "RQSPF") { %>
+				<div class="ui-flex flex_wrap pl40">
+					<div class="concede"><%=concede > 0 ? '+'+concede : concede%></div>
+					<div class="textBar ui-flex_item positionR <%=recommendMap["S"]?'active':''%>">胜 <%=bettypeOdds["S"]%><%=#bettypeResult["S"]?'<span class="result icon_result"></span>':""%></div>
+					<div class="textBar ui-flex_item ml10 positionR <%=recommendMap["P"]?'active':''%>">平 <%=bettypeOdds["P"]%><%=#bettypeResult["P"]?'<span class="result icon_result"></span>':""%></div>
+					<div class="textBar ui-flex_item ml10 positionR <%=recommendMap["F"]?'active':''%>">负 <%=bettypeOdds["F"]%><%=#bettypeResult["F"]?'<span class="result icon_result"></span>':""%></div>
+				</div>
+				<% } else if (bettypeContent == 'SF' || bettypeContent == 'RFSF') { %>
+					<div class="ui-flex mt15 positionR">
+						<div class="textBar ui-flex_item positionR <%=recommendMap["F"]?'active':''%>">客胜 <%=bettypeOdds['F']%><%=#bettypeResult["F"]?'<span class="result icon_result"></span>':""%></div>
+						<% if (bettypeContent == "RFSF") { %>
+							<div class="textBar ui-flex_item ml10 positionR" style="<%=concede > 0 ? 'color: #f63946' : 'color: #0c9862'%>">主 <%=#concede > 0 ? '+'+concede : concede%></div>
+						<% } %>
+						<div class="textBar ui-flex_item positionR ml10 <%=recommendMap["S"]?'active':''%>">主胜 <%=bettypeOdds['S']%><%=#bettypeResult["S"]?'<span class="result icon_result"></span>':""%></div>
+					</div>
+				<% } else if (bettypeContent == "DXF") { %>
+					<div class="ui-flex mt15 flex_wrap">
+						<div class="textBar ui-flex_item positionR <%=recommendMap["D"]?'active':''%>">大分 <%=bettypeOdds["D"]%><%=#bettypeResult["D"]?'<span class="result icon_result"></span>':""%></div>
+						<div class="textBar ui-flex_item ml10 positionR" style="color: #f63946;">总分 <%=concede%></div>
+						<div class="textBar ui-flex_item ml10 positionR <%=recommendMap["X"]?'active':''%>">小分 <%=bettypeOdds["X"]%><%=#bettypeResult["X"]?'<span class="result icon_result"></span>':""%></div>
+					</div>
+				<% } else { %>
+					<div class="ui-flex flex_wrap">
+						<% for (var j = 0; j < recommendLength; j++) { %>
+						<div class="textBar ui-flex_item positionR <%=j>0?'ml10':''%> active"><%=bettype[recommend[j]]||''%> <%=bettypeOdds[recommend[j]]||nullOdds%><%=#bettypeResult[recommend[j]]?'<span class="result icon_result"></span>':""%></div>
+						<% } %>
+						<% 
+						if (prize.length <= 0) {
+							for (var name in bettypeResult) {
+								if (!bettypeResult[name]) {
+									continue;
+								}
+						%>
+							<div class="textBar ui-flex_item positionR ml10"><%=bettype[name]||''%> <%=bettypeOdds[name]||nullOdds%><span class="result icon_result"></span></div>	
+						<%
+							}
+						}
+						%>
+					</div>
+				<% } %>
+				</div>
+			<% } %>
+		</div>
+	</div>
+</script>
+
+
+<script type="text/html" id="previewImage">
+<div class="mask" id="showImg" style="background-color: #000000;overflow: auto;">
+	<div class="header">
+		<div class="com_fixedbar header_bar">
+			<span class="arrow leftIcon_header" id="backBtn"></span>
+				票样
+			<% if (ticketStatus == 2) { %>
+			<span class="rightIcon_top color14" id="changeBtn">更换
+				<input style="width:100%;height:100%;position:absolute;z-index:1;top:0;left:0;opacity:0;" class="change_img" type="file" name="" id="" value="" multiple /></span>
+			<% } %>
+		</div>
+	</div>
+	<div style="position: relative;">
+		<%=#html%>
+	</div>
+</div>
+</script>

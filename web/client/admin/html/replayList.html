@@ -1,0 +1,98 @@
+<script type="text/html" id="content">
+<h1 class="title">复盘列表</h1>
+<div class="list_box">
+	<div class="search_box">
+		<div>
+			<form onsubmit="return false;">
+				<input class="input_field" placeholder="标题" id="title"/>
+				<input class="input_field ml20" placeholder="用户" id="userName"/>
+				<input class="input_field ml20" placeholder="复盘ID" id="replayId">
+				<span class="select_box ml20">
+					<select id="publish">
+						<option value="">全部</option>
+						<option value="0">下架</option>
+						<option value="1">上架</option>
+					</select>
+					<span class="icon_sel"><span class="arrow_down"></span></span>
+				</span>
+				<input class="btn ml20" type="reset" value="重置"/>
+				<input class="btn ml20" type="submit" value="搜索" id="searchSubmit"/>
+			</form>
+		</div>
+	</div>
+	<div class="table_box mt20">
+		<table>
+			<thead>
+				<tr>
+					<th width="120">昵称</th>
+					<th width="80">姓名</th>
+					<th width="70">复盘ID</th>
+					<th width="120">标题</th>
+					<th width="120">复盘图片</th>
+					<th width="120">内容</th>
+					<th width="50">上下架</th>
+					<th width="50">阅读数</th>
+					<th width="50">点赞数</th>
+					<th width="50">鄙视数</th>
+					<th width="50">分享数</th>
+					<th width="140">时间</th>
+					<th width="155">操作</th>
+				</tr>
+			</thead>
+			<tbody id="replayList"></tbody>				
+		</table>
+		<div id="pageCodeBox"></div>
+	</div>
+</div>
+</script>
+
+<script type="text/html" id="replayList">
+<% for (var i = 0, length = list.length; i < length; i++) {
+	var replay = list[i] || {};
+	var nickName = replay.nickName;
+	var realName = replay.realName;
+	var replayId = replay.replayId;
+	var title = replay.title;
+	var readCount = replay.readCount;
+	var upCount = replay.upCount;
+	var downCount = replay.downCount;
+	var shareCount = replay.shareCount;
+	var publish = replay.publish;
+	var publishMap = {'0': '下架', '1': '上架'};
+	var resourceList = replay.resourceList || [];
+	resourceList = resourceList.join('|');
+	var content = replay.content;
+	var createTime = replay.createTime;
+%>
+	<tr replayId="<%=replayId%>">
+		<td><%=nickName%></td>
+		<td><%=realName%></td>
+		<td><%=replayId%></td>
+		<td title="<%=title%>">
+			<% if (title) { %>
+			<a class="examine" title="<%=title%>">查看</a>
+			<% } %>
+		</td>
+		<td>
+			<% if (resourceList) { %>
+			<a class="examine" resourceList="<%=resourceList%>">查看</a>
+			<% } %>
+		</td>
+		<td> 
+			<% if (content) { %>
+			<a class="examine" content="<%=content%>">查看</a>
+			<% } %>
+		</td>
+		<td><%=publishMap[publish]%></td>
+		<td><%=readCount%></td>
+		<td><%=upCount%></td>
+		<td><%=downCount%></td>
+		<td><%=shareCount%></td>
+		<td><%=createTime%></td>
+		<td>
+			<a class="examine deleteReplay" replayId="<%=replayId%>">删除</a>
+			<a class="examine ml5 publish" replayId="<%=replayId%>" publish="<%=publish==1?0:1%>"><%=publish==1?'下架':'上架'%></a>
+		</td>
+	</tr>
+<% } %>
+</script>

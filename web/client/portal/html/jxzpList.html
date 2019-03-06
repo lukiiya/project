@@ -1,0 +1,162 @@
+<script type="text/html" id="content">
+	<div class="content-top mb10">
+		<div class="apple-tab" id="tabBox" style="width:180px">
+			<span class="win winl" type="1">胜平负</span>
+			<span class="win" type="2">输赢盘</span>
+			<span class="win winr" type="3">大小球</span>
+		</div>
+	</div>
+	<ul class="wonbox" id="jxzpList"></ul>
+</script>
+
+<script type="text/html" id="jxzpList">
+<% for (var i = 0, length = list.length; i < length; i++) {
+	var jxzp = list[i] || {};
+	var type = jxzp.type;
+	var typeMap = {'1': '胜平负', '2': '输赢盘', '3': '大小球'};
+	var teamName = jxzp.teamName;
+	var league = jxzp.league;
+	var home = jxzp.home;
+	var away = jxzp.away;
+	var result = jxzp.result;
+	var concede = jxzp.concede;
+	var matchBeginTime = jxzp.matchBeginTime || "";
+	var bettypeOdds = jxzp.bettypeOdds || {};
+	var recommend = jxzp.recommend || [];
+	var recommendMap = {};
+	for (var j = 0, len = recommend.length; j < len; j++) {
+		recommendMap[recommend[j]] = true;
+	}
+	var bettypeResult = jxzp.bettypeResult || {};
+	var temp = matchBeginTime.match(/\d{4}-(\d{2})-(\d{2}) (\d{2}:\d{2}):\d{2}/);
+	var month = "";
+	var day = "";
+	var time = "";
+	if (temp && temp.length == 4) {
+		month = temp[1];
+		day = temp[2];
+		time = temp[3];
+	}
+	var status = jxzp.status;
+	var statusMap = {'1': {'1': '连胜', '2': '连平', '3': '连负'}, '2': {'1': '连赢盘', '2': '连输盘'}, '3': {'1': '大球', '2': '小球'}};
+	var recentContinue = +jxzp.recentContinue;
+	var historyContinue = +jxzp.historyContinue;
+%>
+<li class="jx-box">
+	<div class="jx-box-top">
+		<div class="top-title">
+			<span class="ellipsis"><%=teamName%></span>
+		</div>
+		<% if (recentContinue > historyContinue) { %>
+		<div class="hisImg">
+			<img src="<%=IMG_PATH%>history.png" alt="">
+		</div>
+		<% } %>
+		<div class="winOver">
+			<div class="fang">
+				<span class="winTitle">近期<%=statusMap[type][status]%></span>
+			</div>
+			<div class="winNum">
+				<%=recentContinue%>
+			</div>
+		</div>
+		<div class="historyTop">
+			<div class="fang">
+				<span>历史最高</span>
+			</div>
+			<div class="historyNum">
+				<%=historyContinue%>
+			</div>
+		</div>
+	</div>
+	<div class="jx-box-center clearfix:after clearfix">
+		追盘推荐：
+	</div>
+	<div class="jx-box-bottom">
+		<div class="left">
+			<span><%=league%></span>
+			<span class="color3"><%=time%></span>
+			<span><%=month%>/<%=day%></span>
+		</div>
+		<% if (type == 1 || type == 2) { %>
+		<div class="right">
+			<div class="right-son <%=recommendMap['S']?'active':''%> <%=bettypeResult['S']?'active_img':''%>">
+				<span><%=home%></span>
+				<div class="right-son-box">
+					<div class="right-son-son">
+						<div class="right-son-son-img"></div>
+						主胜<%=bettypeOdds['S']%>
+					</div>
+				</div>
+			</div>
+			<div class="right-son <%=recommendMap['P']?'active':''%>  <%=bettypeResult['P']?'active_img':''%>">
+				<% if (result) { %>
+					<span class="color_red"><%=result%></span>
+				<% } else { %>
+					<span class="colorb1">VS</span>
+				<% } %>
+				<div class="right-son-box">
+					<div class="right-son-son">
+						<div class="right-son-son-img"></div>
+						平局<%=bettypeOdds['P']%>
+					</div>
+				</div>
+			</div>
+			<div class="right-son <%=recommendMap['F']?'active':''%>  <%=bettypeResult['F']?'active_img':''%>">
+				<span><%=away%></span>
+				<div class="right-son-box">
+					<div class="right-son-son">
+						<div class="right-son-son-img"></div>
+						客胜<%=bettypeOdds['F']%>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="parcircle">
+			<span><%=concede > 0 ? '+'+concede : concede%></span>
+		</div>
+		<% } else { %>
+		<div class="right">
+			<div class="right-son active <%=bettypeResult[recommend[0]]?'active_img':''%>">
+				<span><%=home%></span>
+				<div class="right-son-box">
+					<% if (recommend[0]) { %>
+					<div class="right-son-son">
+						<div class="right-son-son-img"></div>
+						<%=recommend[0]+'球 '+bettypeOdds[recommend[0]]%>
+					</div>
+					<% } %>
+				</div>
+			</div>
+			<div class="right-son active <%=bettypeResult[recommend[1]]?'active_img':''%>">
+				<% if (result) { %>
+					<span class="color_red"><%=result%></span>
+				<% } else { %>
+					<span class="colorb1">VS</span>
+				<% } %>
+				<div class="right-son-box">
+					<% if (recommend[1]) { %>
+					<div class="right-son-son">
+						<div class="right-son-son-img"></div>
+						<%=recommend[1]+'球 '+bettypeOdds[recommend[1]]%>
+					</div>
+					<% } %>
+				</div>
+			</div>
+			<div class="right-son active <%=bettypeResult[recommend[2]]?'active_img':''%>">
+				<span><%=away%></span>
+				<div class="right-son-box">
+					<% if (recommend[2]) { %>
+					<div class="right-son-son">
+						<div class="right-son-son-img"></div>
+						<%=recommend[2]+'球 '+bettypeOdds[recommend[2]]%>
+					</div>
+					<% } %>
+				</div>
+			</div>
+		</div>	
+		<% } %>
+	</div>
+</li>
+<% } %>
+</script>

@@ -1,0 +1,188 @@
+<script type="text/html" id="content">
+	
+</script>
+
+<script type="text/html" id="fc3dNum">
+	<div class="nav_wrap">
+		<ul class="nav clearfix" id="typeList">
+			<li class="item" type="1">
+				<span>直选</span>
+			</li>
+			
+			<li class="item" type="2">
+				<span>和值</span>
+			</li>
+			
+			<li class="item" type="3">
+				<span>组三</span>
+			</li>
+			
+			<li class="item" type="4">
+				<span>组六</span>
+			</li>
+		</ul>
+	</div>
+	<div class="num-list" id="numList"></div>
+	<div class="buy_list">
+		<p class="deadline">距<span id="issue"></span>期截止：<span class="color_red" id="time"></span></p>
+		<% if (!recommend) { %>
+			<div class="pay_info clearfix">
+				<div class="pay_left fl">
+					<div class="mb10">金额：<span class="colorf5e" id="price">0 元</span></div>
+					<div class="bonus" id="unit">注数：0 注</div>
+				</div>
+				<div class="pay_btn fr" id="ensureBtn">
+					确定
+				</div>
+			</div>
+		<% } %>
+	</div>
+</script>
+
+<script type="text/html" id="ZUX">
+	<% if (type == 3) { %>
+		<p class="size12 color6">玩法：至少选择2个号码，开奖号码为组三且包含在选号中即中奖<span class="size12 color_red">346</span>元。组三是指开奖号码中任意两位号码相同，如166。</p>
+	<% } else if (type == 4) { %>
+		<p class="size12 color6">玩法：至少选择3个号码，开奖号码为组六且包含在选号中即中奖<span class="size12 color_red">173</span>元。组六是指开奖号码中三个号码各不相同，如135。</p>
+	<% } %>
+	<div class="numBox" id="numBox">
+		<ul class="num_wrap clearfix" id="numWrap">
+			<%
+				for (var i = 0, length = ZxNum.length; i < length; i++) {
+					var num = ZxNum[i].num;
+			%>
+			<li class="num_item_5" data-value ="<%=num%>">
+				<span class="num"><%=num%></span>
+			</li>
+			<% } %>
+		</ul>
+	</div>
+</script>
+
+<script type="text/html" id="fc3dBet">
+	<div class="fc3d_betCont">
+		<p class="title">距<span id="issue"></span>期投注截止 <span class="color_red size13" id="time"></span>：</p>
+		<div class="bet_list">
+			<ul class="" id="fc3dList">
+
+			</ul>
+		</div>
+	</div>
+	<div class="buy_list">
+		<div class="read pl10 pt5">
+			<input class="mr5" type="checkbox" name="tongyi" id="protocol" checked="checked">
+			<label for="protocol">已阅读并同意</label>
+			<span><a href="#userVerifyProtocol&amp;type=2">《用户代购协议》</a></span>
+		</div> 
+		<div class="mutiple_warp">
+			<span class="mr5">买</span>
+			<span class="icon_decrease_multiple mr10" id="minusMultiple"></span>
+			<input type="number" value="1" min="1" max="9999" id="multiple"/>
+			<span class="icon_add_multiple ml10" id="addMultiple"></span>
+			<span class="ml5">倍</span>
+		</div>
+		<div class="pay_info clearfix">
+			<div class="pay_left fl">
+				<div class="mb10">金额：<span class="colorf5e" id="price">0</span> 元</div>
+				<div class="bonus">注数：<span id="totalUnit">0</span> 注</div>
+			</div>
+			<div class="pay_btn fr" id="submitBtn">
+				确定
+			</div>
+		</div>
+	</div>
+</script>
+
+<script type="text/html" id="fc3dList">
+	<%
+		for (var i = 0, length = selectContent.length; i < length; i++) {
+		var title = selectContent[i].title;
+		var selectNum = selectContent[i].selectContent;
+		compare = selectNum.join(' ');
+	%>
+	<li compare="<%=title + compare%>">
+		<div class="num_wrap ui-flex">
+			<span class="play_type">
+				[<%=title%>]
+			</span> 
+			<span class="sel_num ui-flex_item">
+				<% 
+					for (var j = 0; j < selectNum.length; j++) {
+						var num = selectNum[j];
+				%>
+					<em><%=num%></em>
+				<% } %>
+			</span>
+		</div>
+		<a class="del_btn">
+			<span class="del"></span>
+		</a>
+	</li>
+	<% } %>
+</script>
+
+<script type="text/html" id="HZ">
+	<p class="size12 color6 tips">玩法：和值是指开奖号码中三个号码之和，所选和值与开奖号码和值一致即中奖<span class="size12 color_red">1040</span>元。</p>
+	<div class="numBox" id="numBox">
+		<div class="tabBox">
+			<ul class="num_wrap clearfix" id="firstNum">
+				<%
+					for (var i = 0, length = HzNum.length; i < length; i++) {;
+						var num = HzNum[i].num;
+				%>
+				<li class="num_item_5" data-value ="<%=num%>">
+					<span class="num"><%=num%></span>
+				</li>
+				<% } %>
+			</ul>
+		</div>
+	</div>
+</script>
+
+<script type="text/html" id="ZHX">
+	<p class="size12 color6 tips">玩法：从百、十、个位至少各选1个号码，单注选号与开奖号码按位一致即中奖<span class="size12 color_red">1040</span>元。</p>
+	<div class="numBox" id="numBox">
+		<div class="tabBox">
+			<div class="icon_wrap mb20">
+				<span class="icon_hundreds"></span>
+			</div>
+			<ul class="num_wrap clearfix" id="firstNum">
+				<%
+					for (var i = 0, length = optionalNum.length; i < length; i++) {;
+						var num = optionalNum[i].num;
+				%>
+				<li class="num_item_6" data-value ="<%=num%>">
+					<span class="num"><%=num%></span>
+				</li>
+				<% } %>
+			</ul>
+			<div class="icon_wrap mb30">
+				<span class="icon_deckle"></span>
+			</div>
+			<ul class="num_wrap clearfix" id="secondNum">
+				<%
+					for (var i = 0, length = optionalNum.length; i < length; i++) {;
+						var num = optionalNum[i].num;
+				%>
+				<li class="num_item_6" data-value ="<%=num%>">
+					<span class="num"><%=num%></span>
+				</li>
+				<% } %>
+			</ul>
+			
+			<div class="icon_wrap mb30">
+				<span class="icon_unit"></span>
+			</div>
+			<ul class="num_wrap clearfix" id="thirdNum">
+				<%
+					for (var i = 0, length = optionalNum.length; i < length; i++) {;
+						var num = optionalNum[i].num;
+				%>
+				<li class="num_item_6" data-value ="<%=num%>">
+					<span class="num"><%=num%></span>
+				</li>
+				<% } %>
+			</ul>
+		</div>
+	</div>
+</script>

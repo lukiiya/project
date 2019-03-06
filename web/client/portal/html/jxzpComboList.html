@@ -1,0 +1,53 @@
+<script type="text/html" id="content">
+	<div class="jx_title" style="display: none;">
+		<img src="../img/jxtitle.png"/>
+		<div>胜平负：<span id="SPFnum">0.00%</span></div>
+		<div>输赢盘：<span id="SYPnum">0.00%</span></div>
+		<div>大小球：<span id="DXQnum">0.00%</span></div>
+	</div>
+	<p class="ti30">
+		每周近500场比赛数据深挖和提炼，为您提供最有价值的球队极限数据，让你投注更简单、快速、有可靠依据。
+	</p>
+	<!--如果有胜平负等数据 删除该div 显示上面内容-->
+	<div class="jxzp_rate mb20"> 
+		<span>
+			<div class="f18_r">追盘胜率</div>
+			<div class="f12_6">每日更新</div>
+		</span>
+		<span>
+			<div class="f34_r hothot">
+				<div class="jx_big" id="winPercentFront">0</div>
+				<div class="jx_big">.</div>
+				<div class="jx_small" id="winPercentEnd">00%</div>
+			</div>
+		</span>
+	</div>
+	<div class="mt10" id="comboList"></div>
+</script>
+
+<script type="text/html" id="comboList">
+	<% for (var i = 0, length = list.length; i < length; i++) {
+	var combo = list[i] || {};
+	var comboNo = combo.comboNo;
+	var amount = combo.amount;
+	var presentAmount = combo.presentAmount/100 ||0;
+	var spanTime = combo.spanTime;
+	var imgMap = {"86400":"day","604800":"week","2678400":"month","31536000":"year"};
+	var title = combo.title;
+	var comboType = combo.comboType;
+%>
+<div class="jx" comboNo="<%=comboNo%>" comboType="<%=comboType%>" amount="<%=amount%>">
+	<div class="left">
+		<img src="<%=IMG_PATH%><%=imgMap[spanTime]%>.png" alt="">
+	</div>
+	<div class="center"> 
+		<span class="centerone"><%=title%></span>
+		<span class="centertwo">送<%=presentAmount%>粒米</span>
+	</div>
+	<div class="right">
+		<img src="<%=IMG_PATH%>shop.png" alt="">
+		<span>立即购买</span>
+	</div>
+</div>
+<% } %>
+</script>

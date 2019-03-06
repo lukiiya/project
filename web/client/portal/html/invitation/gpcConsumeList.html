@@ -1,0 +1,40 @@
+<script type="text/html" id="content">
+	<div id="gpcConsumeList"></div>
+</script>
+
+<script type="text/html" id="gpcConsumeList">
+	<%
+		for (var i = 0, length = list.length; i < length; i++) {
+			var year = (list[i].year + '') || '';
+			var mouthList = list[i].mouthList || [];
+	%>
+	<div class="gpcConsumeDate year clearfix">
+		<span class="fl"><%=year%>年</span>
+		<span class="arrow arrow_up"></span>
+	</div>
+	<ul class="menu gpcConsumeContent" style="<%=i==0?'':'display:none'%>">
+		<% 
+			for (var j = 0, len = mouthList.length; j < len; j++) {
+			var item = mouthList[j];
+			var gpConsume = (item.gpConsume/100).toFixed(2) || 0;
+			var month = item.month;
+			var date = new Date();
+			var curMonth = date.getMonth() + 1;
+			var curYear = date.getFullYear();
+			var time = year + month;
+		%>
+		<li class="ui-flex menu_bar" time= '<%=time%>'>
+			<% if (year == curYear && month == curMonth) { %>
+				<span>当月</span>
+			<% } else { %>
+				<span><%=month%>月</span>
+			<% } %>
+			<div>
+				<span class="color_red mr5"><%=gpConsume%>元</span>
+				<span class="arrow_right"></span>
+			</div>
+		</li>
+		<% } %>
+	</ul>
+<% } %>
+</script>

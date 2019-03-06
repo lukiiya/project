@@ -1,0 +1,50 @@
+<script type="text/html" id="content">
+	<ul class="infoBox" id="replayList"></ul>
+</script>
+
+<script type="text/html" id="replayList">
+<% for (var i = 0, length = list.length; i < length; i++) {
+	var replay = list[i] || {};
+	var replayNo = replay.replayNo;
+	var title = replay.title;
+	var user = replay.user || {};
+	var userNo = user.userNo;
+	var realName = user.realName;
+	var nickName = user.nickName;
+	var profileImg = user.profileImg;
+	var personalImg = user.personalImg;
+	var userImg = personalImg || profileImg || (IMG_PATH + 'user_profile.png');
+	var userName = realName || nickName;
+	var userTag = user.tag;
+	var continueWin = user.continueWin || 0;
+	var winCount = user.winCount || 0;
+	var profitRate = user.profitRate || 0;
+	var winRate = user.winRate || 0;
+	profitRate = (profitRate+'').replace(/\.\d+/g, '');
+	winRate = (winRate+'').replace(/\.\d+/g, '');
+%>
+	<li class="item clearfix" replayNo="<%=replayNo%>">
+		<div class="recommend_cont">
+			<div class="msg color9 clearfix borderB">
+				<img class="icon_span img38 userProfile" userNo="<%=userNo%>" src="<%=userImg%>" />
+				<span class="personal">
+					<span class="color3"><%=userName%></span>
+				</span>
+				<% if (continueWin > 1) { %>
+					<div class="fr combat_gains">战绩 <span class="color_red"><%=continueWin%>连红</span></div>
+				<% } else if(winCount > 0) { %>
+					<div class="fr combat_gains">战绩 <span class="color_red">10中<%=winCount%></span></div>
+				<% } else if (profitRate > 0) { %>
+					<div class="fr combat_gains">战绩 <span class="color_red">盈<%=profitRate%>%</span></div>
+				<% } else if (winRate > 0) { %>
+					<div class="fr combat_gains">战绩 <span class="color_red">胜<%=winRate%>%</span></div>
+				<% } else { %>
+					
+				<% }%>
+			</div>
+			<p class="recommend_title pt15 pb5 pl10"><%=title%></p>
+			</div>
+		</div>
+	</li>
+<% } %>
+</script>

@@ -1,0 +1,61 @@
+<script type="text/html" id="content">
+<h1 class="title">引导列表</h1>
+<div class="list_box">
+	<div class="search_box">
+		<div>
+			<form onsubmit="return false;">
+				<input class="input_field" placeholder="引导人" id="guideUserName">
+				<input class="input_field ml20" placeholder="访问人" id="accessUserName">
+				<input class="btn ml20" type="reset" value="重置">
+				<input class="btn ml20" type="submit" value="搜索" id="searchSubmit">
+			</form>
+		</div>
+	</div>
+	<div class="table_box mt20">
+		<table>
+			<thead>
+				<tr>
+					<th width="140">引导人昵称</th>
+					<th width="80">引导人姓名</th>
+					<th width="140">访问人昵称</th>
+					<th width="80">访问人姓名</th>
+					<th width="180">访问页面</th>
+					<th width="100">访问次数</th>
+					<th width="140">初次访问时间</th>
+					<th width="140">最近访问时间</th>
+				</tr>
+			</thead>
+			<tbody id="guideList"></tbody>
+		</table>
+		<div id="pageCodeBox"></div>
+	</div>
+</div>
+</script>
+
+
+<script type="text/html" id="guideList">
+<% for (var i = 0, length = list.length; i < length; i++) {
+	var guide = list[i] || {};
+	var guideId = guide.guideId;
+	var guideNickName = guide.guideNickName;
+  var guideRealName = guide.guideRealName;
+  var accessNickName = guide.accessNickName;
+  var accessRealName = guide.accessRealName;
+  var accessPage = guide.accessPage;
+	var accessPageMap = { 'charge': '充值', 'chargeList': '充值记录', 'editPlan': '发起推荐', 'home': '主页', 'hotMatch': '热门赛事', 'hotMatchDetail': '热门赛事详情页', 'jxzpComboList': '极限追盘多玩法', 'jxzpList': '极限追盘', 'match': '发起推荐-选择类型', 'matchMoreBettype': '发起推荐-选择类型-更多玩法', 'my': '个人页面', 'planDetail': '推荐详情', 'smlrComboList': '晒米冷热购买/详情', 'smlrList': '晒米冷热', 'userDetail': '专家头像列表', 'userList': '专家赛事列表', 'userVerify': '申请专家/站长', 'userVerifyProtocol': '专家/站长协议', 'withdraw': '收米', 'withdrawList': '提款记录', 'girlPlan': '美女推波', 'activity/hongBao': '红包页面'};
+	var accessCount = guide.accessCount;
+	var createTime = guide.createTime;
+	var lastTime = guide.lastTime;
+%>
+	<tr>
+		<td><%=guideNickName%></td>
+    <td><%=guideRealName%></td>
+    <td><%=accessNickName%></td>
+    <td><%=accessRealName%></td>
+		<td><%=accessPageMap[accessPage]%></td>
+		<td><%=accessCount%></td>
+		<td><%=createTime%></td>
+		<td><%=lastTime%></td>
+	</tr>
+<% } %>
+</script>

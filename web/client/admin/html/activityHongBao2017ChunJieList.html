@@ -1,0 +1,64 @@
+<script type="text/html" id="content">
+<h1 class="title">2017春节红包</h1>
+<div class="list_box">
+	<div class="search_box">
+		<div>
+			<form onsubmit="return false;">
+				<input class="input_field" placeholder="用户名" id="userName">
+				<input class="btn ml20" type="reset" value="重置">
+				<input class="btn ml20" type="submit" value="搜索" id="searchSubmit">
+			</form>
+		</div>
+	</div>
+	<div class="table_box mt20">
+		<table>
+			<thead>
+				<tr>
+					<th width="120">昵称</th>
+					<th width="70">姓名</th>
+					<th width="120">手机</th>
+					<th width="70">赠送粒米</th>
+					<th width="70">赠送彩金</th>
+					<th width="140">时间</th>
+				</tr>
+			</thead>
+			<tbody id="activityHongBao2017ChunJieList"></tbody>
+		</table>
+		<div id="pageCodeBox"></div>
+	</div>
+</div>
+</script>
+
+<script type="text/html" id="activityHongBao2017ChunJieList">
+<% 
+var length = list.length;
+for ( var i = 0; i < length; i++) {
+	var hongBao = list[i] || {};
+	var hongBaoId = hongBao.hongBaoId;
+	var nickName = hongBao.nickName;
+	var realName = hongBao.realName;
+	var mobile = hongBao.mobile;
+	var presentAmount = hongBao.presentAmount/100;
+	var presentTicketAmount = hongBao.presentTicketAmount/100;
+	var createTime = hongBao.createTime;
+%>
+	<tr>
+		<td><%=nickName%></td>
+		<td><%=realName%></td>
+		<td><%=mobile%></td>
+		<td><%=presentAmount%></td>
+		<td><%=presentTicketAmount%></td>
+		<td><%=createTime%></td>
+	</tr>
+<% } %>
+<% if (length > 0) { %>
+<tr>
+	<td>总计</td>
+	<td></td>
+	<td></td>
+	<td><%=totalPresentAmount/100%></td>
+	<td><%=totalPresentTicketAmount/100%></td>
+	<td></td>
+</tr>
+<% } %>
+</script>

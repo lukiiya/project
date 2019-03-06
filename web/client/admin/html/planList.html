@@ -1,0 +1,259 @@
+<script type="text/html" id="content">
+<h1 class="title">方案列表</h1>
+<div class="list_box">
+	<form onsubmit="return false;">
+		<div class="search_box">
+			<div>
+				<input class="input_field" placeholder="方案人" id="userName">
+				<input class="input_field ml20" placeholder="方案ID" id="planId">
+				<span class="select_box ml20">
+					<select id="publish">
+						<option value="">全部</option>
+						<option value="0">下架</option>
+						<option value="1">上架</option>
+					</select>
+					<span class="icon_sel"><span class="arrow_down"></span></span>
+				</span>
+				<span class="select_box ml20">
+					<select id="prizeStatus">
+						<option value="">全部</option>
+						<option value="0">未开奖</option>
+						<option value="1">已中奖</option>
+						<option value="2">未中奖</option>
+					</select>
+					<span class="icon_sel"><span class="arrow_down"></span></span>
+				</span>
+				<span class="select_box ml20">
+					<select id="rich">
+						<option value="">全部</option>
+						<option value="0">普单</option>
+						<option value="1">豪单</option>
+					</select>
+					<span class="icon_sel"><span class="arrow_down"></span></span>
+				</span>
+				<span class="select_box ml20">
+					<select id="matchType">
+						<option value="0">全部</option>
+						<option value="1">足球</option>
+						<option value="2">篮球</option>
+					</select>
+					<span class="icon_sel"><span class="arrow_down"></span></span>
+				</span>
+			</div>
+		</div>
+		<div class="search_box mt10">
+			<div>
+				<input class="input_field" placeholder="开始时间" readonly="1" id="beginTime">
+				<input class="input_field ml20" placeholder="结束时间" readonly="1" id="endTime">
+				<input class="btn ml20" type="reset" value="重置">
+				<input class="btn ml20" type="submit" value="搜索" id="searchSubmit">	
+			</div>
+		</div>
+	</form>
+	<div class="table_box mt10">
+		<table>
+			<thead>
+				<tr>
+					<th width="120">昵称</th>
+					<th width="80">姓名</th>
+					<th width="70">方案ID</th>
+					<th width="50">豪单</th>
+					<th width="300">比赛</th>
+					<th width="60">金额</th>
+					<th width="60">中奖状态</th>
+					<th width="60">盈利率</th>
+					<th width="60">推荐比赛</th>
+					<th width="60">推荐图片</th>
+					<th width="60">推荐详情</th>
+					<th width="60">上下架</th>
+					<th width="50">阅读数</th>
+					<th width="50">点赞数</th>
+					<th width="50">鄙视数</th>
+					<th width="50">分享数</th>
+					<th width="140">时间</th>
+					<th width="160">操作</th>
+				</tr>
+			</thead>
+			<tbody id="planList"></tbody>
+		</table>
+		<div id="pageCodeBox"></div>
+	</div>
+</div>
+</script>
+
+<script type="text/html" id="planList">
+<% for (var i = 0, length = list.length; i < length; i++) {
+	var plan = list[i] || {};
+	var planId = plan.planId;
+	var nickName = plan.nickName;
+	var realName = plan.realName;
+	var amount = plan.amount/100;
+	var prizeStatus = plan.prizeStatus || 0;
+	var prizeMap = {'0': '未开奖', '1': '已中奖', '2': '未中奖'};
+	var costAmount = plan.costAmount || 0;
+	var prizeAmount = plan.prizeAmount || 0;
+	var prizeRate = '';
+	if (prizeStatus == 1 || prizeStatus == 2) {
+		if(costAmount != 0) {
+			prizeRate = (((prizeAmount-costAmount)*100)/costAmount).toFixed(2) + '';//转变成字符串
+			prizeRate = prizeRate.replace(/\.0+$/g, '');//删除末尾是.00；
+			prizeRate = prizeRate + '%';
+		}
+			
+	}
+	var publish = plan.publish;
+	var publishMap = {'0': '下架', '1': '上架'};
+	var readCount = plan.readCount;
+	var upCount = plan.upCount;
+	var downCount = plan.downCount;
+	var shareCount = plan.shareCount;
+	var createTime = plan.createTime;
+	var content = plan.content;
+	var resourceList = plan.resourceList || [];
+	resourceList = resourceList.join('|');
+	var rich = plan.rich; //1：豪单，0：普单
+	var matchType = plan.matchType;
+	var matchList = plan.matchList;
+	var planMatch = '';
+	if (matchList) {
+		var match = matchList[0] || {};
+		var away = match.away;
+		var home = match.home;
+		if (matchType == 2) {
+			away = match.home;
+			home = match.away;
+		}
+		var league = match.league;
+		var beginTime = match.beginTime && match.beginTime.replace(/\d{4}-(\d{2}-\d{2} \d{2}:\d{2}):\d{2}/ ,"$1") || "";
+		planMatch = "["+league+"] "+home+" vs "+away+"("+beginTime+")";
+	}
+%>
+	<tr>
+		<td><%=nickName%></td>
+		<td><%=realName%></td>
+		<td><%=planId%></td>
+		<td><%=rich==1?'是':'否'%></td>
+		<td title="<%=planMatch%>"><%=planMatch%></td>
+		<td><%=amount%></td>
+		<td><%=prizeMap[prizeStatus]%></td>
+		<td><%=prizeRate%></td>
+		<td>
+			<% if (matchList) { %>
+			<a class="examine" planId="<%=planId%>" matchList matchType="<%=matchType%>">查看</a>
+			<% } %>
+		</td>
+		<td>
+			<% if (resourceList) { %>
+			<a class="examine" resourceList="<%=resourceList%>">查看</a>
+			<% } %>
+		</td>
+		<td> 
+			<% if (content) { %>
+			<a class="examine" content="<%=content%>">查看</a>
+			<% } %>
+		</td>
+		<td><%=publishMap[publish]%></td>
+		<td><%=readCount%></td>
+		<td><%=upCount%></td>
+		<td><%=downCount%></td>
+		<td><%=shareCount%></td>
+		<td><%=createTime%></td>
+		<td>
+			<a class="examine richPlan" planId="<%=planId%>" rich="<%=rich==0?1:0%>"><%=rich==0?'设置豪单':'取消豪单'%></a>
+			<a class="examine publishPlan ml10" planId="<%=planId%>" publish="<%=publish==1?0:1%>"><%=publish==1?'下架':'上架'%></a>
+			<a class="examine deletePlan ml10" planId="<%=planId%>">删除</a>
+		</td>
+	</tr>
+	
+<% } %>
+</script>
+
+<script type="text/html" id="matchList">
+	<% 
+		var matchLength = matchList.length;
+		for (var i = 0; i < matchLength; i++) {
+			var match = matchList[i] || {};
+			var recommend = match.recommend || [];
+			var prize = match.prize || [];
+			var matchId = match.matchId || 0;
+			var oddsId = match.oddsId || 0;
+			var bettypeContent = match.bettypeContent || "";
+			var recommendLength = recommend.length;
+			if (matchId <= 0 || oddsId <= 0 || !recommend || recommendLength <= 0 || !bettypeContent) {
+				continue;
+			}
+			match.beginTime = match.beginTime && match.beginTime.replace(/\d{4}-(\d{2}-\d{2} \d{2}:\d{2}):\d{2}/, "$1") || "";
+			var nullOdds = '--';//赔率为空显示值
+			var concede = match.concede;
+			var bettypeOdds = match.bettypeOdds || {};
+			var bettype = match.bettypeValue || {};
+			var recommendMap = {};
+			for (var j = 0; j < recommendLength; j++) {
+				recommendMap[recommend[j]] = true;
+			}
+			var bettypeResult = match.bettypeResult || {};
+			var number = match.number || "";
+		%>
+		<div class="matchCon_box">
+			<div class="matchCon_wrap">
+				<div class="matchCon clearfix">
+					<span class="match_name" style="<%=matchType == 2 ? 'color:#003cff;' : '' %>"><span class="color3 mr5"><%=number%></span><%=match.league%></span>
+					<div class="match_time"><%=match.beginTime%></div>
+				</div>
+				<div class="ui-flex color3">
+					<div class="ui-flex_item ellipsis"><%=#matchType == 2 ? match.away : match.home %></div>
+					 <% if (match.result) { %>
+						<% if (bettypeContent == "BQC") { %>
+						<span class="score"><%=match.result%>(<%=match.halfResult%>)</span>
+						<% } else { %>
+						<span class="score"><%=match.result%></span>
+						<% } %>
+					<% } else { %>
+						vs
+					<% } %> 
+					<div class="ui-flex_item ellipsis textR"><%=#matchType == 2 ? match.home : match.away %></div>
+				</div>
+			<% if (bettypeContent == "SPF" || bettypeContent == "RQSPF") { %>
+				<div class="ui-flex flex_wrap pl40">
+					<div class="concede"><%=concede > 0 ? '+'+concede : concede%></div>
+					<div class="textBar ui-flex_item <%=recommendMap["S"]?'active':''%>">胜 <%=bettypeOdds["S"]%><%=#bettypeResult["S"]?'<span class="icon_result"></span>':""%></div>
+					<div class="textBar ui-flex_item ml10 <%=recommendMap["P"]?'active':''%>">平 <%=bettypeOdds["P"]%><%=#bettypeResult["P"]?'<span class="icon_result"></span>':""%></div>
+					<div class="textBar ui-flex_item ml10 <%=recommendMap["F"]?'active':''%>">负 <%=bettypeOdds["F"]%><%=#bettypeResult["F"]?'<span class="icon_result"></span>':""%></div>
+				</div>
+			<% } else if (bettypeContent == "DXF") { %>
+				<div class="ui-flex flex_wrap">
+					<div class="textBar ui-flex_item <%=recommendMap["D"]?'active':''%>">大分 <%=bettypeOdds["D"]%><%=#bettypeResult["D"]?'<span class="icon_result"></span>':""%></div>
+					<div class="textBar ui-flex_item ml10" style="color: #f63946;">总分 <%=concede%></div>
+					<div class="textBar ui-flex_item ml10 <%=recommendMap["X"]?'active':''%>">小分 <%=bettypeOdds["X"]%><%=#bettypeResult["X"]?'<span class="icon_result"></span>':""%></div>
+				</div>
+			<% } else if (bettypeContent == "RFSF" || bettypeContent == "SF") { %>
+				<div class="ui-flex flex_wrap">
+					<div class="textBar ui-flex_item <%=recommendMap["F"]?'active':''%>">客胜 <%=bettypeOdds["F"]%><%=#bettypeResult["F"]?'<span class="icon_result"></span>':""%></div>
+					<% if (bettypeContent == "RFSF") { %>
+						<div class="textBar ui-flex_item ml10" style="<%=concede > 0 ? 'color: #f63946' : 'color: #0c9862'%>">主 <%=#concede > 0 ? '+'+concede : concede%></div>
+					<% } %>
+					<div class="textBar ui-flex_item ml10 <%=recommendMap["S"]?'active':''%>">主胜 <%=bettypeOdds["S"]%><%=#bettypeResult["S"]?'<span class="icon_result"></span>':""%></div>
+				</div>
+			<% } else { %>
+				<div class="ui-flex flex_wrap">
+					<% for (var j = 0; j < recommendLength; j++) { %>
+					<div class="textBar ui-flex_item <%=j>0?'ml10':''%> active"><%=bettype[recommend[j]]||''%> <%=bettypeOdds[recommend[j]]||nullOdds%><%=#bettypeResult[recommend[j]]?'<span class="icon_result"></span>':""%></div>
+					<% } %>
+					<% 
+					if (prize.length <= 0) {
+						for (var name in bettypeResult) {
+							if (!bettypeResult[name]) {
+								continue;
+							}
+					%>
+						<div class="textBar ui-flex_item ml10"><%=bettype[name]||''%> <%=bettypeOdds[name]||nullOdds%><span class="icon_result"></span></div>	
+					<%
+						}
+					}
+					%>
+				</div>
+			<% } %>
+			</div>
+		</div>
+	<% } %>
+</script>

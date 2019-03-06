@@ -1,0 +1,61 @@
+<script type="text/html" id="content">
+	<div class="ui-flex tab_nav" id="optimizeTab">
+		<div class="ui-flex_item active" tab="1">平均优化</div>
+		<div class="ui-flex_item" tab="2">博热优化</div>
+		<div class="ui-flex_item" tab="3">博冷优化</div>
+	</div>
+	<div id="vueContent">
+		
+	</div>
+</script>
+
+<script type="text/html" id="vueContent">
+	<div class="mt5 optimize_detail" id="optimizeDetail">
+		<div class="input_wrap">
+			优化金额：<input id="totalAmount" type="number" v-model="totalAmount" v-on:input="total()" /> 元
+		</div>
+		<table>
+			<thead>
+				<tr>
+					<th width="135">选项</th>
+					<th width="105">理论奖金</th>
+					<th>分配金额</th>
+				</tr>
+			</thead>
+			<tbody id="matchList">
+				<tr v-for="item in matchList">
+					<td class="option">
+						<div v-for="match in item.options">
+							{{match.number}}<span class="size12 color6"> [{{match.bettypeContent == 'RQSPF' ? '让' : ''}}{{match.bettype}} {{match.odd}}]</span>
+						</div>
+					</td>
+					<td>
+						<span class="color_red size16">{{item.theoryPrize}}</span>
+					</td>
+					<td>
+						<span class="icon_decreaseBonus" @click="changeValue(item,-2)"></span>
+						<span class="unitAmount">{{item.unitAmount}}</span>
+						<!--<input type="number" v-model="item.unitAmount" v-on:input="count(item)"/>-->
+						<span class="icon_addBouns" @click="changeValue(item,2)"><b></b></span>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<div class="buy_list">
+		<div class="read pl10 pt5">
+			<input class="mr5" type="checkbox" name="tongyi" id="protocol" checked="checked">
+			<label for="protocol">已阅读并同意</label>
+			<span id="userVerifyProtocol"><a>《用户代购协议》</a></span>
+		</div>
+		<div class="pay_info clearfix">
+			<div class="pay_left fl">
+				<div class="pay_num" id="ticketAmount">共 {{totalAmount}} 元</div>
+				<div class="bonus" id="maxPrize">理论最大奖金：{{maxPrize}}</div>
+			</div>
+			<div class="pay_btn fr" id="createTicketSubmit" @click="submit()">
+				投注
+			</div>
+		</div>
+	</div>		
+</script>

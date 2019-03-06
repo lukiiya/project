@@ -1,0 +1,105 @@
+<script type="text/html" id="content">
+<h1 class="title">比赛列表</h1>
+<div class="list_box">
+	<form onsubmit="return false;">
+		<input class="input_field" placeholder="编号" id="number"/>
+		<input class="input_field ml20" placeholder="联赛" id="league"/>
+		<input class="input_field ml20" placeholder="主队" id="home"/>
+		<input class="input_field ml20" placeholder="客队" id="away"/>
+		<div class="mt20">
+			<input class="input_field" placeholder="开始时间" readonly="1" id="beginTime">
+			<input class="input_field ml20" placeholder="结束时间" readonly="1" id="endTime">
+			<span class="select_box ml20">
+				<select id="type">
+					<option value="0">全部</option>
+					<option value="1">足球</option>
+					<option value="2">篮球</option>
+				</select>
+				<span class="icon_sel"><span class="arrow_down"></span></span>
+			</span>
+			<label class="ml20" for="matchCancel">
+				已取消：
+				<input type="checkbox" id="matchCancel">
+			</label>
+			<input class="btn ml20" type="reset" value="重置"/>
+			<input class="btn ml20" type="submit" value="搜索" id="searchSubmit"/>
+		</div>
+	</form>
+	<div class="table_box mt10">
+		<table>
+			<thead>
+				<tr>
+					<th width="80">类型</th>
+					<th width="80">编号</th>
+					<th width="120">联赛</th>
+					<th width="120">主队</th>
+					<th width="120">客队</th>
+					<th width="120">比赛时间</th>
+					<th width="100">半场赛果</th>
+					<th width="100">全场赛果</th>
+					<th width="150">投注比例</th>
+					<th width="120">操作</th>
+				</tr>
+			</thead>
+			<tbody id="matchList"></tbody>					
+		</table>
+		<div id="pageCodeBox"></div>
+	</div>
+</div>
+</script>
+
+<script type="text/html" id="matchList">
+<% 
+var length = list.length;
+for (var i = 0; i < length; i++) {
+	var match = list[i] || {};
+	var matchId = match.matchId;
+	var type = match.type;
+	var typeMap = {'1': '足球','2': '篮球'};
+	var number = match.number;
+	var league = match.league;
+	var home = match.home;
+	var away = match.away;
+	var beginTime = match.beginTime;
+	var halfResult = match.halfResult;
+	var result = match.result;
+	var setResult = match.setResult;
+	var setCancel = match.setCancel;
+	var winBetRate = match.winBetRate || '--';
+	var drawBetRate = match.drawBetRate || '--';
+	var loseBetRate = match.loseBetRate || '--';
+	var betRate = winBetRate + '(胜),' + drawBetRate + '(平),' + loseBetRate + '(负)';
+	var matchInfo = home + '(主) vs ' + away + '(客)';
+%>
+	<tr>
+		<td><%=typeMap[type]%></td>
+		<td><%=number%></td>
+		<td><%=league%></td>
+		<td><%=home%></td>
+		<td><%=away%></td>
+		<td><%=beginTime%></td>
+		<td><%=halfResult%></td>
+		<td><%=result%></td>
+		<td><%=betRate%></td>
+		<td>
+			<% if (setResult) { %>
+			<a class="examine setMatchResult" matchInfo="<%=matchInfo%>" matchId="<%=matchId%>">设置赛果</a>
+			<% } %>
+			<% if (setCancel) { %>
+			<a class="examine cancelMatch" matchInfo="<%=matchInfo%>" matchId="<%=matchId%>">取消比赛</a>
+			<% } %>
+		</td>
+	</tr>
+<% } %>
+</script>
+
+<script type="text/html" id="modifyResult">
+<h1><%=matchInfo%></h1>
+<input type="hidden" id="modifyMatchId" value="<%=matchId%>"/>
+<div class="mt20">半场赛果：<input class="input_field ml5" placeholder="请输入半场赛果" id="modifyHalfResult"/></div>
+<div class="mt20">全场赛果：<input class="input_field ml5" placeholder="请输入全场赛果" id="modifyResult"/></div>
+<div class="mt20" align="center">
+	<input class="btn ml20" type="reset" value="取消" id="cancelModifyResult"/>
+	<input class="btn ml20" type="submit" value="确定" id="sureModifyResult"/>
+</div>
+</script>

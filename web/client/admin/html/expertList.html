@@ -1,0 +1,51 @@
+<script type="text/html" id="content">
+<h1 class="title">专家列表</h1>
+<div class="list_box">
+	<div class="search_box">
+		<div>
+			<form onsubmit="return false;">
+				<span class="select_box">
+					<select id="groupId"></select>
+					<span class="icon_sel"><span class="arrow_down"></span></span>
+				</span>
+				<input class="input_field ml20" placeholder="用户" id="userName"/>
+				<input class="btn ml20" type="reset" value="重置" />
+				<input class="btn ml20" type="submit" value="搜索" id="searchSubmit"/>
+			</form>
+		</div>
+	</div>
+	<div class="table_box mt20">
+		<table>
+			<thead>
+				<tr>
+					<th width="200">昵称</th>
+					<th width="200">姓名</th>
+					<th width="200">标签</th>
+					<th width="100">操作</th>
+				</tr>
+			</thead>
+			<tbody id="expertList"></tbody>							
+		</table>
+		<div id="pageCodeBox"></div>
+	</div>
+</div>
+</script>
+
+<script type="text/html" id="expertList">
+<% for (var i = 0, length = list.length; i < length; i++) {
+	var user = list[i] || {};
+	var userId = user.userId || 0;
+	var nickName = user.nickName || '';
+	var realName = user.realName || '';
+	var tag = user.tag;
+%>
+	<tr>
+		<td title="<%=nickName%>"><%=nickName%></td>
+		<td title="<%=realName%>"><%=realName%></td>
+		<td title="<%=tag%>"><%=tag%></td>
+		<td>
+			<a class="examine loginUser" userId="<%=userId%>">登录</a>
+		</td>
+	</tr>
+<% } %>
+</script>

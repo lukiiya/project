@@ -1,0 +1,215 @@
+<script type="text/html" id="content">
+
+</script>
+
+<script type="text/html" id="football">
+	<style type="text/css">
+	.moreGame .table_wrap{
+		padding: 0;
+	}
+</style>
+<% 
+	var bf = match['bettype']['BF'] || {};
+	var zjq = match['bettype']['ZJQ'] || {};
+	var bqc = match['bettype']['BQC'] || {};
+	var bfBettypeOdds = bf.bettypeOdds || {};
+	var zjqBettypeOdds = zjq.bettypeOdds || {};
+	var bqcBettypeOdds = bqc.bettypeOdds || {};
+%>
+<div>
+	<div class="game_head clearfix mt5">
+		<span class="fl">总进球<span class="color9 ml10">猜90分钟内(含补时)比赛总进球数</span></span>
+	</div>
+	<div class="table_wrap">
+		<table class="game_table matchBettype" oddsId="<%=zjq.oddsId%>">
+			<tr>
+				<td class="game_title color70" rowspan="2">进球数</td>
+				<td recommend="0">0<br/><span><%=zjqBettypeOdds['0']%></span></td>
+				<td recommend="1">1<br/><span><%=zjqBettypeOdds['1']%></span></td>
+				<td recommend="2">2<br/><span><%=zjqBettypeOdds['2']%></span></td>
+				<td recommend="3">3<br/><span><%=zjqBettypeOdds['3']%></span></td>	
+			</tr>
+			<tr>
+				<td recommend="4">4<br/><span><%=zjqBettypeOdds['4']%></span></td>
+				<td recommend="5">5<br/><span><%=zjqBettypeOdds['5']%></span></td>
+				<td recommend="6">6<br/><span><%=zjqBettypeOdds['6']%></span></td>
+				<td recommend="7+">7+<br/><span><%=zjqBettypeOdds['7+']%></span></td>	
+			</tr>
+		</table>	
+	</div>
+</div>		
+<div>
+	<div class="game_head clearfix">
+		<span class="fl">半全场<span class="color9 ml10">猜两队上半场和90分钟内(含补时)的赛果</span></span>
+	</div>
+	<div class="table_wrap">
+		<table class="game_table matchBettype" oddsId="<%=bqc.oddsId%>">
+			<tr>
+				<td class="game_title color60" rowspan="3">半全场</td>
+				<td recommend="SS">胜胜<br/><span><%=bqcBettypeOdds['SS']%></span></td>
+				<td recommend="SP">胜平<br/><span><%=bqcBettypeOdds['SP']%></span></td>
+				<td recommend="SF">胜负<br/><span><%=bqcBettypeOdds['SF']%></span></td>
+			</tr>
+			<tr>
+				<td recommend="PS">平胜<br/><span><%=bqcBettypeOdds['PS']%></span></td>
+				<td recommend="PP">平平<br/><span><%=bqcBettypeOdds['PP']%></span></td>
+				<td recommend="PF">平负<br/><span><%=bqcBettypeOdds['PF']%></span></td>
+			</tr>
+			<tr>
+				<td recommend="FS">负胜<br/><span><%=bqcBettypeOdds['FS']%></span></td>
+				<td recommend="FP">负平<br/><span><%=bqcBettypeOdds['FP']%></span></td>
+				<td recommend="FF">负负<br/><span><%=bqcBettypeOdds['FF']%></span></td>	
+			</tr> 
+		</table>	
+	</div>
+</div>			
+<div>
+	<div class="game_head clearfix">
+		<span class="fl">比分<span class="color9 ml10">猜90分钟内(含补时)比分赛果</span></span>
+	</div>
+	<div class="table_wrap">
+		<table class="game_table matchBettype" oddsId="<%=bf.oddsId%>">
+			<tr>
+				<td class="game_title color60" rowspan="3">胜</td>
+				<td recommend="1:0">1:0<br/><span><%=bfBettypeOdds['1:0']%></span></td>
+				<td recommend="2:0">2:0<br/><span><%=bfBettypeOdds['2:0']%></span></td>
+				<td recommend="2:1">2:1<br/><span><%=bfBettypeOdds['2:1']%></span></td>
+				<td recommend="3:0">3:0<br/><span><%=bfBettypeOdds['3:0']%></span></td>
+				<td recommend="3:1">3:1<br/><span><%=bfBettypeOdds['3:1']%></span></td>
+			</tr>
+			<tr>
+				<td recommend="3:2">3:2<br/><span><%=bfBettypeOdds['3:2']%></span></td>
+				<td recommend="4:0">4:0<br/><span><%=bfBettypeOdds['4:0']%></span></td>
+				<td recommend="4:1">4:1<br/><span><%=bfBettypeOdds['4:1']%></span></td>
+				<td recommend="4:2">4:2<br/><span><%=bfBettypeOdds['4:2']%></span></td>
+				<td recommend="5:0">5:0<br/><span><%=bfBettypeOdds['5:0']%></span></td>
+			</tr>
+			<tr>
+				<td recommend="5:1">5:1<br/><span><%=bfBettypeOdds['5:1']%></span></td>
+				<td recommend="5:2">5:2<br/><span><%=bfBettypeOdds['5:2']%></span></td>
+				<td recommend="SQT">胜其他<br/><span><%=bfBettypeOdds['SQT']%></span></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td class="game_title color70">平</td>
+				<td recommend="0:0">0:0<br/><span><%=bfBettypeOdds['0:0']%></span></td>
+				<td recommend="1:1">1:1<br/><span><%=bfBettypeOdds['1:1']%></span></td>
+				<td recommend="2:2">2:2<br/><span><%=bfBettypeOdds['2:2']%></span></td>
+				<td recommend="3:3">3:3<br/><span><%=bfBettypeOdds['3:3']%></span></td>
+				<td recommend="PQT">平其他<br/><span><%=bfBettypeOdds['PQT']%></span></td>
+			</tr>
+            <tr>
+				<td class="game_title color60" rowspan="3">负</td>
+				<td recommend="0:1">0:1<br/><span><%=bfBettypeOdds['0:1']%></span></td>
+				<td recommend="0:2">0:2<br/><span><%=bfBettypeOdds['0:2']%></span></td>
+				<td recommend="1:2">1:2<br/><span><%=bfBettypeOdds['1:2']%></span></td>
+				<td recommend="0:3">0:3<br/><span><%=bfBettypeOdds['0:3']%></span></td>
+				<td recommend="1:3">1:3<br/><span><%=bfBettypeOdds['1:3']%></span></td>
+			</tr>
+			<tr>
+				<td recommend="2:3">2:3<br/><span><%=bfBettypeOdds['2:3']%></span></td>
+				<td recommend="0:4">0:4<br/><span><%=bfBettypeOdds['0:4']%></span></td>
+				<td recommend="1:4">1:4<br/><span><%=bfBettypeOdds['1:4']%></span></td>
+				<td recommend="2:4">2:4<br/><span><%=bfBettypeOdds['2:4']%></span></td>
+				<td recommend="0:5">0:5<br/><span><%=bfBettypeOdds['0:5']%></span></td>
+			</tr>
+			<tr>
+				<td recommend="1:5">1:5<br/><span><%=bfBettypeOdds['1:5']%></span></td>
+				<td recommend="2:5">2:5<br/><span><%=bfBettypeOdds['2:5']%></span></td>
+				<td recommend="FQT">负其他<br/><span><%=bfBettypeOdds['FQT']%></span></td>
+				<td></td>
+				<td></td>
+			</tr>
+		</table>	
+	</div>
+</div>
+</script>
+
+<script type="text/html" id="basketball">
+<% 
+	var sf = match['bettype']['SF'] || {};
+	var rfsf = match['bettype']['RFSF'] || {};
+	var sfc = match['bettype']['SFC'] || {};
+	var dxf = match['bettype']['DXF'] || {};
+	var sfBettypeOdds = sf.bettypeOdds || {};
+	var rfsfBettypeOdds = rfsf.bettypeOdds || {};
+	var sfcBettypeOdds = sfc.bettypeOdds || {};
+	var dxfBettypeOdds = dxf.bettypeOdds || {};
+%>
+	<div>
+		<div>
+			<div class="game_head clearfix">
+				<span class="fl">主队让分<span class="<%=rfsf.concede > 0 ? "color_red" : "color_green"%> ml10"><%=#rfsf.concede > 0 ? '+'+rfsf.concede : rfsf.concede%></span>
+			</div>
+			<div class="table_wrap">
+				<table class="game_table matchBettype" oddsId="<%=sf.oddsId%>">
+					<tr>
+						<td class="game_title color70 size12">非让分</td>
+						<% if (sf) { %>
+							<td recommend="F">客胜<br/><span><%=sfBettypeOdds['F']%></span></td>
+							<td recommend="S">主胜<br/><span><%=sfBettypeOdds['S']%></span></td>
+						<% } else { %>
+							<td colspan="2"><span>未开售</span></td>
+						<% } %>
+					</tr>
+					</table>
+				<table class="game_table matchBettype" oddsId="<%=rfsf.oddsId%>">
+					<tr>
+						<td class="game_title color60 size12">让分</td>
+						<td recommend="F">客胜<br/><span><%=rfsfBettypeOdds['F']%></span></td>
+						<td recommend="S">主胜<br/><span><%=rfsfBettypeOdds['S']%></span></td>
+					</tr>
+				</table>	
+			</div>
+		</div>
+	
+		<div>
+			<div class="game_head clearfix">
+				<span class="fl">预设总分<span class="color_red ml10"><%=dxf.concede%></span></span>
+			</div>
+			<div class="table_wrap">
+				<table class="game_table matchBettype" oddsId="<%=dxf.oddsId%>">
+					<tr>
+						<td class="game_title color70 size12">大小分</td>
+						<td recommend="D">大分<br/><span><%=dxfBettypeOdds['D']%></span></td>
+						<td recommend="X">小分<br/><span><%=dxfBettypeOdds['X']%></span></td>
+					</tr>
+				</table>	
+			</div>
+		</div>
+	
+		<div>
+			<div class="game_head clearfix">
+				<span class="fl">胜分差</span> 
+				<span class="arrow arrow_up hide"></span>
+			</div>
+			<div class="table_wrap">
+				<table class="game_table matchBettype" oddsId="<%=sfc.oddsId%>" bettypeContent="<%=sfc.bettypeContent%>">
+					<tr>
+						<td class="game_title color70 size12" rowspan="2">客胜</td>
+						<td recommend="F1-5">1-5<br/><span><%=sfcBettypeOdds['F1-5']%></span></td>
+						<td recommend="F6-10">6-10<br/><span><%=sfcBettypeOdds['F6-10']%></span></td>
+						<td recommend="F11-15">11-15<br/><span><%=sfcBettypeOdds['F11-15']%></span></td>
+					</tr>
+					<tr>
+						<td recommend="F16-20">16-20<br/><span><%=sfcBettypeOdds['F16-20']%></span></td>
+						<td recommend="F21-25">21-25<br/><span><%=sfcBettypeOdds['F21-25']%></span></td>
+						<td recommend="F26+">26+<br/><span><%=sfcBettypeOdds['F26+']%></span></td>
+					</tr>
+					<tr>
+						<td class="game_title color60 size12" rowspan="2">主胜</td>
+						<td recommend="S1-5">1-5<br/><span><%=sfcBettypeOdds['S1-5']%></span></td>
+						<td recommend="S6-10">6-10<br/><span><%=sfcBettypeOdds['S6-10']%></span></td>
+						<td recommend="S11-15">11-15<br/><span><%=sfcBettypeOdds['S11-15']%></span></td>
+					</tr>
+					<tr>
+						<td recommend="S16-20">16-20<br/><span><%=sfcBettypeOdds['S16-20']%></span></td>
+						<td recommend="S21-25">21-25<br/><span><%=sfcBettypeOdds['S21-25']%></span></td>
+						<td recommend="S26+">26+<br/><span><%=sfcBettypeOdds['S26+']%></span></td>
+					</tr>
+				</table>	
+			</div>
+		</div>
+	</div>
+</script>

@@ -1,0 +1,105 @@
+<script type="text/html" id="content">
+<h1 class="title">消费列表</h1>
+<div class="list_box">
+	<div class="search_box">
+		<div>
+			<form onsubmit="return false;">
+				<div class="search_box ">
+					<input class="input_field" placeholder="用户" id="userName"/>
+					<input class="input_field ml20" placeholder="订单ID" id="orderId"/>
+					<span class="select_box ml20">
+						<select id="type">
+							<option value="0">全部</option>
+							<option value="1">现金消费</option>
+							<option value="2">充值消费</option>
+							<option value="3">收益消费</option>
+							<option value="4">优惠券消费</option>
+						</select>
+						<span class="icon_sel"><span class="arrow_down"></span></span>
+					</span>
+					<span class="select_box ml20">
+						<select id="financeType">
+							<option value="">全部</option>
+							<option value="0">方案账户</option>
+							<option value="1">出票账户</option>
+						</select>
+						<span class="icon_sel"><span class="arrow_down"></span></span>
+					</span>
+				</div>
+				<div class="mt20">
+					<input class="input_field" placeholder="开始时间" readonly="1" id="beginTime">
+					<input class="input_field ml20" placeholder="结束时间" readonly="1" id="endTime">
+					<iframe name="exportReportIframe" style="display:none"></iframe>
+					<input class="btn ml20" type="button" value="导出报表" id="exportReport"/>
+					<input class="btn ml20" type="reset" value="重置" />
+					<input class="btn ml20" type="submit" value="搜索" id="searchSubmit"/>
+				</div>
+			</form>
+		</div>
+		
+	</div>
+	<div class="table_box mt20">
+		<table>
+			<thead>
+				<tr>
+					<th width="40">资金账户</th>
+					<th width="120">昵称</th>
+					<th width="70">姓名</th>
+					<th width="60">类型</th>
+					<th width="70">金额</th>
+					<th width="120">订单ID</th>
+					<th width="60">备注</th>
+					<th width="140">时间</th>
+				</tr>
+			</thead>
+			<tbody id="consumeList"></tbody>				
+		</table>
+		<div id="pageCodeBox"></div>
+	</div>
+</div>
+</script>
+
+<script type="text/html" id="consumeList">
+<% var length = list.length;
+	for (var i = 0; i < length; i++) {
+	var consume = list[i] || {};
+	var consumeId = consume.consumeId;
+	var nickName = consume.nickName;
+	var realName = consume.realName;
+	var orderId = consume.orderId;
+	var amount = consume.amount/100;
+	var type = consume.type;
+	var typeMap = {'1': '现金消费', '2': '充值消费', '3': '收益消费', '4': '优惠券消费'};
+	var financeType = consume.financeType;
+	var financeTypeMap = {'0': '方案', '1': '出票'};
+	var remark = consume.remark;
+	var createTime = consume.createTime;
+%>
+	<tr>
+		<td><%=financeTypeMap[financeType]%></td>
+		<td><%=nickName%></td>
+		<td><%=realName%></td>
+		<td><%=typeMap[type]%></td>
+		<td><%=amount%></td>
+		<td><%=orderId%></td>
+		<td>
+			<% if (remark) { %>
+			<a class="examine" remark="<%=remark%>">查看</a>
+			<% } %>
+		</td>
+		<td class="time"><%=createTime%></td>
+	</tr>
+<% } %>	
+<% if(length > 0) { %>
+	<tr>
+		<td>总计</td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td><%=totalAmount/100%></td>
+		<td></td>
+		<td></td>
+		<td></td>
+	</tr>
+<% } %>
+</script>

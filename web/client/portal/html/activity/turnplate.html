@@ -1,0 +1,112 @@
+<script type="text/html" id="content">
+	
+</script>
+
+<script type="text/html" id="turnplate">
+	<div>
+		<img class="turnplate_title" src="<%=IMG_PATH%>turnplate_title.png"/>
+		<div class="banner">
+			<img id="rotatebg" src="<%=IMG_PATH%>turnplate.png" style="-webkit-transform: rotate(0deg);position: relative;"/>
+			<img class="pointer" src="<%=IMG_PATH%>turnplate_btn.png" id="start">
+		</div>
+		<p class="chance mt20">您还剩余 <span class="chance_num" id="turnplateCount">0</span> 机会<span class="tips record" id="prizeRecordBtn">抽奖记录</span></p>
+		<p class="tips mt5">抽奖前请仔细阅读活动规则</p>
+		<!--<div class="act_btn mt20">
+			邀请好友
+		</div>-->
+		<div class="act_btn mt10 mb10" id="rulesBtn">
+			活动规则
+		</div>
+		<div class="mask" style="display: none;" id="turnplateMask">
+			<div class="rules" id="rules" style="display: none;">
+				<div class="rules_title clearfix">
+					<span class="fl">活动规则</span>
+					<span class="fr" id="closeRuleBtn">关闭</span>
+				</div>
+				<pre class="rules_list" id="remark" style="line-height: 20px;white-space: pre-wrap;font-size: 15px;"></pre>
+			</div>
+			<div class="notice" id="trunplateNotice" style="display: none;"></div>
+		</div>
+	</div>
+</script>
+
+<script type="text/html" id="prizeRecord">
+	<ul class="ui-flex prize_nav">
+		<li class="ui-flex_item">时间</li>
+		<li class="ui-flex_item">奖品</li>
+		<li class="ui-flex_item">派送方式</li>
+	</ul>
+	<ul id="prizeRecordList"></ul>
+</script>
+
+<script type="text/html" id="prizeRecordList">	
+<%
+	for (var i = 0, length = list.length; i < length; i++) {
+	var prizeRecord = list[i] || {};
+	var prizeName = prizeRecord.prizeName;
+	var sendType = prizeRecord.sendType;
+	var createTime = prizeRecord.createTime && prizeRecord.createTime.replace(/\d{4}-(\d{2}-\d{2} \d{2}:\d{2}):\d{2}/, "$1") || "";
+%>
+	<li class="ui-flex record_item">
+		<div class="ui-flex_item">
+			<%=createTime%>
+		</div>
+		<div class="ui-flex_item">
+			<%=prizeName%>
+		</div>
+		<div class="ui-flex_item">
+			<%=sendType%>
+		</div>
+	</li>
+<% } %>
+</script>
+
+<script type="text/html" id="trunplateNotice">
+	<%  var numMap =  {'fiveCj':'5','twentyCj':'20','twoCj1':'2','twoCj2':'2'};
+		if (rotate == 'thk1' || rotate == 'thk2' || rotate == 'fiveCj' || rotate == 'twentyCj' || rotate == 'twoCj1' || rotate == 'twoCj2' || rotate == 'poloShirt') { %>
+			<div class="notice_title">
+				<% if (rotate == 'thk1' || rotate == 'thk2') { %>
+					<img class="img_title" src="<%=IMG_PATH%>icon_sorry.png"/>
+				<% } else { %>
+					<img class="img_title" src="<%=IMG_PATH%>icon_congrats.png"/>
+				<% } %>
+				<a class="close_notice icon_close" id="closeNotice"></a>
+			</div>
+		<% if (rotate == 'poloShirt') { %>
+			<div class="awards pt20">
+				<img class="img_shirt" src="<%=IMG_PATH%>img-shirt.png">
+				<p class="pb15">获得了<span class="color_red"> 正品球衣</span> ！</p>
+				<p class="size11 pb5 contact">请联系晒米场客服微信：shaimichang</p>
+				<p class="color_red size11 pb15">需截图作为凭证！</p>
+			</div>
+		<% } else { %>
+			<div class="cont pb15">
+				<% if (rotate == 'thk1' || rotate == 'thk2') { %>
+					<p class="txt-cont size18">
+						很可惜，没有抽中
+					</p>
+				<% } else if (rotate == 'fiveCj' || rotate == 'twentyCj' || rotate == 'twoCj1' || rotate == 'twoCj2') { %>
+					<p class="txt-cont size18">
+						获得了 <span class="color_red size20"><%=numMap[rotate]%></span> 彩金
+					</p>
+				<% } %>
+				<a class="btn" id="ensure">
+					确定
+				</a>
+			</div>
+		<% } %>
+	<% } else { %>
+		<div class="notice_title">
+			<img class="img_title" src="<%=IMG_PATH%>icon_sorry.png"/>
+			<a class="close_notice icon_close" id="closeNotice"></a>
+		</div>
+		<div class="cont pb15">
+			<p class="txt-cont">
+				您目前没有抽奖机会<br />每消费一次获得1次抽奖机会
+			</p>
+			<a class="btn" id="buyPlan">
+				确定
+			</a>
+		</div>
+	<% } %>
+</script>

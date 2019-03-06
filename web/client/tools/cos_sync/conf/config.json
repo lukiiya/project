@@ -1,0 +1,15 @@
+{
+    "appid"            : "1251177394",
+    "secret_id"        : "AKIDH7HfaBgsVIBdLbyUQrHqzIXTckcIquI7",
+    "secret_key"       : "qrRX64fOLMchAvN0r1EOVoLY1arPZwx3",
+    "bucket"           : "caifu",
+    "timeout"          : "60",
+    "thread_num"       : "50",
+    "delete_sync"      : "0", 
+    "daemon_mode"      : "0",
+    "daemon_interval"  : "30", 
+    "enable_https"     : "1",
+    "region"           : "gz",
+    "local_path"       : "这里设置无效,java代码动态会覆盖",
+    "cos_path"         : "这里设置无效,java代码动态会覆盖"
+}

@@ -1,0 +1,66 @@
+<script type="text/html" id="content">
+<h1 class="title">活动列表</h1>
+<div class="list_box">
+	<div class="search_box">
+		<div>
+			<form onsubmit="return false;">
+				<input class="input_field" placeholder="活动名称" id="activityName">
+				<input class="btn ml20" type="reset" value="重置"/>
+				<input class="btn ml20" type="submit" value="搜索" id="searchSubmit"/>
+			</form>
+		</div>
+	</div>
+	<div class="table_box mt20">
+		<table>
+			<thead>
+				<tr>
+					<th width="160">活动名称</th>
+					<th width="140">开始时间</th>
+					<th width="140">结束时间</th>
+					<th width="90">总金额</th>
+					<th width="90">总数量</th>
+					<th width="90">消耗金额</th>
+					<th width="90">消耗数量</th>
+					<th width="60">备注</th>
+					<th width="90">操作</th>
+				</tr>
+			</thead>
+			<tbody id="activityList"></tbody>
+		</table>
+		<div id="pageCodeBox"></div>
+	</div>
+</div>
+</script>
+
+<script type="text/html" id="activityList">
+<% 	for ( var i = 0, length = list.length; i < length; i++) {
+	var activity = list[i] || {};
+	var activityId = activity.activityId;
+	var activityName = activity.activityName;
+	var beginTime = activity.beginTime;
+	var endTime = activity.endTime;
+	var sumAmount = activity.sumAmount/100;
+	var sumCount = activity.sumCount;
+	var amount = activity.amount/100;
+	var count = activity.count;
+	var remark = activity.remark;
+%>
+	<tr>
+		<td><%=activityName%></td>
+		<td><%=beginTime%></td>
+		<td><%=endTime%></td>
+		<td><%=sumAmount%></td>
+		<td><%=sumCount%></td>
+		<td><%=amount%></td>
+		<td><%=count%></td>
+		<td>
+			<% if (remark) { %>
+			<a class="examine" remark="<%=remark%>">查看</a>
+			<% } %>
+		</td>
+		<td>
+			<a class="examine activityDetail" activityId="<%=activityId%>">查看详情</a>
+		</td>
+	</tr>
+<% } %>
+</script>

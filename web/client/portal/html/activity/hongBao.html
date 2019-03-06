@@ -1,0 +1,43 @@
+<script type="text/html" id="content">
+	<a class="link_home" href="#home"><img class="img-responsive" src="<%=IMG_PATH%>sm_logo.png"/></a>
+	<div class="surplus">
+		<!-- 剩余：454545个红包 -->
+	</div>
+	<form class="hb" action="">
+		<div class="input_wrap pb10">
+			<div class="phone_num mb10"><input type="number" placeholder="请输入手机号" maxlength="11" id="mobile"/></div>
+			<div class="venidate_wrap clearfix">
+				<input class="venidate_code" type="number" placeholder="请输入验证码" maxlength="4" id="smsCode"/>
+				<a class="get_code" id="smsCodeBtn">获取验证码</a>
+			</div>
+		</div>
+		<div class="get_parket">
+			<img class="img-responsive" src="<%=IMG_PATH%>get_parket.png" alt="" id="hongBaoSubmit"/>
+		</div>
+	</form>
+	<div class="activity_rules_wrap">
+		<div class="activity_rules">
+			<h2>活动规则<img class="rules_hb" src="<%=IMG_PATH%>rule_hb.png"></h2>
+			<pre class="mt5 mb10" id="remark" style="line-height: 20px;white-space: pre-wrap;font-size: 12px;"></pre>
+		</div>
+		<div class="textC" style="color: #FFFFFF;">晒米场 • 竞彩推荐平台</div>
+	</div>
+</script>
+
+<script type="text/html" id="success">
+<div class="congratulation">
+	<h2>恭喜您！</h2>
+	<p class="p_money">18元红包已进入米仓</p>
+	<p class="p_buy">可用来直接购买</p>
+	<a class="use_immediate">立即使用</a>
+</div>
+</script>
+
+
+<script type="text/html" id="again">
+<div class="congratulation">
+	<p class="p_money">您已经领过晒米场红包</p>
+	<p class="p_buy">可用来直接购买</p>
+	<a class="use_immediate">立即使用</a>
+</div>
+</script>

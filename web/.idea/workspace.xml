@@ -1,0 +1,1177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="abc43a2b-82b1-4cfe-98e7-66a25c34e6a7" name="Default" comment="" />
+    <ignored path="web.iws" />
+    <ignored path=".idea/workspace.xml" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CreatePatchCommitExecutor">
+    <option name="PATCH_PATH" value="" />
+  </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_TABLE_DETAILS" value="true" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
+  <component name="FavoritesManager">
+    <favorites_list name="web" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="footballHistoryMatchDxAnalyse.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/server/portal/timer/spider/www.sporttery.cn/footballHistoryMatchDxAnalyse.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-418">
+              <caret line="22" column="63" lean-forward="false" selection-start-line="22" selection-start-column="63" selection-end-line="22" selection-end-column="63" />
+              <folding>
+                <element signature="n#getAdditionalMatchOddsMap#0;n#Spider#0;n#!!top" expanded="false" />
+                <marker date="1527246556954" expanded="true" signature="9744:9784" ph="insert into t_additional_match_odds... " />
+                <marker date="1527246556954" expanded="true" signature="10107:10277" ph="update t_add... " />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>days</find>
+      <find>t_match</find>
+      <find>$sportteryLeagueInfoArr</find>
+      <find>executeUpdate</find>
+      <find>$orderBy</find>
+      <find>$result</find>
+      <find>getMatchMap</find>
+      <find>$type</find>
+      <find>$matchInfoMap</find>
+      <find>$leagueId</find>
+      <find>$homeHistoryAgainstMatchData</find>
+      <find>$sportteryLeagueInfo</find>
+      <find>class</find>
+      <find>live</find>
+      <find>setMatchLeagueInfo</find>
+      <find>status</find>
+      <find>$additionalMatchMap</find>
+      <find>!empty($saleTime)</find>
+      <find>selectMatch</find>
+      <find>$nullResult</find>
+      <find>$awayTeamId</find>
+      <find>beginTime</find>
+      <find>leagueRank</find>
+      <find>$live</find>
+      <find>$teamScoreMap</find>
+      <find>$saleTime</find>
+      <find>homeTeam</find>
+      <find>$homeTeam</find>
+      <find>matchInfo</find>
+      <find>$homeFutureMatchList</find>
+    </findStrings>
+  </component>
+  <component name="GotoClassSymbolConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="Angular2HTML" />
+      <filtered-out-file-type name="AngularJS" />
+      <filtered-out-file-type name="ApacheConfig" />
+      <filtered-out-file-type name="Apple JS" />
+      <filtered-out-file-type name="Asp" />
+      <filtered-out-file-type name="Blade" />
+      <filtered-out-file-type name="CSS" />
+      <filtered-out-file-type name="CoffeeScript" />
+      <filtered-out-file-type name="CoffeeScriptLiterate" />
+      <filtered-out-file-type name="DB2" />
+      <filtered-out-file-type name="DTD" />
+      <filtered-out-file-type name="Derby" />
+      <filtered-out-file-type name="Dockerfile" />
+      <filtered-out-file-type name="ECMA Script Level 4" />
+      <filtered-out-file-type name="ECMAScript 6" />
+      <filtered-out-file-type name="Flow JS" />
+      <filtered-out-file-type name="GWT JavaScript" />
+      <filtered-out-file-type name="GenericSQL" />
+      <filtered-out-file-type name="Gherkin" />
+      <filtered-out-file-type name="H2" />
+      <filtered-out-file-type name="HSQLDB" />
+      <filtered-out-file-type name="HTML" />
+      <filtered-out-file-type name="Haml" />
+      <filtered-out-file-type name="Ini" />
+      <filtered-out-file-type name="JQL" />
+      <filtered-out-file-type name="JQuery-CSS" />
+      <filtered-out-file-type name="JSON" />
+      <filtered-out-file-type name="JSRegexp" />
+      <filtered-out-file-type name="JSX Harmony" />
+      <filtered-out-file-type name="JavaScript" />
+      <filtered-out-file-type name="JavaScript 1.5" />
+      <filtered-out-file-type name="JavaScript 1.6" />
+      <filtered-out-file-type name="JavaScript 1.7" />
+      <filtered-out-file-type name="JavaScript 1.8" />
+      <filtered-out-file-type name="LESS" />
+      <filtered-out-file-type name="Locale" />
+      <filtered-out-file-type name="Markdown" />
+      <filtered-out-file-type name="MySQL" />
+      <filtered-out-file-type name="Nashorn JS" />
+      <filtered-out-file-type name="Oracle" />
+      <filtered-out-file-type name="OracleSqlPlus" />
+      <filtered-out-file-type name="PHP" />
+      <filtered-out-file-type name="PostgreSQL" />
+      <filtered-out-file-type name="PostgresPLSQL" />
+      <filtered-out-file-type name="RELAX-NG" />
+      <filtered-out-file-type name="ReST" />
+      <filtered-out-file-type name="RegExp" />
+      <filtered-out-file-type name="SASS" />
+      <filtered-out-file-type name="SCSS" />
+      <filtered-out-file-type name="SQL" />
+      <filtered-out-file-type name="SQL92" />
+      <filtered-out-file-type name="SQLite" />
+      <filtered-out-file-type name="Smarty" />
+      <filtered-out-file-type name="SmartyConfig" />
+      <filtered-out-file-type name="Sybase" />
+      <filtered-out-file-type name="TEXT" />
+      <filtered-out-file-type name="TSQL" />
+      <filtered-out-file-type name="Twig" />
+      <filtered-out-file-type name="TypeScript" />
+      <filtered-out-file-type name="TypeScript JSX" />
+      <filtered-out-file-type name="XHTML" />
+      <filtered-out-file-type name="XML" />
+      <filtered-out-file-type name="XPath" />
+      <filtered-out-file-type name="XPath2" />
+      <filtered-out-file-type name="YouTrack" />
+      <filtered-out-file-type name="textmate" />
+      <filtered-out-file-type name="yaml" />
+    </file-type-list>
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/server/portal/timer/spider/www.sporttery.cn/guessOdds.php" />
+        <option value="$PROJECT_DIR$/server/portal/controller/Order.php" />
+        <option value="$PROJECT_DIR$/server/portal/controller/Finance.php" />
+        <option value="$PROJECT_DIR$/server/portal/controller/ZongGuan.php" />
+        <option value="$PROJECT_DIR$/server/portal/module/ZongGuan.php" />
+        <option value="$PROJECT_DIR$/server/portal/timer/withdraw_delay.php" />
+        <option value="$PROJECT_DIR$/server/portal/service/Activity.php" />
+        <option value="$PROJECT_DIR$/server/portal/timer/OrderPrize.php" />
+        <option value="$PROJECT_DIR$/server/portal/dao/Activity.php" />
+        <option value="$PROJECT_DIR$/server/portal/dao/Coupon.php" />
+        <option value="$PROJECT_DIR$/server/portal/timer/pay_notify.php" />
+        <option value="$PROJECT_DIR$/server/portal/timer/hongbao_daily.php" />
+        <option value="$PROJECT_DIR$/server/portal/log/common.log.1" />
+        <option value="$PROJECT_DIR$/server/portal/dao/Order.php" />
+        <option value="$PROJECT_DIR$/server/portal/controller/Lottery.php" />
+        <option value="$PROJECT_DIR$/server/portal/index.php" />
+        <option value="$PROJECT_DIR$/server/portal/module/Apple.php" />
+        <option value="$PROJECT_DIR$/server/portal/controller/Activity.php" />
+        <option value="$PROJECT_DIR$/server/portal/timer/OrderSendPrize.php" />
+        <option value="$PROJECT_DIR$/server/portal/dao/Finance.php" />
+        <option value="$PROJECT_DIR$/server/portal/timer/spider/www.500.com/footballMatchResult.php" />
+        <option value="$PROJECT_DIR$/server/portal/timer/spider/www.500.com/footballMatchOddsAn.php" />
+        <option value="$PROJECT_DIR$/server/portal/timer/spider/www.sporttery.cn/footballMatchstatistics.php" />
+        <option value="$PROJECT_DIR$/server/portal/timer/spider/www.sporttery.cn/footballMatchHistory.php" />
+        <option value="$PROJECT_DIR$/server/portal/timer/spider/www.500.com/footballMatchOddsAnalysis.php" />
+        <option value="$PROJECT_DIR$/server/portal/timer/spider/www.sporttery.cn/footballMatchResult.php" />
+        <option value="$PROJECT_DIR$/server/portal/controller/Configure.php" />
+        <option value="$PROJECT_DIR$/server/portal/timer/spider/www.sporttery.cn/footballMatchAdditional.php" />
+        <option value="$PROJECT_DIR$/server/portal/timer/spider/www.sporttery.cn/footballMatchAdditional1.php" />
+        <option value="$PROJECT_DIR$/server/portal/timer/spider/www.sporttery.cn/footballMatchOddsAnalysis.php" />
+        <option value="$PROJECT_DIR$/server/portal/timer/spider/www.sporttery.cn/footballAdditionalMatchOdds.php" />
+        <option value="$PROJECT_DIR$/server/portal/service/Match.php" />
+        <option value="$PROJECT_DIR$/server/portal/timer/spider/www.sporttery.cn/footballAdditionalMatchOddsAsia.php" />
+        <option value="$PROJECT_DIR$/server/portal/timer/spider/www.sporttery.cn/footballAdditionalMatchOddsEurope.php" />
+        <option value="$PROJECT_DIR$/server/portal/log/common.log" />
+        <option value="$PROJECT_DIR$/server/portal/controller/Smlr.php" />
+        <option value="$PROJECT_DIR$/server/portal/dao/Plan.php" />
+        <option value="$PROJECT_DIR$/server/portal/controller/Plan.php" />
+        <option value="$PROJECT_DIR$/server/portal/timer/spider/www.500.com/footballAdditionalMatchAnalyse.php" />
+        <option value="$PROJECT_DIR$/server/portal/timer/spider/www.sporttery.cn/footballAdditionalMatchScore.php" />
+        <option value="$PROJECT_DIR$/server/portal/timer/spider/www.sporttery.cn/footballHistoryMatchLeague.php" />
+        <option value="$PROJECT_DIR$/server/shaimi.sql" />
+        <option value="$PROJECT_DIR$/server/portal/timer/spider/www.sporttery.cn/footballAdditionalMatch.php" />
+        <option value="$PROJECT_DIR$/server/portal/dao/Match.php" />
+        <option value="$PROJECT_DIR$/server/portal/timer/spider/www.sporttery.cn/footballMatchOdds.php" />
+        <option value="$PROJECT_DIR$/server/portal/service/Common.php" />
+        <option value="$PROJECT_DIR$/server/portal/timer/spider/www.sporttery.cn/footballAdditionalMatchAnalyse.php" />
+        <option value="$PROJECT_DIR$/server/portal/controller/Match.php" />
+        <option value="$PROJECT_DIR$/server/portal/controller/MatchAnalyse.php" />
+        <option value="$PROJECT_DIR$/server/portal/timer/spider/www.sporttery.cn/footballHistoryMatchAnalyse.php" />
+        <option value="$PROJECT_DIR$/server/portal/timer/spider/www.sporttery.cn/footballHistoryMatchDxAnalyse.php" />
+      </list>
+    </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="NodeModulesDirectoryManager">
+    <handled-path value="$PROJECT_DIR$/client/tools/node_modules" />
+  </component>
+  <component name="PhpServers">
+    <servers>
+      <server host="www.sm.com" id="d74098e1-1ce9-4dff-bea3-7a4e3dc9d110" name="www.sm.com" />
+    </servers>
+  </component>
+  <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" interpreter_name="PHP" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
+    <option name="width" value="1616" />
+    <option name="height" value="876" />
+  </component>
+  <component name="ProjectView">
+    <navigator currentView="ProjectPane" proportions="" version="1">
+      <flattenPackages />
+      <showMembers />
+      <showModules />
+      <showLibraryContents />
+      <hideEmptyPackages />
+      <abbreviatePackageNames />
+      <autoscrollToSource />
+      <autoscrollFromSource />
+      <sortByType />
+      <manualOrder />
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scratches" />
+      <pane id="ProjectPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="server" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="server" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="portal" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="server" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="portal" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="timer" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="server" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="portal" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="timer" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="spider" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="server" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="portal" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="timer" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="spider" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="www.sporttery.cn" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="server" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="portal" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="timer" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="spider" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="www.500.com" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+      <pane id="Scope" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="js-jscs-nodeInterpreter" value="C:\Program Files\nodejs\node.exe" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../../php/php.exe" />
+    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.Font" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="PHP Script.footballHistoryMatchDxAnalyse.php">
+    <configuration default="false" name="footballMatchOdds.php" type="PhpLocalRunConfigurationType" factoryName="PHP Console" temporary="true" path="$PROJECT_DIR$/server/portal/timer/spider/www.sporttery.cn/footballMatchOdds.php">
+      <method />
+    </configuration>
+    <configuration default="false" name="footballMatchResult.php" type="PhpLocalRunConfigurationType" factoryName="PHP Console" temporary="true" path="$PROJECT_DIR$/server/portal/timer/spider/www.sporttery.cn/footballMatchResult.php">
+      <method />
+    </configuration>
+    <configuration default="false" name="footballAdditionalMatchAnalyse.php" type="PhpLocalRunConfigurationType" factoryName="PHP Console" temporary="true" path="$PROJECT_DIR$/server/portal/timer/spider/www.sporttery.cn/footballAdditionalMatchAnalyse.php">
+      <method />
+    </configuration>
+    <configuration default="false" name="footballAdditionalMatch.php" type="PhpLocalRunConfigurationType" factoryName="PHP Console" temporary="true" path="$PROJECT_DIR$/server/portal/timer/spider/www.sporttery.cn/footballAdditionalMatch.php">
+      <method />
+    </configuration>
+    <configuration default="false" name="footballHistoryMatchDxAnalyse.php" type="PhpLocalRunConfigurationType" factoryName="PHP Console" temporary="true" path="$PROJECT_DIR$/server/portal/timer/spider/www.sporttery.cn/footballHistoryMatchDxAnalyse.php">
+      <method />
+    </configuration>
+    <configuration default="true" type="CodeceptionConfigurationType" factoryName="Codeception">
+      <PhpTestRunnerSettings />
+      <method />
+    </configuration>
+    <configuration default="true" type="JavaScriptTestRunnerJest" factoryName="Jest">
+      <node-interpreter value="project" />
+      <working-dir value="" />
+      <envs />
+      <scope-kind value="ALL" />
+      <method />
+    </configuration>
+    <configuration default="true" type="JavaScriptTestRunnerProtractor" factoryName="Protractor">
+      <config-file value="" />
+      <node-interpreter value="project" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
+      <method />
+    </configuration>
+    <configuration default="true" type="NodeJSConfigurationType" factoryName="Node.js" path-to-node="project" working-dir="">
+      <method />
+    </configuration>
+    <configuration default="true" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
+      <TestRunner />
+      <method />
+    </configuration>
+    <configuration default="true" type="PhpBehatConfigurationType" factoryName="Behat">
+      <BehatRunner />
+      <method />
+    </configuration>
+    <configuration default="true" type="PhpLocalRunConfigurationType" factoryName="PHP Console">
+      <method />
+    </configuration>
+    <configuration default="true" type="PhpSpecConfigurationType" factoryName="PHPSpec">
+      <PhpTestRunnerSettings />
+      <method />
+    </configuration>
+    <configuration default="true" type="PhpWebAppRunConfigurationType" factoryName="PHP Web Application">
+      <method />
+    </configuration>
+    <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
+      <node-interpreter>project</node-interpreter>
+      <node-options />
+      <gulpfile />
+      <tasks />
+      <arguments />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="js.build_tools.npm" factoryName="npm">
+      <command value="run" />
+      <scripts />
+      <node-interpreter value="project" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="mocha-javascript-test-runner" factoryName="Mocha">
+      <node-interpreter>project</node-interpreter>
+      <node-options />
+      <working-directory />
+      <pass-parent-env>true</pass-parent-env>
+      <envs />
+      <ui />
+      <extra-mocha-options />
+      <test-kind>DIRECTORY</test-kind>
+      <test-directory />
+      <recursive>false</recursive>
+      <method />
+    </configuration>
+    <configuration default="false" name="www.sm.com" type="PhpWebAppRunConfigurationType" factoryName="PHP Web Application" browser="98ca6316-2f89-46d9-a9e5-fa9e2b0625b3" server_name="www.sm.com" start_url="/proxy?">
+      <method />
+    </configuration>
+    <list size="6">
+      <item index="0" class="java.lang.String" itemvalue="PHP Web Application.www.sm.com" />
+      <item index="1" class="java.lang.String" itemvalue="PHP Script.footballMatchOdds.php" />
+      <item index="2" class="java.lang.String" itemvalue="PHP Script.footballMatchResult.php" />
+      <item index="3" class="java.lang.String" itemvalue="PHP Script.footballAdditionalMatchAnalyse.php" />
+      <item index="4" class="java.lang.String" itemvalue="PHP Script.footballAdditionalMatch.php" />
+      <item index="5" class="java.lang.String" itemvalue="PHP Script.footballHistoryMatchDxAnalyse.php" />
+    </list>
+    <recent_temporary>
+      <list size="5">
+        <item index="0" class="java.lang.String" itemvalue="PHP Script.footballHistoryMatchDxAnalyse.php" />
+        <item index="1" class="java.lang.String" itemvalue="PHP Script.footballMatchOdds.php" />
+        <item index="2" class="java.lang.String" itemvalue="PHP Script.footballAdditionalMatchAnalyse.php" />
+        <item index="3" class="java.lang.String" itemvalue="PHP Script.footballAdditionalMatch.php" />
+        <item index="4" class="java.lang.String" itemvalue="PHP Script.footballMatchResult.php" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="ShelveChangesManager" show_recycled="false">
+    <option name="remove_strategy" value="false" />
+  </component>
+  <component name="SvnConfiguration" cleanupOnStartRun="true">
+    <configuration>C:\Users\SPCY2016\AppData\Roaming\Subversion</configuration>
+    <supportedVersion>125</supportedVersion>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="abc43a2b-82b1-4cfe-98e7-66a25c34e6a7" name="Default" comment="" />
+      <created>1510825423943</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1510825423943</updated>
+      <workItem from="1510826446580" duration="27000" />
+      <workItem from="1510826960779" duration="173000" />
+      <workItem from="1510827148563" duration="351000" />
+      <workItem from="1510882739647" duration="3883000" />
+      <workItem from="1510887358165" duration="19737000" />
+      <workItem from="1511142263512" duration="1797000" />
+      <workItem from="1511145336980" duration="13088000" />
+      <workItem from="1511228700193" duration="16902000" />
+      <workItem from="1511314826529" duration="133000" />
+      <workItem from="1511401914829" duration="4209000" />
+      <workItem from="1511406860698" duration="9883000" />
+      <workItem from="1511424271554" duration="1336000" />
+      <workItem from="1511489564407" duration="3162000" />
+      <workItem from="1511747245315" duration="8728000" />
+      <workItem from="1511834209753" duration="2485000" />
+      <workItem from="1511919891593" duration="12279000" />
+      <workItem from="1512005932674" duration="19527000" />
+      <workItem from="1512093044471" duration="6493000" />
+      <workItem from="1512352819948" duration="13928000" />
+      <workItem from="1512437644280" duration="18375000" />
+      <workItem from="1512527500755" duration="12701000" />
+      <workItem from="1512617850520" duration="10424000" />
+      <workItem from="1512697305950" duration="1660000" />
+      <workItem from="1512718796471" duration="4317000" />
+      <workItem from="1512956944975" duration="15000" />
+      <workItem from="1512956977312" duration="5310000" />
+      <workItem from="1513042710147" duration="3570000" />
+      <workItem from="1513131379118" duration="15578000" />
+      <workItem from="1513217667507" duration="15779000" />
+      <workItem from="1513302730684" duration="24366000" />
+      <workItem from="1513577226007" duration="16699000" />
+      <workItem from="1513647669376" duration="6320000" />
+      <workItem from="1513734855990" duration="224000" />
+      <workItem from="1513735098035" duration="1399000" />
+      <workItem from="1513821308197" duration="3439000" />
+      <workItem from="1513908036279" duration="6882000" />
+      <workItem from="1514172097834" duration="1941000" />
+      <workItem from="1514278984272" duration="2894000" />
+      <workItem from="1514340554743" duration="2766000" />
+      <workItem from="1514357383849" duration="36000" />
+      <workItem from="1514369484966" duration="151000" />
+      <workItem from="1514427015985" duration="4387000" />
+      <workItem from="1514857904441" duration="4931000" />
+      <workItem from="1514947970580" duration="6243000" />
+      <workItem from="1514975874231" duration="660000" />
+      <workItem from="1515031923089" duration="4662000" />
+      <workItem from="1515124201737" duration="1228000" />
+      <workItem from="1515377876466" duration="9189000" />
+      <workItem from="1515462269298" duration="2283000" />
+      <workItem from="1515470042442" duration="7144000" />
+      <workItem from="1515550875513" duration="12524000" />
+      <workItem from="1515635882619" duration="2568000" />
+      <workItem from="1515722719953" duration="2262000" />
+      <workItem from="1515980997131" duration="275000" />
+      <workItem from="1515981291718" duration="3574000" />
+      <workItem from="1516069842294" duration="1087000" />
+      <workItem from="1516153119635" duration="10686000" />
+      <workItem from="1516240238211" duration="2651000" />
+      <workItem from="1516328840040" duration="591000" />
+      <workItem from="1516354429788" duration="599000" />
+      <workItem from="1516587428796" duration="5666000" />
+      <workItem from="1516618131614" duration="3000" />
+      <workItem from="1516676977004" duration="3912000" />
+      <workItem from="1516759180221" duration="5677000" />
+      <workItem from="1516774237568" duration="3292000" />
+      <workItem from="1517190851913" duration="1211000" />
+      <workItem from="1517297824878" duration="3019000" />
+      <workItem from="1517479659567" duration="1279000" />
+      <workItem from="1517536807461" duration="21039000" />
+      <workItem from="1517796016915" duration="17341000" />
+      <workItem from="1517882978211" duration="18451000" />
+      <workItem from="1517912936849" duration="7016000" />
+      <workItem from="1517968896470" duration="10395000" />
+      <workItem from="1517988782008" duration="3236000" />
+      <workItem from="1518056490811" duration="639000" />
+      <workItem from="1518059507439" duration="1370000" />
+      <workItem from="1519439932635" duration="3513000" />
+      <workItem from="1519611006100" duration="2519000" />
+      <workItem from="1519696366164" duration="1294000" />
+      <workItem from="1519868961115" duration="635000" />
+      <workItem from="1519974629035" duration="50000" />
+      <workItem from="1520215931312" duration="4584000" />
+      <workItem from="1520307744522" duration="12899000" />
+      <workItem from="1520388179829" duration="21890000" />
+      <workItem from="1520475367642" duration="6364000" />
+      <workItem from="1520559233574" duration="10776000" />
+      <workItem from="1520820067637" duration="10078000" />
+      <workItem from="1520908202232" duration="17712000" />
+      <workItem from="1520993105319" duration="13671000" />
+      <workItem from="1521017627670" duration="2175000" />
+      <workItem from="1521077609124" duration="24312000" />
+      <workItem from="1521164625490" duration="19447000" />
+      <workItem from="1521193422464" duration="8352000" />
+      <workItem from="1521423668789" duration="14501000" />
+      <workItem from="1521449205783" duration="1402000" />
+      <workItem from="1521451614365" duration="3295000" />
+      <workItem from="1521510142378" duration="20044000" />
+      <workItem from="1521536332419" duration="5482000" />
+      <workItem from="1521596666405" duration="6104000" />
+      <workItem from="1521615135839" duration="11342000" />
+      <workItem from="1521684425638" duration="10142000" />
+      <workItem from="1521770234679" duration="4152000" />
+      <workItem from="1521789533960" duration="1197000" />
+      <workItem from="1522029084763" duration="3860000" />
+      <workItem from="1522045122854" duration="5150000" />
+      <workItem from="1522116435764" duration="5964000" />
+      <workItem from="1522132530238" duration="5945000" />
+      <workItem from="1522203046438" duration="16039000" />
+      <workItem from="1522287746751" duration="1247000" />
+      <workItem from="1522289527209" duration="18404000" />
+      <workItem from="1522378271825" duration="16842000" />
+      <workItem from="1522632993824" duration="10318000" />
+      <workItem from="1522720064523" duration="13268000" />
+      <workItem from="1522807632540" duration="4036000" />
+      <workItem from="1523240011972" duration="5989000" />
+      <workItem from="1523325050213" duration="1274000" />
+      <workItem from="1523344047725" duration="1929000" />
+      <workItem from="1523412479378" duration="1249000" />
+      <workItem from="1523498666832" duration="2374000" />
+      <workItem from="1523586582088" duration="7468000" />
+      <workItem from="1523846623965" duration="5376000" />
+      <workItem from="1523947420942" duration="709000" />
+      <workItem from="1524015250474" duration="1521000" />
+      <workItem from="1524103344564" duration="1115000" />
+      <workItem from="1524192409783" duration="2659000" />
+      <workItem from="1524450045483" duration="2475000" />
+      <workItem from="1524534407855" duration="4168000" />
+      <workItem from="1524620827115" duration="20764000" />
+      <workItem from="1524706517517" duration="22804000" />
+      <workItem from="1524793723630" duration="22916000" />
+      <workItem from="1524880172378" duration="7487000" />
+      <workItem from="1525225449852" duration="20063000" />
+      <workItem from="1525313465017" duration="8604000" />
+      <workItem from="1525397795866" duration="10789000" />
+      <workItem from="1525657997163" duration="18444000" />
+      <workItem from="1525747453205" duration="9863000" />
+      <workItem from="1525830689538" duration="17106000" />
+      <workItem from="1525917213387" duration="12547000" />
+      <workItem from="1526007081622" duration="5446000" />
+      <workItem from="1526262627057" duration="22420000" />
+      <workItem from="1526348947221" duration="11909000" />
+      <workItem from="1526436997032" duration="5383000" />
+      <workItem from="1526521365935" duration="5189000" />
+      <workItem from="1526609660812" duration="7237000" />
+      <workItem from="1526868502596" duration="7638000" />
+      <workItem from="1526883748818" duration="8464000" />
+      <workItem from="1526953684904" duration="13701000" />
+      <workItem from="1527039987910" duration="17306000" />
+      <workItem from="1527126070478" duration="13991000" />
+      <workItem from="1527215469183" duration="15384000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="1156823000" />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-8" y="-8" width="1616" height="876" extended-state="7" />
+    <editor active="true" />
+    <layout>
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23071979" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="调试" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.42530283" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32974428" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.19730078" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="运行" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20861372" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="PHP-CGI Server" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="找到" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="processedProjectFiles" value="true" />
+  </component>
+  <component name="Vcs.Log.UiProperties">
+    <option name="RECENTLY_FILTERED_USER_GROUPS">
+      <collection />
+    </option>
+    <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+      <collection />
+    </option>
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/server/portal/controller/User.php</url>
+          <line>1499</line>
+          <option name="timeStamp" value="12" />
+        </line-breakpoint>
+      </breakpoints>
+      <option name="time" value="116" />
+    </breakpoint-manager>
+    <watches-manager />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/server/portal/timer/spider/www.tiyufeng.com/footballMatchOdds.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="319">
+          <caret line="165" column="126" lean-forward="false" selection-start-line="165" selection-start-column="113" selection-end-line="165" selection-end-column="126" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/portal/timer/spider/www.500.com/footballMatchOddsAn.php" />
+    <entry file="file://$PROJECT_DIR$/server/portal/timer/spider/www.okooo.com/footballMatchOdds.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3822">
+          <caret line="182" column="65" lean-forward="false" selection-start-line="182" selection-start-column="56" selection-end-line="182" selection-end-column="65" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/portal/timer/spider/www.sporttery.cn/footballMatchOddsAnalysis - 副本.php" />
+    <entry file="file://$PROJECT_DIR$/server/portal/timer/spider/www.500.com/footballMatchResult.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-147">
+          <caret line="165" column="9" lean-forward="true" selection-start-line="165" selection-start-column="9" selection-end-line="165" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/portal/timer/spider/www.sporttery.cn/footballMatchstatistics.php" />
+    <entry file="file://$PROJECT_DIR$/server/portal/timer/spider/www.sporttery.cn/footballMatchHistory.php" />
+    <entry file="jar://$APPLICATION_HOME_DIR$/plugins/php/lib/php.jar!/stubs/standard/standard_5.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="141">
+          <caret line="1046" column="9" lean-forward="false" selection-start-line="1046" selection-start-column="9" selection-end-line="1046" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/portal/timer/fix_order_ticketUnit.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="642">
+          <caret line="32" column="8" lean-forward="false" selection-start-line="32" selection-start-column="8" selection-end-line="32" selection-end-column="71" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/portal/module/ZongGuan.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="967">
+          <caret line="614" column="31" lean-forward="false" selection-start-line="614" selection-start-column="31" selection-end-line="614" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/portal/timer/create_issue.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/portal/timer/spider/www.sporttery.cn/guessOdds.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-4077">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/portal/timer/spider/www.sporttery.cn/footballMatchResult.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="83">
+          <caret line="285" column="46" lean-forward="true" selection-start-line="285" selection-start-column="46" selection-end-line="285" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/portal/dao/Activity.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2343">
+          <caret line="769" column="21" lean-forward="false" selection-start-line="766" selection-start-column="7" selection-end-line="769" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/portal/controller/Apple.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="84">
+          <caret line="13" column="41" lean-forward="true" selection-start-line="13" selection-start-column="41" selection-end-line="13" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/portal/controller/Configure.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-323">
+          <caret line="47" column="34" lean-forward="true" selection-start-line="47" selection-start-column="34" selection-end-line="47" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/portal/timer/spider/www.500.com/footballMatchOddsAnalysis.php" />
+    <entry file="file://$PROJECT_DIR$/server/portal/timer/spider/www.sporttery.cn/footballMatchAdditional1.php" />
+    <entry file="file://$PROJECT_DIR$/server/portal/timer/spider/www.sporttery.cn/footballMatchOddsAnalysis.php" />
+    <entry file="file://$PROJECT_DIR$/server/portal/timer/spider/www.sporttery.cn/footballAdditionalMatchOdds.php" />
+    <entry file="file://$PROJECT_DIR$/server/portal/timer/ticket_deal.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="412">
+          <caret line="21" column="40" lean-forward="true" selection-start-line="21" selection-start-column="40" selection-end-line="21" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/portal/timer/order_prize.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/portal/timer/OrderPrize.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="630">
+          <caret line="30" column="36" lean-forward="true" selection-start-line="30" selection-start-column="36" selection-end-line="30" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/portal/controller/Activity.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="439">
+          <caret line="1967" column="8" lean-forward="false" selection-start-line="1967" selection-start-column="8" selection-end-line="1970" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/portal/timer/spider/www.sporttery.cn/Analyse.php" />
+    <entry file="file://$PROJECT_DIR$/server/portal/timer/spider/www.sporttery.cn/footballMatchAdditional.php" />
+    <entry file="file://$PROJECT_DIR$/server/portal/timer/spider/www.sporttery.cn/footballAdditionalMatchAnalyse - 副本.php" />
+    <entry file="file://$PROJECT_DIR$/server/portal/timer/spider/www.sporttery.cn/footballAdditionalMatchOddsAsia.php" />
+    <entry file="file://$PROJECT_DIR$/server/portal/timer/spider/www.sporttery.cn/footballAdditionalMatchOddsEurope.php" />
+    <entry file="file://$PROJECT_DIR$/server/portal/log/common.log">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="63">
+          <caret line="3" column="620" lean-forward="false" selection-start-line="3" selection-start-column="81" selection-end-line="3" selection-end-column="620" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/portal/service/Match.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="336">
+          <caret line="16" column="45" lean-forward="true" selection-start-line="16" selection-start-column="45" selection-end-line="16" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/portal/controller/Smlr.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="601">
+          <caret line="137" column="41" lean-forward="false" selection-start-line="137" selection-start-column="41" selection-end-line="137" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/portal/service/Plan.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="231">
+          <caret line="11" column="5" lean-forward="true" selection-start-line="11" selection-start-column="5" selection-end-line="11" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/portal/dao/Plan.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="386">
+          <caret line="471" column="20" lean-forward="false" selection-start-line="471" selection-start-column="20" selection-end-line="471" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$APPLICATION_HOME_DIR$/plugins/php/lib/php.jar!/stubs/standard/_types.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="322">
+          <caret line="96" column="10" lean-forward="true" selection-start-line="96" selection-start-column="10" selection-end-line="96" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/portal/module/Common.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="55">
+          <caret line="16" column="26" lean-forward="true" selection-start-line="16" selection-start-column="26" selection-end-line="16" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/portal/timer/spider/www.sporttery.cn/footballAdditionalMatchScore.php" />
+    <entry file="file://$PROJECT_DIR$/server/portal/timer/spider/www.sporttery.cn/footballHistoryMatchLeague.php" />
+    <entry file="file://$PROJECT_DIR$/server/portal/controller/PlanExport.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="33">
+          <caret line="14" column="46" lean-forward="true" selection-start-line="14" selection-start-column="46" selection-end-line="14" selection-end-column="46" />
+          <folding>
+            <element signature="e#513#1302#0#PHP" expanded="false" />
+            <element signature="e#1311#2185#0#PHP" expanded="false" />
+            <element signature="e#2208#4713#0#PHP" expanded="false" />
+            <element signature="e#4835#9192#0#PHP" expanded="false" />
+            <element signature="e#9198#12431#0#PHP" expanded="false" />
+            <element signature="e#12442#13070#0#PHP" expanded="false" />
+            <element signature="e#13073#15153#0#PHP" expanded="false" />
+            <element signature="e#15159#15546#0#PHP" expanded="false" />
+            <element signature="e#15552#17323#0#PHP" expanded="false" />
+            <element signature="e#17329#19627#0#PHP" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/portal/service/Common.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="172" column="0" lean-forward="true" selection-start-line="172" selection-start-column="0" selection-end-line="172" selection-end-column="0" />
+          <folding>
+            <element signature="e#3085#5357#0#PHP" expanded="false" />
+            <element signature="e#5380#11025#0#PHP" expanded="false" />
+            <element signature="e#11028#16015#0#PHP" expanded="false" />
+            <element signature="e#16021#17014#0#PHP" expanded="false" />
+            <element signature="e#17067#19976#0#PHP" expanded="false" />
+            <element signature="e#20010#21239#0#PHP" expanded="false" />
+            <element signature="e#23412#24927#0#PHP" expanded="false" />
+            <element signature="e#24951#26659#0#PHP" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/portal/timer/spider/www.sporttery.cn/footballAdditionalMatch.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="260">
+          <caret line="238" column="5" lean-forward="false" selection-start-line="238" selection-start-column="5" selection-end-line="238" selection-end-column="5" />
+          <folding>
+            <element signature="n#getCookie#0;n#Spider#0;n#!!top" expanded="false" />
+            <element signature="n#httpGet#0;n#Spider#0;n#!!top" expanded="false" />
+            <marker date="1527156365239" expanded="true" signature="12125:12160" ph="insert into t_additional_match... " />
+            <marker date="1527156365239" expanded="true" signature="12344:12473" ph="update t_add... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/portal/timer/spider/www.sporttery.cn/footballMatchOdds.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-50">
+          <caret line="68" column="47" lean-forward="true" selection-start-line="68" selection-start-column="47" selection-end-line="68" selection-end-column="47" />
+          <folding>
+            <element signature="n#execute#0;n#Spider#0;n#!!top" expanded="false" />
+            <element signature="n#executeUpdate#0;n#Spider#0;n#!!top" expanded="false" />
+            <element signature="n#getCookie#0;n#Spider#0;n#!!top" expanded="false" />
+            <element signature="n#httpGet#0;n#Spider#0;n#!!top" expanded="false" />
+            <marker date="1527215835289" expanded="true" signature="9813:9837" ph="insert into t_match... " />
+            <marker date="1527215835289" expanded="true" signature="9973:10053" ph="update t_mat... " />
+            <marker date="1527215835289" expanded="true" signature="13177:13206" ph="insert into t_match_odds... " />
+            <marker date="1527215835289" expanded="true" signature="13347:13438" ph="update t_mat... " />
+            <marker date="1527215835289" expanded="true" signature="14791:14820" ph="insert into t_match_odds... " />
+            <marker date="1527215835289" expanded="true" signature="14959:15050" ph="update t_mat... " />
+            <marker date="1527215835289" expanded="true" signature="17350:17379" ph="insert into t_match_odds... " />
+            <marker date="1527215835289" expanded="true" signature="17517:17608" ph="update t_mat... " />
+            <marker date="1527215835289" expanded="true" signature="19090:19119" ph="insert into t_match_odds... " />
+            <marker date="1527215835289" expanded="true" signature="19258:19349" ph="update t_mat... " />
+            <marker date="1527215835289" expanded="true" signature="20878:20907" ph="insert into t_match_odds... " />
+            <marker date="1527215835289" expanded="true" signature="21046:21137" ph="update t_mat... " />
+            <marker date="1527215835289" expanded="true" signature="24387:24518" ph="update t_mat... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/portal/dao/Match.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1479">
+          <caret line="180" column="41" lean-forward="false" selection-start-line="180" selection-start-column="41" selection-end-line="180" selection-end-column="41" />
+          <folding>
+            <element signature="e#135#2294#0#PHP" expanded="false" />
+            <element signature="e#4655#5804#0#PHP" expanded="false" />
+            <element signature="e#5807#11077#0#PHP" expanded="false" />
+            <element signature="e#11080#13842#0#PHP" expanded="false" />
+            <element signature="e#13845#14654#0#PHP" expanded="false" />
+            <element signature="e#14657#18033#0#PHP" expanded="false" />
+            <element signature="e#18036#19535#0#PHP" expanded="false" />
+            <element signature="e#19541#23132#0#PHP" expanded="false" />
+            <element signature="e#23138#27161#0#PHP" expanded="false" />
+            <element signature="e#27167#29823#0#PHP" expanded="false" />
+            <marker date="1527215682959" expanded="true" signature="1943:1967" ph="insert into t_match... " />
+            <marker date="1527215682959" expanded="true" signature="4361:4441" ph="update t_mat... " />
+            <marker date="1527215682959" expanded="true" signature="9301:9350" ph="select count... t_match" />
+            <marker date="1527215682959" expanded="true" signature="13029:13088" ph="select leagu... t_match" />
+            <marker date="1527215682959" expanded="true" signature="13441:13501" ph="select leagu... t_match" />
+            <marker date="1527215682959" expanded="true" signature="17041:17095" ph="select count... t_match_odds" />
+            <marker date="1527215682959" expanded="true" signature="18624:18681" ph="select count... t_match_bettype" />
+            <marker date="1527215682959" expanded="true" signature="21975:22029" ph="select count... t_guess_odds" />
+            <marker date="1527215682959" expanded="true" signature="25857:25917" ph="select count... t_additional_match" />
+            <marker date="1527215682959" expanded="true" signature="28555:28620" ph="select count... t_guess_odds" />
+            <marker date="1527215682959" expanded="true" signature="31725:31790" ph="select count... t_match_odds_analysis" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/shaimi.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="546">
+          <caret line="884" column="38" lean-forward="false" selection-start-line="884" selection-start-column="38" selection-end-line="884" selection-end-column="38" />
+          <folding>
+            <marker date="1527155811246" expanded="false" signature="36271:36866" ph="create table... t_match_bettype" />
+            <marker date="1527155811246" expanded="false" signature="36869:38067" ph="create table... t_match_odds" />
+            <marker date="1527155811246" expanded="false" signature="38070:39221" ph="create table... t_additional_match" />
+            <marker date="1527155811246" expanded="false" signature="39224:40431" ph="create table... t_additional_match_odds" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/portal/timer/spider/www.sporttery.cn/footballAdditionalMatchAnalyse.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3099">
+          <caret line="474" column="0" lean-forward="false" selection-start-line="474" selection-start-column="0" selection-end-line="474" selection-end-column="0" />
+          <folding>
+            <element signature="n#getMatchMap#0;n#Spider#0;n#!!top" expanded="false" />
+            <element signature="n#getAdditionalMatchOddsMap#0;n#Spider#0;n#!!top" expanded="false" />
+            <element signature="n#getAdditionalTeamScoreMap#0;n#Spider#0;n#!!top" expanded="false" />
+            <element signature="n#executeEurope#0;n#Spider#0;n#!!top" expanded="false" />
+            <element signature="n#executeAsia#0;n#Spider#0;n#!!top" expanded="false" />
+            <element signature="n#getCookie#0;n#Spider#0;n#!!top" expanded="false" />
+            <element signature="n#httpGet#0;n#Spider#0;n#!!top" expanded="false" />
+            <marker date="1527221049360" expanded="true" signature="8290:8330" ph="insert into t_additional_match_odds... " />
+            <marker date="1527221049360" expanded="true" signature="8678:8868" ph="update t_add... " />
+            <marker date="1527221049360" expanded="true" signature="13735:13775" ph="insert into t_additional_match_odds... " />
+            <marker date="1527221049360" expanded="true" signature="14119:14309" ph="update t_add... " />
+            <marker date="1527221049360" expanded="true" signature="20780:20820" ph="insert into t_additional_team_score... " />
+            <marker date="1527221049360" expanded="true" signature="21337:21601" ph="update t_add... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/portal/controller/Match.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1296">
+          <caret line="74" column="31" lean-forward="true" selection-start-line="74" selection-start-column="31" selection-end-line="74" selection-end-column="31" />
+          <folding>
+            <element signature="e#5943#13846#0#PHP" expanded="false" />
+            <element signature="e#13860#15128#0#PHP" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/portal/controller/MatchAnalyse.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="151">
+          <caret line="319" column="20" lean-forward="false" selection-start-line="319" selection-start-column="20" selection-end-line="319" selection-end-column="20" />
+          <folding>
+            <element signature="e#796#2293#0#PHP" expanded="false" />
+            <element signature="e#2323#5536#0#PHP" expanded="false" />
+            <element signature="e#6943#8534#0#PHP" expanded="false" />
+            <element signature="e#8563#12118#0#PHP" expanded="false" />
+            <element signature="e#13580#15136#0#PHP" expanded="false" />
+            <element signature="e#15214#15636#0#PHP" expanded="false" />
+            <element signature="e#15710#16156#0#PHP" expanded="false" />
+            <element signature="e#16223#16627#0#PHP" expanded="false" />
+            <element signature="e#16697#17107#0#PHP" expanded="false" />
+            <element signature="e#17174#17578#0#PHP" expanded="false" />
+            <element signature="e#17648#18058#0#PHP" expanded="false" />
+            <element signature="e#18126#19328#0#PHP" expanded="false" />
+            <element signature="e#20838#21807#0#PHP" expanded="false" />
+            <element signature="e#21231#21387#0#PHP" expanded="false" />
+            <element signature="e#22361#22795#0#PHP" expanded="false" />
+            <element signature="e#22522#22647#0#PHP" expanded="false" />
+            <element signature="e#22660#22785#0#PHP" expanded="false" />
+            <element signature="e#22952#27316#0#PHP" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/portal/controller/Plan.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="294">
+          <caret line="657" column="38" lean-forward="true" selection-start-line="657" selection-start-column="38" selection-end-line="657" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/portal/timer/spider/www.sporttery.cn/footballHistoryMatchAnalyse.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="242">
+          <caret line="26" column="80" lean-forward="true" selection-start-line="24" selection-start-column="8" selection-end-line="26" selection-end-column="80" />
+          <folding>
+            <element signature="n#getMatchTeamMap#0;n#Spider#0;n#!!top" expanded="false" />
+            <element signature="n#getAdditionalMatchMap#0;n#Spider#0;n#!!top" expanded="false" />
+            <element signature="n#getAdditionalMatchOddsMap#0;n#Spider#0;n#!!top" expanded="false" />
+            <element signature="n#getAdditionalTeamScoreMap#0;n#Spider#0;n#!!top" expanded="false" />
+            <element signature="n#executeUpdate#0;n#Spider#0;n#!!top" expanded="false" />
+            <element signature="n#executeScore#0;n#Spider#0;n#!!top" expanded="false" />
+            <element signature="n#getCookie#0;n#Spider#0;n#!!top" expanded="false" />
+            <element signature="n#httpGet#0;n#Spider#0;n#!!top" expanded="false" />
+            <marker date="1527245200264" expanded="true" signature="9393:9524" ph="update t_mat... " />
+            <marker date="1527245200264" expanded="true" signature="15840:15880" ph="insert into t_additional_team_score... " />
+            <marker date="1527245200264" expanded="true" signature="16397:16661" ph="update t_add... " />
+            <marker date="1527245200264" expanded="true" signature="21494:21534" ph="insert into t_additional_match_odds... " />
+            <marker date="1527245200264" expanded="true" signature="21882:22072" ph="update t_add... " />
+            <marker date="1527245200264" expanded="true" signature="26981:27021" ph="insert into t_additional_match_odds... " />
+            <marker date="1527245200264" expanded="true" signature="27365:27555" ph="update t_add... " />
+            <marker date="1527245200264" expanded="true" signature="37335:37370" ph="insert into t_additional_match... " />
+            <marker date="1527245200264" expanded="true" signature="37554:37683" ph="update t_add... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/portal/timer/spider/www.500.com/footballAdditionalMatchAnalyse.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-143">
+          <caret line="8" column="20" lean-forward="true" selection-start-line="8" selection-start-column="20" selection-end-line="8" selection-end-column="20" />
+          <folding>
+            <marker date="1526970804204" expanded="true" signature="9761:9801" ph="insert into t_additional_match_odds... " />
+            <marker date="1526970804204" expanded="true" signature="10124:10294" ph="update t_add... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/portal/timer/spider/www.sporttery.cn/footballHistoryMatchDxAnalyse.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-418">
+          <caret line="22" column="63" lean-forward="false" selection-start-line="22" selection-start-column="63" selection-end-line="22" selection-end-column="63" />
+          <folding>
+            <element signature="n#getAdditionalMatchOddsMap#0;n#Spider#0;n#!!top" expanded="false" />
+            <marker date="1527246556954" expanded="true" signature="9744:9784" ph="insert into t_additional_match_odds... " />
+            <marker date="1527246556954" expanded="true" signature="10107:10277" ph="update t_add... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>

@@ -1,0 +1,123 @@
+<script type="text/html" id="content">
+<h1 class="title">交易对账</h1>
+<div class="list_box">
+	<div class="search_box">
+		<div>
+			<form onsubmit="return false;">
+				<div class="search_box ">
+					<input class="input_field" placeholder="交易流水号" id="tradeNo"/>
+					<input class="input_field ml20" placeholder="订单ID" id="orderId"/>
+					<input class="input_field ml20" placeholder="用户" id="userName"/>
+				</div>
+				<div class="mt20">
+					<input class="input_field" placeholder="开始时间" readonly="1" id="beginTime">
+					<input class="input_field ml20" placeholder="结束时间" readonly="1" id="endTime">
+					<span class="select_box ml20">
+						<select id="tradeType">
+							<option value="">全部</option>
+							<option value="0">爱贝</option>
+							<option value="1">支付宝</option>
+							<option value="2">威富通</option>
+							<option value="3">苹果支付</option>
+						</select>
+						<span class="icon_sel"><span class="arrow_down"></span></span>
+					</span>
+					<span class="select_box ml20">
+						<select id="financeType">
+							<option value="">全部</option>
+							<option value="0">方案账户</option>
+							<option value="1">出票账户</option>
+						</select>
+						<span class="icon_sel"><span class="arrow_down"></span></span>
+					</span>
+					<span class="select_box ml20">
+						<select id="type">
+							<option value="0">全部</option>
+							<option value="1">消费</option>
+							<option value="2">充值</option>
+						</select>
+						<span class="icon_sel"><span class="arrow_down"></span></span>
+					</span>
+					<iframe name="exportReportIframe" style="display:none"></iframe>
+					<input class="btn ml20" type="button" value="导出报表" id="exportReport"/>
+					<input class="btn ml20" type="reset" value="重置" />
+					<input class="btn ml20" type="submit" value="搜索" id="searchSubmit"/>
+				</div>
+			</form>
+		</div>
+	</div>
+	<div class="table_box mt20">
+		<table>
+			<thead>
+				<tr>
+					<th width="40">平台</th>
+					<th width="150">平台流水号</th>
+					<th width="100">交易时间</th>
+					<th width="40">资金账户</th>
+					<th width="60">类型</th>
+					<th width="90">订单ID</th>
+					<th width="70">金额</th>
+					<th width="120">昵称</th>
+					<th width="70">姓名</th>
+					<th width="60">备注</th>
+				</tr>
+			</thead>
+			<tbody id="tradeList"></tbody>				
+		</table>
+		<div id="pageCodeBox"></div>
+	</div>
+</div>
+</script>
+
+<script type="text/html" id="tradeList">
+<% var length = list.length;
+	for (var i = 0; i < length; i++) {
+	var trade = list[i] || {};
+	var tradeId = trade.tradeId;
+	var tradeType = trade.tradeType;
+	var tradeTypeMap = {'0': '爱贝', '1': '支付宝', '2': '威富通', '3': '苹果支付'};
+	var tradeNo = trade.tradeNo;
+	var tradeTime = trade.tradeTime;
+	var nickName = trade.nickName;
+	var realName = trade.realName;
+	var orderId = trade.orderId;
+	var amount = trade.amount/100;
+	var type = trade.type;
+	var typeMap = {'1': '消费', '2': '充值'};
+	var financeType = trade.financeType;
+	var financeTypeMap = {'0': '方案', '1': '出票'};
+	var remark = trade.remark;
+	var createTime = trade.createTime;
+%>
+	<tr>
+		<td><%=tradeTypeMap[tradeType]%></td>
+		<td><%=tradeNo%></td>
+		<td class="time"><%=tradeTime!='0000-00-00 00:00:00'?tradeTime:createTime%></td>
+		<td><%=financeTypeMap[financeType]%></td>
+		<td><%=typeMap[type]%></td>
+		<td><%=orderId%></td>
+		<td><%=amount%></td>
+		<td><%=nickName%></td>
+		<td><%=realName%></td>
+		<td>
+			<% if (remark) { %>
+			<a class="examine" remark="<%=remark%>">查看</a>
+			<% } %>
+		</td>
+	</tr>
+<% } %>	
+<% if(length > 0) { %>
+	<tr>
+		<td>总计</td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td><%=totalAmount/100%></td>
+		<td></td>
+		<td></td>
+		<td></td>
+	</tr>
+<% } %>
+</script>

@@ -1,0 +1,145 @@
+<script type="text/html" id="content">
+	<%
+		var isReceiveFinish = info.isReceiveFinish;
+		var isReceiveCoupon = info.isReceiveCoupon;
+		var isReceiveHongbao = info.isReceiveHongbao;
+		var receiveCouponType = +info.receiveCouponType;
+	%>
+	<div class="top_img">
+		<img class="img-responsive" src="<%=IMG_PATH%>ttqhb/ttqhb_top.png" />
+	</div>
+	<div class="red_packet_wrap">
+		<div class="red_packet">
+			<img class="img-responsive red_packet_bg" src="<%=IMG_PATH%>ttqhb/red_packet_bg.png"/>
+			<div class="packet_cont">
+				<% if (isReceiveHongbao) { %>
+					<img class="red_packet_btn" src="<%=IMG_PATH%>ttqhb/red_packet_btn2.png"/>
+				<% } else if (isReceiveFinish) { %>
+					<img class="red_packet_btn" src="<%=IMG_PATH%>ttqhb/red_packet_btn3.png"/>
+				<% } else { %>
+					<img class="red_packet_btn" id="startBtn" src="<%=IMG_PATH%>ttqhb/red_packet_btn1.png"/>
+				<% } %>
+			</div>
+		</div>
+		<img class="img-responsive" src="<%=IMG_PATH%>ttqhb/divide.png" />
+	</div>
+	<div class="rules_wrap">
+		<ul class="coupon_list ui-flex mb50">
+			<li class="coupon_items ui-flex_item">
+				<div class="coupon1 mb15">
+					<img class="img-responsive" src="<%=IMG_PATH%>ttqhb/coupon1.png"/>
+				</div>
+				<div class="get_btn mb5">
+					<% if (isReceiveCoupon  && receiveCouponType == 1) { %>
+						<img class="img-responsive" src="<%=IMG_PATH%>ttqhb/getted_btn.png"/>
+					<% } else { %>
+						<img class="img-responsive" id="getCouponBtn1" type="1" src="<%=IMG_PATH%>ttqhb/get_btn.png"/>
+					<% } %>
+				</div>
+				<div class="get_condition size13">
+					(满500元可领)
+				</div>
+			</li>
+			<li class="coupon_items ui-flex_item">
+				<div class="coupon2 mb15">
+					<img class="img-responsive" src="<%=IMG_PATH%>ttqhb/coupon2.png"/>
+				</div>
+				<div class="get_btn mb5">
+					<% if (isReceiveCoupon  && receiveCouponType == 2) { %>
+						<img class="img-responsive" src="<%=IMG_PATH%>ttqhb/getted_btn.png"/>
+					<% } else { %>
+						<img class="img-responsive" id="getCouponBtn2" type="2" src="<%=IMG_PATH%>ttqhb/get_btn.png"/>
+					<% } %>
+				</div>
+				<div class="get_condition size13">
+					(满3000元可领)
+				</div>
+			</li>
+			<li class="coupon_items ui-flex_item">
+				<div class="coupon3 mb15">
+					<img class="img-responsive" src="<%=IMG_PATH%>ttqhb/coupon3.png"/>
+				</div>
+				<div class="get_btn mb5">
+					<% if (isReceiveCoupon && receiveCouponType == 3) { %>
+						<img class="img-responsive" src="<%=IMG_PATH%>ttqhb/getted_btn.png"/>
+					<% } else { %>
+						<img class="img-responsive" id="getCouponBtn3" type="3" src="<%=IMG_PATH%>ttqhb/get_btn.png"/>
+					<% } %>
+				</div>
+				<div class="get_condition size13">
+					(满8000元可领)
+				</div>
+			</li>
+		</ul>
+		<h2 class="rules_title">活动规则</h2>
+		<ul class="rules">
+			<li>1.用户满足消费金额即可领取优惠券，每天只有一次领取机会；</li>
+			<li>2.优惠券每天只能领取一个，不可领取多个（例如:用户当天消费满8000元，满足领取三个优惠券的条件，但只可以选择领取三个优惠券其中一个）；</li>
+			<li>3.领取的优惠券可以在“我的”-“我的优惠券”查看；</li>
+			<li>4.优惠券有效期为7天，请及时使用，逾期无效。</li>
+		</ul>
+	</div>
+</script>
+
+<script type="text/html" id="hbMask">
+	<div class="mask" id="ttqhbMask">
+		<%=#html%>
+	</div>
+</script>
+
+<script type="text/html" id="getSuccessBox">
+	<%
+		var info = info.info;
+	%>
+	<div class="popup_box2">
+		<div class="get_success">
+			<a class="colse_btn" id="closePopBtn"></a>
+			<img class="success_bg img-responsive" src="<%=IMG_PATH%>ttqhb/success_bg.png"/>
+			<div class="success_cont">
+				<h2 class="success_title">恭喜发财</h2>
+				<p class="success_detail">您获得 <span class="money"><%=info%></span> 元红包</p>
+				<p class="success_status">红包已派发到您的账户中</p>
+				<div class="pop_btn" id="checkBtn">查 看</div>
+			</div>
+		</div>
+	</div>
+</script>
+
+<script type="text/html" id="notStartBox">
+	<%
+		var title = txt.title;
+		var content = txt.content;
+		var btnTxt = txt.btnTxt;
+		var undercondition = !!txt.undercondition;
+	%>
+	<div class="popup_box1">
+		<div class="not_started">
+			<% if (undercondition) { %>
+				<p class="undercondition"><%=title%></p>
+			<% } else { %>
+				<h2 class="pop_title"><%=title%></h2>
+				<p class="pop_detail"><%=content%></p>
+			<% } %>
+			<div class="pop_btn" id="closePopBtn"><%=btnTxt%></div>
+		</div>
+	</div>
+</script>
+
+<script type="text/html" id="getCouponSuccessBox">
+	<%
+		var type = info.type;
+	%>
+	<div class="popup_box2">			
+		<div class="get_coupon">
+			<a class="colse_btn" id="closePopBtn"></a>
+			<% if (type == 1) { %>
+				<img class="success_bg img-responsive" src="<%=IMG_PATH%>ttqhb/get_coupon1.png"/>
+			<% } else if (type == 2) { %>
+				<img class="success_bg img-responsive" src="<%=IMG_PATH%>ttqhb/get_coupon2.png"/>
+			<% } else if (type == 3) { %>
+				<img class="success_bg img-responsive" src="<%=IMG_PATH%>ttqhb/get_coupon3.png"/>
+			<% } %>
+			<div class="get_coupon_btn" id="checkBtn"></div>
+		</div>
+	</div>
+</script>

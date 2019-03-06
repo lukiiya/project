@@ -1,0 +1,114 @@
+<!doctype html>
+<html>
+	<head>
+		<title></title>
+        <meta charset="utf-8">
+        <script src="js/jquery.js" type="text/javascript"></script>
+		<script src="js/template.js" type="text/javascript"></script>
+		<script type="text/javascript">
+		function codeComplie(){
+			var complie = "";
+			var source = $.trim($("#source").val());
+			var reg1 = /<script[\d\D]*?type=["']text\/html["'][\d\D]*?id=["'][\d\D]*?["'][\d\D]*?>[\d\D]*?<\/script>/g;
+			var reg2 = /<script[\d\D]*?type=["']text\/html["'][\d\D]*?id=["']([\d\D]*?)["'][\d\D]*?>([\d\D]*?)<\/script>/;
+			var scripts = source.match(reg1);
+			var tpls = [];
+			//var render = template.compile(source);
+			$.each(scripts,function(i,item){
+				var temp = item.match(reg2);
+				if(temp && temp.length == 3){
+					tpls.push({id:$.trim(temp[1]),code:$.trim(temp[2])});	
+				}
+			});
+			var expo = [];
+			var funs = [];
+			$.each(tpls,function(i,item){
+				expo.push('exports.'+item.id+'='+item.id+';');
+				var temp = template.compile(item.code).toString();
+				temp = 'function '+item.id+'($data){return ('+temp+').call(templateUtils,$data).toString()}';
+				funs.push(temp);
+			});
+			var code = [];
+			code.push('define(function(require,exports){');
+			code.push($("#templateUtils").html());
+			code.push(expo.join(""));
+			code.push(funs.join(""));
+			code.push('});');
+			complie = code.join('');
+			$("#complie").val(complie);
+		}
+		</script>
+	</head>
+	<body>
+		<div align="center">
+			<form onsubmit="codeComplie();return false;">
+				<b>模版源码：</b><br>
+				<textarea id="source" style="width:95%;height:300px">
+					
+				</textarea><br><br>
+				<b>编译代码：</b><br>
+				<textarea id="complie" style="width:95%;height:300px"></textarea><br><br>
+				<input type="submit" value="　编　译　"/>　<input type="reset" value="　清　空　"/>
+			</form>
+		</div>
+		<script type="text/html" id="templateUtils">
+			var templateUtils = (function (){
+				var include = function(id, data){
+					return eval(id)(data);
+				}
+				var toString = function (value, type) {
+				    if (typeof value !== 'string') {
+				        type = typeof value;
+				        if (type === 'number') {
+				            value += '';
+				        } else if (type === 'function') {
+				            value = toString(value.call(value));
+				        } else {
+				            value = '';
+				        }
+				    }
+				    return value;
+				};
+				var escapeMap = {
+				    "<": "&#60;",
+				    ">": "&#62;",
+				    '"': "&#34;",
+				    "'": "&#39;",
+				    "&": "&#38;"
+				};
+				var escapeFn = function (s) {
+				    return escapeMap[s];
+				};
+				var escapeHTML = function (content) {
+				    return toString(content)
+				    .replace(/&(?![\w#]+;)|[<>"']/g, escapeFn);
+				};
+				var isArray = Array.isArray || function (obj) {
+				    return ({}).toString.call(obj) === '[object Array]';
+				};
+				var each = function (data, callback) {
+				    var i, len;        
+				    if (isArray(data)) {
+				        for (i = 0, len = data.length; i < len; i++) {
+				            callback.call(data, data[i], i, data);
+				        }
+				    } else {
+				        for (i in data) {
+				            callback.call(data, data[i], i);
+				        }
+				    }
+				};
+				var utils = {
+					$include: include,
+					
+				    $string: toString,
+
+				    $escape: escapeHTML,
+
+				    $each: each  
+				};
+				return utils;
+			})();
+		</script>
+	</body>
+</html>

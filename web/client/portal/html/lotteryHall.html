@@ -1,0 +1,40 @@
+<script type="text/html" id="content">
+	<section>
+		<div class="ui-flex lottery_item_wrap" id="lotteryList">
+			<%
+				var lotteryIdMap = {'JCZQ': true,'JCLQ': true,'SSQ': true,'JSK3': true,'DLT': true,'GX11X5': true,'FC3D': true,'JZYP': true,'SJBCGJ': true,'XYDZP': true,'ZXKJ': true};
+				for (var i = 0; i < list.length; i++) {
+					var lotteryId = list[i].lotteryId;
+					var lotteryName = list[i].lotteryName;
+					var remark = list[i].remark;
+					var tag = list[i].tag;
+					var logoMap = {'SSQ':'icon_ssq','JCZQ':'icon_jczq','JCLQ':'icon_jclq','JSK3':'icon_jsk3','DLT':'icon_dlt','GX11X5':'icon_gx11x5','FC3D':'icon_fc3d','JZYP':'icon_jzyp','SJBCGJ':'icon_sjbcgj','XYDZP':'icon_xydzp','ZXKJ':'icon_recentAwards'};
+					var tagMap = {'加奖': 'icon_wrap_jj','今日开奖': 'icon_wrap_kj'};
+					var sale = list[i].sale;
+			%>
+				<% if (lotteryIdMap[lotteryId] && sale) { %>
+					<div class="flex_item" lotteryId='<%=lotteryId%>'>
+						<div class="ui-flex borderr lottery_item">
+							<img class="lotteryHall_icon" src="<%=IMG_PATH%><%=logoMap[lotteryId]%>.png" />
+							<div class="ml10">
+								<span class="size14 color3"><%=lotteryName%></span><br />
+								<span class="size11 color6 mt5"><%=remark%></span>
+							</div>
+							<span class="<%=tagMap[tag]%>"></span>
+						</div>
+					</div>
+				<% } %>	
+			<% } %>
+			<% if (list.length % 2 != 0 && Object.keys(lotteryIdMap).length % 2 != 0) { %>
+			<div class="flex_item">
+				<div class="ui-flex lottery_item">
+					<i class="lotteryHall_icon icon_jqqd"></i>
+					<div class="ml10">
+						<span class="size14 color3">敬请期待</span>
+					</div>
+				</div>
+			</div>
+			<% } %>
+		</div>
+	</section>
+</script>

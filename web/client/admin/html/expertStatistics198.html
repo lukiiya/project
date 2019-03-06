@@ -1,0 +1,202 @@
+<script type="text/html" id="content">
+<h1 class="title">专家统计</h1>
+<div class="list_box">
+	<div>
+		<form onsubmit="return false;">
+			<div class="search_box">
+				<label for="planPrizeRateRank">
+					盈利率排名：
+					<input type="checkbox" id="planPrizeRateRank">
+				</label>
+				<span class="select_box ml20">
+					<select id="userId">
+						<option value="0">全部专家</option>
+						<option value="105">198足球</option>
+						<option value="1335">Sam</option>
+					</select>
+					<span class="icon_sel"><span class="arrow_down"></span></span>
+				</span>
+			</div>
+			<div id="searchBox">
+				<div class="search_box mt20">
+					<div class="sel_box" style="margin-left:0" id="dateType">
+						<span>日期格式:</span>
+						<label for="day" class="ml10">
+							<span>日</span>
+							<input type="radio" name="dateType" id="day" value="1">
+						</label>
+						<label for="month" class="ml10">
+							<span>月</span>
+							<input type="radio" name="dateType" id="month" value="2">
+						</label>
+					</div>
+					<input class="btn ml20" type="reset" value="重置" id="reset"/>
+					<input class="btn ml20" type="submit" value="搜索" id="searchSubmit"/>
+				</div>
+				<div class="search_box mt20" id="search_day"  style="display: none">
+					<input class="input_field" placeholder="开始时间" readonly="1" id="beginTime"/>
+					<input class="input_field ml20" placeholder="结束时间" readonly="1" id="endTime"/>
+				</div>	
+				<div class="search_box mt20" id="search_month" style="display: none">
+					<div class="sel_box">
+						<span>开始年份:</span>
+						<span class="select_box">
+							<select id="beginYear">
+								<option value="">请选择</option>
+								<option value="2016">2016</option>
+								<option value="2017">2017</option>
+								<option value="2018">2018</option>
+								<option value="2019">2019</option>
+								<option value="2020">2020</option>
+								<option value="2021">2021</option>
+								<option value="2022">2022</option>
+								<option value="2023">2023</option>
+								<option value="2024">2024</option>
+								<option value="2025">2025</option>
+							</select>
+							<span class="icon_sel"><span class="arrow_down"></span></span>
+						</span>
+						<span>月份:</span>
+						<span class="select_box">
+							<select id="beginMonth">
+								<option value="">请选择</option>
+								<option value="01">1</option>
+								<option value="02">2</option>
+								<option value="03">3</option>
+								<option value="04">4</option>
+								<option value="05">5</option>
+								<option value="06">6</option>
+								<option value="07">7</option>
+								<option value="08">8</option>
+								<option value="09">9</option>
+								<option value="10">10</option>
+								<option value="11">11</option>
+								<option value="12">12</option>
+							</select>
+							<span class="icon_sel"><span class="arrow_down"></span></span>
+						</span>
+					</div>
+					--
+					<div class="sel_box">
+						<span>结束年份:</span>
+						<span class="select_box">
+							<select id="endYear">
+								<option value="">请选择</option>
+								<option value="2016">2016</option>
+								<option value="2017">2017</option>
+								<option value="2018">2018</option>
+								<option value="2019">2019</option>
+								<option value="2020">2020</option>
+								<option value="2021">2021</option>
+								<option value="2022">2022</option>
+								<option value="2023">2023</option>
+								<option value="2024">2024</option>
+								<option value="2025">2025</option>
+							</select>
+							<span class="icon_sel"><span class="arrow_down"></span></span>
+						</span>
+						<span>月份:</span>
+						<span class="select_box">
+							<select id="endMonth">
+								<option value="">请选择</option>
+								<option value="01">1</option>
+								<option value="02">2</option>
+								<option value="03">3</option>
+								<option value="04">4</option>
+								<option value="05">5</option>
+								<option value="06">6</option>
+								<option value="07">7</option>
+								<option value="08">8</option>
+								<option value="09">9</option>
+								<option value="10">10</option>
+								<option value="11">11</option>
+								<option value="12">12</option>
+							</select>
+							<span class="icon_sel"><span class="arrow_down"></span></span>
+						</span>
+					</div>
+				</div>
+			</div>
+		</form>
+	</div>
+	<div class="table_box mt20">
+		<table>
+			<thead>
+				<tr>
+					<th>昵称</th>
+					<th>姓名</th>
+					<th id="thDate">时间</th>
+					<th>场次</th>
+					<th>胜率</th>
+					<th>盈利率</th>
+					<th>购买数</th>
+					<th>购买金额</th>
+					<th>跟单数</th>
+					<th>跟单金额</th>
+				</tr>
+			</thead>
+			<tbody id="expertStatistics198"></tbody>
+		</table>
+		<div id="pageCodeBox"></div>
+	</div>
+</div>
+</script>
+
+<script type="text/html" id="expertStatistics198">
+<% 
+	totalPlanOrderAmount = totalPlanOrderAmount/100 || 0;
+	totalPlanWinRate = (+totalPlanWinRate || 0).toFixed(2) + '';//转变成字符串;
+	totalPlanWinRate = totalPlanWinRate.replace(/\.0+$/g, '');//删除末尾是.00；
+	totalPlanWinRate = totalPlanWinRate + '%';
+	totalPlanPrizeRate = (+totalPlanPrizeRate || 0).toFixed(2) + '';//转变成字符串;
+	totalPlanPrizeRate = totalPlanPrizeRate.replace(/\.0+$/g, '');//删除末尾是.00；
+	totalPlanPrizeRate = totalPlanPrizeRate + '%';
+	totalPlanTicketOrderAmount = totalPlanTicketOrderAmount/100 || 0;
+	planPrizeRateRank = !!planPrizeRateRank;
+	var length = list.length;
+	for (var i = 0; i < length; i++) {
+	var statisticsUserDate = list[i] || {};
+	var userId = statisticsUserDate.userId || 0;
+	var nickName = statisticsUserDate.nickName || '';
+	var realName = statisticsUserDate.realName || '';
+	var date = statisticsUserDate.date || '';
+	var planCount = statisticsUserDate.planCount || 0;
+	var planOrderCount = statisticsUserDate.planOrderCount || 0;
+	var planOrderAmount = statisticsUserDate.planOrderAmount/100 || 0;
+	var planWinRate = (+statisticsUserDate.planWinRate || 0).toFixed(2) + '';//转变成字符串;
+	planWinRate = planWinRate.replace(/\.0+$/g, '');//删除末尾是.00；
+	planWinRate = planWinRate + '%';
+	var planPrizeRate = (+statisticsUserDate.planPrizeRate || 0).toFixed(2) + '';//转变成字符串;
+	planPrizeRate = planPrizeRate.replace(/\.0+$/g, '');//删除末尾是.00；
+	planPrizeRate = planPrizeRate + '%';
+	var planTicketOrderCount = statisticsUserDate.planTicketOrderCount || 0;
+	var planTicketOrderAmount = statisticsUserDate.planTicketOrderAmount/100 || 0;
+%>
+	<tr>
+		<td><%=nickName%></td>
+		<td><%=realName%></td>
+		<td style="<%=planPrizeRateRank?'display:none':''%>"><%=date%></td>
+		<td><%=planCount%></td>
+		<td><%=planWinRate%></td>
+		<td><%=planPrizeRate%></td>
+		<td><%=planOrderCount%></td>
+		<td><%=planOrderAmount%></td>
+		<td><%=planTicketOrderCount%></td>
+		<td><%=planTicketOrderAmount%></td>
+	</tr>
+<% } %>
+<% if(length > 0) { %>
+		<tr>
+			<td>总计</td>
+			<td></td>
+			<td style="<%=planPrizeRateRank?'display:none':''%>"></td>
+			<td><%=totalPlanCount%></td>
+			<td><%=totalPlanWinRate%></td>
+			<td><%=totalPlanPrizeRate%></td>
+			<td><%=totalPlanOrderCount%></td>
+			<td><%=totalPlanOrderAmount%></td>
+			<td><%=totalPlanTicketOrderCount%></td>
+			<td><%=totalPlanTicketOrderAmount%></td>
+		</tr>
+<% } %>
+</script>

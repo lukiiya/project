@@ -1,0 +1,44 @@
+<script type="text/html" id="content">
+	<div class="logo pt40">
+			<img class="img-responsive" src="<%=IMG_PATH%>login_logo.png"/>
+		</div>
+		<form class="pt40" action="">
+			<div class="input_wrap pl50 pr50">
+				<div class="phone_num clearfix pb5">
+					<i class="icon_phone fl img16"></i>
+					<input class="fl number" type="number" placeholder="手机号" maxlength="11" id="mobile"/>
+					<a class="get_code fr" id="smsCodeBtn"><span class="ver_line"></span>获取验证码</a>
+				</div>
+				<div class="venidate_wrap mt35 pb5">
+					<i class="icon_code img16"></i>
+					<input class="venidate_code" type="number" placeholder="输入验证码" maxlength="6" id="smsCode"/>
+				</div>
+			</div>
+		</form>
+		<div class="pl50 pr50 pt35">
+			<div class="login_btn" id="loginSubmit">
+				登录
+			</div>
+			<div class="wechat_btn mt30" style="display:none" id="wxLoginSubmit">
+				<i class="icon_wechat"></i>
+				微信登录
+			</div>
+		</div>
+	</div>
+</script>
+
+<script type="text/html" id="confirm">
+	<div id="confirmBox">
+		<div class="mask"></div>
+		<div class="pop pop2" style="width: 80%;">
+		    <div class="confirmation">
+		    	<input type="text" name="validate" placeholder="输入图中的验证码" class="validate_input" id="validate">
+		    	<img class="validate_img" src="" id="validateImage" />
+		    </div>
+		    <div class="ui-flex bordertop">
+		        <span class="ui-flex_item textBar borderright" id="cancelBtn">取消</span>
+		        <span class="ui-flex_item textBar active" id="sureBtn">确定</span>
+		    </div>
+		</div>
+	</div>
+</script>

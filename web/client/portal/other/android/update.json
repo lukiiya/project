@@ -1,0 +1,12 @@
+﻿{
+    "version": "3.6.0",
+    "name": "com.shaimii_3.6.0.apk",
+    "size": 7659753,
+    "source": 0,
+    "url": "http://caifu-1251177394.cosgz.myqcloud.com/dist/shaimi/other/android/com.shaimii_3.6.0.apk",
+    "description": "1、新增跟单玩法，人人可共享投注方案，可分享跟单收益。\n2、NBA季后赛激战中，单关、2串1加奖无上限。\n3、天天免费领彩金红包，可以赚钱的彩票APP。",
+	"launchAd": {
+		"src": "http://caifu-1251177394.cosgz.myqcloud.com/dist/shaimi/other/android/launchAd.webp?3.6.0.19",
+		"href": ""
+	}
+}

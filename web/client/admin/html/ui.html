@@ -1,0 +1,56 @@
+<!-- 遮罩层 -->
+<script type="text/html" id="mask">
+	<div class="mask" id="<%=id%>" style="z-index:<%=zIndex%>;opacity:<%=opacity%>;filter:alpha(opacity=<%=filter%>)"></div>
+</script>
+
+<!-- 加载中。。。。 -->
+<script type="text/html" id="loading">
+<div id="loadingBox">
+	<div class="mask"></div>
+	<div class="loading ">
+        <div class="loading_overlay"></div>
+        <div class="loading_inner">
+            <p class="loading_spinner"></p>
+            <p class="loading_text">努力加载中...</p>
+        </div>
+    </div>
+</div>
+</script>
+
+<!-- 提示框。。。 -->
+<script type="text/html" id="notice">
+	<div class="pop" id="noticeBox" style="z-index:99"><%=text%></div>
+</script>
+
+<script type="text/html" id="alert">
+	<div id="alertBox">
+		<div class="mask"></div>
+		<div class="pop pop1">
+			<span><%=#text%></span>
+			<div class="btn" id="alertBtn">确定</div>
+		</div>
+	</div>
+</script>
+
+<script type="text/html" id="window">
+	<div id="windowBox">
+		<div class="mask"></div>
+		<div class="pop3">
+			<%=#html%>
+			<a class="close_btn" id="closeWindow">×</a>
+		</div>
+	</div>
+</script>
+
+<script type="text/html" id="confirm">
+	<div id="confirmBox">
+		<div class="mask"></div>
+		<div class="pop pop2">
+		    <span class="alerts"><%=#text%></span>
+		    <div class="ui-flex bordertop">
+		        <span class="ui-flex_item textBar borderright" id="cancelBtn">取消</span>
+		        <span class="ui-flex_item textBar active" id="sureBtn">确定</span>
+		    </div>
+		</div>
+	</div>
+</script>

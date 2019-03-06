@@ -1,0 +1,157 @@
+<script type="text/html" id="content">
+<p class="title clearfix">
+	<!--<span class="fl"><span id="orderCount">0</span>篇</span>-->
+	<!--<span class="fr">支出<span class="num" id="orderAmount">0</span></span>-->
+</p>
+<div class="ui-flex tab_nav" id="tabList">
+	<div class="ui-flex_item" tab="0">竞技彩</div>
+	<div class="ui-flex_item" tab="1">数字彩</div>
+</div>
+<ul class="infoBox mt10" id="orderList"></ul>
+</script>
+
+<script type="text/html" id="orderList">
+<% 
+var length = list.length;
+if (length > 0) {
+	for (var i = 0; i < length; i++) {
+		var order = list[i] || {};
+		var planNo = order.planNo;
+		var planMatchType = order.planMatchType || 1;
+		var planPrizeStatus = order.planPrizeStatus || 0;
+		var amount = (order.amount || 0)/100;
+		var isSale = !!order.isSale;
+		var matchList = order.matchList || {};
+		var matchNum = matchList.length;
+		var plan = order.plan || {};
+		var title = plan.title;
+		var saleTicketAmount = plan.saleTicketAmount/100 || 0;
+		var matchBeginTime = plan.matchBeginTime && plan.matchBeginTime.replace(/\d{4}-(\d{2}-\d{2} \d{2}:\d{2}):\d{2}/, "$1") || "";
+%>
+	
+	<li class="item clearfix planItem" planNo="<%=planNo%>" amount="<%=amount%>" access="true">
+		<div class="recommend_cont">
+			<div class="pt10">
+				<div class="recommend_item">
+					<p class="recommend_title">
+						<% if (title) { %>
+							<% if (matchNum >1) { %>
+								<span class="">【串关】</span>
+							<% } else { %>
+								<span class="">【单关】</span>
+							<% } %>
+							<% if (hasPic) {%>
+								<% if (isGirl) { %>
+									<span class="">【美照】</span>
+								<% } else if (rich){ %>
+									<span class="">【豪单】</span>
+								<% } else { %>
+									<span class="">【实单】</span>
+								<% } %>
+							<% } %>
+							<%=title%>
+						<% } else { %>
+							<% 
+								for (var j = 0; j < matchNum; j++) { 
+									var match = matchList[j] || {};
+									var home = match.home;
+									var away = match.away;
+									var number = match.number;
+							%>
+								<span><%=number%><%=home%> vs <%=away%><span>。
+							<% } %>
+						<% } %>
+					</p>
+					<% if (planPrizeStatus == 1) { %>
+						<img class="recommend_win_bg" src="<%=IMG_PATH%>recommend_win_bg.png">
+					<% } %>
+					<div class="clearfix mt25">
+						<span class="recommend_money fl">
+							<span class="color_red">查看</span>
+						</span>
+						<span class="recommend_time fr">
+							截止：<%=matchBeginTime%>
+						</span>
+					</div>
+				</div>
+			</div>
+		</div>
+		<% if (isSale) { %>
+			<div class="documentary_bet ui-flex">
+				<div class="documentary_num">
+					用户跟投：
+					<span class="color_red size13">
+						<%=saleTicketAmount%>元
+					</span>
+				</div>
+				<a class="bet_btn userTicket">立即跟单</a>
+			</div>
+		<% } %>
+	</li>
+<% 
+	}
+} else { %>
+	<li id="noMatch" style="display: none;">
+		<div class="none">
+			<p>空空如也</p>
+			<span class="btn ellipsis" href="#home">看看专家的晒米</span>
+		</div>
+	</li>
+<% } %>
+</script>
+
+<script type="text/html" id="digitalOrderList">
+<% 
+var length = list.length;
+if (length > 0) {
+	for (var i = 0; i < length; i++) {
+		var order = list[i] || {};
+		var planNo = order.planNo;
+		var planMatchType = order.planMatchType || 0;
+		var planPrizeStatus = order.planPrizeStatus || 0;
+		var amount = (order.amount || 0)/100;
+		var betContent = order.betContentList[0] || {};
+		var betContentResult = betContent.betContentResult || {};
+		var name = betContentResult.name;
+		var lotteryIssue = order.lotteryIssue || {};
+		var drawTime = lotteryIssue.drawTime && lotteryIssue.drawTime.replace(/\d{4}-(\d{2}-\d{2} \d{2}:\d{2}):\d{2}/, "$1") || "";
+		var issue = lotteryIssue.issue;
+%>
+	<li class="item clearfix planItem" planNo="<%=planNo%>" amount="<%=amount%>" access="true">
+		<div class="detailBox">
+			<div class="detail clearfix">
+				<img class="img40 fl mr10" src="<%=IMG_PATH%>icon_fc3d.png">
+				<div class="fl">
+					<div class="size13 color6 mb5">
+						<%=issue%>期
+					</div>
+					<div class="size14">
+						<%=name%>推荐
+					</div>
+				</div>
+				<div class="fr">
+					<div class="color9 size12">
+						开奖：<%=drawTime%>
+					</div>
+				</div>
+			</div>
+			<div class="price">
+				<% if (planPrizeStatus == 1) { %>
+					<img class="" src="<%=IMG_PATH%>user_win_prize.png" style="width: 45px;position: relative;z-index: 5;"/>
+				<% } else { %>
+					<span>查看</span>
+				<% } %>
+			</div>
+		</div>
+	</li>
+<% 
+	}
+} else { %>
+	<li id="noMatch" style="display: none;">
+		<div class="none">
+			<p>空空如也</p>
+			<span class="btn ellipsis" href="#home">看看专家的晒米</span>
+		</div>
+	</li>
+<% } %>
+</script>

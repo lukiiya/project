@@ -1,0 +1,127 @@
+<script type="text/html" id="content">
+<h1 class="title">banner列表</h1>
+<div class="list_box">
+	<div class="search_box">
+		<div>
+			<form onsubmit="return false;">
+				<span class="select_box">
+					<select id="type">
+						<!--<option>类型</option>-->
+						<option value="0">h5</option>
+						<option value="1">android</option>
+						<option value="2">ios</option>
+					</select>
+					<span class="icon_sel"><span class="arrow_down"></span></span>
+				</span>
+				<span class="select_box ml20">
+					<select id="publish">
+						<option>全部</option>
+						<option value="1">上架</option>
+						<option value="0">下架</option>
+					</select>
+					<span class="icon_sel"><span class="arrow_down"></span></span>
+				</span>
+				<input class="btn ml20" type="reset" value="重置" />
+				<input class="btn ml20" type="submit" value="搜索" id="searchSubmit"/>
+				<input class="btn ml30 mr30" type="button" value="添加banner" id="createBanner">
+			</form>
+		</div>
+	</div>
+	<div class="table_box mt20">
+		<table>
+			<thead>
+				<thead>
+					<tr>
+						<th width="80">类型</th>
+						<th width="80">上下架</th>
+						<th width="220">图片</th>
+						<th width="640">链接地址</th>
+						<th width="200">操作</th>
+					</tr>
+				</thead>
+			</thead>
+			<tbody id="bannerList"></tbody>							
+		</table>
+		<div id="pageCodeBox"></div>
+	</div>
+</div>
+</script>
+
+<script type="text/html" id="bannerList">
+<% for (var i = 0, length = list.length; i < length; i++) {
+	var banner = list[i] || {};
+	var bannerId = banner.bannerId;
+	var link = banner.link;
+	var resourceList = banner.resourceList[0] || '';
+	var publish = banner.publish;
+	var publishMap = {'0': '下架', '1': '上架'};
+	var type = banner.type;
+	var typeMap = {'0': 'h5', '1': 'android', '2': 'ios'};
+	var createTime = banner.createTime;
+%>
+	<tr bannerId="<%=bannerId%>">
+		<td><%=typeMap[type]%></td>
+		<td><%=publishMap[publish]%></td>
+		<td>
+			<img class="" src="<%=resourceList%>" alt="" style="width: 100%;vertical-align: middle;"/>
+		</td>
+		<td class="banner_url_wrap"><a class="examine" href="<%=link%>" target="_blank"><%=link%></a></td>
+		<td>
+			<a class="examine mr5 editBanner" bannerId="<%=bannerId%>">修改</a>
+			<a class="examine mr5 modifySort modifyUp" bannerId="<%=bannerId%>" type="1">上移</a>
+			<a class="examine mr5 modifySort modifyDown" bannerId="<%=bannerId%>" type="2">下移</a>
+			<%if (publish == 0) { %>
+			<a class="examine mr5 publishBanner" bannerId="<%=bannerId%>" publish="1">上架</a>
+			<% } else if (publish == 1){ %>
+			<a class="examine mr5 publishBanner" bannerId="<%=bannerId%>" publish="0">下架</a>
+			<% } %>
+			<a class="examine mr5 deleteBanner" bannerId="<%=bannerId%>">删除</a>
+		</td>
+	</tr>
+<% } %>
+</script>
+
+<script type="text/html" id="editBanner">
+	<div id="editBannerBox">
+		<div class="mask"></div>
+		<div class="compile_img_box">
+			<div class="compile_head">
+				<span class="compile_head_title"><%=title%></span>
+				<a class="close_compile_btn" id="closeEditBanner">
+					<span></span>
+				</a>
+			</div>
+			<div class="compile_cont">
+				<div class="pt15 pb15">
+					<div class="file_select_box" id="fileSelectBox">
+						点击选择图片
+						<input id="fileSelect" name="file" type="file" />
+					</div>
+				</div>
+				<input type="hidden" id="editBannerId" value="<%=bannerId%>" />
+				<div id="previewImg"></div>
+				<ul>
+					<li>
+						<span class="input_tit">链接地址</span><input id="editLink" type="text" />
+					</li>
+					<li>
+						<span class="input_tit">类&emsp;&emsp;型</span>
+						<span class="select_box">
+							<select id="editType">
+								<option>类型</option>
+								<option value="0">h5</option>
+								<option value="1">android</option>
+								<option value="2">ios</option>
+							</select>
+							<span class="icon_sel"><span class="arrow_down"></span>
+						</span>
+					</li>
+				</ul>
+				<div class="compile_btn_wrap">
+					<span class="ensure_btn" id="sureEditBanner">确定</span>
+					<span class="cancle_btn" id="cancelEditBanner">取消</span>
+				</div>
+			</div>
+		</div>
+	</div>
+</script>

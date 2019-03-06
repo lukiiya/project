@@ -1,0 +1,73 @@
+<script type="text/html" id="content">
+<h1 class="title">后台菜单</h1>
+<div class="list_box">
+	<div class="search_box">
+		<div>
+			<form onsubmit="return false;">
+				<input class="input_field ml20" type="text" placeholder="菜单名" id="menuName">
+				<input class="input_field ml20" type="text" placeholder="父菜单名" id="parentMenuName">
+				<input class="input_field ml20" type="text" placeholder="路径" id="path">
+				<input class="btn ml20" type="reset" value="重置" />
+				<input class="btn ml20" type="submit" value="搜索" id="searchSubmit"/>
+				<input class="btn ml30 mr30" type="button" value="新增菜单" id="createAdminUserMenu"/>
+			</form>
+		</div>
+	</div>
+	<div class="table_box mt20">
+		<table>
+			<thead>
+				<tr>
+					<th>菜单名</th>
+					<th>父菜单名</th>
+					<th>路径</th>
+					<th>描述</th>
+					<th>最后修改时间</th>
+					<th width="260">操作</th>
+				</tr>
+			</thead>
+			<tbody id="adminUserMenuList"></tbody>							
+		</table>
+		<div id="pageCodeBox"></div>
+	</div>
+</div>
+</script>
+
+<script type="text/html" id="adminUserMenuList">
+<% for (var i = 0, length = list.length; i < length; i++) {
+	var adminUserMenu = list[i] || {};
+	var menuId = adminUserMenu.menuId;
+	var menuName = adminUserMenu.menuName;
+	var parentMenuName = adminUserMenu.parentMenuName;
+	var path = adminUserMenu.path;
+	var remark = adminUserMenu.remark || '';
+	var lastTime = adminUserMenu.lastTime;
+%>
+	<tr>
+		<td title="<%=menuName%>"><%=menuName%></td>
+		<td title="<%=parentMenuName%>"><%=parentMenuName%></td>
+		<td><%=path%></td>
+		<td><%=remark%></td>
+		<td><%=lastTime%></td>
+		<td>
+			<a class="examine mr5 editAdminUserMenu" menuId="<%=menuId%>">修改</a>
+			<a class="examine deleteAdminUserMenu" menuId="<%=menuId%>">删除</a>
+		</td>
+	</tr>
+<% } %>
+</script>
+
+<script type="text/html" id="editAdminUserMenu">
+	<h1><%=title%></h1>
+	<input type="hidden" id="editMenuId" value="<%=menuId%>"/>
+	<div class="mt20">　菜单名：<input class="input_field ml5" placeholder="请输入菜单名" id="editMenuName"/></div>
+	<div class="mt20">父菜单名：<input class="input_field ml5" placeholder="请输入父菜单名" id="editParentMenuName"/></div>
+	<div class="mt20">　　路径：<input class="input_field ml5" placeholder="请输入路径" id="editPath"/></div>
+	<div class="mt20">
+		<div class="mb10">描述：</div>
+		<textarea style="width:100%;height:55px" id="editRemark"></textarea>
+	</div>
+	<div class="mt20" align="center">
+ 		<input class="btn ml20" type="reset" value="取消" id="cancelEditAdminUserMenu"/>
+		<input class="btn ml20" type="submit" value="确定" id="sureEditAdminUserMenu"/>
+	</div>
+</script>

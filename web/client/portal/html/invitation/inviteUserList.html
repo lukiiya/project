@@ -1,0 +1,32 @@
+<script type="text/html" id="content">
+	<div class="invite_num">
+		<table align="center">
+			<thead>
+				<tr>
+					<th width="50%">用户名</th>
+					<th width="50%">注册时间</th>
+				</tr>
+			</thead>
+			<tbody align="center" id="userList">
+				
+			</tbody>
+		</table>
+	</div>
+</script>
+
+<script type="text/html" id="userList">
+	<% 
+	var length = list.length;
+	if (length > 0) {
+		for (var i = 0; i < length; i++) {
+			var item = list[i] || {};
+			var nickName = item.nickName;
+			var createTime = item.createTime && item.createTime.replace(/\d{4}-(\d{2}-\d{2} \d{2}:\d{2}):\d{2}/, "$1") || "";
+	%>
+	<tr>
+		<td><%=nickName%></td>
+		<td><%=createTime%></td>
+	</tr>
+	<% }
+		} %>
+</script>

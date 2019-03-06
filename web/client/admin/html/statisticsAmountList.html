@@ -1,0 +1,59 @@
+<script type="text/html" id="content">
+<h1 class="title">价格统计</h1>
+<div class="list_box">
+	<div class="search_box">
+		<div>
+			<form onsubmit="return false;">
+				<input class="btn" type="submit" value="刷新" id="searchSubmit" />
+			</form>
+		</div>
+	</div>
+	<div class="table_box mt20">
+		<table>
+			<thead>
+				<tr>
+					<th>价格</th>
+					<th>场次(占比)</th>
+					<th>购买数(占比)</th>
+					<th>购买金额(占比)</th>
+				</tr>
+			</thead>
+			<tbody id="statisticsAmountList"></tbody>
+		</table>
+		<div id="pageCodeBox"></div>
+	</div>
+</div>
+</script>
+
+<script type="text/html" id="statisticsAmountList">
+<% 
+	var length = list.length;
+	for (var i = 0; i < length; i++) {
+	var statisticsAmount = list[i] || {};
+	var amount = (statisticsAmount.amount || 0)/100;
+	var planCount = statisticsAmount.planCount;
+	var planOrderCount = statisticsAmount.planOrderCount || 0;
+	var planOrderAmount = (statisticsAmount.planOrderAmount || 0)/100 ;
+	var planCountPercent = (planCount*100/totalPlanCount).toFixed(2) + '';//转变成字符串
+	planCountPercent = planCountPercent.replace(/\.0+$/g, '') + '%';//删除末尾是.00
+	var planOrderCountPercent = (planOrderCount*100/totalPlanOrderCount).toFixed(2) + '';//转变成字符串
+	planOrderCountPercent = planOrderCountPercent.replace(/\.0+$/g, '') + '%';//删除末尾是.00
+	var planOrderAmountPercent = (planOrderAmount*100/totalPlanOrderAmount).toFixed(2) + '';//转变成字符串
+	planOrderAmountPercent = planOrderAmountPercent.replace(/\.0+$/g, '') + '%';//删除末尾是.00
+%>
+	<tr>
+		<td><%=amount%></td>
+		<td><%=planCount%>(<%=planCountPercent%>)</td>
+		<td><%=planOrderCount%>(<%=planOrderCountPercent%>)</td>
+		<td><%=planOrderAmount%>(<%=planOrderAmountPercent%>)</td>
+	</tr>
+<% } %>
+<% if(length > 0) { %>
+	<tr>
+		<td>总计</td>
+		<td><%=totalPlanCount%></td>
+		<td><%=totalPlanOrderCount%></td>
+		<td><%=totalPlanOrderAmount%></td>
+	</tr>
+<% } %>
+</script>

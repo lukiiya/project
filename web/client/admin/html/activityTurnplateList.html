@@ -1,0 +1,70 @@
+<script type="text/html" id="content">
+<h1 class="title">幸运大转盘</h1>
+<div class="list_box">
+	<div class="search_box">
+		<div>
+			<form onsubmit="return false;">
+				<input class="input_field" placeholder="用户名" id="userName">
+				<input class="input_field ml20" placeholder="奖品名称" id="prizeName">
+				<input class="input_field ml20" placeholder="订单号" id="orderId">
+				<input class="btn ml20" type="reset" value="重置">
+				<input class="btn ml20" type="submit" value="搜索" id="searchSubmit">
+			</form>
+		</div>
+	</div>
+	<div class="table_box mt20">
+		<table>
+			<thead>
+				<tr>
+					<th width="120">昵称</th>
+					<th width="80">姓名</th>
+					<th width="60">订单号</th>
+					<th width="120">抽奖码</th>
+					<th width="70">中奖结果</th>
+					<th width="60">中奖金额</th>
+					<th width="80">时间</th>
+				</tr>
+			</thead>
+			<tbody id="activityTurnplateList"></tbody>
+		</table>
+		<div id="pageCodeBox"></div>
+	</div>
+</div>
+</script>
+
+<script type="text/html" id="activityTurnplateList">
+<% 
+var length = list.length;
+for ( var i = 0; i < length; i++) {
+	var turnplate = list[i] || {};
+	var turnplateId = turnplate.turnplateId;
+	var nickName = turnplate.nickName;
+	var realName = turnplate.realName;
+	var orderId = turnplate.orderId;
+	var code = turnplate.code;
+	var prizeName = turnplate.prizeName;
+	var presentAmount = turnplate.presentAmount/100;
+	var createTime = turnplate.createTime;
+%>
+	<tr>
+		<td><%=nickName%></td>
+		<td><%=realName%></td>
+		<td><%=orderId%></td>
+		<td><%=code%></td>
+		<td><%=prizeName%></td>
+		<td><%=presentAmount%></td>
+		<td><%=createTime%></td>
+	</tr>
+<% } %>
+<% if (length > 0) { %>
+<tr>
+	<td>总计</td>
+	<td></td>
+	<td></td>
+	<td></td>
+	<td></td>
+	<td><%=totalAmount/100%></td>
+	<td></td>
+</tr>
+<% } %>
+</script>

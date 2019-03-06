@@ -1,0 +1,68 @@
+<script type="text/html" id="content">
+	<div class="mt15 mb10 pl10">
+		选择要充值的<%=financeType == 1? '彩金' : '米粒'%>数量：
+		<% if (financeType == 1) { %>
+			<span class="send_handsel">首充20送128</span>
+		<% } %>	
+	</div>
+	<div class="recharge_box">
+		<ul class="ui-flex" id="chargeList">
+			<li class="recharge_item active">
+				<div class="color_g size18 chargeNum" id="money100">
+					100
+				</div>
+				<!--<div class="size12 <%=financeType == 1? 'hide': ''%>">
+					(送<span class="color_red size12"><%=presentAmountMap['100']?presentAmountMap['100']:8%></span>粒米)
+				</div>-->
+			</li>
+			<li class="recharge_item">
+				<div class="color_g size18 chargeNum" id="money500">
+					500
+				</div>
+				<!--<div class="size12 <%=financeType == 1? 'hide': ''%>">
+					(送<span class="color_red size12"><%=presentAmountMap['500']?presentAmountMap['500']:50%></span>粒米)
+				</div>-->
+			</li>
+			<li class="recharge_item">
+				<div class="color_g size18 chargeNum" id="money1000">
+					1000
+				</div>
+				<!--<div class="size12 <%=financeType == 1? 'hide': ''%>">
+					(送<span class="color_red size12"><%=presentAmountMap['1000']?presentAmountMap['1000']:120%></span>粒米)
+				</div>-->
+			</li>
+			<li class="recharge_item">
+				<div class="color_g size18 chargeNum" id="money10000">
+					10000
+				</div>
+				<!--<div class="size12 <%=financeType == 1? 'hide': ''%>">
+					(送<span class="color_red size12"><%=presentAmountMap['10000']?presentAmountMap['10000']:1500%></span>粒米)
+				</div>-->
+			</li>
+			<li class="input_wrap recharge_item">
+				<input class="choosemoney" value="" type="number" placeholder="其他数量" id="amount" style="<%=financeType == 1? 'padding:0': ''%>">
+			</li>
+			<li class="recharge_item" style="visibility: hidden;"></li><!--占位-->
+		</ul>
+	</div>
+<!-- 第七版取消显示 -->
+	<!-- <div class="tishi" style="color:#000;font-size: 12px;">
+		支付方式：
+	</div>
+	<div class="weifu">
+		<div class="img"></div>
+		<span>微信支付</span>
+	</div> -->
+	<div class="btn btn_yes" id="chongSubmit">确认</div>
+	<div class="attention">
+		<dl>
+			<dt>注：</dt>
+			<dd>1、1<%=financeType == 1 ? '彩金': '米粒'%>=1元</dd>
+			<% if (financeType == 0) { %>
+				<dd>2、米粒可用于<span class="color_red">购买专家推荐</span>，推荐收益、分享收益可提现</dd>
+			<% } else if (financeType == 1) { %>
+				<dd>2、彩金可用于<span class="color_red">购买彩票、跟单投注</span>，中奖金额可提现</dd>
+			<% } %>
+		</dl>
+	</div>
+</script>

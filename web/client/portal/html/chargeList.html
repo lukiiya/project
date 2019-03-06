@@ -1,0 +1,36 @@
+<script type="text/html" id="content">
+	<div class="charge_top">
+		<span>时间</span>
+		<span>获得数量</span>
+		<span>来源</span>
+		<span>状态</span>
+	</div>
+	<ul class="charge_con" id="chargeList"></ul>
+</script>
+
+<script type="text/html" id="chargeList">
+<% for (var i = 0, length = list.length; i < length; i++) {
+	var charge = list[i] || {};
+	var financeType = charge.financeType;
+	var financeTypeMap = {'0': '米粒', '1': '彩金'}; 
+	var type = charge.type || 0;
+	var typeMap = {'1': '现金充值', 2: '平台赠送'};
+	var amount = charge.amount/100 || 0;
+	var remark = charge.remark || '';
+	var createTime = charge.createTime || "";
+	var matchTime = createTime.match(/\d{4}-(\d{2}-\d{2}) (\d{2}:\d{2}):\d{2}/);
+	var day = '';
+	var time = '';
+	if (matchTime) {
+		day = matchTime[1];
+		time = matchTime[2];
+	}
+%>
+	<li class="charge_list">
+		<span><%=day%><br><%=time%></span>
+		<span><%=amount%><%=financeTypeMap[financeType]%></span>
+		<span><%=remark?remark:typeMap[type]%></span>
+		<span>成功</span>	
+	</li>
+<% } %>
+</script>

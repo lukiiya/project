@@ -1,0 +1,211 @@
+<script type="text/html" id="content">
+	<div class="banner_son">
+		<a href="javascript:;"><img src="<%=IMG_PATH%>abanner1.png" /></a>
+	</div>
+	<div class="content_tab clearfix" id="recommendTab">
+		<span matchType="1">竞彩足球</span>
+		<span matchType="2">竞彩篮球</span>
+		<span matchType="3">福彩3D</span>
+	</div>
+	<ul class="infoBox" id="planList"></ul>
+</script>
+
+
+<script type="text/html" id="planList">
+<% for (var i = 0, length = list.length; i < length; i++) {
+	var plan = list[i] || {};
+	var planNo = plan.planNo;
+	var amount = plan.amount/100 || 0;
+	var hasPic = plan.hasPic || false;
+	var isGirl = plan.isGirl || false;
+	var isLinChang = plan.isLinChang || false;
+	var access = (plan.access || false)+"";
+	var matchList = plan.matchList || [];
+	var match = (matchList.length>0 && matchList[0]) || {};
+	var matchNum = matchList.length;
+	var user = plan.user || {};
+	var userNo = user.userNo;
+	var realName = user.realName;
+	var nickName = user.nickName;
+	var profileImg = user.profileImg;
+	var personalImg = user.personalImg;
+	var userImg = personalImg || profileImg || (IMG_PATH + 'user_profile.png');
+	var userName = realName || nickName;
+	var userTag = user.tag;
+	var league = match.league;
+	var home = match.home;
+	var away= match.away;
+	var beginTime = match.beginTime && match.beginTime.replace(/\d{4}-(\d{2}-\d{2} \d{2}:\d{2}):\d{2}/, "$1") || "";
+	var continueWin = user.continueWin || 0;
+	var winCount = user.winCount || 0;
+	var profitRate = user.profitRate || 0;
+	var winRate = user.winRate || 0;
+	profitRate = (profitRate+'').replace(/\.\d+/g, '');
+	winRate = (winRate+'').replace(/\.\d+/g, '');
+	var rich = plan.rich || false;
+	var matchType = plan.matchType || 1;
+	var isSale = !!plan.isSale; //false:不能跟单投注 true:可以跟单
+	var maxBettypeOdds = plan.maxBettypeOdds;
+	var recommendCount = plan.recommendCount;
+	var title = plan.title;
+	var saleTicketAmount = plan.saleTicketAmount/100 || 0;
+	var matchBeginTime = plan.matchBeginTime && plan.matchBeginTime.replace(/\d{4}-(\d{2}-\d{2} \d{2}:\d{2}):\d{2}/, "$1") || "";
+%>
+	<li class="item clearfix planItem" planNo="<%=planNo%>" amount="<%=amount%>" access="<%=access%>">
+		<div class="recommend_cont">
+			<div class="msg color9 clearfix">
+				<img class="icon_span img29 userProfile" src="<%=userImg%>" userNo="<%=userNo%>" />
+				<span class="personal">
+					<span class="color3"><%=userName%></span>
+				</span>
+				<% if (continueWin > 1) { %>
+					<div class="fr combat_gains">战绩 <span class="color_red"><%=continueWin%>连红</span></div>
+				<% } else if(winCount > 0) { %>
+					<div class="fr combat_gains">战绩 <span class="color_red">10中<%=winCount%></span></div>
+				<% } else if (profitRate > 0) { %>
+					<div class="fr combat_gains">战绩 <span class="color_red">盈<%=profitRate%>%</span></div>
+				<% } else if (winRate > 0) { %>
+					<div class="fr combat_gains">战绩 <span class="color_red">胜<%=winRate%>%</span></div>
+				<% } else { %>
+					
+				<% }%>
+			</div>
+			<div class="recommend_item">
+				<p class="recommend_title">
+					<% if (hasPic) {%>
+						<span class="">【实单】</span>
+					<% } %>
+					<% if (title) { %>
+						<%=title%>
+					<% } else { %>
+						<% 
+							for (var j = 0; j < matchNum; j++) { 
+								var match = matchList[j] || {};
+								var home = match.home;
+								var away = match.away;
+								var number = match.number;
+						%>
+							<span><%=number%><%=home%> vs <%=away%>　<span>
+						<% } %>
+					<% } %>
+				</p>
+				<div class="clearfix mt25">
+					<span class="recommend_money fl">
+						<% if (/^true$/i.test(access)) { %>
+							<% if (amount == 0) { %>
+								<span class="color_red">免费</span>
+							<% } else { %>
+								<span class="color_red">查看</span>
+							<% } %>
+						<% } else { %>
+							<span class="color_red"><%=amount%>粒米</span> 查看
+						<% } %>
+					</span>
+					<span class="recommend_time fr">
+						截止：<%=matchBeginTime%>
+					</span>
+				</div>
+			</div>
+		</div>
+		<div class="documentary_bet ui-flex">
+			<div class="documentary_num">
+				用户跟投：
+				<span class="color_red size13">
+					<%=saleTicketAmount%>元
+				</span>
+			</div>
+			<% if (isSale) { %>
+				<a class="bet_btn userTicket" planNo="<%=planNo%>" maxBettypeOdds="<%=maxBettypeOdds%>" recommendCount="<%=recommendCount%>" matchNum="<%=matchNum%>" planAmount="<%=amount%>">立即跟单</a>
+			<% } %>
+		</div>
+	</li>
+<% } %>
+</script>
+
+<script type="text/html" id="digitalPlanList">
+<% for (var i = 0, length = list.length; i < length; i++) {
+	var plan = list[i] || {};
+	var planNo = plan.planNo;
+	var amount = plan.amount/100 || 0;
+	var hasPic = plan.hasPic || false;
+	var access = (plan.access || false)+"";
+	var user = plan.user || {};
+	var userNo = user.userNo;
+	var realName = user.realName;
+	var nickName = user.nickName;
+	var profileImg = user.profileImg;
+	var personalImg = user.personalImg;
+	var userImg = personalImg || profileImg || (IMG_PATH + 'user_profile.png');
+	var userName = realName || nickName;
+	var userTag = user.tag;
+	var continueWin = user.continueWin || 0;
+	var winCount = user.winCount || 0;
+	var profitRate = user.profitRate || 0;
+	var winRate = user.winRate || 0;
+	profitRate = (profitRate+'').replace(/\.\d+/g, '');
+	winRate = (winRate+'').replace(/\.\d+/g, '');
+	var rich = plan.rich || false;
+	var matchType = plan.matchType || 1;
+	var isSale = !!plan.isSale; //false:不能跟单投注 true:可以跟单
+	var recommendCount = plan.recommendCount;
+	var betContent = plan.betContentList[0] || {};
+	var betContentResult = betContent.betContentResult || {};
+	var name = betContentResult.name;
+	var lotteryIssue = plan.lotteryIssue || {};
+	var drawTime = lotteryIssue.drawTime && lotteryIssue.drawTime.replace(/\d{4}-(\d{2}-\d{2} \d{2}:\d{2}):\d{2}/, "$1") || "";
+	var issue = lotteryIssue.issue;
+%>
+	<li class="item clearfix planItem" planNo="<%=planNo%>" amount="<%=amount%>" access="<%=access%>">
+		<div class="msg color9 clearfix">
+			<img class="icon_span img38 userProfile" src="<%=userImg%>" userNo="<%=userNo%>"></img>
+			<span class="personal">
+				<span>
+					<span class="color3"><%=userName%></span>
+					<% if (continueWin > 1) { %>
+						<span class="expert_name"><span class="expert_num"><%=continueWin%></span>连红</span>
+					<% } else if(winCount > 0) { %>
+						<span class="expert_name">10中<span class="expert_num"><%=winCount%></span></span>
+					<% } else if (profitRate > 0) { %>
+						<span class="expert_name">盈<span class="expert_num"><%=profitRate%>%</span></span>
+					<% } else if (winRate > 0) { %>
+						<span class="expert_name">胜<span class="expert_num"><%=winRate%>%</span></span>
+					<% } %>
+				</span><br />
+				<span class="size10 tag"><%=userTag%></span>
+			</span>
+			<% if (isSale) { %>
+			<span class="ticket size10 fr userTicket" planNo="<%=planNo%>" recommendCount="<%=recommendCount%>" planAmount="<%=amount%>">跟单</span>
+			<% } %>
+		</div>
+		<div class="detailBox">
+			<div class="detail clearfix">
+				<img class="img40 fl mr10" src="<%=IMG_PATH%>icon_fc3d.png">
+				<div class="fl">
+					<div class="size13 color6 mb5">
+						<%=issue%>期
+					</div>
+					<div class="size14">
+						<%=name%>推荐
+					</div>
+				</div>
+				<div class="fr">
+					<div class="color9 size12">
+						开奖：<%=drawTime%>
+					</div>
+				</div>
+			</div>
+			<div class="price">
+				<% if (/^true$/i.test(access)) { %>
+					<% if (amount == 0) { %>
+						<span>免费</span>
+					<% } else { %>
+						<span>查看</span>
+					<% } %>
+				<% } else { %>
+					<span><span><%=amount%></span>粒米</span>
+				<% } %>
+			</div>
+		</div>
+	</li>
+<% } %>
+</script>

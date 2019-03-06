@@ -1,0 +1,257 @@
+{
+	"version": "1.0.0",
+	"author": "llama",
+	"name": "晒米",
+	"env": "dev",
+	"envConfig": {
+		"dev": {
+			"logLevel": "TRACE",
+			"homePage": "http://www.sm.com/",
+			"mysql": {
+				"master": [
+					{
+						"host": "localhost",
+						"user": "root",
+						"password": "",
+						"database": "shaimi",
+						"port": 3306
+					}
+				],
+				"slave": [
+					{
+						"host": "localhost",
+						"user": "root",
+						"password": "",
+						"database": "shaimi",
+						"port": 3306
+					}
+				]
+			},
+			"redis": {
+				"host": "127.0.0.1",
+				"password": "redis_password",
+				"port": 6341
+			},
+			"iapppay": {
+				"h5": {
+					"appid": "3005858486",
+					"appkey": "MIICXgIBAAKBgQCkqMHZr21Y+gB6V7H6ex5ByT2GGcEDLfnRKwxhAj1DL5Xu4kht7D3ig47qGPRqgbrqwLbh9bP1skb+5tPoyuqgUBLfeKlkyd6s8AAnwdnYsUglEf7OqqY4SZkceshhLhhNZF4MmPpIkSSkEf5smr+ouYXYjSVVAdGDFrPjMj1upwIDAQABAoGAKcRk58MICbngxSfZjaANXMKfSJTf0N6or9Yrna/julcnwSDFHpz+VabpaZhK53lg4Ith2I9qxrgiKiaDOlm+ieFZnFILwvUwjQ52erXxd7ydnmKGyBfnLXrWyG3iACaJAvTH19c9VPH6bVmLovkrqr3hngMElhVVX0hg6JKjWQECQQD8zwD2InLs80hIYTgbONuHtiwlbxGm9jQYgrz96zmwwpgaRqlFpMapSi5K8FXLvb12nNC2lxKtI2TDip7CAoEvAkEAprziBrbp9ryLWnIyuWnVRs7oaeUSiEHL+80lBXM8jDk6IMcd24IptVpY4397gieOeK31x7t0cRXHIxyvz2ZcCQJBAKz3WDoO0cCqps7WrVN6sECG9GdcOaCZHIWUlYfI83yrdvOrWs8KcN2MomWlT54JIGLR4b67WAzbhWqAIiStIAMCQQCZeuh70cePbYLA4Lm8XqUJps/dGhVzA03nHLDlUWv8j3joTyE2u5v06ZNE5kYkSpEkmMzS68SFi8xgj7ltqgUxAkEA36NIAtXIs1LfczoBC1rdiqysdWvBPSeOj/ZThV/JePlBiSMCk9erhyAqPmyUXGtyd9KS8yKDtt9Tn1ZnzUzLTw==",
+					"platpkey": "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDOOveFnIJn8hzTG/9C/aBgozQs8jP2vOF2uk4d3gxRZOyggFiyFP7KEXPO4TRX6/eZfwJaskLzg3/annGgMgboNlMQukP+fILbV75NYMMNzDxbQ5wUAQwxaOt7X8DeQ8GyiOYUmAZJM2yZngD3a1h6qYfBcaT4aunuWggqO7SfgwIDAQAB",
+					"waresid": 1
+				},
+				"android": {
+					"appid": "3006592345",
+					"appkey": "MIICXAIBAAKBgQCyVcdhpfyCfJcDNyyxgFnG6+SUACrMjXT913mlAZo6F/aKufJQr+48wyqs3XPPK1nQCjbudKUBQSObg9MJtcAs8SBtQmH6BP6O9Y/fslw1wcvP9AtH7ySCxcl50KsQdkMfrjlye8w3QvHZzw56yYad2uYz8gE7ibnLQzcAcIBA6wIDAQABAoGAM5hvvAe6+8GyK0L+UkiRMOU018EIoO/YRkzeK+g/x8kBEnfj7IZKBhhtM2BKzkh7jp418F2dE7TV6XuFRkzoUVxidxsIhm6sSDdFEqYNGJT4drUiGFE1wSVbUEnasvAM33LPojB2+v3/8pc+0iXaja2PGd38z+K4YyDck9n1OCkCQQDmPprzkjTiTeUDd+CCuhjuOMgGoQN5XfEWP+A0UcudL0hDZZcSJ7sJiRlIcfwwcciF+U+UBXbBo2nDAT63eb9nAkEAxkirJaacjDGhdZfsdTyFAJnTloJf9VKIhElMNHgYbobrr+nBn6jJORYB7IqSpuW4Qv+c3M5yOhN3c2M7ukez3QJABlPIHFNzQpjTZ1H/CHimwL0sugnot4geXPcqaSWqS8qF2NxM14HiAPQUjsobHRWzZgMg7bdsuQuNl39MQuyElwJAdTiQtXmCIv9UTIi8KbLVjj1icSAySn24ZzxN6Nb22qC4xQ6UgSbvjugLyyNA/5nfDPzAZ2lE7kCD5ZtMvBuXoQJBAKlFIPYzJ0I/56dn/5w5/7Z0ABTt9gez7Msaf5mwzRqLDaZ1tZakhju+nC+spHgRJdOL+CmPfpDpYkzpP1pIkP8=",
+					"platpkey": "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCU4srHNTyytd8nxvSAvvcj9FU/0EKi0E1KPh2/dFCgH4C+SNWsYOlf18JShUeB1KMQs/XrS6MHxDnsfxX7qbmUXsmoeZAFt8Pm5n/a4Da5Sq/JRCCt8BxUj9VBuk3CO0rEtD63DoDUalpNCjuP/BLAdhzYCnCR+TrCDmmDUN1hSQIDAQAB",
+					"waresid": 2
+				},
+				"ios": {
+					"appid": "3006593226",
+					"appkey": "MIICXAIBAAKBgQCCSYqI1QShHJUM2n6/rEYUUbREZjoQEIa5jhKYNHfB+CG8Iei3Om/QgWHVwiBA60+w6xnFm24NmkEk4M3IM0KoLbc1TXtbbAAS24ITGFXfdC3yJWksQEPOUONoXWsH1XlLS/lLym/baKKQu46vsVk6posSiebpYi7CwDJHDAedVwIDAQABAoGAGIcjz5La5kHtRZg02HzkTJr9Jwtfzvptgq1ejs0B5sCCCVsQ5r3XoxdYhdegHtiuDg6UsYELfQAXV4wC8bfEyoPYudNgnCoBwyaAIjXwmguIlG3HgIcSJDETAyP//KgWZ2AJrfXRzjSDKMg2lhsbHQwsEybpGkmOLibFwkHptnECQQC6sdR1Zc/D6D6RyaTo4iBU6akq3ru5QT0fqWsj1OzUGPiKxfYzSp/SFCYOZ0eYlamxH9DSSVmWCcsdH7Sd1O0jAkEAsqckwMt7QI6861Pob7cjqySU3ueYhPZ3EKAxnZ06v+mGs2bACu3fydG9pL4z+1uxrHvpTnRpmxWT5eLJYWA0PQJAZ2ba73LGUhEtpn1ycvHbSmxoH7BhdMenXQPurVffG9IAxovCQsJQJoC2Wz/kraQm6k1e0TmC/tDJyIWo+cnW1QJALeZvtPESu6VwuG2YfItrKJ9/eD28m/zO3oCp/rrUy1Xue81cbfJr2uh+dwM/S8dlQNGdQcD7GRNUKm44G0KiaQJBAKplP8fQoNoKkO4rfZ/b7jPe8Csrkqv3FU5jEuWHRQ0BHFth3yjIGBl9Kzumo04v8iI1kzkRd6JU4V5rA9KyCpc=",
+					"platpkey": "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCEtuGg/A6dFOaqMo1clWo9WuVPfcaxwgOXYuijYTrnbipblTSJgfBAkNGyilPAEquapW/Mw4OL79dHrb6LYI4uLuzqVSa3wBWaBdahlIbfARvd+VXmWe8Kai+wZNl4uxKrkIIpFvYbwEFVRciuJMIfbPN+kkOPTSXsS7c8z9yanwIDAQAB",
+					"waresid": 2
+				},
+				"payNotifyUrl": "http://beta.shaimii.com/cgi/index.php?c=weixin&m=payNotify",
+				"batchPayNotifyUrl": "http://beta.shaimii.com/cgi/index.php?c=weixin&m=batchPayNotify"
+			},
+			"weixin": {
+				"appId": "wx4e0581fc9bde42e0",
+				"appSecret": "e5be9fd86fe8c1b587c9c7d7c16c80ff",
+				"openAppId": "wx601295b7433b9960",
+				"openAppSecret": "8dda8b37e592c39096e28a586b06f6d3",
+				"openAppIdJc": "wx016936488c65a17d",
+				"openAppSecretJc": "a5639f1186f27bcaa4f2752bc0ccfbcf"
+			},
+			"alipay": {
+				"appId": "2016110302521855",
+				"appPrivateKey": "MIICXAIBAAKBgQDdVm07jwWQPzlzdADWBhNchHp4zu/p1E/5VKR52FKhknMFOxX/66gvuJRD1zFubQM2m8D8gItc96sNo4r/isSFRym8tktygnWRa+775ItoRejniTu2Pd8U8k2xcz+oj9BgIEZZiV0yfF+oX8o3xq6Cbb0VLxivBbwGNhDqGK9DgwIDAQABAoGBAJy6BCL2RRQ9EKtF6wmhx7ftPuOodI14fyCn5Mc6fFhYYQXFLvDGp5MS+jmHeUMeAfZ7F440X3p3DTJdKaGFW11LSCt0Q4eJAqbmbPoyJJWdA7f1e1gOxEt/sEL5cd8BfoavjD9pZ9i1MRPUpeObTXzbp8CdKUEzdfROHFXF7HjBAkEA7q6iRjfPWUHwvy59XtvQ/hSdQzsA7hvKi2EyyAKGNb5lhhFGf2KaoMNtXmKZJf7y+4rvKvqgB9V9R/iSI5650wJBAO1loP6bejmvHC8WCoaH+PsCgJJPrKOUO7HwWktmqP3hbra+o+eovQLu6ugyHnM5OtxA19Hc0W829MRMYEkrEZECQB5EqTGMbFAea6BjDeUUrTk7dgILnn+TqKjqR51TrJ9uKMPKtwz6fS97+QeqK0/FOB0sLk5eACNeMIgK/sVjoJ8CQCYG+40NVrzawgcA3trB+S4sLnBBdwQVAKL2P2CIp1VTwSpgy1yWeQB5SQO804fdiQIzGN8zIhFQmlC/c0UFMyECQAMtwtJHw/6tVcOJkuEtFWMCBnJ4QmHHsheJff/kSmaiGyV0hQvoihhO94f5xcHS6U7CHqqt4wPjlUwnbhFjyrw=",
+				"alipayPublicKey": "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDDI6d306Q8fIfCOaTXyiUeJHkrIvYISRcc73s3vF1ZT7XN8RNPwJxo8pWaJMmvyTn9N4HQ632qJBVHf8sxHi/fEsraprwCtzvzQETrNRwVxLO5jVmRGi60j8Ue1efIlzPXV9je9mkjzOmdssymZkh2QhUrCmZYI/FCEa3/cNMW0QIDAQAB",
+				"payNotifyUrl": "http://beta.shaimii.com/cgi/index.php?c=alipay&m=payNotify",
+				"batchPayNotifyUrl": "http://beta.shaimii.com/cgi/index.php?c=alipay&m=batchPayNotify"
+			},
+			"swiftpass": {
+				"mchId": "102560080250",
+				"swiftpassKey": "b527ba9f2e044da882cf170f094a4f0e",
+				"payNotifyUrl": "http://beta.shaimii.com/cgi/index.php?c=swiftpass&m=payNotify",
+				"batchPayNotifyUrl": "http://beta.shaimii.com/cgi/index.php?c=swiftpass&m=batchPayNotify"
+			},
+			"iapppayPartner": {
+				"h5": {
+					"appid": "3011379396",
+					"appkey": "MIICXgIBAAKBgQCAayc2Imb202X0E7ZHrmmV6RU+VlDYua311sV0WED/0vGLrRsmINLhizF+ZUGRqC+jIaANT7055zO8wWbJUIe+guVX5rOAidLBbbLRZOEId0ZdZcQCq6hsX1TGma+vcGO90nO6blctslyGRs7vTvrLpG2/sN6wfb01qo8WkosdUQIDAQABAoGASVDjyhxJ/JEkm/zFDJee4F96KWTOM22Oy9QaVxorweKE1OG3pkUHII1/bFIS5T3INLJ11iO4PN6qwxEHxdecJ2s653PfSdZptkA7//hflY5aDjDGHi7JMSUozyk/Wl4TB46VL4cUJEte844DyqZppHendBoMtYJBpdBMG/rPYaECQQDmiqZJRq4lurXe0uVi0CJad7TalwTag45ZBxCKb19mpzWX3MCidbOWLE3h0PrsoWdW/qmYTZ+F+avED9IWgz+PAkEAjpmDJwo0Dj5iFRJjFWQOk5Y/0H8oQi2SHf2oXIxs9MpXgLqRKraKer/213MHvuDX813RnGuFO+p0mEQtnL1lHwJBAN2grslE3IfC3bJvdjuvMUddSwzVH8JdtEvb4cfj14fc+UWb38iOdG3K+7g56e/wHmNggHO9M71dTwY121bvJ/sCQQCAkCrMcciI5vlq4g7u5Cy4JwgVo+7Z61gHLgAyoHBDKoJFju7+QWEMVjHoAM+E6hYIVhd7HP0cDb9c4Gr3G1IlAkEA5N3YlE5TnJfhzIZjm1OWgbGxvoZUTI90dbh4M0j58no1Y7OWU7aA2tEtxiizvnLVwdruT3skBOUt7uFPFEwFrA==",
+					"platpkey": "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCJbiGOgd7rGMRArpLfPUHdWEU3dDrlnySb4rV9pZ+mxUKMsAb2FBoLKeZHTq5JB52Dj+H6KTcd889l9Naj4TV15HdmrjgsG/O4dnO2eZY2tGrHBhxBLlgFn6xeDIQtFdPofZxBjtolZtFWyLl5Rzv98Ul5PluQH1xOSRSi8qjZrQIDAQAB",
+					"waresid": 1
+				},
+				"payNotifyUrl": "http://beta.shaimii.com/cgi/index.php?c=iapppayPartner&m=payNotify",
+				"batchPayNotifyUrl": "http://beta.shaimii.com/cgi/index.php?c=iapppayPartner&m=batchPayNotify"
+			},
+			"resourceUrl": "http://www.sm.com/proxy/static/"
+		},
+		"beta": {
+			"logLevel": "DEBUG",
+			"homePage": "http://beta.shaimii.com/",
+			"mysql": {
+				"master": [
+					{
+						"host": "localhost",
+						"user": "root",
+						"password": "tR0yXYtCfSAO",
+						"database": "shaimi",
+						"port": 3306
+					}
+				],
+				"slave": [
+					{
+						"host": "localhost",
+						"user": "root",
+						"password": "tR0yXYtCfSAO",
+						"database": "shaimi",
+						"port": 3306
+					}
+				]
+			},
+			"redis": {
+				"host": "127.0.0.1",
+				"password": "redis_password",
+				"port": 6341
+			},
+			"iapppay": {
+				"h5": {
+					"appid": "3005858486",
+					"appkey": "MIICXgIBAAKBgQCkqMHZr21Y+gB6V7H6ex5ByT2GGcEDLfnRKwxhAj1DL5Xu4kht7D3ig47qGPRqgbrqwLbh9bP1skb+5tPoyuqgUBLfeKlkyd6s8AAnwdnYsUglEf7OqqY4SZkceshhLhhNZF4MmPpIkSSkEf5smr+ouYXYjSVVAdGDFrPjMj1upwIDAQABAoGAKcRk58MICbngxSfZjaANXMKfSJTf0N6or9Yrna/julcnwSDFHpz+VabpaZhK53lg4Ith2I9qxrgiKiaDOlm+ieFZnFILwvUwjQ52erXxd7ydnmKGyBfnLXrWyG3iACaJAvTH19c9VPH6bVmLovkrqr3hngMElhVVX0hg6JKjWQECQQD8zwD2InLs80hIYTgbONuHtiwlbxGm9jQYgrz96zmwwpgaRqlFpMapSi5K8FXLvb12nNC2lxKtI2TDip7CAoEvAkEAprziBrbp9ryLWnIyuWnVRs7oaeUSiEHL+80lBXM8jDk6IMcd24IptVpY4397gieOeK31x7t0cRXHIxyvz2ZcCQJBAKz3WDoO0cCqps7WrVN6sECG9GdcOaCZHIWUlYfI83yrdvOrWs8KcN2MomWlT54JIGLR4b67WAzbhWqAIiStIAMCQQCZeuh70cePbYLA4Lm8XqUJps/dGhVzA03nHLDlUWv8j3joTyE2u5v06ZNE5kYkSpEkmMzS68SFi8xgj7ltqgUxAkEA36NIAtXIs1LfczoBC1rdiqysdWvBPSeOj/ZThV/JePlBiSMCk9erhyAqPmyUXGtyd9KS8yKDtt9Tn1ZnzUzLTw==",
+					"platpkey": "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDOOveFnIJn8hzTG/9C/aBgozQs8jP2vOF2uk4d3gxRZOyggFiyFP7KEXPO4TRX6/eZfwJaskLzg3/annGgMgboNlMQukP+fILbV75NYMMNzDxbQ5wUAQwxaOt7X8DeQ8GyiOYUmAZJM2yZngD3a1h6qYfBcaT4aunuWggqO7SfgwIDAQAB",
+					"waresid": 1
+				},
+				"android": {
+					"appid": "3006592345",
+					"appkey": "MIICXAIBAAKBgQCyVcdhpfyCfJcDNyyxgFnG6+SUACrMjXT913mlAZo6F/aKufJQr+48wyqs3XPPK1nQCjbudKUBQSObg9MJtcAs8SBtQmH6BP6O9Y/fslw1wcvP9AtH7ySCxcl50KsQdkMfrjlye8w3QvHZzw56yYad2uYz8gE7ibnLQzcAcIBA6wIDAQABAoGAM5hvvAe6+8GyK0L+UkiRMOU018EIoO/YRkzeK+g/x8kBEnfj7IZKBhhtM2BKzkh7jp418F2dE7TV6XuFRkzoUVxidxsIhm6sSDdFEqYNGJT4drUiGFE1wSVbUEnasvAM33LPojB2+v3/8pc+0iXaja2PGd38z+K4YyDck9n1OCkCQQDmPprzkjTiTeUDd+CCuhjuOMgGoQN5XfEWP+A0UcudL0hDZZcSJ7sJiRlIcfwwcciF+U+UBXbBo2nDAT63eb9nAkEAxkirJaacjDGhdZfsdTyFAJnTloJf9VKIhElMNHgYbobrr+nBn6jJORYB7IqSpuW4Qv+c3M5yOhN3c2M7ukez3QJABlPIHFNzQpjTZ1H/CHimwL0sugnot4geXPcqaSWqS8qF2NxM14HiAPQUjsobHRWzZgMg7bdsuQuNl39MQuyElwJAdTiQtXmCIv9UTIi8KbLVjj1icSAySn24ZzxN6Nb22qC4xQ6UgSbvjugLyyNA/5nfDPzAZ2lE7kCD5ZtMvBuXoQJBAKlFIPYzJ0I/56dn/5w5/7Z0ABTt9gez7Msaf5mwzRqLDaZ1tZakhju+nC+spHgRJdOL+CmPfpDpYkzpP1pIkP8=",
+					"platpkey": "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCU4srHNTyytd8nxvSAvvcj9FU/0EKi0E1KPh2/dFCgH4C+SNWsYOlf18JShUeB1KMQs/XrS6MHxDnsfxX7qbmUXsmoeZAFt8Pm5n/a4Da5Sq/JRCCt8BxUj9VBuk3CO0rEtD63DoDUalpNCjuP/BLAdhzYCnCR+TrCDmmDUN1hSQIDAQAB",
+					"waresid": 2
+				},
+				"ios": {
+					"appid": "3006593226",
+					"appkey": "MIICXAIBAAKBgQCCSYqI1QShHJUM2n6/rEYUUbREZjoQEIa5jhKYNHfB+CG8Iei3Om/QgWHVwiBA60+w6xnFm24NmkEk4M3IM0KoLbc1TXtbbAAS24ITGFXfdC3yJWksQEPOUONoXWsH1XlLS/lLym/baKKQu46vsVk6posSiebpYi7CwDJHDAedVwIDAQABAoGAGIcjz5La5kHtRZg02HzkTJr9Jwtfzvptgq1ejs0B5sCCCVsQ5r3XoxdYhdegHtiuDg6UsYELfQAXV4wC8bfEyoPYudNgnCoBwyaAIjXwmguIlG3HgIcSJDETAyP//KgWZ2AJrfXRzjSDKMg2lhsbHQwsEybpGkmOLibFwkHptnECQQC6sdR1Zc/D6D6RyaTo4iBU6akq3ru5QT0fqWsj1OzUGPiKxfYzSp/SFCYOZ0eYlamxH9DSSVmWCcsdH7Sd1O0jAkEAsqckwMt7QI6861Pob7cjqySU3ueYhPZ3EKAxnZ06v+mGs2bACu3fydG9pL4z+1uxrHvpTnRpmxWT5eLJYWA0PQJAZ2ba73LGUhEtpn1ycvHbSmxoH7BhdMenXQPurVffG9IAxovCQsJQJoC2Wz/kraQm6k1e0TmC/tDJyIWo+cnW1QJALeZvtPESu6VwuG2YfItrKJ9/eD28m/zO3oCp/rrUy1Xue81cbfJr2uh+dwM/S8dlQNGdQcD7GRNUKm44G0KiaQJBAKplP8fQoNoKkO4rfZ/b7jPe8Csrkqv3FU5jEuWHRQ0BHFth3yjIGBl9Kzumo04v8iI1kzkRd6JU4V5rA9KyCpc=",
+					"platpkey": "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCEtuGg/A6dFOaqMo1clWo9WuVPfcaxwgOXYuijYTrnbipblTSJgfBAkNGyilPAEquapW/Mw4OL79dHrb6LYI4uLuzqVSa3wBWaBdahlIbfARvd+VXmWe8Kai+wZNl4uxKrkIIpFvYbwEFVRciuJMIfbPN+kkOPTSXsS7c8z9yanwIDAQAB",
+					"waresid": 2
+				},
+				"payNotifyUrl": "http://beta.shaimii.com/cgi/index.php?c=weixin&m=payNotify",
+				"batchPayNotifyUrl": "http://beta.shaimii.com/cgi/index.php?c=weixin&m=batchPayNotify"
+			},
+			"weixin": {
+				"appId": "wx4e0581fc9bde42e0",
+				"appSecret": "e5be9fd86fe8c1b587c9c7d7c16c80ff",
+				"openAppId": "wx601295b7433b9960",
+				"openAppSecret": "8dda8b37e592c39096e28a586b06f6d3",
+				"openAppIdJc": "wx016936488c65a17d",
+				"openAppSecretJc": "a5639f1186f27bcaa4f2752bc0ccfbcf"
+			},
+			"alipay": {
+				"appId": "2016110302521855",
+				"appPrivateKey": "MIICXAIBAAKBgQDdVm07jwWQPzlzdADWBhNchHp4zu/p1E/5VKR52FKhknMFOxX/66gvuJRD1zFubQM2m8D8gItc96sNo4r/isSFRym8tktygnWRa+775ItoRejniTu2Pd8U8k2xcz+oj9BgIEZZiV0yfF+oX8o3xq6Cbb0VLxivBbwGNhDqGK9DgwIDAQABAoGBAJy6BCL2RRQ9EKtF6wmhx7ftPuOodI14fyCn5Mc6fFhYYQXFLvDGp5MS+jmHeUMeAfZ7F440X3p3DTJdKaGFW11LSCt0Q4eJAqbmbPoyJJWdA7f1e1gOxEt/sEL5cd8BfoavjD9pZ9i1MRPUpeObTXzbp8CdKUEzdfROHFXF7HjBAkEA7q6iRjfPWUHwvy59XtvQ/hSdQzsA7hvKi2EyyAKGNb5lhhFGf2KaoMNtXmKZJf7y+4rvKvqgB9V9R/iSI5650wJBAO1loP6bejmvHC8WCoaH+PsCgJJPrKOUO7HwWktmqP3hbra+o+eovQLu6ugyHnM5OtxA19Hc0W829MRMYEkrEZECQB5EqTGMbFAea6BjDeUUrTk7dgILnn+TqKjqR51TrJ9uKMPKtwz6fS97+QeqK0/FOB0sLk5eACNeMIgK/sVjoJ8CQCYG+40NVrzawgcA3trB+S4sLnBBdwQVAKL2P2CIp1VTwSpgy1yWeQB5SQO804fdiQIzGN8zIhFQmlC/c0UFMyECQAMtwtJHw/6tVcOJkuEtFWMCBnJ4QmHHsheJff/kSmaiGyV0hQvoihhO94f5xcHS6U7CHqqt4wPjlUwnbhFjyrw=",
+				"alipayPublicKey": "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDDI6d306Q8fIfCOaTXyiUeJHkrIvYISRcc73s3vF1ZT7XN8RNPwJxo8pWaJMmvyTn9N4HQ632qJBVHf8sxHi/fEsraprwCtzvzQETrNRwVxLO5jVmRGi60j8Ue1efIlzPXV9je9mkjzOmdssymZkh2QhUrCmZYI/FCEa3/cNMW0QIDAQAB",
+				"payNotifyUrl": "http://beta.shaimii.com/cgi/index.php?c=alipay&m=payNotify",
+				"batchPayNotifyUrl": "http://beta.shaimii.com/cgi/index.php?c=alipay&m=batchPayNotify"
+			},
+			"swiftpass": {
+				"mchId": "102560080250",
+				"swiftpassKey": "b527ba9f2e044da882cf170f094a4f0e",
+				"payNotifyUrl": "http://beta.shaimii.com/cgi/index.php?c=swiftpass&m=payNotify",
+				"batchPayNotifyUrl": "http://beta.shaimii.com/cgi/index.php?c=swiftpass&m=batchPayNotify"
+			},
+			"iapppayPartner": {
+				"h5": {
+					"appid": "3011379396",
+					"appkey": "MIICXgIBAAKBgQCAayc2Imb202X0E7ZHrmmV6RU+VlDYua311sV0WED/0vGLrRsmINLhizF+ZUGRqC+jIaANT7055zO8wWbJUIe+guVX5rOAidLBbbLRZOEId0ZdZcQCq6hsX1TGma+vcGO90nO6blctslyGRs7vTvrLpG2/sN6wfb01qo8WkosdUQIDAQABAoGASVDjyhxJ/JEkm/zFDJee4F96KWTOM22Oy9QaVxorweKE1OG3pkUHII1/bFIS5T3INLJ11iO4PN6qwxEHxdecJ2s653PfSdZptkA7//hflY5aDjDGHi7JMSUozyk/Wl4TB46VL4cUJEte844DyqZppHendBoMtYJBpdBMG/rPYaECQQDmiqZJRq4lurXe0uVi0CJad7TalwTag45ZBxCKb19mpzWX3MCidbOWLE3h0PrsoWdW/qmYTZ+F+avED9IWgz+PAkEAjpmDJwo0Dj5iFRJjFWQOk5Y/0H8oQi2SHf2oXIxs9MpXgLqRKraKer/213MHvuDX813RnGuFO+p0mEQtnL1lHwJBAN2grslE3IfC3bJvdjuvMUddSwzVH8JdtEvb4cfj14fc+UWb38iOdG3K+7g56e/wHmNggHO9M71dTwY121bvJ/sCQQCAkCrMcciI5vlq4g7u5Cy4JwgVo+7Z61gHLgAyoHBDKoJFju7+QWEMVjHoAM+E6hYIVhd7HP0cDb9c4Gr3G1IlAkEA5N3YlE5TnJfhzIZjm1OWgbGxvoZUTI90dbh4M0j58no1Y7OWU7aA2tEtxiizvnLVwdruT3skBOUt7uFPFEwFrA==",
+					"platpkey": "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCJbiGOgd7rGMRArpLfPUHdWEU3dDrlnySb4rV9pZ+mxUKMsAb2FBoLKeZHTq5JB52Dj+H6KTcd889l9Naj4TV15HdmrjgsG/O4dnO2eZY2tGrHBhxBLlgFn6xeDIQtFdPofZxBjtolZtFWyLl5Rzv98Ul5PluQH1xOSRSi8qjZrQIDAQAB",
+					"waresid": 1
+				},
+				"payNotifyUrl": "http://beta.shaimii.com/cgi/index.php?c=iapppayPartner&m=payNotify",
+				"batchPayNotifyUrl": "http://beta.shaimii.com/cgi/index.php?c=iapppayPartner&m=batchPayNotify"
+			},
+			"resourceUrl": "http://beta.shaimii.com/cgi/static/"
+		},
+		"dist": {
+			"logLevel": "INFO",
+			"homePage": "http://www.shaimii.com/",
+			"mysql": {
+				"master": [
+					{
+						"host": "10.105.30.16",
+						"user": "rpc_master",
+						"password": "tUNRC0EjXIokmRJs_master",
+						"database": "shaimi",
+						"port": 18001
+					}
+				],
+				"slave": [
+					{
+						"host": "10.105.38.158",
+						"user": "rpc_slave",
+						"password": "tUNRC0EjXIokmRJs_slave",
+						"database": "shaimi",
+						"port": 18001
+					}
+				]
+			},
+			"redis": {
+				"host": "127.0.0.1",
+				"password": "redis_password",
+				"port": 6341
+			},
+			"iapppay": {
+				"h5": {
+					"appid": "3005858486",
+					"appkey": "MIICXgIBAAKBgQCkqMHZr21Y+gB6V7H6ex5ByT2GGcEDLfnRKwxhAj1DL5Xu4kht7D3ig47qGPRqgbrqwLbh9bP1skb+5tPoyuqgUBLfeKlkyd6s8AAnwdnYsUglEf7OqqY4SZkceshhLhhNZF4MmPpIkSSkEf5smr+ouYXYjSVVAdGDFrPjMj1upwIDAQABAoGAKcRk58MICbngxSfZjaANXMKfSJTf0N6or9Yrna/julcnwSDFHpz+VabpaZhK53lg4Ith2I9qxrgiKiaDOlm+ieFZnFILwvUwjQ52erXxd7ydnmKGyBfnLXrWyG3iACaJAvTH19c9VPH6bVmLovkrqr3hngMElhVVX0hg6JKjWQECQQD8zwD2InLs80hIYTgbONuHtiwlbxGm9jQYgrz96zmwwpgaRqlFpMapSi5K8FXLvb12nNC2lxKtI2TDip7CAoEvAkEAprziBrbp9ryLWnIyuWnVRs7oaeUSiEHL+80lBXM8jDk6IMcd24IptVpY4397gieOeK31x7t0cRXHIxyvz2ZcCQJBAKz3WDoO0cCqps7WrVN6sECG9GdcOaCZHIWUlYfI83yrdvOrWs8KcN2MomWlT54JIGLR4b67WAzbhWqAIiStIAMCQQCZeuh70cePbYLA4Lm8XqUJps/dGhVzA03nHLDlUWv8j3joTyE2u5v06ZNE5kYkSpEkmMzS68SFi8xgj7ltqgUxAkEA36NIAtXIs1LfczoBC1rdiqysdWvBPSeOj/ZThV/JePlBiSMCk9erhyAqPmyUXGtyd9KS8yKDtt9Tn1ZnzUzLTw==",
+					"platpkey": "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDOOveFnIJn8hzTG/9C/aBgozQs8jP2vOF2uk4d3gxRZOyggFiyFP7KEXPO4TRX6/eZfwJaskLzg3/annGgMgboNlMQukP+fILbV75NYMMNzDxbQ5wUAQwxaOt7X8DeQ8GyiOYUmAZJM2yZngD3a1h6qYfBcaT4aunuWggqO7SfgwIDAQAB",
+					"waresid": 3
+				},
+				"android": {
+					"appid": "3006592345",
+					"appkey": "MIICXAIBAAKBgQCyVcdhpfyCfJcDNyyxgFnG6+SUACrMjXT913mlAZo6F/aKufJQr+48wyqs3XPPK1nQCjbudKUBQSObg9MJtcAs8SBtQmH6BP6O9Y/fslw1wcvP9AtH7ySCxcl50KsQdkMfrjlye8w3QvHZzw56yYad2uYz8gE7ibnLQzcAcIBA6wIDAQABAoGAM5hvvAe6+8GyK0L+UkiRMOU018EIoO/YRkzeK+g/x8kBEnfj7IZKBhhtM2BKzkh7jp418F2dE7TV6XuFRkzoUVxidxsIhm6sSDdFEqYNGJT4drUiGFE1wSVbUEnasvAM33LPojB2+v3/8pc+0iXaja2PGd38z+K4YyDck9n1OCkCQQDmPprzkjTiTeUDd+CCuhjuOMgGoQN5XfEWP+A0UcudL0hDZZcSJ7sJiRlIcfwwcciF+U+UBXbBo2nDAT63eb9nAkEAxkirJaacjDGhdZfsdTyFAJnTloJf9VKIhElMNHgYbobrr+nBn6jJORYB7IqSpuW4Qv+c3M5yOhN3c2M7ukez3QJABlPIHFNzQpjTZ1H/CHimwL0sugnot4geXPcqaSWqS8qF2NxM14HiAPQUjsobHRWzZgMg7bdsuQuNl39MQuyElwJAdTiQtXmCIv9UTIi8KbLVjj1icSAySn24ZzxN6Nb22qC4xQ6UgSbvjugLyyNA/5nfDPzAZ2lE7kCD5ZtMvBuXoQJBAKlFIPYzJ0I/56dn/5w5/7Z0ABTt9gez7Msaf5mwzRqLDaZ1tZakhju+nC+spHgRJdOL+CmPfpDpYkzpP1pIkP8=",
+					"platpkey": "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCU4srHNTyytd8nxvSAvvcj9FU/0EKi0E1KPh2/dFCgH4C+SNWsYOlf18JShUeB1KMQs/XrS6MHxDnsfxX7qbmUXsmoeZAFt8Pm5n/a4Da5Sq/JRCCt8BxUj9VBuk3CO0rEtD63DoDUalpNCjuP/BLAdhzYCnCR+TrCDmmDUN1hSQIDAQAB",
+					"waresid": 1
+				},
+				"ios": {
+					"appid": "3006593226",
+					"appkey": "MIICXAIBAAKBgQCCSYqI1QShHJUM2n6/rEYUUbREZjoQEIa5jhKYNHfB+CG8Iei3Om/QgWHVwiBA60+w6xnFm24NmkEk4M3IM0KoLbc1TXtbbAAS24ITGFXfdC3yJWksQEPOUONoXWsH1XlLS/lLym/baKKQu46vsVk6posSiebpYi7CwDJHDAedVwIDAQABAoGAGIcjz5La5kHtRZg02HzkTJr9Jwtfzvptgq1ejs0B5sCCCVsQ5r3XoxdYhdegHtiuDg6UsYELfQAXV4wC8bfEyoPYudNgnCoBwyaAIjXwmguIlG3HgIcSJDETAyP//KgWZ2AJrfXRzjSDKMg2lhsbHQwsEybpGkmOLibFwkHptnECQQC6sdR1Zc/D6D6RyaTo4iBU6akq3ru5QT0fqWsj1OzUGPiKxfYzSp/SFCYOZ0eYlamxH9DSSVmWCcsdH7Sd1O0jAkEAsqckwMt7QI6861Pob7cjqySU3ueYhPZ3EKAxnZ06v+mGs2bACu3fydG9pL4z+1uxrHvpTnRpmxWT5eLJYWA0PQJAZ2ba73LGUhEtpn1ycvHbSmxoH7BhdMenXQPurVffG9IAxovCQsJQJoC2Wz/kraQm6k1e0TmC/tDJyIWo+cnW1QJALeZvtPESu6VwuG2YfItrKJ9/eD28m/zO3oCp/rrUy1Xue81cbfJr2uh+dwM/S8dlQNGdQcD7GRNUKm44G0KiaQJBAKplP8fQoNoKkO4rfZ/b7jPe8Csrkqv3FU5jEuWHRQ0BHFth3yjIGBl9Kzumo04v8iI1kzkRd6JU4V5rA9KyCpc=",
+					"platpkey": "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCEtuGg/A6dFOaqMo1clWo9WuVPfcaxwgOXYuijYTrnbipblTSJgfBAkNGyilPAEquapW/Mw4OL79dHrb6LYI4uLuzqVSa3wBWaBdahlIbfARvd+VXmWe8Kai+wZNl4uxKrkIIpFvYbwEFVRciuJMIfbPN+kkOPTSXsS7c8z9yanwIDAQAB",
+					"waresid": 1
+				},
+				"payNotifyUrl": "http://115.159.58.69/cgi/index.php?c=weixin&m=payNotify",
+				"batchPayNotifyUrl": "http://115.159.58.69/cgi/index.php?c=weixin&m=batchPayNotify"
+			},
+			"weixin": {
+				"appId": "wxe0f8d77c2610a5a1",
+				"appSecret": "628694e63ef799bf278e26817a478512",
+				"openAppId": "wxa0b5b080330e2cd1",
+				"openAppSecret": "eb07a4d2e7414b0e2e50783296de9193",
+				"openAppIdJc": "wx016936488c65a17d",
+				"openAppSecretJc": "a5639f1186f27bcaa4f2752bc0ccfbcf"
+			},
+			"alipay": {
+				"appId": "2016110302521855",
+				"appPrivateKey": "MIICXAIBAAKBgQDdVm07jwWQPzlzdADWBhNchHp4zu/p1E/5VKR52FKhknMFOxX/66gvuJRD1zFubQM2m8D8gItc96sNo4r/isSFRym8tktygnWRa+775ItoRejniTu2Pd8U8k2xcz+oj9BgIEZZiV0yfF+oX8o3xq6Cbb0VLxivBbwGNhDqGK9DgwIDAQABAoGBAJy6BCL2RRQ9EKtF6wmhx7ftPuOodI14fyCn5Mc6fFhYYQXFLvDGp5MS+jmHeUMeAfZ7F440X3p3DTJdKaGFW11LSCt0Q4eJAqbmbPoyJJWdA7f1e1gOxEt/sEL5cd8BfoavjD9pZ9i1MRPUpeObTXzbp8CdKUEzdfROHFXF7HjBAkEA7q6iRjfPWUHwvy59XtvQ/hSdQzsA7hvKi2EyyAKGNb5lhhFGf2KaoMNtXmKZJf7y+4rvKvqgB9V9R/iSI5650wJBAO1loP6bejmvHC8WCoaH+PsCgJJPrKOUO7HwWktmqP3hbra+o+eovQLu6ugyHnM5OtxA19Hc0W829MRMYEkrEZECQB5EqTGMbFAea6BjDeUUrTk7dgILnn+TqKjqR51TrJ9uKMPKtwz6fS97+QeqK0/FOB0sLk5eACNeMIgK/sVjoJ8CQCYG+40NVrzawgcA3trB+S4sLnBBdwQVAKL2P2CIp1VTwSpgy1yWeQB5SQO804fdiQIzGN8zIhFQmlC/c0UFMyECQAMtwtJHw/6tVcOJkuEtFWMCBnJ4QmHHsheJff/kSmaiGyV0hQvoihhO94f5xcHS6U7CHqqt4wPjlUwnbhFjyrw=",
+				"alipayPublicKey": "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDDI6d306Q8fIfCOaTXyiUeJHkrIvYISRcc73s3vF1ZT7XN8RNPwJxo8pWaJMmvyTn9N4HQ632qJBVHf8sxHi/fEsraprwCtzvzQETrNRwVxLO5jVmRGi60j8Ue1efIlzPXV9je9mkjzOmdssymZkh2QhUrCmZYI/FCEa3/cNMW0QIDAQAB",
+				"payNotifyUrl": "http://115.159.58.69/cgi/index.php?c=alipay&m=payNotify",
+				"batchPayNotifyUrl": "http://115.159.58.69/cgi/index.php?c=alipay&m=batchPayNotify"
+			},
+			"swiftpass": {
+				"mchId": "102560080250",
+				"swiftpassKey": "b527ba9f2e044da882cf170f094a4f0e",
+				"payNotifyUrl": "http://115.159.58.69/cgi/index.php?c=swiftpass&m=payNotify",
+				"batchPayNotifyUrl": "http://115.159.58.69/cgi/index.php?c=swiftpass&m=batchPayNotify"
+			},
+			"iapppayPartner": {
+				"h5": {
+					"appid": "3011379396",
+					"appkey": "MIICXgIBAAKBgQCAayc2Imb202X0E7ZHrmmV6RU+VlDYua311sV0WED/0vGLrRsmINLhizF+ZUGRqC+jIaANT7055zO8wWbJUIe+guVX5rOAidLBbbLRZOEId0ZdZcQCq6hsX1TGma+vcGO90nO6blctslyGRs7vTvrLpG2/sN6wfb01qo8WkosdUQIDAQABAoGASVDjyhxJ/JEkm/zFDJee4F96KWTOM22Oy9QaVxorweKE1OG3pkUHII1/bFIS5T3INLJ11iO4PN6qwxEHxdecJ2s653PfSdZptkA7//hflY5aDjDGHi7JMSUozyk/Wl4TB46VL4cUJEte844DyqZppHendBoMtYJBpdBMG/rPYaECQQDmiqZJRq4lurXe0uVi0CJad7TalwTag45ZBxCKb19mpzWX3MCidbOWLE3h0PrsoWdW/qmYTZ+F+avED9IWgz+PAkEAjpmDJwo0Dj5iFRJjFWQOk5Y/0H8oQi2SHf2oXIxs9MpXgLqRKraKer/213MHvuDX813RnGuFO+p0mEQtnL1lHwJBAN2grslE3IfC3bJvdjuvMUddSwzVH8JdtEvb4cfj14fc+UWb38iOdG3K+7g56e/wHmNggHO9M71dTwY121bvJ/sCQQCAkCrMcciI5vlq4g7u5Cy4JwgVo+7Z61gHLgAyoHBDKoJFju7+QWEMVjHoAM+E6hYIVhd7HP0cDb9c4Gr3G1IlAkEA5N3YlE5TnJfhzIZjm1OWgbGxvoZUTI90dbh4M0j58no1Y7OWU7aA2tEtxiizvnLVwdruT3skBOUt7uFPFEwFrA==",
+					"platpkey": "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCJbiGOgd7rGMRArpLfPUHdWEU3dDrlnySb4rV9pZ+mxUKMsAb2FBoLKeZHTq5JB52Dj+H6KTcd889l9Naj4TV15HdmrjgsG/O4dnO2eZY2tGrHBhxBLlgFn6xeDIQtFdPofZxBjtolZtFWyLl5Rzv98Ul5PluQH1xOSRSi8qjZrQIDAQAB",
+					"waresid": 1
+				},
+				"payNotifyUrl": "http://115.159.58.69/cgi/index.php?c=iapppayPartner&m=payNotify",
+				"batchPayNotifyUrl": "http://115.159.58.69/cgi/index.php?c=iapppayPartner&m=batchPayNotify"
+			},
+			"resourceUrl": "http://115.159.58.69/cgi/static/"
+		}
+	}
+}

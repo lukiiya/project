@@ -1,0 +1,137 @@
+<script type="text/html" id="content">
+	
+</script>
+
+<script type="text/html" id="userRankListBox">
+	<ul class="redman_box" id="userRankList"></ul>
+</script>
+
+<script type="text/html" id="winRateRankListBox">
+	<ul class="profit_box" id="winRateRankList"></ul>
+</script>
+
+<script type="text/html" id="profitRateRankListBox">
+	<ul class="profit_box" id="profitRateRankList"></ul>
+</script>
+
+<script type="text/html" id="userRankList">
+<% for (var i = 0, length = list.length; i < length; i++) {
+	var userRank = list[i] || {};
+	var userNo = userRank.userNo;
+	var realName = userRank.realName;
+	var nickName = userRank.nickName;
+	var profileImg = userRank.profileImg;
+	var personalImg = userRank.personalImg;
+	var userImg = personalImg || profileImg || (IMG_PATH + 'user_profile.png');
+	var userName = realName || nickName;
+	var userTag = userRank.tag || "";
+	userTag = userTag.substr(0, 10);
+	var continueWin = userRank.continueWin || 0;
+	var index = i+pageSize*(pageNum-1)+1;
+	var salePlanCount = userRank.salePlanCount || 0;
+%>
+	<li class="redman_list_box mt5" userNo="<%=userNo%>">
+		<div class="redman_list clearfix">
+			<span class="redman_ranking <%=index<=3?'redman_red':''%> fl"><%=index%></span>
+			<img src="<%=userImg%>">
+			<div class="redman_title ml10 fl">
+				<span><%=userName%>
+				<%if (salePlanCount > 0) { %>
+					<b class="tips_num"><%=salePlanCount%></b>
+				<% } %>
+				</span>
+				<span><%=userTag%></span>
+			</div>
+			<div class="redman_ranked fr ">
+				<span class="icon_medal"></span>
+				<span class="redman_num"><%=continueWin%></span>
+				<span>场连红</span>
+				<span class="arrow_right"></span>
+			</div>
+		</div>
+	</li>
+<% } %>
+</script>
+
+<script type="text/html" id="winRateRankList">
+<% for (var i = 0, length = list.length; i < length; i++) {
+	var winRate = list[i] || {};
+	var userNo = winRate.userNo;
+	var realName = winRate.realName;
+	var nickName = winRate.nickName;
+	var profileImg = winRate.profileImg;
+	var personalImg = winRate.personalImg;
+	var userImg = personalImg || profileImg || (IMG_PATH + 'user_profile.png');
+	var userName = realName || nickName;
+	var resultPlanCount = winRate.resultPlanCount;
+	var salePlanCount = winRate.salePlanCount || 0;
+	var userTag = winRate.tag || "";
+	userTag = userTag.substr(0, 10);
+	var winRate = (+winRate.winRate || 0).toFixed(2);
+	winRate = winRate.replace(/\.0+$/g, '');//删除末尾是.00;
+	var index = i+pageSize*(pageNum-1)+1;
+%>
+	<li class="redman_list_box mt5" userNo="<%=userNo%>" groupNo="<%=groupNo%>">
+		<div class="redman_list clearfix">
+			<span class="redman_ranking <%=index<=3?'redman_red':''%> fl"><%=index%></span>
+			<img src="<%=userImg%>">
+			<div class="redman_title ml10 fl">
+				<span><%=userName%>
+				<%if (salePlanCount > 0) { %>
+					<b class="tips_num"><%=salePlanCount%></b>
+				<% } %>
+				</span>
+				<span><%=userTag%></span>
+			</div>
+			<div class="fr redman_right">
+				<!--<span class="icon_medal"></span>-->
+				<span class="color9 size15">7日胜率 <span class="redman_num"><%=winRate%>%</span></span><br />
+				<span class="color9 mt5">(<%=resultPlanCount%>场)</span>
+			</div>
+			<span class="arrow_right"></span>
+		</div>
+	</li>
+<% } %>
+</script>
+
+<script type="text/html" id="profitRateRankList">
+<% for (var i = 0, length = list.length; i < length; i++) {
+	var  profitRate = list[i] || {};
+	var userNo =  profitRate.userNo;
+	var realName =  profitRate.realName;
+	var nickName =  profitRate.nickName;
+	var profileImg =  profitRate.profileImg;
+	var personalImg =  profitRate.personalImg;
+	var userImg = personalImg || profileImg || (IMG_PATH + 'user_profile.png');
+	var userName = realName || nickName;
+	var resultPlanCount = profitRate.resultPlanCount;
+	var salePlanCount = profitRate.salePlanCount || 0;
+	var userTag =  profitRate.tag || "";
+	userTag = userTag.substr(0, 10);
+	var profitRate = (+ profitRate.profitRate || 0).toFixed(2);
+	profitRate = profitRate.replace(/\.0+$/g, '');//删除末尾是.00;
+	var index = i+pageSize*(pageNum-1)+1;
+	
+%>
+	<li class="redman_list_box mt5" userNo="<%=userNo%>" groupNo="<%=groupNo%>">
+		<div class="redman_list clearfix">
+			<span class="redman_ranking <%=index<=3?'redman_red':''%> fl"><%=index%></span>
+			<img src="<%=userImg%>">
+			<div class="redman_title ml10 fl">
+				<span><%=userName%>
+				<%if (salePlanCount > 0) { %>
+					<b class="tips_num"><%=salePlanCount%></b>
+				<% } %>	
+				</span>
+				<span><%=userTag%></span>
+			</div>
+			<div class="fr redman_right">
+				<!--<span class="icon_medal"></span>-->
+				<span class="color9 size15">7日盈利 <span class="redman_num"><%=profitRate%>%</span></span><br />
+				<span class="color9 mt5">(<%=resultPlanCount%>场)</span>
+			</div>
+			<span class="arrow_right"></span>
+		</div>
+	</li>
+<% } %>
+</script>

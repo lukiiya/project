@@ -1,0 +1,108 @@
+<script type="text/html" id="content">
+<%
+	var planNo = plan.planNo || "";
+	var content = plan.content || "";
+	var upCount = plan.upCount || 0;
+	var downCount = plan.downCount || 0;
+	var shareCount = plan.shareCount || 0;
+	var isSale = !!plan.isSale;
+	var maxPrizeRate = plan.maxPrizeRate || 0;
+	var resourceList = plan.resourceList || [];
+	var betContentList = plan.betContentList || [];
+	var user = plan.user || {};
+	var userNo = user.userNo;
+	var realName = user.realName;
+	var nickName = user.nickName;
+	var profileImg = user.profileImg;
+	var personalImg = user.personalImg;
+	var userImg = personalImg || profileImg || (IMG_PATH + 'user_profile.png');
+	var userName = realName || nickName;
+	var userTag = user.tag || "";
+	var userRemark = user.remark || "";
+	var matchType = plan.matchType;
+	var lotteryIssue = plan.lotteryIssue || {};
+	var drawTime = lotteryIssue.drawTime && lotteryIssue.drawTime.replace(/\d{4}-(\d{2}-\d{2} \d{2}:\d{2}):\d{2}/, "$1") || "";
+	var drawNumber = lotteryIssue.drawNumber || "";
+	drawNumber = drawNumber.split('|')[0];
+	var issue = lotteryIssue.issue;
+%>
+	<div class="matchInfo_box">
+		<div class="expertInfo_top color9" id="userMore" userNo="<%=userNo%>">
+			<div class="clearfix">
+				<img class="icon_span img33 fl" src="<%=userImg%>"/>
+				<div class="expertInfo">
+					<p class="color3 clearfix"><span class="fl">晒米人：<%=userName%></span><span class="fr share" id="focus" style="display: none;">+ 关注</span></p>
+					<p class="size10 color9 ellipsis"><%=userRemark%></p>
+				</div>
+			</div>
+		</div>
+		<% 
+			for (var i = 0; i < betContentList.length; i++) { 
+				var list = betContentList[i] || {};
+				var betContent = list.betContent || "";
+				var betContentResult = list.betContentResult || {};
+				var selectNum = betContentResult.value || [];
+				var name = betContentResult.name || '';
+		%>
+			<div class="matchInfo_wrap clearfix">
+				<img class="img40 fl" src="<%=IMG_PATH%>icon_fc3d.png">
+				<div class="ml50">
+					<div class="clearfix digital_issue">
+						<span class="fl size13 color6">
+							<%=issue%>期
+						</span>
+						<span class="fr color9 size12">
+							开奖：<%=drawNumber?drawNumber:drawTime%>
+						</span>
+					</div>
+					<div class="size14">
+						<%=name%>：
+						<% 
+							for (var j = 0; j < selectNum.length; j++) { 
+								var singleNum = selectNum[j];
+								var singleNumKey = Object.keys(singleNum)[0];
+								var activeNum = singleNum[singleNumKey];
+						%>
+						<span class="recommend_num <%=activeNum ? 'color_red' : ''%>"><%=singleNumKey%></span>
+						<% } %>
+					</div>
+				</div>
+			</div>
+		<% } %>
+		<style type="text/css">
+			.plan {
+				-moz-user-select:none;/*火狐*/
+				-webkit-user-select:none;/*webkit浏览器*/
+				-ms-user-select:none;/*IE10*/
+				-khtml-user-select:none;/*早期浏览器*/
+				user-select:none;
+			}
+		</style>
+		<div class="plan" id="planDetail">
+			<% for (var i = 0, length = resourceList.length; i < length; i++) { %>
+			<img class="planpic img-responsive" src="<%=resourceList[i]%>" onerror="this.style.display='none'">
+			<% } %>
+			<p class="planDesc"><pre style="white-space:pre-wrap;line-height:25px;"><%=content%></pre></p>
+			<div class="oprate">
+				<span class="icon_span icon_zan" id="upCount" planNo="<%=planNo%>"></span><span class="num" id="upCountNum"><%=upCount%></span>
+				<span class="icon_span icon_cai" id="downCount" planNo="<%=planNo%>"></span><span class="num" id="downCountNum"><%=downCount%></span>
+				<span class="icon_span icon_share" id="shareCount" planNo="<%=planNo%>"></span><span class="num" id="shareCountNum"><%=shareCount%></span>
+			</div>
+		</div>
+	</div>
+<% if(isSale) { %>
+	<div class="expertInfo_bottom">
+		<div class="ui-flex bet">
+			<div class="ui-flex_item textR" id="addTicket">
+				<a class="digital_btn">一键跟单</a>
+			</div>
+		</div>
+	</div>
+<% } %>
+</script>
+
+<script type="text/html" id="mask">
+	<div class="mask" id="ticketOrderMask">
+		<div class="pop5"></div>
+	</div>
+</script>

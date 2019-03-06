@@ -1,0 +1,82 @@
+<script type="text/html" id="content">
+<ul class="infoBox" id="recommendList"></ul>
+</script>
+
+<script type="text/html" id="recommendList">
+<% 
+var length = list.length;
+if (length > 0) {
+	for (var i = 0; i < length; i++) {
+	var plan = list[i] || {};
+	var planNo = plan.planNo;
+	var hasPic = plan.hasPic || false;
+	var lotteryId = plan.lotteryId;
+	var amount = (plan.amount || 0)/100;
+	var readCount = plan.readCount || 0;
+	var matchType = plan.matchType || 0;
+	var isSale = plan.isSale || false;
+	var rich = plan.rich || false;
+	var prizeStatus = plan.prizeStatus;
+	var statistics = plan.statistics || {};
+	var sCount = statistics.count || 0;
+	var sAmount = (statistics.amount || 0)/100;
+	var divideStatistics = plan.divideStatistics || {};
+	var dCount = divideStatistics.count || 0;
+	var dAmount = (divideStatistics.amount || 0)/100;
+	var betContent = plan.betContentList[0] || {};
+	var betContentResult = betContent.betContentResult || {};
+	var name = betContentResult.name;
+	var lotteryIssue = plan.lotteryIssue || {};
+	var drawTime = lotteryIssue.drawTime && lotteryIssue.drawTime.replace(/\d{4}-(\d{2}-\d{2} \d{2}:\d{2}):\d{2}/, "$1") || "";
+	var issue = lotteryIssue.issue;
+%>
+	<li class="item clearfix planItem" planNo="<%=planNo%>" amount="<%=amount%>" access="true">
+		<div class="detailBox">
+			<div class="detail clearfix">
+				<img class="img40 fl mr10" src="<%=IMG_PATH%>icon_fc3d.png">
+				<div class="fl">
+					<div class="size13 color6 mb5">
+						<%=issue%>期
+					</div>
+					<div class="size14">
+						<%=name%>推荐
+					</div>
+				</div>
+				<div class="fr">
+					<div class="color9 size12">
+						开奖：<%=drawTime%>
+					</div>
+				</div>
+			</div>
+			<div class="price">
+				<span><span><%=amount%></span>粒米</span>
+			</div>
+		</div>
+		<div class="ui-flex count_box">
+			<div class="plan_total">
+				<% if(amount <= 0) { %>
+					<span><span class="num"><%=readCount%></span>人阅读</span>
+				<% } else { %>
+					<span><span class="num"><%=sCount%></span>人购买</span>
+				<% } %>
+				<span>收米<span class="num"><%=sAmount%></span></span>
+			</div>
+			<% if (isSale) { %>
+				<div class="ticket_commission">
+					<span><span class="num"><%=dCount%></span>人跟单</span>
+					<span>提成<span class="num"><%=dAmount%></span></span>
+				</div>
+			<% } %>
+		</div>
+	</li>
+<% 
+	}
+} else { %>
+	<li>
+		<div class="none">
+			<p>您还没有晒米</p>
+			<span class="btn ellipsis" href="#editPlan">写推荐</span>
+		</div>
+	</li>
+<% } %>
+</script>

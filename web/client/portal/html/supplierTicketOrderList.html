@@ -1,0 +1,88 @@
+<script type="text/html" id="content">
+	<div class="tabBar">
+		<div class="ui-flex bg_c_f" id="typeList">
+			<div class="ui-flex_item <%=type==1?'active':''%>" type="1">
+				<span class="positionR">
+					未打票
+					<!--<b class="red_dot"></b>-->
+				</span>
+			</div>
+			<span class="vline"></span>
+			<div class="ui-flex_item <%=type==2?'active':''%>" type="2">
+				<span>
+					已打票
+				</span>
+			</div>
+			<span class="vline"></span>
+			<div class="ui-flex_item <%=type==3?'active':''%>" type="3">
+				<span class="positionR">
+					待派奖
+					<b class="tips_num" id="tipsNum" style="display: none;"></b>
+				</span>
+			</div>
+			<span class="vline"></span>
+			<div class="ui-flex_item <%=type==4?'active':''%>" type="4">
+				<span>
+					已派奖
+				</span>
+			</div>
+		</div>
+	</div>
+	<div class="textC mt5" id="statistics" style="display: none;">共 <span class="color_red" id="totalCount"></span> 单， <span class="color_red" id="totalMoney"> </span>元</div>
+	<ul class="mt5 wdp" id="supplierTicketOrderList"></ul>
+</script>
+
+<script type="text/html" id="supplierTicketOrderList">
+<%  for (var i = 0, length = list.length; i < length; i++) {
+		var supplierTicket = list[i] || {};
+		var orderNo = supplierTicket.orderNo;
+		var orderNumeric = supplierTicket.orderNumeric;
+		var ticketStatus = supplierTicket.ticketStatus;
+		var ticketPrizeAmount = supplierTicket.ticketPrizeAmount/100 || 0;
+		var type = type;
+		var imgMap = {"2":"icon_dkj_s","3":"icon_wzj_s","4":"icon_yzj_s","5":"icon_ypj"};
+		var ticketStatusMap = {"0":"正在出票","1":"出票失败","2":"待开奖","3":"未中奖","4":"已中奖","5":"已派奖","6":"已部分派奖"};
+		var createTime = supplierTicket.createTime && supplierTicket.createTime.replace(/\d{4}-(\d{2}-\d{2} \d{2}:\d{2}):\d{2}/, "$1") || "";
+%>
+	<% if (type == 1) { %>
+		<li class="clearfix bg_c_f" orderNo=<%=orderNo%>>
+			<span class="fl"><%=orderNumeric%> (<%=createTime%>)</span>
+			<span class="fr color6">未打票<span class="arrow_right"></span></span>
+		</li>
+		<!-- <li class="bg_c_f" orderNo="<%=orderNo%>">
+			<div class="ui-flex mb5">
+				<span class="ui-flex_item size13">距离出票截止</span>
+				<span class="ui-flex_item textR">竞足</span>
+			</div>
+			<div class="ui-flex">
+				<span class="ui-flex_item count_time">1小时20分</span>
+				<span class="ui-flex_item textR"><span class="color_red">40</span>元</span>
+			</div>
+			<span class="arrow_right"></span>
+		</li> -->
+	<% } else if (type == 2) { %>
+		<li class="clearfix bg_c_f" orderNo=<%=orderNo%>>
+			<span class="fl"><%=orderNumeric%> (<%=createTime%>)</span>
+			<% if (ticketStatus == 5) { %>
+				<span class="fr color6"><span class="color_red">中<%=ticketPrizeAmount%></span><span class="arrow_right"></span></span>
+			<% } else { %>
+				<span class="fr win_status">
+					<% if (ticketStatus == 4 || ticketStatus == 6) { %>
+					<i class="icon_yzj_s"></i>
+					<span>已中奖</span>
+					<% } else { %>
+					<i class="<%=imgMap[ticketStatus]%>"></i>
+					<span><%=ticketStatusMap[ticketStatus]%></span>
+					<% } %>
+					<span class="arrow_right attention_right"></span>
+				</span>
+			<% } %>
+		</li>
+	<% } else if (type == 3 || type == 4) { %>
+	<li class="clearfix bg_c_f" orderNo=<%=orderNo%>>
+		<span class="fl"><%=orderNumeric%> (<%=createTime%>)</span>
+		<span class="fr color6"><span class="color_red"><%=ticketPrizeAmount==0?'请填写奖金':'中'+ticketPrizeAmount%></span><span class="arrow_right"></span></span>
+	</li>
+	<% } %>
+<% } %>
+</script>

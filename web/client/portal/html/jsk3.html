@@ -1,0 +1,369 @@
+<script type="text/html" id="content">
+	
+</script>
+
+<script type="text/html" id="k3Num">
+	<div class="nav_wrap" id="navWrap" style="display: none;">
+		<ul class="nav clearfix" id="typeList">
+			<li class="item" type="1">
+				<div class="item_content">
+					<span class="type">和值</span>
+					<div class="prize">奖金 <span>9~240元</span></div>
+				</div>
+			</li>
+			
+			<li class="item" type="2">
+				<div class="item_content ">
+					<span class="type">二同号</span>
+					<div class="prize">奖金 <span>80元</span></div>
+				</div>
+			</li>
+			
+			<li class="item" type="3">
+				<div class="item_content">
+					<span class="type">二不同</span>
+					<div class="prize">奖金 <span>8元</span></div>
+				</div>
+			</li>
+			
+			<li class="item" type="4">
+				<div class="item_content">
+					<span class="type">三同号</span>
+					<div class="prize">奖金 <span>240元</span></div>
+				</div>
+			</li>
+			
+			<li class="item" type="5">
+				<div class="item_content">
+					<span class="type">三不同</span>
+					<div class="prize">奖金 <span>40元</span></div>
+				</div>
+			</li>
+			
+			<li class="item" type="6">
+				<div class="item_content">
+					<span class="type">三连号</span>
+					<div class="prize">奖金 <span>10元</span></div>
+				</div>
+			</li>
+		</ul>
+	</div>
+	<div class="ui-flex k3_top">
+		<div class="ui-flex_item draw_msg">
+			<div class="txtl">
+				<span class="color9 mb10"><b id="lastIssue"></b>期开奖</span>
+				<span class="result" id="result">
+					<!--<i class=""></i>
+					<i class=""></i>
+					<i class=""></i>-->
+				</span>
+			</div>
+		</div>
+		<div class="ui-flex_item">
+			<div class="txtr">
+				<span class="color9 mb10">距<b id="issue"></b>期截止</span>
+				<span class="time" id="time"></span>
+			</div>
+		</div>
+	</div>
+	<div class="num-list" id="numList"></div>
+	<div class="buy_list">
+		<div class="pay_info clearfix">
+			<div class="pay_left fl">
+				<div class="mb10">金额：<span class="colorf5e" id="prize">0 元</span></div>
+				<div class="bonus" id="unit">注数：0 注</div>
+			</div>
+			<div class="pay_btn fr" id="ensureBtn">
+				确定
+			</div>
+		</div>
+	</div>
+</script>
+
+<script type="text/html" id="HZ">
+	<p class="size12 color6">玩法：至少选择1个和值（3个号码之和）进行投注，所选和值与开奖的3个号码的和值相同即中奖，最高可中<span class="size12 color_red">240</span>元</p>
+	<ul class="tabBar clearfix" id="tabBar">
+		<li class="tab_item fl" tab="1" data-value = "big">
+			<span class="size13">大</span>
+			<span class="size10 color9">11－18</span>
+		</li>
+		<li class="tab_item fl" tab="2" data-value = "small">
+			<span class="size13">小</span>
+			<span class="size10 color9">３－10</span>
+		</li>
+		<li class="tab_item fl" tab="3" data-value = "odd">
+			<span class="size13">单</span>
+			<span class="size10 color9">所有奇数</span>
+		</li>
+		<li class="tab_item fl" tab="4" data-value = "even">
+			<span class="size13">双</span>
+			<span class="size10 color9">所有偶数</span>
+		</li>
+	</ul>
+	<div class="numBox" id="numBox">
+		<ul class="num_wrap clearfix" id="numWrap">
+			<%
+				for (var i = 0, length = hzNum.length; i < length; i++) {
+					var award = hzNum[i].award;
+					var num = hzNum[i].num;
+			%>
+			<li class="num_item_4" data-value = "<%=num%>">
+				<div class="num_cont">
+					<span class="num"><%=num%></span>
+					<div class="award"><%=award%>元</div>
+				</div>
+			</li>
+			<% } %>
+		</ul>
+	</div>
+</script>
+
+<script type="text/html" id="STH">
+	<p class="size12 color6 tips">玩法：对相同的三个号码（111、222、333、444、555、666）中的任意一个进行投注，所选号码开出即中奖，单注奖金<span class="size12 color_red">240</span>元。</p>
+	<p class="size12 color6 tips" style="display: none;">玩法：对所有相同的三个号码（111、222、333、444、555、666）进行投注，任意号码开出即中奖，单注奖金<span class="size12 color_red">40</span>元。</p>
+	<ul class="ui-flex tabBar" id="tabBar">
+		<li class="ui-flex_item active" tab="1">
+			单选
+		</li>
+		<li class="ui-flex_item" tab="2">
+			通选
+		</li>
+	</ul>
+	<div class="numBox" id="numBox">
+		<ul class="num_wrap clearfix" id="numWrap">
+			<li class="num_item_3">
+				<span class="num">111</span>
+			</li>
+			<li class="num_item_3">
+				<span class="num">222</span>
+			</li>
+			<li class="num_item_3">
+				<span class="num">333</span>
+			</li>
+			<li class="num_item_3">
+				<span class="num">444</span>
+			</li>
+			<li class="num_item_3">
+				<span class="num">555</span>
+			</li>
+			<li class="num_item_3">
+				<span class="num">666</span>
+			</li>
+		</ul>
+		<ul class="num_wrap clearfix" style="display: none;">
+			<li class="num_item_1">
+				<span class="num">三同号通选</span>
+			</li>
+		</ul>
+	</div>
+</script>
+
+<script type="text/html" id="SBT">
+	<p class="size12 color6">玩法：从1-6中任选3个或多个号码，所选号码与开奖号码3个号码相同，即中奖<span class="size12 color_red">40</span>元。</p>
+	<div class="numBox" id="numBox">
+		<ul class="num_wrap clearfix" id="numWrap">
+			<li class="num_item_3">
+				<span class="num">1</span>
+			</li>
+			<li class="num_item_3">
+				<span class="num">2</span>
+			</li>
+			<li class="num_item_3">
+				<span class="num">3</span>
+			</li>
+			<li class="num_item_3">
+				<span class="num">4</span>
+			</li>
+			<li class="num_item_3">
+				<span class="num">5</span>
+			</li>
+			<li class="num_item_3">
+				<span class="num">6</span>
+			</li>
+		</ul>
+	</div>
+</script>
+
+<script type="text/html" id="SLH">
+	<p class="size12 color6">玩法：对所有三个相连的号码（123、234、345、456）进行投注，任意号码开出即中奖，单注奖金<span class="size12 color_red">10</span>元。</p>
+	<div class="numBox" id="numBox">
+		<ul class="num_wrap clearfix" id="numWrap">
+			<li class="num_item_1">
+				<span class="num">三连号通选</span>
+			</li>
+		</ul>
+	</div>
+</script>
+
+<script type="text/html" id="ETH">
+	<p class="size12 color6 tips">玩法：选择1对相同号码和1个不同号码投注，选号与奖号相同（不限顺序）即中奖,单注奖金<span class="size12 color_red">80</span>元。</p>
+	<p class="size12 color6 tips" style="display: none;">玩法：从11~66中任选1个或多个号码，选号与奖号（包含11~66，不限顺序）相同即中奖,单注奖金<span class="size12 color_red">15</span>元。</p>
+	<ul class="ui-flex tabBar" id="tabBar">
+		<li class="ui-flex_item active" tab="1">
+			单选
+		</li>
+		<li class="ui-flex_item" tab="2">
+			复选
+		</li>
+	</ul>
+	<div class="numBox" id="numBox">
+		<div class="tabBox">
+			<div class="icon_wrap mb20">
+				<span class="icon_th"></span>
+			</div>
+			<ul class="num_wrap clearfix" id="EDXTH">
+				<li class="num_item_3" data-value = "1">
+					<span class="twoNum">11</span>
+				</li>
+				<li class="num_item_3" data-value = "2">
+					<span class="twoNum">22</span>
+				</li>
+				<li class="num_item_3" data-value = "3">
+					<span class="twoNum">33</span>
+				</li>
+				<li class="num_item_3" data-value = "4">
+					<span class="twoNum">44</span>
+				</li>
+				<li class="num_item_3" data-value = "5">
+					<span class="twoNum">55</span>
+				</li>
+				<li class="num_item_3" data-value = "6">
+					<span class="twoNum">66</span>
+				</li>
+			</ul>
+			<div class="icon_wrap mb30">
+				<span class="icon_bth"></span>
+			</div>
+			<ul class="num_wrap clearfix" id="EDXBTH">
+				<li class="num_item_3" data-value = "1">
+					<span class="twoNum">1</span>
+				</li>
+				<li class="num_item_3" data-value = "2">
+					<span class="twoNum">2</span>
+				</li>
+				<li class="num_item_3" data-value = "3">
+					<span class="twoNum">3</span>
+				</li>
+				<li class="num_item_3" data-value = "4">
+					<span class="twoNum">4</span>
+				</li>
+				<li class="num_item_3" data-value = "5">
+					<span class="twoNum">5</span>
+				</li>
+				<li class="num_item_3" data-value = "6">
+					<span class="twoNum">6</span>
+				</li>
+			</ul>
+		</div>
+		<div class="tabBox" style="display: none;">
+			<ul class="num_wrap clearfix" id="numWrap">
+				<li class="num_item_3">
+					<span class="num">11*</span>
+				</li>
+				<li class="num_item_3">
+					<span class="num">22*</span>
+				</li>
+				<li class="num_item_3">
+					<span class="num">33*</span>
+				</li>
+				<li class="num_item_3">
+					<span class="num">44*</span>
+				</li>
+				<li class="num_item_3">
+					<span class="num">55*</span>
+				</li>
+				<li class="num_item_3">
+					<span class="num">66*</span>
+				</li>
+			</ul>
+		</div>
+	</div>
+</script>
+
+<script type="text/html" id="EBT">
+	<p class="size12 color6">玩法：从1-6中任选两个或多个号码，所选号码与开奖号码任意两个号码相同即中奖,单注奖金<span class="size12 color_red">8</span>元。</p>
+	<div class="numBox" id="numBox">
+		<ul class="num_wrap clearfix" id="numWrap">
+			<li class="num_item_3">
+				<span class="num">1</span>
+			</li>
+			<li class="num_item_3">
+				<span class="num">2</span>
+			</li>
+			<li class="num_item_3">
+				<span class="num">3</span>
+			</li>
+			<li class="num_item_3">
+				<span class="num">4</span>
+			</li>
+			<li class="num_item_3">
+				<span class="num">5</span>
+			</li>
+			<li class="num_item_3">
+				<span class="num">6</span>
+			</li>
+		</ul>
+	</div>
+</script>
+
+<script type="text/html" id="k3Bet">
+	<div class="k3_betCont">
+		<p class="title">距<span id="issue"></span>期投注截止 <span class="color_red size13" id="time"></span>：</p>
+		<div class="bet_list">
+			<ul class="" id="k3List">
+
+			</ul>
+		</div>
+	</div>
+	<div class="buy_list">
+		<div class="read pl10 pt5">
+			<input class="mr5" type="checkbox" name="tongyi" id="protocol" checked="checked">
+			<label for="protocol">已阅读并同意</label>
+			<span><a href="#userVerifyProtocol&amp;type=2">《用户代购协议》</a></span>
+		</div> 
+		<div class="mutiple_warp">
+			<span class="mr5">买</span>
+			<span class="icon_decrease_multiple mr10" id="minusMultiple"></span>
+			<input type="number" value="1" min="1" max="9999" id="multiple"/>
+			<span class="icon_add_multiple ml10" id="addMultiple"></span>
+			<span class="ml5">倍</span>
+		</div>
+		<div class="pay_info clearfix">
+			<div class="pay_left fl">
+				<div class="mb10">金额：<span class="colorf5e" id="prize">0</span> 元</div>
+				<div class="bonus">注数：<span id="totalUnit">0</span> 注</div>
+			</div>
+			<div class="pay_btn fr" id="submitBtn">
+				确定
+			</div>
+		</div>
+	</div>
+</script>
+
+<script type="text/html" id="k3List">
+	<%
+		for (var i = 0, length = selectContent.length; i < length; i++) {
+		var title = selectContent[i].title;
+		var recommend = selectContent[i].recommend;
+		compare = recommend.join(' ');
+	%>
+	<li compare="<%=compare%>">
+		<div class="num_wrap ui-flex">
+			<span class="play_type">
+				[<%=title%>]
+			</span> 
+			<span class="sel_num ui-flex_item">
+				<% 
+					for (var j = 0; j < recommend.length; j++) {
+						var num = recommend[j];
+				%>
+					<em><%=num%></em>
+				<% } %>
+			</span>
+		</div>
+		<a class="del_btn">
+			<span class="del"></span>
+		</a>
+	</li>
+	<% } %>
+</script>

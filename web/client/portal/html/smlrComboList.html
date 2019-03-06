@@ -1,0 +1,33 @@
+<script type="text/html" id="content">
+	<p class="ti30">
+		每周近500场数据深挖和提炼，网站几百名专家支持投注选项的冷热，菠菜公司、中国竞彩受注的冷热，让你快速知道绝大多数彩民的下注行为，我们给予最有依据的推荐。
+	</p>
+	<div id="smlrComboList"></div>
+</script>
+
+<script type="text/html" id="smlrComboList">
+	<% for (var i = 0,length = list.length;i < length; i++) {
+		var combo = list[i] || {};
+		var comboNo = combo.comboNo;
+		var amount = combo.amount;
+		var presentAmount = combo.presentAmount/100 || 0;
+		var spanTime = combo.spanTime;
+		var imgMap = {"604800":"hotweek","2678400":"hotmonth","31536000":"hotyear"};
+		var title =  combo.title;
+		var comboType = combo.comboType;
+	%>
+	<div class="jx" comboNo="<%=comboNo%>" comboType="<%=comboType%>" amount="<%=amount%>">
+		<div class="left">
+			<img src="<%=IMG_PATH%><%=imgMap[spanTime]%>.png" alt="">
+		</div>
+		<div class="center"> 
+			<span class="centerone"><%=title%></span>
+			<span class="centertwo">送<%=presentAmount%>粒米</span>
+		</div>
+		<div class="right">
+			<img src="<%=IMG_PATH%>shop.png" alt="">
+			<span>立即购买</span>
+		</div>
+	</div>
+	<% }%>
+</script>

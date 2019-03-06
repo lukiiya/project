@@ -1,0 +1,56 @@
+<script type="text/html" id="content">
+	<div class="ui-flex nav_wrap" id="navTab">
+		<div class="ui-flex_item" tab = "1">
+			<span>冠军</span>
+		</div>
+		<div class="ui-flex_item" tab = "2">
+			<span>冠亚军</span>
+		</div>
+	</div>
+	<ul class="filter_wrap ui-flex mt5" id="filterList" style="display: none;"></ul>
+	<div class="team-list mt5">
+		<ul class="team_wrap ui-flex" id="matchList"></ul>
+	</div>			
+	<div class="buy_list">
+		<div class="mutiple_warp">
+				<span class="mr15">输入投注倍数</span>
+				<input type="number" value="10" min="1" max="9999" id="ticketMultiple"/>
+			</div>
+		<div class="pay_info clearfix">
+			<div class="pay_left fl">
+				<div class="mb10"><span id="countUnit">0</span>注 <span class="colorf5e" id="ticketAmount">0元</span></div>
+				<div class="bonus">理论最大奖金：<span class="colorf5e" id="maxPrice">0元</span></div>
+			</div>
+			<div class="pay_btn fr" id="betBtn">
+				投注
+			</div>
+		</div>
+	</div>
+</script>
+
+<script type="text/html" id="matchList">
+<% for (var i=0, length = list.length; i < length; i++) {
+	var match = list[i] || {};
+	var odds = match.odds;
+	var team = match.team;
+	var oddsId = match.oddsId;
+	var team1 = team.split('—')[0];
+	var team2 = team.split('—')[1];
+%>
+	<li class="team_item" oddsId = <%=oddsId%> team1 = <%=team1%> team2 = <%=team2%>>
+		<span class="team_name"><%=team%></span>
+		<span class="odds"><%=odds%></span>
+	</li>
+<% } %>
+</script>
+
+<script type="text/html" id="filterList">
+<% for (var i=0, length = list.length; i < length; i++) {
+	var filter = list[i];
+%>
+	<li class="filter_item mb10" filterName=<%=filter%>>
+		<span><%=filter%></span>
+	</li>
+<% } %>
+</script>
+

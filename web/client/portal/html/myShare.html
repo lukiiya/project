@@ -1,0 +1,55 @@
+<script type="text/html" id="content">
+<p class="clearfix pl10 pr10" id="countNum">
+	<span class="fl"><span id="spreadIncomeCount">0</span>人次</span>
+	<span class="fr">收米<span class="num" id="spreadIncomeAmount">0</span></span>
+</p>
+<ul class="infoBox" id="spreadList"></ul>
+</script>
+
+<script type="text/html" id="spreadList">
+<% 
+var length = list.length;
+if (length > 0) {
+	for (var i = 0; i < length; i++) {
+	var order = list[i] || {};
+	var planNo = order.planNo;
+	var amount = (order.amount || 0)/100;
+	var planAccess = order.planAccess+'';
+	var createTime = order.createTime && order.createTime.replace(/\d{4}-(\d{2}-\d{2} \d{2}:\d{2}):\d{2}/, "$1") || "";
+	var user = order.user || {};
+	var userNo = user.userNo;
+	var realName = user.realName;
+	var nickName = user.nickName;
+	var profileImg = user.profileImg;
+	var personalImg = user.personalImg;
+	var userImg = personalImg || profileImg || (IMG_PATH + 'user_profile.png');
+	var userName = realName || nickName;
+	var userTag = user.tag;
+	var statistics = order.statistics || {};
+	var sCount = statistics.count || 0;
+	var sAmount = (statistics.amount || 0)/100;
+	var planType = order.planType;
+%>
+	<li class="item clearfix planItem" planNo="<%=planNo%>" amount="<%=amount%>" access="<%=planAccess%>" planType="<%=planType%>">
+		<p class="title color6 clearfix">
+			<img class="userHead" src="<%=userImg%>">
+			<span class="fl"><%=userName%></span>
+			<span class="fr"><%=createTime%></span>
+		</p>
+		<p class="title ui-flex">
+			<span class="ui-flex_item">消费金额: <span><%=amount%></span> 米</span>
+			<span class="ui-flex_item">收益：<span class="num"><%=sAmount%></span> 粒米</span>
+			<span class="ui-flex_item  textR"><span class="arrow arrow_right"></span></span>
+		</p>
+	</li>
+<% 
+	}
+} else { %>
+	<li>
+		<div class="none">
+			<p>分享专家的推荐，其他人购买后，您将获得50%收益。</p>
+			<span class="btn ellipsis" href="#home">去分享</span>
+		</div>
+	</li>
+<% } %>
+</script>

@@ -1,0 +1,260 @@
+<script type="text/html" id="content">
+	<input type="hidden" id="selectLeague">
+	<div class="mask" id="matchFilter" style="display: none;top: 48px;">
+		<div class="hot_mask">
+			<div class="hot_maskTop" id="matchFilterTab">
+				<span class="borderr1" id="checkedAll">全选</span>
+				<span class="borderr1" id="inverse">反选</span>
+				<span id="ensure">确定</span>
+			</div>
+			<div class="hot_markContent" id="leagueList"></div>
+		</div>
+	</div>
+	<div id="matchList"></div>
+	<div class="buy_list" style="display: none;" id="buyList">
+		<div class="pay_info clearfix">
+			<div class="pay_left fl">
+				<div class="mb5">已选<span class="selectNum" id="selectNum"></span>场</div>
+				<div class="colorc5">非单关玩法至少选2场比赛</div>
+			</div>
+			<div class="pay_btn fr" id="createTicketSubmit">
+				确认
+			</div>
+		</div>
+	</div>
+</script>
+
+<script type="text/html" id="football">
+<%
+	for (var i = 0, length = list.length; i < length; i++) {
+		var date = list[i].date || '';
+		var matchList = list[i].matchList || [];
+%>
+	<p class="matchDate newstime clearfix"><span class="fl"><%=date%></span><span class="arrow <%=i==0?'arrow_up':'arrow_down'%>"></span></p>
+	<div class="matchContent" style="<%=i==0?'':'display:none'%>">
+	<% 
+		for (var j = 0, len = matchList.length; j < len; j++) {
+		var match = matchList[j]
+		var spf = match['bettype']['SPF'] || {};
+		var rqspf = match['bettype']['RQSPF'] || {};
+		var spfBettypeOdds = spf.bettypeOdds || {};
+		var rqspfBettypeOdds = rqspf.bettypeOdds || {};
+		var number = match.number;
+		var single = (!!spf.single) || (!!rqspf.single);
+	%>
+		<div class="match_data ui-flex">
+			<ul class="base_data">
+				<li class="league">
+					<span class="league_name"><%=match.league%></span>
+					<% if (single) { %>
+						<span class="match_icon bg_c_r">单关</span>
+					<% } %>
+				</li>
+				<li class="mb5 color6 size12"><%=number%></li>
+				<li><%=match.bDate%></li>
+				<li><%=match.bTime%></li>
+			</ul>
+			<div class="data_list ui-flex_item ml15">
+				<div class="ui-flex">
+					<span class="ui-flex_item"><%=match.home%></span>
+					VS
+					<span class="ui-flex_item"><%=match.away%></span>
+				</div>
+				<table class="match_table" matchId="<%=match.matchId%>">
+					<tr class="matchBettype" oddsId="<%=spf.oddsId%>">
+						<td recommend="S">胜<span><%=spfBettypeOdds.S%></span><span class="numcircle">0</span></td>
+						<td recommend="P">平<span><%=spfBettypeOdds.P%></span></td>
+						<td recommend="F">负<span><%=spfBettypeOdds.F%></span></td>
+						<td class="more_game" rowspan="2" id="moreBettype<%=match.matchId%>">更多玩法<b></b></td>
+					</tr>
+					<tr class="matchBettype" oddsId="<%=rqspf.oddsId%>">
+						<td recommend="S">胜<span><%=rqspfBettypeOdds.S%></span><span class="numcircle numcircle1"><%=rqspf.concede > 0 ? '+'+rqspf.concede : rqspf.concede%></span></td>
+						<td recommend="P">平<span><%=rqspfBettypeOdds.P%></span></td>
+						<td recommend="F">负<span><%=rqspfBettypeOdds.F%></span></td>
+					</tr>
+				</table>	
+			</div>
+		</div>
+	<% } %>
+	</div>
+<% } %>
+</script>
+
+<script type="text/html" id="basketball">
+<%
+	for (var i = 0, length = list.length; i < length; i++) {
+		var date = list[i].date || '';
+		var matchList = list[i].matchList || [];
+%>
+	<p class="matchDate newstime clearfix"><span class="fl"><%=date%></span><span class="arrow <%=i==0?'arrow_up':'arrow_down'%>"></span></p>
+	<div class="matchContent" style="<%=i==0?'':'display:none'%>">
+	<% 
+		for (var j = 0, len = matchList.length; j < len; j++) {
+		var match = matchList[j]
+		var rfsf = match['bettype']['RFSF'] || {};
+		var dxf = match['bettype']['DXF'] || {};
+		var rfsfBettypeOdds = rfsf.bettypeOdds || {};
+		var dxfBettypeOdds = dxf.bettypeOdds || {};
+		var number = match.number;
+		var single = (!!rfsf.single) || (!!dxf.single);
+		var Hconcede;
+		var Aconcede;
+		if (rfsf.concede > 0) {
+			Hconcede = '+' + (rfsf.concede);
+			Aconcede = -rfsf.concede;
+		} else {
+			Hconcede = rfsf.concede;
+			Aconcede = '+' + (-rfsf.concede)
+		}
+	%>
+		<div class="match_data ui-flex">
+			<ul class="base_data">
+				<li class="league">
+					<span class="league_name" style="color: #003cff;"><%=match.league%></span>
+					<% if (single) { %>
+						<span class="match_icon bg_c_r">单关</span>
+					<% } %>
+				</li>
+				<li class="mb5 color6 size12"><%=number%></li>
+				<li><%=match.bDate%></li>
+				<li><%=match.bTime%></li>
+			</ul>
+			<div class="data_list ui-flex_item ml10">
+				<div class="ui-flex">
+					<span class="ui-flex_item"><%=match.away%></span>
+					VS
+					<span class="ui-flex_item"><%=match.home%><span>(主)</span></span>
+				</div>
+				<table class="match_table" matchId="<%=match.matchId%>">
+					<tr class="matchBettype" oddsId="<%=rfsf.oddsId%>">
+						<td recommend="F">客胜<%=Aconcede%><span class="ml15 size13"><%=rfsfBettypeOdds.F%></span></td>
+						<!--<td class="<%=rfsf.concede > 0 ? "active_red" : "active_green"%>">主<span><%=#rfsf.concede > 0 ? '+'+rfsf.concede : rfsf.concede%><span></td>-->
+						<td recommend="S">主胜<%=Hconcede%><span class="ml10 size10"><%=rfsfBettypeOdds.S%></span></td>
+						<td class="more_game" rowspan="2" id="moreBettype<%=match.matchId%>">更多玩法<b></b></td>
+					</tr>
+					<tr class="matchBettype" oddsId="<%=dxf.oddsId%>">
+						<td recommend="D">大于<%=dxf.concede%><span class="ml15 size13"><%=dxfBettypeOdds.D%></span></td>
+<!--						<td><span class="current color_red"><%=dxf.concede%></span></td>-->
+						<td recommend="X">小于<%=dxf.concede%><span class="ml15 size13"><%=dxfBettypeOdds.X%></span></td>
+					</tr>
+				</table>	
+			</div>
+		</div>
+	<% } %>
+	</div>
+<% } %>
+</script>
+
+<script type="text/html" id="JZYP">
+<%
+	for (var i = 0, length = list.length; i < length; i++) {
+		var date = list[i].date || '';
+		var matchList = list[i].matchList || [];
+%>
+	<p class="matchDate newstime clearfix"><span class="fl"><%=date%></span><span class="arrow <%=i==0?'arrow_up':'arrow_down'%>"></span></p>
+	<div class="matchContent" style="<%=i==0?'':'display:none'%>">
+	<% 
+		for (var j = 0, len = matchList.length; j < len; j++) {
+		var match = matchList[j]
+		var sf = match['bettype']['SF'] || {};
+		var sfBettypeOdds = sf.bettypeOdds || {};
+		var number = match.number;
+		var single = (!!sf.single);
+		var Hconcede;
+		var Aconcede;
+		if (sf.concede > 0) {
+			Hconcede = '+' + (sf.concede);
+			Aconcede = -sf.concede;
+		} else {
+			Hconcede = sf.concede;
+			Aconcede = '+' + (-sf.concede)
+		}
+	%>
+		<div class="match_data ui-flex">
+			<ul class="base_data">
+				<li class="league">
+					<span class="league_name"><%=match.league%></span>
+					<% if (single) { %>
+						<span class="match_icon bg_c_r">单关</span>
+					<% } %>
+				</li>
+				<li class="mb5 color6 size12"><%=number%></li>
+				<li><%=match.bDate%></li>
+				<li><%=match.bTime%></li>
+			</ul>
+			<div class="data_list ui-flex_item ml15">
+				<div class="ui-flex">
+					<span class="ui-flex_item"><%=match.home%></span>
+					VS
+					<span class="ui-flex_item"><%=match.away%></span>
+				</div>
+				<table class="match_table" matchId="<%=match.matchId%>">
+					<tr class="matchBettype yapan" oddsId="<%=sf.oddsId%>" height="45">
+						<td class="<%=match.matchId%>v" recommend="S" width="113">胜<%=Hconcede%><span class="ml15 size13"><%=sfBettypeOdds.S%></span></td>
+						<td class="<%=match.matchId%>v" recommend="F" width="113">负<%=Aconcede%><span class="ml15 size13"><%=sfBettypeOdds.F%></span></td>
+					</tr>
+				</table>	
+			</div>
+		</div>
+	<% } %>
+	</div>
+<% } %>
+</script>
+
+<script type="text/html" id="SPFDG">
+<%	
+	var length = list.length;
+	if (length > 0) {
+		for (var i = 0; i < length; i++) {
+			var date = list[i].date || '';
+			var matchList = list[i].matchList || [];
+%>
+	<p class="matchDate newstime clearfix"><span class="fl"><%=date%></span><span class="arrow <%=i==0?'arrow_up':'arrow_down'%>"></span></p>
+	<div class="matchContent" style="<%=i==0?'':'display:none'%>">
+	<% 
+		for (var j = 0, len = matchList.length; j < len; j++) {
+		var match = matchList[j]
+		var spf = match['bettype']['SPF'] || {};
+		var spfBettypeOdds = spf.bettypeOdds || {};
+		var number = match.number;	
+	%>
+		<div class="match_data ui-flex">
+			<ul class="base_data">
+				<li class="league">
+					<span class="league_name"><%=match.league%></span>
+				</li>
+				<li class="mb5 color6 size12"><%=number%></li>
+				<li><%=match.bDate%></li>
+				<li><%=match.bTime%></li>
+			</ul>
+			<div class="data_list ui-flex_item ml15">
+				<div class="ui-flex">
+					<span class="ui-flex_item"><%=match.home%></span>
+					VS
+					<span class="ui-flex_item"><%=match.away%></span>
+				</div>
+				<table class="match_table" matchId="<%=match.matchId%>">
+					<tr class="matchBettype yapan" oddsId="<%=spf.oddsId%>" height="45">
+						<td class="<%=match.matchId%>v" recommend="S" width="113">胜<span class="ml10 size13"><%=spfBettypeOdds.S%></span></td>
+						<td class="<%=match.matchId%>v" recommend="P" width="113">平<span class="ml10 size13"><%=spfBettypeOdds.P%></span></td>
+						<td class="<%=match.matchId%>v" recommend="F" width="113">负<span class="ml10 size13"><%=spfBettypeOdds.F%></span></td>
+					</tr>
+				</table>	
+			</div>
+		</div>
+	<% } %>
+	</div>
+<% } 
+} else { %>
+	<p class="textC mt30">暂无赛事</p>
+<% } %>
+</script>
+
+<script type="text/html" id="leagueList">
+<% for (var i=0, length = list.length; i < length; i++) {
+	var item = list[i] || {};
+	var league = item.league;
+%>
+<span class="hot_markSon" style="overflow:hidden"><%=league%></span>
+<% } %>
+</script>

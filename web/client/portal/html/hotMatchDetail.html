@@ -1,0 +1,1229 @@
+<script type="text/html" id="content">
+	<div class="live_show_wrap" id="liveShowWrap" style="display: none;">
+		<a class="live_close_btn" id="liveCloseBtn"></a>
+		<div id="liveIframeWrap" style="width: 100%;height: 100%;"></div>
+	</div>
+	<div class="hot_banner" id="hotBanner">
+		<span class="arrow" id="backBtn"></span>
+		<span class="icon_span img18 icon_home" id="homeBtn"></span>
+		<div class="hot_bannerBox" id="match"></div>
+	</div>
+	<div class="ui-flex hot_detailTitle" id="tabBox">
+		<div class="ui-flex_item" tab="1" id="analyzeBtn" style="display: none;">
+			<span>分析</span>
+		</div>
+		<div class="ui-flex_item" tab="2" id="oddsBtn" style="display: none;">
+			<span>赔率</span>
+		</div>
+		<!--<div class="ui-flex_item" tab="3" id="tabLr" style="display: none;">
+			<span>冷热</span>
+		</div>
+		<div class="ui-flex_item" tab="4" id="tabJx" style="display: none;">
+			<span>极限追盘</span>
+		</div>
+		<div class="ui-flex_item" tab="5" id="tabDg" style="display: none;">
+			<span>单关投注</span>
+		</div>-->
+		<div class="ui-flex_item" tab="3">
+			<span>推荐</span>
+		</div>
+		<div class="ui-flex_item" tab="4" id="tabDg" style="display: none;">
+			<span>竞猜</span>
+		</div>
+	</div>
+	<div class="analyze_wrap" id="tabContent1" style="display: none;"></div>
+	<div class="match_odd" id="tabContent2" style="display: none;">
+		<div class="hot_detailTop" id="oddsBox">
+			<div class="ui-flex">
+				<span class="ui-flex_item" oddsType="1">欧赔</span>
+				<span class="ui-flex_item" oddsType="2">亚盘</span>
+				<span class="ui-flex_item" oddsType="3">大小</span>
+				<span class="ui-flex_item" oddsType="4" id="tabLr" style="display: none;">冷热</span>
+				<span class="ui-flex_item" oddsType="5" id="tabJx" style="display: none;">极限</span>
+			</div>
+		</div>
+		<div class="odds_wrap" id="oddsWrap" style="display: none"></div>
+		<div class="shaimilengre" id="oddsContent1" style="display: none">
+			<!-- 未购买 -->
+			<div class="hot_noBuyCold mt25" id="unclockHot" style="display: none">
+				<p class="ti30">晒米场专家预测赛果的冷热，中国竞彩受注的冷热，让你快速知道专家和绝大多数彩民的下注行为，为你的下注提供最可靠的依据。</p>
+				<a class="buy_hotcold mt10" id="buyHotCold">5粒米解锁</a>
+			</div>
+			<div class="" id="smlrInfo"></div>
+		</div>
+		<div class="jxzp" id="oddsContent2" style="display: none">
+			<div class="hot_noBuyCold mt25" id="unclockJxzp" style="display: none">
+				<p class="ti30">每周近500场比赛数据深挖和提炼，为您提供最有价值的球队极限数据，让你投注更简单、快速、有可靠依据。</p>
+				<a class="buy_hotcold mt10" id="buyJxzp">2粒米解锁</a>
+			</div>
+			<div class="hot_detailTop" id="jxzpTypeBox" style="display: none">
+				<div class="ui-flex">
+					<span class="ui-flex_item" jxzpType="1" id="jxzpType1" style="display: none;">胜平负</span>
+					<span class="ui-flex_item" jxzpType="2" id="jxzpType2" style="display: none;">输赢盘</span>
+					<span class="ui-flex_item" jxzpType="3" id="jxzpType3" style="display: none;">大小球</span>
+				</div>
+			</div>
+			<div class="mt10" id="jxzpInfo"></div>
+		</div>
+	</div>
+	<div class="remen mt5" id="tabContent3" style="display:none">
+		<ul class="infoBox" id="planList"></ul>
+		<div id="noPlan" style="display: none;">
+			<div class="default_box">
+				<div class="default" style="<%=type==2?'background-image:url('+IMG_PATH+'defult_basket.png)':''%>"></div>
+				<p class="mt10 color9">晒米专家暂没有推荐比赛哟</p>
+			</div>
+		</div>
+	</div>
+	<!--<div class="zhuanjia" id="tabContent2" style="display: none;">
+		<div class="hot_detailTop" id="groupBox">
+			<div class="ui-flex">
+				<span class="ui-flex_item" groupno="5F5E101-BC6150">彩店实单</span>
+				<span class="ui-flex_item" groupNo="5F5E100-BC614F">美女推波</span>
+				<span class="ui-flex_item" groupNo="5F5E105-BC6154">特邀大咖</span>
+				<span class="ui-flex_item" groupNo="5F5E104-BC6153">竞彩高手</span>
+			</div>
+		</div>
+		<div class="hot_detailCon">
+			<ul class="infoBox" id="groupPlanList"></ul>
+		</div>
+	</div>-->
+	<div class="moreGame" id="tabContent4" style="display: none;padding-bottom: 50px;">
+		<div id="moreGame"></div>
+		<div class="btn_warp" style="display: none;" id="btnWarp">
+			<a class="submit_btn" id="sumbitBtn">确定</a>
+		</div>
+	</div>
+</script>
+
+<script type="text/html" id="match">
+<% 
+	var league = match.league;
+	var home = match.home;
+	var away = match.away;
+	var sportteryMatchId = match.sportteryMatchId || 0;
+	var homeLogoImg = match.homeLogoImg;
+	var awayLogoImg = match.awayLogoImg;
+	var beginTime = match.beginTime || "";
+	beginTime = beginTime.match(/\d{4}-(\d{2}-\d{2}) (\d{2}:\d{2}):\d{2}/);
+	var day = '';
+	var time = '';
+	if (beginTime && beginTime.length == 3) {
+		day = beginTime[1];
+		time = beginTime[2];
+	}
+	var result = match.result.split(':');
+	var type = match.type;
+	var imgMap = {"1":"team","2":"basketball_def"};
+	var leagueRank = match.leagueRank || {};
+	var leagueRankHome = leagueRank.home || {};
+	var leagueRankAway = leagueRank.away || {};
+	var homeRank = leagueRankHome.rank != "" ? "(" + leagueRankHome.rank + ")" : "";
+	var awayRank = leagueRankAway.rank != "" ? "(" + leagueRankAway.rank + ")" : "";
+%>
+<div class="bannerBox_top">
+	<%=league%><span class="ml10" id="beginTime<%=sportteryMatchId%>"><%=day%>&nbsp;<%=time%></span><span class="ml10" id="minute<%=sportteryMatchId%>" style="display: none;"> <sup>'</sup></span>
+</div>
+<div class="ui-flex mt15">
+	<div class="ui-flex_item">
+		<img class="teams_logo" src="<%=type == 2 ? awayLogoImg : homeLogoImg%>" onerror="this.src='<%=IMG_PATH%><%=imgMap[type]%>.png'">
+	</div>
+	<span class="hot_score ui-flex_item" style="display:none" id="score<%=sportteryMatchId%>"></span>
+	<% if(result && result.length == 2) { %>
+		<span class="hot_score ui-flex_item"><%=result[0]%>&nbsp;-&nbsp;<%=result[1]%></span>
+	<% } else { %>
+		<span class="hot_vs ui-flex_item" id="vs<%=sportteryMatchId%>">VS</span>
+	<% } %>
+	<div class="ui-flex_item">
+		<img class="teams_logo" src="<%=type == 2 ? homeLogoImg : awayLogoImg%>" onerror="this.src='<%=IMG_PATH%><%=imgMap[type]%>.png'">
+	</div>
+</div>
+<div class="ui-flex mt10" id="teamBox" sportteryMatchId="<%=sportteryMatchId%>">
+	<span class="hot_teams ui-flex_item basketballAway"><%=#type == 2 ? away : home %><br /><span class="team_rank"><%=leagueRankHome.league+homeRank%></span></span>
+	<span class="live_btn_wrap clearfix">
+		<span class="live_video_btn fl" id="animationBtn">动画直播<i class="live_animation_icon"></i></span>
+		<span class="live_video_btn fr" id="videoBtn">视频直播<i class="live_video_icon"></i></span>
+	</span>
+	<span class="hot_teams ui-flex_item basketballHome"><%=#type == 2 ? home : away %><%=#type == 2 ? '<span class="size10">(主)</span>' : ''%><br /><span class="team_rank"><%=leagueRankAway.league+awayRank%></span></span>
+</div>
+</script>
+
+<script type="text/html" id="planList">
+<% 
+var length = list.length;
+if (length > 0) {	
+	for (var i = 0; i < length; i++) {
+	var plan = list[i] || {};
+	var planNo = plan.planNo;
+	var amount = plan.amount/100 || 0;
+	var hasPic = plan.hasPic || false;
+	var isGirl = plan.isGirl || false;
+	var isLinChang = plan.isLinChang || false;
+	var access = (plan.access || false)+"";
+	var matchList = plan.matchList || [];
+	var matchNum = matchList.length;
+	var user = plan.user || {};
+	var userNo = user.userNo;
+	var realName = user.realName;
+	var nickName = user.nickName;
+	var profileImg = user.profileImg;
+	var personalImg = user.personalImg;
+	var userImg = personalImg || profileImg || (IMG_PATH + 'user_profile.png');
+	var userName = realName || nickName;
+	var userTag = user.tag;
+	var createTime = plan.createTime && plan.createTime.replace(/\d{4}-(\d{2}-\d{2} \d{2}:\d{2}):\d{2}/, "$1") || "";
+	var continueWin = user.continueWin || 0;
+	var winCount = user.winCount || 0;
+	var profitRate = user.profitRate || 0;
+	var winRate = user.winRate || 0;
+	profitRate = (profitRate+'').replace(/\.\d+/g, '');
+	winRate = (winRate+'').replace(/\.\d+/g, '');
+	var rich = plan.rich || false;
+	var isSale = !!plan.isSale; //false:不能跟单投注 true:可以跟单
+	var maxBettypeOdds = plan.maxBettypeOdds;
+	var recommendCount = plan.recommendCount; 
+	var prizeStatus = plan.prizeStatus;
+	var title = plan.title;
+	var saleTicketAmount = plan.saleTicketAmount/100 || 0;
+	var matchBeginTime = plan.matchBeginTime && plan.matchBeginTime.replace(/\d{4}-(\d{2}-\d{2} \d{2}:\d{2}):\d{2}/, "$1") || "";
+%>
+	<li class="item clearfix planItem" planNo="<%=planNo%>" amount="<%=amount%>" access="<%=access%>">
+		<div class="recommend_cont">
+			<div class="msg color9 clearfix">
+				<img class="icon_span img29 userProfile" src="<%=userImg%>" userNo="<%=userNo%>" />
+				<span class="personal">
+					<span class="color3"><%=userName%></span>
+				</span>
+				<% if (continueWin > 1) { %>
+					<div class="fr combat_gains">战绩 <span class="color_red"><%=continueWin%>连红</span></div>
+				<% } else if(winCount > 0) { %>
+					<div class="fr combat_gains">战绩 <span class="color_red">10中<%=winCount%></span></div>
+				<% } else if (profitRate > 0) { %>
+					<div class="fr combat_gains">战绩 <span class="color_red">盈<%=profitRate%>%</span></div>
+				<% } else if (winRate > 0) { %>
+					<div class="fr combat_gains">战绩 <span class="color_red">胜<%=winRate%>%</span></div>
+				<% } else { %>
+					
+				<% }%>
+			</div>
+			<div class="recommend_item">
+				<p class="recommend_title">
+					<% if (hasPic) {%>
+						<span class="">【实单】</span>
+					<% } %>
+					<% if (title) { %>
+						<%=title%>
+					<% } else { %>
+						<% 
+							for (var j = 0; j < matchNum; j++) { 
+								var match = matchList[j] || {};
+								var home = match.home;
+								var away = match.away;
+								var number = match.number;
+						%>
+							<span><%=number%><%=home%> vs <%=away%>　<span>
+						<% } %>
+					<% } %>
+				</p>
+				<div class="clearfix mt25">
+					<span class="recommend_money fl">
+						<% if (/^true$/i.test(access)) { %>
+							<% if (amount == 0) { %>
+								<span class="color_red">免费</span>
+							<% } else { %>
+								<span class="color_red">查看</span>
+							<% } %>
+						<% } else { %>
+							<span class="color_red"><%=amount%>粒米</span> 查看
+						<% } %>
+					</span>
+					<span class="recommend_time fr">
+						截止：<%=matchBeginTime%>
+					</span>
+				</div>
+			</div>
+		</div>
+		<% if (isSale) { %>
+			<div class="documentary_bet ui-flex">
+				<div class="documentary_num">
+					用户跟投：
+					<span class="color_red size13">
+						<%=saleTicketAmount%>元
+					</span>
+				</div>
+				<a class="bet_btn userTicket" planNo="<%=planNo%>" maxBettypeOdds="<%=maxBettypeOdds%>" recommendCount="<%=recommendCount%>" matchNum="<%=matchNum%>" planAmount="<%=amount%>">立即跟单</a>
+			</div>
+		<% } %>
+	</li>
+<% }
+}  %>
+</script>
+
+<script type="text/html" id="smlrInfo">	
+<% 
+	var win = smlrInfo.win || {};
+	var draw = smlrInfo.draw || {};
+	var lose = smlrInfo.lose || {};
+	//推荐分布数据
+	var winRecommendRate = win.recommendRate || 0;
+	winRecommendRate = (winRecommendRate+'').replace(/\.0+$/g, '');//删除末尾是.00;
+	var drawRecommendRate = draw.recommendRate || 0;
+	drawRecommendRate = (drawRecommendRate+'').replace(/\.0+$/g, '');//删除末尾是.00;
+	var loseRecommendRate = lose.recommendRate || 0;
+	loseRecommendRate = (loseRecommendRate+'').replace(/\.0+$/g, '');//删除末尾是.00;
+	var maxRecommendRateKey = smlrInfo.maxRecommendRateKey || '';
+	var maxRecommendRate = (smlrInfo[maxRecommendRateKey] || {}).recommendRate || 0;
+	maxRecommendRate = (maxRecommendRate+'').replace(/\.0+$/g, '');//删除末尾是.00;
+	var recommendMap = {'win': '主胜','draw': '平局','lose': '客胜'};
+	var colorMap = {'win': '','draw': 'color5e','lose': 'color55'};
+	//表格数据
+	//胜
+	var winOdds = win.odds || 0;
+	var winBetRate = win.betRate || 0;
+	winBetRate = (winBetRate+'').replace(/\.0+$/g, '');//删除末尾是.00;
+	var winProfitRate = win.profitRate || 0;
+	winProfitRate = (winProfitRate+'').replace(/\.0+$/g, '');//删除末尾是.00;
+	var winIsHot = win.isHot || false;
+	//平
+	var drawOdds = draw.odds || 0;
+	var drawBetRate = draw.betRate || 0;
+	drawBetRate = (drawBetRate+'').replace(/\.0+$/g, '');//删除末尾是.00;
+	var drawProfitRate = draw.profitRate || 0;
+	drawProfitRate = (drawProfitRate+'').replace(/\.0+$/g, '');//删除末尾是.00;
+	var drawIsHot = draw.isHot || false;
+	//负
+	var loseOdds = lose.odds || 0;
+	var loseBetRate = lose.betRate || 0;
+	loseBetRate = (loseBetRate+'').replace(/\.0+$/g, '');//删除末尾是.00;
+	var loseProfitRate = lose.profitRate || 0;
+	loseProfitRate = (loseProfitRate+'').replace(/\.0+$/g, '');//删除末尾是.00;
+	var loseIsHot = lose.isHot || false;
+%>
+<div class="hot_detailCold mt5 mb5">
+<% if (showRecommendRate) { %>
+	<div class="ch_item clearfix">
+		<div class="recommend_data fl">
+			<div class="recommend_details">
+				<div class="textL color3 mb10 size16">专家推荐分布</div>
+				<span>胜 <%=winRecommendRate%>%</span>
+				<span>平 <%=drawRecommendRate%>%</span>
+				<span>负 <%=loseRecommendRate%>%</span>
+			</div>
+		</div>
+		<div class="circle fr <%=colorMap[maxRecommendRateKey]%> p<%=maxRecommendRate.replace(/\.\d+$/g, '')%>">
+			<span><%=maxRecommendRate%>%<br><span class="final"><%=recommendMap[maxRecommendRateKey]%></span></span>
+			<div class="slice">
+				<div class="bar"></div>
+				<div class="fill"></div>
+			</div>
+		</div>
+	</div>
+<% } %>
+	<div class="ui-flex color3 bb1 bgfff">
+		<span class="ui-flex_item">选项</span>
+		<span class="ui-flex_item">赔率</span>
+		<span class="ui-flex_item">成交比</span>
+		<span class="ui-flex_item">盈亏</span>
+		<span class="ui-flex_item">冷热</span>
+	</div>
+	<ul>
+		<li class="ui-flex">
+			<span class="ui-flex_item">主胜</span>
+			<span class="ui-flex_item"><%=winOdds%></span>
+			<span class="ui-flex_item"><%=winBetRate%>%</span>
+			<span class="ui-flex_item <%=win.isHot ? 'color_red' : ''%>"><%=winProfitRate%>%</span>
+			<%if (winIsHot) { %>
+				<span class="ui-flex_item color_red"><i class="icon_smr"></i> 热 </span>
+			<% } else { %>
+				<span class="ui-flex_item color_g"><i class="icon_sml"></i> 冷</span>
+			<% } %>
+		</li>
+		<li class="ui-flex">
+			<span class="ui-flex_item">平局</span>
+			<span class="ui-flex_item"><%=drawOdds%></span>
+			<span class="ui-flex_item"><%=drawBetRate%>%</span>
+			<span class="ui-flex_item <%=draw.isHot ? 'color_red' : ''%>""><%=drawProfitRate%>%</span>
+			<%if (drawIsHot) { %>
+				<span class="ui-flex_item color_red"><i class="icon_smr"></i> 热 </span>
+			<% } else { %>
+				<span class="ui-flex_item color_g"><i class="icon_sml"></i> 冷</span>
+			<% } %>
+		</li>
+		<li class="ui-flex">
+			<span class="ui-flex_item">客胜</span>
+			<span class="ui-flex_item"><%=loseOdds%></span>
+			<span class="ui-flex_item"><%=loseBetRate%>%</span>
+			<span class="ui-flex_item <%=lose.isHot ? 'color_red' : ''%>"><%=loseProfitRate%>%</span>
+			<%if (loseIsHot) { %>
+				<span class="ui-flex_item color_red"><i class="icon_smr"></i> 热 </span>
+			<% } else { %>
+				<span class="ui-flex_item color_g"><i class="icon_sml"></i> 冷</span>
+			<% } %>
+		</li>
+	</ul>
+</div>
+<p class="pl10 pr10 size12">
+	注：【盈亏】 赛果开出某选项，官方赔付的风险比例，负数为官方亏本，正数为官方盈利。
+</p>
+</script>
+
+<script type="text/html" id="jxzpInfo">	
+<%
+	jxzp = jxzp || {};
+	var type = jxzp.type;
+	var typeMap = {'1': '胜平负', '2': '输赢盘', '3': '大小球'};
+	var teamName = jxzp.teamName;
+	var league = jxzp.league;
+	var home = jxzp.home;
+	var away = jxzp.away;
+	var result = jxzp.result;
+	var concede = jxzp.concede;
+	var matchBeginTime = jxzp.matchBeginTime || "";
+	var bettypeOdds = jxzp.bettypeOdds || {};
+	var recommend = jxzp.recommend || [];
+	var recommendLength = recommend.length;
+	var recommendMap = {};
+	for (var j = 0; j < recommendLength; j++) {
+		recommendMap[recommend[j]] = true;
+	}
+	var bettypeResult = jxzp.bettypeResult || {};
+	var prize = jxzp.prize || [];
+	var temp = matchBeginTime.match(/\d{4}-(\d{2})-(\d{2}) (\d{2}:\d{2}):\d{2}/);
+	var month = "";
+	var day = "";
+	var time = "";
+	if (temp && temp.length == 4) {
+		month = temp[1];
+		day = temp[2];
+		time = temp[3];
+	}
+	var status = jxzp.status;
+	var statusMap = {'1': {'1': '连胜', '2': '连平', '3': '连负'}, '2': {'1': '连赢盘', '2': '连输盘'}, '3': {'1': '大球', '2': '小球'}};
+	var recentContinue = +jxzp.recentContinue;
+	var historyContinue = +jxzp.historyContinue;
+	var nullOdds = '--';//赔率为空显示值
+%>
+<% if (showJxzp) { %>
+<div class="jx-box">
+	<div class="jx-box-top">
+		<div class="top-title">
+			<span class="ellipsis"><%=teamName%></span>
+		</div>
+		<% if (recentContinue > historyContinue) { %>
+		<div class="hisImg">
+			<img src="<%=IMG_PATH%>history.png" alt="">
+		</div>
+		<% } %>
+		<div class="winOver">
+			<div class="fang">
+				<span class="winTitle">近期<%=statusMap[type][status]%></span>
+			</div>
+			<div class="winNum">
+				<%=recentContinue%>
+			</div>
+		</div>
+		<div class="historyTop">
+			<div class="fang">
+				<span>历史最高</span>
+			</div>
+			<div class="historyNum">
+				<%=historyContinue%>
+			</div>
+		</div>
+	</div>
+	<div class="jx-box-center">
+		追盘推荐：
+	</div>
+	<% if( type == 1 || type == 2) { %>
+		<div class="ui-flex flex_wrap pl40">
+			<div class="concede"><%=concede > 0 ? '+'+concede : concede%></div>
+			<div class="textBar ui-flex_item <%=recommendMap["S"]?'active':''%>">胜 <%=bettypeOdds["S"]%><%=#bettypeResult["S"]?'<span class="result icon_result"></span>':""%></div>
+			<div class="textBar ui-flex_item ml10 <%=recommendMap["P"]?'active':''%>">平 <%=bettypeOdds["P"]%><%=#bettypeResult["P"]?'<span class="result icon_result"></span>':""%></div>
+			<div class="textBar ui-flex_item ml10 <%=recommendMap["F"]?'active':''%>">负 <%=bettypeOdds["F"]%><%=#bettypeResult["F"]?'<span class="result icon_result"></span>':""%></div>
+		</div>
+	<% } else if (type == 3) { %>
+		<div class="ui-flex flex_wrap">
+			<% for (var j = 0; j < recommendLength; j++) { %>
+			<div class="textBar ui-flex_item positionR <%=j>0?'ml10':''%> active"><%=recommend[j]%>球 <%=bettypeOdds[recommend[j]]||nullOdds%><%=#bettypeResult[recommend[j]]?'<span class="result icon_result"></span>':""%></div>
+			<% } %>
+			<% 
+			if (prize.length <= 0) {
+				for (var name in bettypeResult) {
+					if (!bettypeResult[name]) {
+						continue;
+					}
+			%>
+				<div class="textBar ui-flex_item positionR ml10"><%=name%>球 <%=bettypeOdds[name]||nullOdds%><span class="result icon_result"></span></div>	
+			<%
+				}
+			}
+			%>
+		</div>
+	<% } %>
+</div>
+<% } %>
+</script>
+
+<script type="text/html" id="football">
+	<style>
+		.moreGame .game_table td {
+			height: 40px;
+		    line-height: 1;
+		}
+	</style>
+<% 
+	var spf = match['bettype']['SPF'] || {};
+	var rqspf = match['bettype']['RQSPF'] || {};
+	var bf = match['bettype']['BF'] || {};
+	var zjq = match['bettype']['ZJQ'] || {};
+	var bqc = match['bettype']['BQC'] || {};
+	var spfBettypeOdds = spf.bettypeOdds || {};
+	var rqspfBettypeOdds = rqspf.bettypeOdds || {};
+	var bfBettypeOdds = bf.bettypeOdds || {};
+	var zjqBettypeOdds = zjq.bettypeOdds || {};
+	var bqcBettypeOdds = bqc.bettypeOdds || {};
+	var spfSingle = +spf.single || 0;
+	var rqspfSingle = +rqspf.single || 0;
+%>
+<% if (spfSingle == 1) { %>
+	<div class="game_head clearfix mt5">
+		<span class="fl">胜平负<span class="color9 ml10">猜90分钟内(含补时)赛果</span></span>
+	</div>
+	<div class="table_wrap" style="padding-left: 45px;">
+		<span class="concede0"><%=spf.concede%></span>
+		<table class="game_table matchBettype" oddsId="<%=spf.oddsId%>">
+			<tr>
+				<td recommend="S">胜<br/><span><%=spfBettypeOdds['S']%></span></td>
+				<td recommend="P">平<br/><span><%=spfBettypeOdds['P']%></span></td>
+				<td recommend="F">负<br/><span><%=spfBettypeOdds['F']%></span></td>
+			</tr>
+		</table>
+	</div>
+	<% if (rqspfSingle == 1) { %>
+		<div class="table_wrap" style="padding-left: 45px;">
+			<span class="concede1"><%=rqspf.concede%></span>
+			<table class="game_table matchBettype" oddsId="<%=rqspf.oddsId%>">
+				<tr>
+					<td recommend="S">胜<br/><span><%=rqspfBettypeOdds['S']%></span></td>
+					<td recommend="P">平<br/><span><%=rqspfBettypeOdds['P']%></span></td>
+					<td recommend="F">负<br/><span><%=rqspfBettypeOdds['F']%></span></td>
+				</tr>
+			</table>
+		</div>
+	<% } %>
+<% } else if (rqspfSingle == 1) { %>
+	<div class="game_head clearfix mt5">
+		<span class="fl">胜平负<span class="color9 ml10">猜90分钟内(含补时)赛果</span></span>
+	</div>
+	<div class="table_wrap" style="padding-left: 45px;">
+		<span class="concede1"><%=rqspf.concede%></span>
+		<table class="game_table matchBettype" oddsId="<%=rqspf.oddsId%>">
+			<tr>
+				<td recommend="S">胜<br/><span><%=rqspfBettypeOdds['S']%></span></td>
+				<td recommend="P">平<br/><span><%=rqspfBettypeOdds['P']%></span></td>
+				<td recommend="F">负<br/><span><%=rqspfBettypeOdds['F']%></span></td>
+			</tr>
+		</table>
+	</div>
+<% } %>
+<div>
+	<div class="game_head clearfix mt5">
+		<span class="fl">总进球<span class="color9 ml10">猜90分钟内(含补时)比赛总进球数</span></span>
+	</div>
+	<div class="table_wrap">
+		<table class="game_table matchBettype" oddsId="<%=zjq.oddsId%>">
+			<tr>
+				<td recommend="0">0<br/><span><%=zjqBettypeOdds['0']%></span></td>
+				<td recommend="1">1<br/><span><%=zjqBettypeOdds['1']%></span></td>
+				<td recommend="2">2<br/><span><%=zjqBettypeOdds['2']%></span></td>
+				<td recommend="3">3<br/><span><%=zjqBettypeOdds['3']%></span></td>	
+			</tr>
+			<tr>
+				<td recommend="4">4<br/><span><%=zjqBettypeOdds['4']%></span></td>
+				<td recommend="5">5<br/><span><%=zjqBettypeOdds['5']%></span></td>
+				<td recommend="6">6<br/><span><%=zjqBettypeOdds['6']%></span></td>
+				<td recommend="7+">7+<br/><span><%=zjqBettypeOdds['7+']%></span></td>	
+			</tr>
+		</table>	
+	</div>
+</div>		
+<div>
+	<div class="game_head clearfix">
+		<span class="fl">半全场<span class="color9 ml10">猜两队上半场和90分钟内(含补时)的赛果</span></span>
+	</div>
+	<div class="table_wrap">
+		<table class="game_table matchBettype" oddsId="<%=bqc.oddsId%>">
+			<tr>
+				<td recommend="SS">胜胜<br/><span><%=bqcBettypeOdds['SS']%></span></td>
+				<td recommend="SP">胜平<br/><span><%=bqcBettypeOdds['SP']%></span></td>
+				<td recommend="SF">胜负<br/><span><%=bqcBettypeOdds['SF']%></span></td>
+			</tr>
+			<tr>
+				<td recommend="PS">平胜<br/><span><%=bqcBettypeOdds['PS']%></span></td>
+				<td recommend="PP">平平<br/><span><%=bqcBettypeOdds['PP']%></span></td>
+				<td recommend="PF">平负<br/><span><%=bqcBettypeOdds['PF']%></span></td>
+			</tr>
+			<tr>
+				<td recommend="FS">负胜<br/><span><%=bqcBettypeOdds['FS']%></span></td>
+				<td recommend="FP">负平<br/><span><%=bqcBettypeOdds['FP']%></span></td>
+				<td recommend="FF">负负<br/><span><%=bqcBettypeOdds['FF']%></span></td>	
+			</tr> 
+		</table>	
+	</div>
+</div>			
+<div>
+	<div class="game_head clearfix">
+		<span class="fl">比分<span class="color9 ml10">猜90分钟内(含补时)比分赛果</span></span>
+	</div>
+	<div class="table_wrap">
+		<table class="game_table matchBettype" oddsId="<%=bf.oddsId%>">
+			<tr>
+				<td class="game_title color60" rowspan="3">胜</td>
+				<td recommend="1:0">1:0<br/><span><%=bfBettypeOdds['1:0']%></span></td>
+				<td recommend="2:0">2:0<br/><span><%=bfBettypeOdds['2:0']%></span></td>
+				<td recommend="2:1">2:1<br/><span><%=bfBettypeOdds['2:1']%></span></td>
+				<td recommend="3:0">3:0<br/><span><%=bfBettypeOdds['3:0']%></span></td>
+				<td recommend="3:1">3:1<br/><span><%=bfBettypeOdds['3:1']%></span></td>
+			</tr>
+			<tr>
+				<td recommend="3:2">3:2<br/><span><%=bfBettypeOdds['3:2']%></span></td>
+				<td recommend="4:0">4:0<br/><span><%=bfBettypeOdds['4:0']%></span></td>
+				<td recommend="4:1">4:1<br/><span><%=bfBettypeOdds['4:1']%></span></td>
+				<td recommend="4:2">4:2<br/><span><%=bfBettypeOdds['4:2']%></span></td>
+				<td recommend="5:0">5:0<br/><span><%=bfBettypeOdds['5:0']%></span></td>
+			</tr>
+			<tr>
+				<td recommend="5:1">5:1<br/><span><%=bfBettypeOdds['5:1']%></span></td>
+				<td recommend="5:2">5:2<br/><span><%=bfBettypeOdds['5:2']%></span></td>
+				<td recommend="SQT">胜其他<br/><span><%=bfBettypeOdds['SQT']%></span></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td class="game_title color70">平</td>
+				<td recommend="0:0">0:0<br/><span><%=bfBettypeOdds['0:0']%></span></td>
+				<td recommend="1:1">1:1<br/><span><%=bfBettypeOdds['1:1']%></span></td>
+				<td recommend="2:2">2:2<br/><span><%=bfBettypeOdds['2:2']%></span></td>
+				<td recommend="3:3">3:3<br/><span><%=bfBettypeOdds['3:3']%></span></td>
+				<td recommend="PQT">平其他<br/><span><%=bfBettypeOdds['PQT']%></span></td>
+			</tr>
+            <tr>
+				<td class="game_title color60" rowspan="3">负</td>
+				<td recommend="0:1">0:1<br/><span><%=bfBettypeOdds['0:1']%></span></td>
+				<td recommend="0:2">0:2<br/><span><%=bfBettypeOdds['0:2']%></span></td>
+				<td recommend="1:2">1:2<br/><span><%=bfBettypeOdds['1:2']%></span></td>
+				<td recommend="0:3">0:3<br/><span><%=bfBettypeOdds['0:3']%></span></td>
+				<td recommend="1:3">1:3<br/><span><%=bfBettypeOdds['1:3']%></span></td>
+			</tr>
+			<tr>
+				<td recommend="2:3">2:3<br/><span><%=bfBettypeOdds['2:3']%></span></td>
+				<td recommend="0:4">0:4<br/><span><%=bfBettypeOdds['0:4']%></span></td>
+				<td recommend="1:4">1:4<br/><span><%=bfBettypeOdds['1:4']%></span></td>
+				<td recommend="2:4">2:4<br/><span><%=bfBettypeOdds['2:4']%></span></td>
+				<td recommend="0:5">0:5<br/><span><%=bfBettypeOdds['0:5']%></span></td>
+			</tr>
+			<tr>
+				<td recommend="1:5">1:5<br/><span><%=bfBettypeOdds['1:5']%></span></td>
+				<td recommend="2:5">2:5<br/><span><%=bfBettypeOdds['2:5']%></span></td>
+				<td recommend="FQT">负其他<br/><span><%=bfBettypeOdds['FQT']%></span></td>
+				<td></td>
+				<td></td>
+			</tr>
+		</table>	
+	</div>
+</div>
+</script>
+
+<script type="text/html" id="basketball">
+	<style>
+		.moreGame .game_table td {
+			height: 40px;
+		    line-height: 1;
+		}
+	</style>
+<% 
+	var sf = match['bettype']['SF'] || {};
+	var rfsf = match['bettype']['RFSF'] || {};
+	var sfc = match['bettype']['SFC'] || {};
+	var dxf = match['bettype']['DXF'] || {};
+	var sfBettypeOdds = sf.bettypeOdds || {};
+	var rfsfBettypeOdds = rfsf.bettypeOdds || {};
+	var sfcBettypeOdds = sfc.bettypeOdds || {};
+	var dxfBettypeOdds = dxf.bettypeOdds || {};
+	var sfSingle = +sf.single || 0;
+	var rfsfSingle = +rfsf.single || 0;
+	var dxfSingle = +dxf.single || 0;
+%>
+	<div>
+		<% if (sfSingle == 1) { %>
+			<div>
+				<div class="game_head clearfix mt5">
+					<span class="fl">胜负<span class="color9 ml10">猜全场(含加时)主客队胜负情况</span></span>
+				</div>
+				<div class="table_wrap">
+					<table class="game_table matchBettype" oddsId="<%=sf.oddsId%>">
+						<tr>
+							<td recommend="F">客胜<br/><span><%=sfBettypeOdds['F']%></span></td>
+							<td width="90"><p class="">0</p></td>
+							<td recommend="S">主胜<br/><span><%=sfBettypeOdds['S']%></span></td>
+						</tr>
+					</table>	
+				</div>
+				<% if (rfsfSingle == 1) { %>
+					<div class="table_wrap">
+						<table class="game_table matchBettype" oddsId="<%=rfsf.oddsId%>">
+							<tr>
+								<td recommend="F">客胜<br/><span><%=rfsfBettypeOdds['F']%></span></td>
+								<td width="90"><p class="<%=rfsf.concede > 0 ? "color_red" : "color_green"%>">主<%=#rfsf.concede > 0 ? '+'+rfsf.concede : rfsf.concede%></p></td>
+								<td recommend="S">主胜<br/><span><%=rfsfBettypeOdds['S']%></span></td>
+							</tr>
+						</table>	
+					</div>
+				</div>
+				<% } %>
+			</div>
+		<% } else if (rfsfSingle == 1) { %>
+			<div class="game_head clearfix mt5">
+				<span class="fl">胜负<span class="color9 ml10">猜全场(含加时)主客队胜负情况</span></span>
+			</div>
+			<div class="table_wrap">
+				<table class="game_table matchBettype" oddsId="<%=rfsf.oddsId%>">
+					<tr>
+						<td recommend="F">客胜<br/><span><%=rfsfBettypeOdds['F']%></span></td>
+						<td width="90"><p class="<%=rfsf.concede > 0 ? "color_red" : "color_green"%>"><%=#rfsf.concede > 0 ? '+'+rfsf.concede : rfsf.concede%></p></td>
+						<td recommend="S">主胜<br/><span><%=rfsfBettypeOdds['S']%></span></td>
+					</tr>
+				</table>	
+			</div>
+		<% }　%>
+		<% if (dxfSingle == 1) { %>
+			<div>
+				<div class="game_head clearfix mt5">
+					<span class="fl">大小分<span class="color9 ml10">猜全场(含加时)双方总比分</span></span>
+				</div>
+				<div class="table_wrap">
+					<table class="game_table matchBettype" oddsId="<%=dxf.oddsId%>">
+						<tr>
+							<td recommend="D">大分<br/><span><%=dxfBettypeOdds['D']%></span></td>
+							<td width="90"><p class="color_red"><%=dxf.concede%></p></td>
+							<td recommend="X">小分<br/><span><%=dxfBettypeOdds['X']%></span></td>
+						</tr>
+					</table>	
+				</div>
+			</div>
+		<% } %>
+		<div>
+			<div class="game_head clearfix mt5">
+				<span class="fl">胜分差<span class="color9 ml10">猜全场比赛主客队的比分差区间</span></span> 
+				<span class="arrow arrow_up hide"></span>
+			</div>
+			<div class="table_wrap">
+				<table class="game_table matchBettype" oddsId="<%=sfc.oddsId%>" bettypeContent="<%=sfc.bettypeContent%>">
+					<tr>
+						<td class="game_title color70 size12" rowspan="2">客胜</td>
+						<td recommend="F1-5">1-5<br/><span><%=sfcBettypeOdds['F1-5']%></span></td>
+						<td recommend="F6-10">6-10<br/><span><%=sfcBettypeOdds['F6-10']%></span></td>
+						<td recommend="F11-15">11-15<br/><span><%=sfcBettypeOdds['F11-15']%></span></td>
+					</tr>
+					<tr>
+						<td recommend="F16-20">16-20<br/><span><%=sfcBettypeOdds['F16-20']%></span></td>
+						<td recommend="F21-25">21-25<br/><span><%=sfcBettypeOdds['F21-25']%></span></td>
+						<td recommend="F26+">26+<br/><span><%=sfcBettypeOdds['F26+']%></span></td>
+					</tr>
+					<tr>
+						<td class="game_title color60 size12" rowspan="2">主胜</td>
+						<td recommend="S1-5">1-5<br/><span><%=sfcBettypeOdds['S1-5']%></span></td>
+						<td recommend="S6-10">6-10<br/><span><%=sfcBettypeOdds['S6-10']%></span></td>
+						<td recommend="S11-15">11-15<br/><span><%=sfcBettypeOdds['S11-15']%></span></td>
+					</tr>
+					<tr>
+						<td recommend="S16-20">16-20<br/><span><%=sfcBettypeOdds['S16-20']%></span></td>
+						<td recommend="S21-25">21-25<br/><span><%=sfcBettypeOdds['S21-25']%></span></td>
+						<td recommend="S26+">26+<br/><span><%=sfcBettypeOdds['S26+']%></span></td>
+					</tr>
+				</table>	
+			</div>
+		</div>
+	</div>
+</script>
+
+<script type="text/html" id="analyzeWrap"><!--分析-->
+<%
+	var againstMatchList = analyse.againstMatchList || {}; //历史交锋
+	var futureMatchList = analyse.futureMatchList || {}; //未来赛事
+	var groupScoreList = analyse.groupScoreList || []; //小组排名
+	var historyMatchList = analyse.historyMatchList || {}; //近期赛事
+	var leagueScore = analyse.leagueScore || {}; //联赛战绩
+	var groupLength = groupScoreList.length;
+	var leagueLength = Object.keys(leagueScore).length;
+	var againstMatchLength = Object.keys(againstMatchList).length;
+	var historyMatchLength = Object.keys(historyMatchList).length;
+	var futureMatchLength = Object.keys(futureMatchList).length;
+	var imgMap = {"1":"team","2":"basketball_def"};
+	var matchInfo = analyse.matchInfo || {};
+	var homeLogoImg = matchInfo.homeLogoImg || '';
+	var awayLogoImg = matchInfo.awayLogoImg || '';
+%>
+	<% if (groupLength > 0) { %>
+		<div class="data_item">
+			<div class="title_record">
+				<span class="name_line"></span>
+				<span class="title_name">小组排名</span>
+			</div>
+			<div class="table_wrap">
+				<table>
+					<tr>
+						<th width="23%">球队</th>
+						<th>排名</th>
+						<th>胜</th>
+						<th>平</th>
+						<th>负</th>
+						<th>得/失</th>
+						<th width="15.2%">积分</th>
+					</tr>
+					<% 
+						for (var i = 0; i < groupLength; i++) {
+						var teamRank = groupScoreList[i] || {};
+						var team = teamRank.team || {};
+						var rank = teamRank.rank || "";
+						var winCount = teamRank.winCount || 0;
+						var drawCount = teamRank.drawCount || 0;
+						var lostCount = teamRank.lostCount || 0;
+						var goal = teamRank.goal || 0;
+						var lostGoal = teamRank.lostGoal || 0;
+						var score = teamRank.score || 0;				
+					%>
+					<tr>
+						<td><%=team%></td>
+						<td><%=rank%></td>
+						<td><%=winCount%></td>
+						<td><%=drawCount%></td>
+						<td><%=lostCount%></td>
+						<td><%=goal%>/<%=lostGoal%></td>
+						<td><%=score%></td>
+					</tr>
+					<% } %>
+				</table>
+			</div>
+		</div>
+	<% } %>
+	<% if (leagueLength > 0) { %>
+		<div class="data_item">
+			<div class="title_record">
+				<span class="name_line"></span>
+				<span class="title_name">联赛战绩</span>
+			</div>
+		<%
+			for(league in leagueScore) {
+				var standings = leagueScore[league] || {};
+				var team = standings.team || "";
+				var scoreList = standings.scoreList || {};
+				var scoreListLength = Object.keys(scoreList).length;
+		%>
+			<div class="title_record border-top">
+				<img class="team_img" src="<%=league == 'home' ? homeLogoImg : awayLogoImg%>" onerror="this.src='<%=IMG_PATH%><%=imgMap[type]%>.png'" />
+				<span class="title_name"><%=team%></span>
+			</div>
+			<div class="table_wrap">
+				<table>
+					<tr>
+						<th width="23%"></th>
+						<th>排名</th>
+						<th>胜</th>
+						<th>平</th>
+						<th>负</th>
+						<th>得/失</th>
+						<th width="15.2%">积分</th>
+					</tr>
+					<% 
+						for (attribute in scoreList) {
+							var winCount = scoreList[attribute].winCount || 0;
+							var drawCount = scoreList[attribute].drawCount || 0;
+							var lostCount = scoreList[attribute].lostCount || 0;
+							var goal = scoreList[attribute].goal || 0;
+							var lostGoal = scoreList[attribute].lostGoal || 0;
+							var rank = scoreList[attribute].rank || "";
+							var score = scoreList[attribute].score || 0;
+							var team = scoreList[attribute].team || "";
+							var attributeMap = {"total": "总", "home": "主", "away": "客"};
+					%>
+						<tr>
+							<td><%=attributeMap[attribute]%></td>
+							<td><%=rank%></td>
+							<td><%=winCount%></td>
+							<td><%=drawCount%></td>
+							<td><%=lostCount%></td>
+							<td><%=goal%>/<%=lostGoal%></td>
+							<td><%=score%></td>
+						</tr>
+					<% } %>
+				</table>
+			</div>
+		<% } %>
+		</div>
+	<% } %>
+	<% if (againstMatchLength > 0) { %>
+	<div class="data_item">
+		<div class="title_record">
+			<span class="name_line"></span>
+			<span class="title_name">历史交锋</span>
+		</div>
+		<%
+			for (variable in againstMatchList) {
+				var a = againstMatchList[variable] || {};
+				var list = a.list || [];
+				var sum = a.sum || {};
+				var length = list.length;
+				var drawCount = sum.drawCount || 0;
+				var loseCount = sum.loseCount || 0;
+				var winCount = sum.winCount || 0;
+				var gamesNum = +drawCount + loseCount + winCount; //总场数
+				var winPercent = Math.round((winCount/gamesNum)*100) + "%" || 0;
+				var drawPercent = Math.round((drawCount/gamesNum)*100) + "%" || 0;
+				var losePercent = Math.round((loseCount/gamesNum)*100) + "%" || 0;
+		%>
+			<div class="against_msg" id="against<%=variable%>" style="display: none;">
+				<% if (gamesNum > 0) { %>
+					<div class="against_result">
+						<div class="map_name">
+							<% if (winCount > 0) { %>
+								<span class="success" style="width: <%=winPercent%>;"><%=winCount%>胜</span>
+							<% } %>
+							<% if (drawCount > 0) { %>
+							<span class="flat" style="width: <%=drawPercent%>;"><%=drawCount%>平</span>
+							<% } %>
+							<% if (loseCount > 0) { %>
+							<span class="lose" style="width: <%=losePercent%>;"><%=loseCount%>负</span>
+							<% } %>
+						</div>
+						<div class="data_map mt5">
+							<span class="map_color" style="width: <%=winPercent%>;background-color: #ec3334;"></span>
+							<span class="map_color" style="width: <%=drawPercent%>;background-color: #448be0;"></span>
+							<span class="map_color" style="width: <%=losePercent%>;background-color: #57b63b;"></span>
+						</div>
+					</div>
+				<% } %>
+				<div class="table_wrap">
+					<table>
+						<tr>
+							<th width="18%">联赛</th>
+							<th width="15%">日期</th>
+							<th></th>
+							<th width="12%">赛事</th>
+							<th></th>
+							<th width="8%">赛果</th>
+							<th width="18%">盘路</th>
+						</tr>
+						<% 
+							for (var i = 0; i < list.length; i++) {
+							var match = list[i] || {};
+							var league = match.league || ""; //联赛名
+							var homeTeam = match.homeTeam || "";
+							var awayTeam = match.awayTeam || "";
+							var isHome = match.isHome;
+							var matchDate = match.matchDate && match.matchDate.replace(/\d{2}(\d{2}-\d{2}-\d{2})/, "$1")|| "";
+							var halfResult = match.halfResult || ""; //半场比分
+							var result = match.result || ""; //全场比分
+							var realResult = match.realResult || ""; //赛果
+							var handicap = match.handicap || ""; //盘口
+							var handicapResult = match.handicapResult || ""; //盘路	
+							var resultMap = {"win": "胜","draw": "平","lose": "负"};
+							var resultColor = {"win": "color-s","draw": "color-f","lose": "color-l"};
+							var handicapResultMap = {"win": "赢","draw": "走","lose": "输"};
+						%>
+						<tr>
+							<td><%=league%></td>
+							<td><%=matchDate%></td>
+							<td class="team_name <%=isHome == true ? resultColor[realResult] : ''%>" align="right"><%=homeTeam%></td>
+							<td><%=result%><span class="half_result">(<%=halfResult%>)</span></td>
+							<td class="<%=isHome == false ? resultColor[realResult] : ''%>" align="left"><%=awayTeam%></td>
+							<td class="<%=resultColor[realResult]%>"><%=resultMap[realResult]%></td>
+							<td><%=handicap%><span class="<%=resultColor[handicapResult]%>"><%=handicapResultMap[handicapResult]%></span></td>
+						</tr>
+						<% } %>
+					</table>
+				</div>
+		</div>
+		<% } %>
+		<div class="switch_btn_wrap">
+			<div class="switch_btn" id="againstSwitchBtn">
+				<span value="all">全部</span>
+				<span value="asHome">主场</span>
+			</div>
+		</div>
+	</div>
+<% } %>
+<% if (historyMatchLength > 0) { %>
+		<div class="data_item">
+			<div class="title_record">
+				<span class="name_line"></span>
+				<span class="title_name">近期战绩</span>
+			</div>
+			<%
+				for (a in historyMatchList) {
+					var historyMatch = historyMatchList[a] || {};
+					var team = historyMatch.team;
+					var all = historyMatch.all || {};
+					var list = all.list || [];
+					var sum = all.sum || {};
+					var length = list.length;
+					var drawCount = sum.drawCount || 0;
+					var loseCount = sum.loseCount || 0;
+					var winCount = sum.winCount || 0;
+					var gamesNum = +drawCount + loseCount + winCount; //总场数
+					var winPercent = Math.round((winCount/gamesNum)*100) + "%" || 0;
+					var drawPercent = Math.round((drawCount/gamesNum)*100) + "%" || 0;
+					var losePercent = Math.round((loseCount/gamesNum)*100) + "%" || 0;
+			%>
+		<div class="title_record border-top">
+			<img class="team_img" src="<%=a == 'home' ? homeLogoImg : awayLogoImg%>" onerror="this.src='<%=IMG_PATH%><%=imgMap[type]%>.png'" />
+			<span class="title_name"><%=team%></span>
+		</div>
+		<div class="">
+			<%
+				for (b in historyMatch) {
+					var history = historyMatch[b] || {};
+					var list = history.list || [];
+					var sum = history.sum || {};
+					var length = list.length;
+					var drawCount = sum.drawCount || 0;
+					var loseCount = sum.loseCount || 0;
+					var winCount = sum.winCount || 0;
+					var gamesNum = +drawCount + loseCount + winCount; //总场数
+					var winPercent = Math.round((winCount/gamesNum)*100) + "%" || 0;
+					var drawPercent = Math.round((drawCount/gamesNum)*100) + "%" || 0;
+					var losePercent = Math.round((loseCount/gamesNum)*100) + "%" || 0;
+			%>
+			<% if (b == 'all' || b == 'asHome' || b == 'asAway') { %>
+				<div class="history_<%=a%>_msg" id="<%=a%><%=b%>history">
+					<% if (gamesNum > 0) { %>
+						<div class="against_result">
+							<div class="map_name">
+								<% if (winCount > 0) { %>
+									<span class="success" style="width: <%=winPercent%>;"><%=winCount%>胜</span>
+								<% } %>
+								<% if (drawCount > 0) { %>
+								<span class="flat" style="width: <%=drawPercent%>;"><%=drawCount%>平</span>
+								<% } %>
+								<% if (loseCount > 0) { %>
+								<span class="lose" style="width: <%=losePercent%>;"><%=loseCount%>负</span>
+								<% } %>
+							</div>
+							<div class="data_map mt5">
+								<span class="map_color" style="width: <%=winPercent%>;background-color: #ec3334;"></span>
+								<span class="map_color" style="width: <%=drawPercent%>;background-color: #448be0;"></span>
+								<span class="map_color" style="width: <%=losePercent%>;background-color: #57b63b;"></span>
+							</div>
+						</div>
+					<% } %>
+					<div class="table_wrap">
+						<table>
+							<tr>
+								<th width="18%">联赛</th>
+								<th width="15%">日期</th>
+								<th></th>
+								<th width="12%">赛事</th>
+								<th></th>
+								<th width="8%">赛果</th>
+								<th width="18%">盘路</th>
+							</tr>
+							<% 
+								for (var i = 0; i < list.length; i++) {
+								var match = list[i] || {};
+								var league = match.league || ""; //联赛名
+								var homeTeam = match.homeTeam || "";
+								var awayTeam = match.awayTeam || "";
+								var isHome = match.isHome || "";
+								var matchDate = match.matchDate && match.matchDate.replace(/\d{2}(\d{2}-\d{2}-\d{2})/, "$1")|| "";
+								var halfResult = match.halfResult || ""; //半场比分
+								var result = match.result || ""; //全场比分
+								var realResult = match.realResult || ""; //赛果
+								var handicap = match.handicap || ""; //盘口
+								var handicapResult = match.handicapResult || ""; //盘路	
+								var resultMap = {"win": "胜","draw": "平","lose": "负"};
+								var resultColor = {"win": "color-s","draw": "color-f","lose": "color-l"};
+								var handicapResultMap = {"win": "赢","draw": "走","lose": "输"};
+							%>
+							<tr>
+								<td><%=league%></td>
+								<td><%=matchDate%></td>
+								<td class="team_name <%=isHome == true ? resultColor[realResult] : ''%>" align="right"><%=homeTeam%></td>
+								<td><%=result%><span class="half_result">(<%=halfResult%>)</span></td>
+								<td class="<%=isHome == false ? resultColor[realResult] : ''%>" align="left"><%=awayTeam%></td>
+								<td class="<%=resultColor[realResult]%>"><%=resultMap[realResult]%></td>
+								<td><%=handicap%><span class="<%=resultColor[handicapResult]%>"><%=handicapResultMap[handicapResult]%></span></td>
+							</tr>
+							<% } %>
+						</table>
+					</div>
+				</div>
+			<% }
+				} %>
+			<div class="switch_btn_wrap">
+				<div class="switch_btn" id="<%=a%>HistorySwitchBtn">
+					<span value="all">全部</span>
+					<span value="<%=a == 'home' ? 'asHome' : 'asAway'%>"><%=a == 'home' ? '主场' : '客场'%></span>
+				</div>
+			</div>
+		</div>
+		<% } %>
+	</div>
+<% } %>
+<% if (futureMatchLength > 0) { %>
+	<div class="data_item">
+		<div class="title_record">
+			<span class="name_line"></span>
+			<span class="title_name">未来赛事</span>
+		</div>
+		<%
+			for (variable in futureMatchList) {
+				var futureMatch = futureMatchList[variable] || [];
+				var length = futureMatch.length;
+		%>
+		<div class="table_wrap" style="<%=variable == 'away' ? 'border-top: 3px solid #ebeff0' : ''%>">
+			<table>
+				<tr>
+					<th width="21%">联赛</th>
+					<th width="15%">日期</th>
+					<th></th>
+					<th width="7%">赛事</th>
+					<th></th>
+					<th width="21%">间隔</th>
+				</tr>
+				<% 
+					for (var i = 0; i < futureMatch.length; i++) {
+					var match = futureMatch[i] || {};
+					var league = match.league || ""; //联赛名
+					var homeTeam = match.homeTeam || "";
+					var awayTeam = match.awayTeam || "";
+					var isHome = match.isHome || "";
+					var matchDate = match.matchDate && match.matchDate.replace(/\d{2}(\d{2}-\d{2}-\d{2})/, "$1")|| "";
+					var spaceDays = match.spaceDays || 0; 
+				%>
+				<tr>
+					<td><%=league%></td>
+					<td><%=matchDate%></td>
+					<td class="team_name <%=isHome == true ? 'color-s' : ''%>" align="right"><%=homeTeam%></td>
+					<td><span class="half_result">vs</span></td>
+					<td class="<%=isHome == false ? 'color-s' : ''%>" align="left"><%=awayTeam%></td>
+					<td><%=spaceDays%>天后</td>
+				</tr>
+				<% } %>
+			</table>
+		</div>
+		<% } %>
+	</div>
+<% } %>
+<div class="bottom_txt mt20">
+	<p>以上数据仅供浏览、投注参考之用</p>
+	<p>并不作为最终投注依据</p>
+</div>
+</script>
+
+<script type="text/html" id="oddsWrap">
+	<div class="table_wrap">
+		<table>
+			<tbody>
+				<%
+					for (var i = 0; i < matchOdds.length; i++) {
+					var odds = matchOdds[i] || {};
+					var bookmaker = odds.bookmaker || "";
+					var firstOdds = odds.firstOdds || {};
+					var endOdds = odds.endOdds || {};
+					var oddsChange = odds.oddsChange || {};
+					var oddsChangeMap = {'up': 'go_up','down': 'go_down'}
+				%>
+				<tr>
+					<td width="28%">
+						<span class="odds_name"><%=bookmaker%></span>
+						<span class="line"></span>
+					</td>
+					<td>
+						<div>初赔</div>
+						<div>即时</div>
+					</td>
+					<% if (oddsType == 1) { %>
+						<td>
+							<div>
+								<span><%=firstOdds.S%></span>
+							</div>
+							<div class="<%=oddsChangeMap[oddsChange.S]%>">
+								<span>
+									<%=endOdds.S%>
+								</span>
+							</div>
+						</td>
+						<td>
+							<div>
+								<span><%=firstOdds.P%></span>
+							</div>
+							<div class="<%=oddsChangeMap[oddsChange.P]%>">
+								<span><%=endOdds.P%></span>
+							</div>
+						</td>
+						<td>
+							<div class="">
+								<span><%=firstOdds.F%></span>
+							</div>
+							<div class="<%=oddsChangeMap[oddsChange.F]%>">
+								<span><%=endOdds.F%></span>
+							</div>
+						</td>
+					<% } else if (oddsType == 2) { %>
+						<td>
+							<div>
+								<span><%=firstOdds.home%></span>
+							</div>
+							<div class="<%=oddsChangeMap[oddsChange.homeChange]%>">
+								<span><%=endOdds.home%></span>
+							</div>
+						</td>
+						<td>
+							<div>
+								<span><%=firstOdds.handicap%></span>
+							</div>
+							<div>
+								<span><%=endOdds.handicap%></span>
+							</div>
+						</td>
+						<td>
+							<div class="">
+								<span><%=firstOdds.away%></span>
+							</div>
+							<div class="<%=oddsChangeMap[oddsChange.awayChange]%>">
+								<span><%=endOdds.away%></span>
+							</div>
+						</td>
+					<% } else if (oddsType == 3) { %>
+						<td>
+							<div>
+								<span><%=firstOdds.big%></span>
+							</div>
+							<div class="<%=oddsChangeMap[oddsChange.bigChange]%>">
+								<span><%=endOdds.big%></span>
+							</div>
+						</td>
+						<td>
+							<div>
+								<span><%=firstOdds.handicap%></span>
+							</div>
+							<div class="<%=oddsChangeMap[oddsChange.handicapChange]%>">
+								<span><%=endOdds.handicap%></span>
+							</div>
+						</td>
+						<td>
+							<div class="">
+								<span><%=firstOdds.small%></span>
+							</div>
+							<div class="<%=oddsChangeMap[oddsChange.smallChange]%>">
+								<span><%=endOdds.small%></span>
+							</div>
+						</td>
+					<% } %>
+					<td width="5%"></td>
+				</tr>
+				<% } %>
+			</tbody>
+		</table>
+	</div>
+</script>

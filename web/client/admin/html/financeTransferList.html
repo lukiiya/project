@@ -1,0 +1,123 @@
+<script type="text/html" id="content">
+<h1 class="title">转账对账</h1>
+<div class="list_box">
+	<div class="search_box">
+		<div>
+			<form onsubmit="return false;">
+				<div class="search_box ">
+					<input class="input_field" placeholder="提款id" id="withdrawId"/>
+					<input class="input_field ml20" placeholder="用户" id="userName"/>
+					<input class="input_field ml20" placeholder="批次号" id="batchNo"/>
+					<input class="input_field ml20" placeholder="转账流水号" id="transferNo"/>
+				</div>
+				<div class="mt20">
+					<input class="input_field" placeholder="开始时间" readonly="1" id="beginTime">
+					<input class="input_field ml20" placeholder="结束时间" readonly="1" id="endTime">
+					<span class="select_box ml20">
+						<select id="status">
+							<option value="">全部</option>
+							<option value="0">转账中</option>
+							<option value="1">转账成功</option>
+							<option value="2">转账失败</option>
+						</select>
+						<span class="icon_sel"><span class="arrow_down"></span></span>
+					</span>
+					<span class="select_box ml20">
+						<select id="financeType">
+							<option value="">全部</option>
+							<option value="0">方案账户</option>
+							<option value="1">出票账户</option>
+						</select>
+						<span class="icon_sel"><span class="arrow_down"></span></span>
+					</span>
+					<iframe name="exportReportIframe" style="display:none"></iframe>
+					<input class="btn ml20" type="button" value="导出报表" id="exportReport"/>
+					<input class="btn ml20" type="reset" value="重置" />
+					<input class="btn ml20" type="submit" value="搜索" id="searchSubmit"/>
+				</div>
+			</form>
+		</div>
+		
+	</div>
+	<div class="table_box mt20">
+		<table>
+			<thead>
+				<tr>
+					<th width="60">资金账户</th>
+					<th width="60">状态</th>
+					<th width="50">金额</th>
+					<th width="60">提款id</th>
+					<th width="150">帐号</th>
+					<th width="100">账号名称</th>
+					<th width="150">用户</th>
+					<th width="130">批次号</th>
+					<th width="120">转账流水号</th>
+					<th width="120">转账时间</th>
+					<th width="60">备注</th>
+				</tr>
+			</thead>
+			<tbody id="transferList"></tbody>				
+		</table>
+		<div id="pageCodeBox"></div>
+	</div>
+</div>
+</script>
+
+<script type="text/html" id="transferList">
+<% var length = list.length;
+	for (var i = 0; i < length; i++) {
+	var transfer = list[i] || {};
+	var financeType = transfer.financeType;
+	var financeTypeMap = {'0': '方案', '1': '出票'};
+	var withdrawId = transfer.withdrawId;
+	var status = transfer.status;
+	var statusMap = {'0': '转账中', '1': '转账成功', '2': '转账失败'};
+	var amount = transfer.amount/100;
+	var accountNumber = transfer.accountNumber;
+	var accountName = transfer.accountName;
+	var nickName = transfer.nickName;
+	var realName = transfer.realName;
+	var userName = nickName;
+	if (realName != '') {
+		userName += '('+realName+')';
+	}
+	var batchNo = transfer.batchNo;
+	var transferNo = transfer.transferNo;
+	var transferTime = transfer.transferTime;
+	var remark = transfer.remark;
+	var createTime = transfer.createTime;
+%>
+	<tr>
+		<td><%=financeTypeMap[financeType]%></td>
+		<td><%=statusMap[status]%></td>
+		<td><%=amount%></td>
+		<td><%=withdrawId%></td>
+		<td><%=accountNumber%></td>
+		<td><%=accountName%></td>
+		<td><%=userName%></td>
+		<td><%=batchNo%></td>
+		<td><%=transferNo%></td>
+		<td class="time"><%=transferTime!='0000-00-00 00:00:00'?transferTime:createTime%></td>
+		<td>
+			<% if (remark) { %>
+			<a class="examine" remark="<%=remark%>">查看</a>
+			<% } %>
+		</td>
+	</tr>
+<% } %>	
+<% if(length > 0) { %>
+	<tr>
+		<td>总计</td>
+		<td></td>
+		<td><%=totalAmount/100%></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+	</tr>
+<% } %>
+</script>

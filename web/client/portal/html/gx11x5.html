@@ -1,0 +1,369 @@
+<script type="text/html" id="content">
+	
+</script>
+
+<script type="text/html" id="gx11x5Num">
+	<div class="nav_wrap" id="navWrap" style="display: none;">
+		<ul class="nav clearfix" id="typeList">
+			<li class="item" type="1">
+				<div class="item_content">
+					<span class="type">任二</span>
+					<div class="prize">奖金 <span>6元</span></div>
+				</div>
+			</li>
+			
+			<li class="item" type="2">
+				<div class="item_content ">
+					<span class="type">任三</span>
+					<div class="prize">奖金 <span>19元</span></div>
+				</div>
+			</li>
+			
+			<li class="item" type="3">
+				<div class="item_content">
+					<span class="type">任四</span>
+					<div class="prize">奖金 <span>78元</span></div>
+				</div>
+			</li>
+			
+			<li class="item" type="4">
+				<div class="item_content">
+					<span class="type">任五</span>
+					<div class="prize">奖金 <span>540元</span></div>
+				</div>
+			</li>
+			
+			<li class="item" type="5">
+				<div class="item_content">
+					<span class="type">任六</span>
+					<div class="prize">奖金 <span>90元</span></div>
+				</div>
+			</li>
+			
+			<li class="item" type="6">
+				<div class="item_content">
+					<span class="type">任七</span>
+					<div class="prize">奖金 <span>26元</span></div>
+				</div>
+			</li>
+			
+			<li class="item" type="7">
+				<div class="item_content">
+					<span class="type">任八</span>
+					<div class="prize">奖金 <span>9元</span></div>
+				</div>
+			</li>
+			
+			<li class="item" type="8">
+				<div class="item_content">
+					<span class="type">前一</span>
+					<div class="prize">奖金 <span>13元</span></div>
+				</div>
+			</li>
+			
+			<li class="item" type="9">
+				<div class="item_content">
+					<span class="type">前二直选</span>
+					<div class="prize">奖金 <span>130元</span></div>
+				</div>
+			</li>
+			
+			<li class="item" type="10">
+				<div class="item_content">
+					<span class="type">前二组选</span>
+					<div class="prize">奖金 <span>65元</span></div>
+				</div>
+			</li>
+			
+			<li class="item" type="11">
+				<div class="item_content">
+					<span class="type">前三直选</span>
+					<div class="prize">奖金 <span>1170元</span></div>
+				</div>
+			</li>
+			
+			<li class="item" type="12">
+				<div class="item_content">
+					<span class="type">前三组选</span>
+					<div class="prize">奖金 <span>195元</span></div>
+				</div>
+			</li>
+		</ul>
+	</div>
+	<div class="ui-flex k3_top">
+		<div class="ui-flex_item draw_msg">
+			<div class="txtl">
+				<span class="color9 mb10"><b id="lastIssue"></b>期开奖</span>
+				<span class="result" id="result">
+					
+				</span>
+			</div>
+		</div>
+		<div class="ui-flex_item">
+			<div class="txtr">
+				<span class="color9 mb10">距<b id="issue"></b>期截止</span>
+				<span class="time" id="time"></span>
+			</div>
+		</div>
+	</div>
+	<div class="num-list" id="numList"></div>
+	<div class="buy_list">
+		<div class="pay_info clearfix">
+			<div class="pay_left fl">
+				<div class="mb10">金额：<span class="colorf5e" id="price">0 元</span></div>
+				<div class="bonus" id="unit">注数：0 注</div>
+			</div>
+			<div class="pay_btn fr" id="ensureBtn">
+				确定
+			</div>
+		</div>
+	</div>
+</script>
+
+<script type="text/html" id="optional">
+	<% if (type == 1) { %>
+		<p class="size12 color6">玩法：从01~11中任选2个或多个号码，所选号码与开奖号码任意2个号码相同即中奖，最高可中<span class="size12 color_red">6</span>元</p>
+	<% } else if (type == 2) { %>
+		<p class="size12 color6" >玩法：从01~11中任选3个或多个号码，所选号码与开奖号码任意3个号码相同即中奖，最高可中<span class="size12 color_red">19</span>元</p>
+	<% } else if (type == 3) { %>
+		<p class="size12 color6">玩法：从01~11中任选4个或多个号码，所选号码与开奖号码任意4个号码相同即中奖，最高可中<span class="size12 color_red">78</span>元</p>
+	<% } else if (type == 4) { %>
+		<p class="size12 color6">玩法：从01~11中任选5个或多个号码，所选号码与开奖号码任意5个号码相同即中奖，最高可中<span class="size12 color_red">540</span>元</p>
+	<% } else if (type == 5) { %>
+		<p class="size12 color6">玩法：从01~11中任选6个或多个号码，所选号码包含全部开奖号码即中奖，最高可中<span class="size12 color_red">90</span>元</p>
+	<% } else if (type == 6) { %>
+		<p class="size12 color6">玩法：从01~11中任选7个或多个号码，所选号码包含全部开奖号码即中奖，最高可中<span class="size12 color_red">26</span>元</p>
+	<% } else if (type == 7) { %>
+		<p class="size12 color6">玩法：从01~11中任选8个或多个号码，所选号码包含全部开奖号码即中奖，最高可中<span class="size12 color_red">9</span>元</p>
+	<% }%>
+	<div class="numBox" id="numBox">
+		<ul class="num_wrap clearfix" id="numWrap">
+			<%
+				for (var i = 0, length = optionalNum.length; i < length; i++) {;
+					var num = optionalNum[i].num;
+			%>
+			<li class="num_item_6" data-value ="<%=num%>">
+				<span class="num"><%=num%></span>
+			</li>
+			<% } %>
+		</ul>
+	</div>
+</script>
+
+<script type="text/html" id="gx11x5Bet">
+	<div class="k3_betCont">
+		<p class="title">距<span id="issue"></span>期投注截止 <span class="color_red size13" id="time"></span>：</p>
+		<div class="bet_list">
+			<ul class="" id="gx11x5List">
+
+			</ul>
+		</div>
+	</div>
+	<div class="buy_list">
+		<div class="read pl10 pt5">
+			<input class="mr5" type="checkbox" name="tongyi" id="protocol" checked="checked">
+			<label for="protocol">已阅读并同意</label>
+			<span><a href="#userVerifyProtocol&amp;type=2">《用户代购协议》</a></span>
+		</div> 
+		<div class="mutiple_warp">
+			<span class="mr5">买</span>
+			<span class="icon_decrease_multiple mr10" id="minusMultiple"></span>
+			<input type="number" value="1" min="1" max="9999" id="multiple"/>
+			<span class="icon_add_multiple ml10" id="addMultiple"></span>
+			<span class="ml5">倍</span>
+		</div>
+		<div class="pay_info clearfix">
+			<div class="pay_left fl">
+				<div class="mb10">金额：<span class="colorf5e" id="price">0</span> 元</div>
+				<div class="bonus">注数：<span id="totalUnit">0</span> 注</div>
+			</div>
+			<div class="pay_btn fr" id="submitBtn">
+				确定
+			</div>
+		</div>
+	</div>
+</script>
+
+<script type="text/html" id="gx11x5List">
+	<%
+		for (var i = 0, length = selectContent.length; i < length; i++) {
+		var title = selectContent[i].title;
+		var recommend = selectContent[i].recommend;
+		compare = recommend.join(' ');
+	%>
+	<li compare="<%=title + compare%>">
+		<div class="num_wrap ui-flex">
+			<span class="play_type">
+				[<%=title%>]
+			</span> 
+			<span class="sel_num ui-flex_item">
+				<% 
+					for (var j = 0; j < recommend.length; j++) {
+						var num = recommend[j];
+				%>
+					<em><%=num%></em>
+				<% } %>
+			</span>
+		</div>
+		<a class="del_btn">
+			<span class="del"></span>
+		</a>
+	</li>
+	<% } %>
+</script>
+
+<script type="text/html" id="Q1">
+	<p class="size12 color6 tips">玩法：从01~11中任选1个或多个号码，所选号码与开奖号码第一位号码相同，即中奖<span class="size12 color_red">13</span>元。</p>
+	<div class="numBox" id="numBox">
+		<div class="tabBox">
+			<div class="icon_wrap mb20">
+				<span class="icon_myriabit"></span>
+			</div>
+			<ul class="num_wrap clearfix" id="firstNum">
+				<%
+					for (var i = 0, length = optionalNum.length; i < length; i++) {;
+						var num = optionalNum[i].num;
+				%>
+				<li class="num_item_6" data-value ="<%=num%>">
+					<span class="num"><%=num%></span>
+				</li>
+				<% } %>
+			</ul>
+		</div>
+	</div>
+</script>
+
+<script type="text/html" id="Q2ZHX">
+	<p class="size12 color6 tips">玩法：从万、千位各选1个或多个号码，所选号码与开奖号码前两位号码相同（且顺序一致），即中奖<span class="size12 color_red">130</span>元。</p>
+	<!--<ul class="ui-flex tabBar" id="tabBar">
+		<li class="ui-flex_item" tab="1">
+			直选
+		</li>
+		<li class="ui-flex_item" tab="2">
+			组选
+		</li>
+	</ul>-->
+	<div class="numBox" id="numBox">
+		<div class="tabBox">
+			<div class="icon_wrap mb20">
+				<span class="icon_myriabit"></span>
+			</div>
+			<ul class="num_wrap clearfix" id="firstNum">
+				<%
+					for (var i = 0, length = optionalNum.length; i < length; i++) {;
+						var num = optionalNum[i].num;
+				%>
+				<li class="num_item_6" data-value ="<%=num%>">
+					<span class="num"><%=num%></span>
+				</li>
+				<% } %>
+			</ul>
+			<div class="icon_wrap mb30">
+				<span class="icon_kilobit"></span>
+			</div>
+			<ul class="num_wrap clearfix" id="secondNum">
+				<%
+					for (var i = 0, length = optionalNum.length; i < length; i++) {;
+						var num = optionalNum[i].num;
+				%>
+				<li class="num_item_6" data-value ="<%=num%>">
+					<span class="num"><%=num%></span>
+				</li>
+				<% } %>
+			</ul>
+		</div>
+		
+	</div>
+</script>
+
+<script type="text/html" id="Q2ZUX">
+	<p class="size12 color6 tips">玩法：从01~11中任选2个或多个号码，所选号码与开奖号码前两位号码相同（顺序不限），即中奖<span class="size12 color_red">65</span>元。</p>
+	<div class="numBox" id="numBox">
+		<div class="tabBox">
+			<ul class="num_wrap clearfix">
+				<%
+					for (var i = 0, length = optionalNum.length; i < length; i++) {;
+						var num = optionalNum[i].num;
+				%>
+				<li class="num_item_6" data-value ="<%=num%>">
+					<span class="num"><%=num%></span>
+				</li>
+				<% } %>
+			</ul>
+		</div>
+	</div>
+</script>
+
+<script type="text/html" id="Q3ZHX">
+	<p class="size12 color6 tips">玩法：从万、千、百位各选1个或多个号码，所选号码与开奖号码前三位号码相同（且顺序一致），即中奖<span class="size12 color_red">1170</span>元。</p>
+	<!--<ul class="ui-flex tabBar" id="tabBar">
+		<li class="ui-flex_item" tab="1">
+			直选
+		</li>
+		<li class="ui-flex_item" tab="2">
+			组选
+		</li>
+	</ul>-->
+	<div class="numBox" id="numBox">
+		<div class="tabBox">
+			<div class="icon_wrap mb20">
+				<span class="icon_myriabit"></span>
+			</div>
+			<ul class="num_wrap clearfix" id="firstNum">
+				<%
+					for (var i = 0, length = optionalNum.length; i < length; i++) {;
+						var num = optionalNum[i].num;
+				%>
+				<li class="num_item_6" data-value ="<%=num%>">
+					<span class="num"><%=num%></span>
+				</li>
+				<% } %>
+			</ul>
+			<div class="icon_wrap mb30">
+				<span class="icon_kilobit"></span>
+			</div>
+			<ul class="num_wrap clearfix" id="secondNum">
+				<%
+					for (var i = 0, length = optionalNum.length; i < length; i++) {;
+						var num = optionalNum[i].num;
+				%>
+				<li class="num_item_6" data-value ="<%=num%>">
+					<span class="num"><%=num%></span>
+				</li>
+				<% } %>
+			</ul>
+			
+			<div class="icon_wrap mb30">
+				<span class="icon_hundreds"></span>
+			</div>
+			<ul class="num_wrap clearfix" id="thirdNum">
+				<%
+					for (var i = 0, length = optionalNum.length; i < length; i++) {;
+						var num = optionalNum[i].num;
+				%>
+				<li class="num_item_6" data-value ="<%=num%>">
+					<span class="num"><%=num%></span>
+				</li>
+				<% } %>
+			</ul>
+		</div>
+	</div>
+</script>
+
+<script type="text/html" id="Q3ZUX">
+	<p class="size12 color6 tips">玩法：从01~11中任选3个或多个号码，所选号码与开奖号码前三位号码相同（顺序不限），即中奖<span class="size12 color_red">195</span>元。</p>
+	<div class="numBox" id="numBox">
+		<div class="tabBox">
+			<ul class="num_wrap clearfix">
+				<%
+					for (var i = 0, length = optionalNum.length; i < length; i++) {;
+						var num = optionalNum[i].num;
+				%>
+				<li class="num_item_6" data-value ="<%=num%>">
+					<span class="num"><%=num%></span>
+				</li>
+				<% } %>
+			</ul>
+		</div>
+	</div>
+</script>

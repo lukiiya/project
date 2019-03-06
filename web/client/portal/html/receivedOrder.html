@@ -1,0 +1,140 @@
+<script type="text/html" id="content">
+	<style type="text/css">
+		.content {
+			background-color: #FFFFFF;
+		}
+	</style>
+	<div class="hb_head pb20" id="presentOrderInfo">
+		
+	</div>
+	<section class="receive_msg mt10">
+		<div class="receive_title" id="receiveTitle">
+			
+		</div>
+		<ul class="receive_list" id="receiveList"></ul>
+	</section>
+</script>
+
+<script type="text/html" id="presentOrderInfo">
+	<%
+		var	presentRemark = presentOrderInfo.presentRemark;
+		var receivedOrderNo = !!presentOrderInfo.receivedOrderNo;
+		var presentNum = presentOrderInfo.presentNum;
+		var presentReceived = presentOrderInfo.presentReceived;
+		var user = presentOrderInfo.user || {};
+		var nickName = user.nickName;
+		var realName = user.realName;
+		var profileImg = user.profileImg;
+		var personalImg = user.personalImg;
+		var userImg = personalImg || profileImg || (IMG_PATH + 'user_profile.png');
+		var userName = realName || nickName;
+		var presentStatus = presentOrderInfo.presentStatus;
+	%>
+	<img class="hb_bg img-responsive" src="<%=IMG_PATH%>ssqhb_bg.png" />
+	<img class="sender_header" src="<%=userImg%>" />
+	<p class="sender_msg"><span class="sender_name"><%=userName%></span> 送给您的双色球红包</p>
+	<p class="greeting"><%=presentRemark%></p>
+	<% if (self) { %>
+		<% if (presentStatus == 1) { %>
+			<div class="hb_btn mt30">
+				<a class="ensure_btn" id="shareBtn">点击右上角分享继续赠送给好友</a>
+			</div>
+		<% } else { %>
+			<div class="hb_btn mt30" id="continuePresent">
+				<a class="ensure_btn">继续给好友送彩票</a>
+			</div>
+		<% } %>
+	<% } else { %>
+		<% if (receivedOrderNo)  { %>
+			<div class="hb_btn mt30 ui-flex">
+				<a class="check_btn ui-flex_item" id="receivedBtn">我的领取</a>
+				<a class="ensure_btn ui-flex_item ml10" id="continuePresent">我也要送</a>
+			</div>
+		<% } else if (presentStatus == 1) { %>
+			<div class="hb_btn mt30" id="receiveBtn">
+				<a class="ensure_btn">立即领取</a>
+			</div>
+		<% } else if (presentStatus == 2) { %>	
+			<div class="hb_btn mt30 ui-flex">
+				<a class="ensure_btn active ui-flex_item">已领完</a>
+				<a class="ensure_btn ui-flex_item ml10" id="continuePresent">我也要送</a>
+			</div>
+		<% } else if (presentStatus == 3) { %>	
+			<div class="hb_btn mt30 active">
+				<a class="ensure_btn">已过期</a>
+			</div>
+		<% } %>
+	<% } %>
+</script>
+
+<script type="text/html" id="receiveList">
+<%
+	var length = list.length;
+	for (var i = 0; i < list.length; i++) { 
+	var createTime = list[i].createTime.replace(/\d{4}-(\d{2}-\d{2} \d{2}:\d{2}):\d{2}/, "$1") || "";
+	var user = list[i].user || {};
+	var nickName = user.nickName;
+	var realName = user.realName;
+	var profileImg = user.profileImg;
+	var personalImg = user.personalImg;
+	var userImg = personalImg || profileImg || (IMG_PATH + 'user_profile.png');
+	var userName = realName || nickName;
+%>
+	<li class="user_item clearfix">
+		<img class="user_logo fl mr10" src="<%=userImg%>">
+		<div class="fl">
+			<div class="nickname">
+				<%=userName%>
+			</div>
+			<div class="color9 size12">
+				<%=createTime%>
+			</div>
+		</div>
+		<div class="fr">
+			<span>已领取</span>
+		</div>
+	</li>
+<% } %>
+</script>
+
+<script type="text/html" id="ssqhbMaskBox">
+	<div class="mask" id="ssqhbMask">
+		<div class="ssqhb_pop">
+			<div class="pop_title">
+				<img class="img-responsive" src="<%=IMG_PATH%>ssqhb_pop_title.png" alt="" />
+				<a class="del_btn" id="closePopBtn"><span class="del"></span></a>
+			</div>
+			<div class="input_wrap">
+				<input type="number" placeholder="请输入手机号" maxlength="11" id="mobile">
+			</div>
+			<div class="input_wrap clearfix">
+				<input class="velidate_code" type="number" placeholder="请输入验证码" maxlength="6" id="smsCode">
+				<span class="get_code" id="smsCodeBtn">获取验证码</span>
+			</div>
+			<a class="pop_ensure_btn" id="loginSubmit">确定</a>
+		</div>	
+	</div>
+</script>
+
+<script type="text/html" id="ssqhbBanner">
+	<div class="ssqhb_banner" id="ssqhbDownload">
+		<img class="img-responsive" src="<%=IMG_PATH%>ssqhb_banner.png"/>
+		<a class="del_btn" id="closeSsqHbBanner"><span class="del"></span></a>
+	</div>
+</script>
+
+<script type="text/html" id="confirm">
+	<div id="confirmBox">
+		<div class="mask"></div>
+		<div class="pop pop2" style="width: 80%;">
+		    <div class="confirmation">
+		    	<input type="text" name="validate" placeholder="输入图中的验证码" class="validate_input" id="validate">
+		    	<img class="validate_img" src="" id="validateImage" />
+		    </div>
+		    <div class="ui-flex bordertop">
+		        <span class="ui-flex_item textBar borderright" id="cancelBtn">取消</span>
+		        <span class="ui-flex_item textBar active" id="sureBtn">确定</span>
+		    </div>
+		</div>
+	</div>
+</script>

@@ -1,0 +1,49 @@
+<script type="text/html" id="content">
+<h1 class="title">反馈列表</h1>
+<div class="list_box">
+	<div class="search_box">
+		<div>
+			<form onsubmit="return false;">
+				<input class="input_field" type="text" placeholder="用户" id="userName">
+				<input class="btn ml20" type="reset" placeholder="重置">
+				<input class="btn ml20" type="submit" placeholder="搜索" id="searchSubmit">
+			</form>
+		</div>
+	</div>
+	<div class="table_box mt10">
+		<table>
+			<thead>
+				<tr>
+					<th width="120">昵称</th>
+					<th width="70">姓名</th>
+					<th width="580">反馈内容</th>
+					<th width="140">时间</th>
+					<th width="70">操作</th>
+				</tr>
+			</thead>
+			<tbody id="feedbackList"></tbody>
+		</table>
+		<div id="pageCodeBox"></div>
+	</div>
+</div>
+</script>
+
+<script type="text/html" id="feedbackList">
+<% for (var i = 0, length = list.length; i < length; i++) {
+	var feedback = list[i] || {};
+	var feedbackId = feedback.feedbackId;
+	var nickName = feedback.nickName;
+	var realName = feedback.realName;
+	var content = feedback.content;
+	var con = content.substr(0,50);
+	var createTime = feedback.createTime;
+%>
+	<tr>
+		<td><%=nickName%></td>
+		<td><%=realName%></td>
+		<td title="<%=con%>"><%=con%></td>
+		<td><%=createTime%></td>
+		<td><a class="examine feedbackDetail" feedbackId="<%=feedbackId%>" content="<%=con%>">查看</a></td>
+	</tr>
+<%}%>
+</script>

@@ -1,0 +1,119 @@
+<script type="text/html" id="content">
+<h1 class="title" id="title"></h1>
+<div class="list_box">
+	<div class="search_box">
+		<div>
+			<form onsubmit="return false;">
+				<input class="input_field" placeholder="用户" id="userName" />
+				<span class="select_box ml20">
+					<select id="userRight">
+						<option value="0">全部</option>
+						<option value="1">专家</option>
+						<option value="2">推手</option>
+						<option value="3">站长</option>
+					</select>
+					<span class="icon_sel"><span class="arrow_down"></span></span>
+				</span>
+				<input class="btn ml20" type="reset" value="重置" />
+				<input class="btn ml20" type="submit" value="搜索"  id="searchSubmit"/>
+				<input class="btn ml30 mr30" type="button" value="新增分组用户" id="createGroupUserBtn">
+			</form>
+		</div>
+	</div>
+	<div class="table_box mt20">
+		<table>
+			<thead>
+				<tr>
+					<th width="200">昵称</th>
+					<th width="100">姓名</th>
+					<th width="80">类型</th>
+					<th>标签</th>
+					<th width="200">操作</th>
+				</tr>
+			</thead>
+			<tbody id="groupUserList"></tbody>					
+		</table>
+		<div id="pageCodeBox"></div>
+	</div>
+</div>
+</script>
+
+<script type="text/html" id="groupUserList">
+<% for (var i = 0, length = list.length; i < length; i++) {
+	var user = list[i] || {};
+	var userId = user.userId;
+	var nickName = user.nickName;
+	var realName = user.realName;
+	var userRight = user.userRight;
+	var userRightMap = {'1': '专家', '2': '推手', '3': '站长'};
+	var tag = user.tag;
+%>
+	<tr>
+		<td title="<%=nickName%>"><%=nickName%></td>
+		<td title="<%=realName%>"><%=realName%></td>
+		<td><%=userRightMap[userRight]%></td>
+		<td title="<%=tag%>"><%=tag%></td>
+		<td>
+			<a class="examine mr5 deleteGroupUser" userId="<%=userId%>" nickName="<%=nickName%>" realName="<%=realName%>">移除</a>
+			<a class="examine mr5 modifyGroupUserSort" userId="<%=userId%>" type="1">上移</a>
+			<a class="examine mr5 modifyGroupUserSort" userId="<%=userId%>" type="2">下移</a>
+			<a class="examine mr5 modifyGroupUserSort" userId="<%=userId%>" type="3">置顶</a>
+			<a class="examine modifyGroupUserSort" userId="<%=userId%>" type="4">置底</a>
+		</td>
+	</tr>
+<% } %>
+</script>
+
+<script type="text/html" id="createGroupUser">
+	<h1>新增分组用户</h1>
+	<div class="search_box mt10">
+		<form onsubmit="return false;">
+			<input class="input_field" placeholder="输入查找用户" id="cUserName"/>
+			<input class="btn ml20" type="submit" value="搜索"  id="cSearchSubmit"/>
+		</form>
+	</div>
+	<div class="rightBox mt10" style="min-height: auto">
+		<div class="table_box" style="min-height: auto">
+			<table>
+				<thead>
+					<tr>
+						<th>昵称</th>
+						<th width="80">姓名</th>
+						<th width="50">类型</th>
+						<th width="50">操作</th>
+					</tr>
+				</thead>
+				<tbody id="userList"></tbody>					
+			</table>
+		</div>
+	</div>
+</script>
+
+<script type="text/html" id="userList">
+<% 
+	var length = list.length;
+	if (length > 0) { 
+%>
+	<% for (var i = 0; i < length; i++) {
+		var user = list[i] || {};
+		var userId = user.userId;
+		var nickName = user.nickName;
+		var realName = user.realName;
+		var userRight = user.userRight;
+		var userRightMap = {'1': '专家', '2': '推手', '3': '站长'};
+	%>
+		<tr>
+			<td title="<%=nickName%>"><%=nickName%></td>
+			<td title="<%=realName%>"><%=realName%></td>
+			<td><%=userRightMap[userRight]%></td>
+			<td>
+				<a class="examine mr5 createGroupUser" userId="<%=userId%>" nickName="<%=nickName%>" realName="<%=realName%>">新增</a>
+			</td>
+		</tr>
+	<% } %>
+<% } else { %>
+	<tr>
+		<td colspan="4">空空如也</td>
+	</tr>
+<% } %>
+</script>

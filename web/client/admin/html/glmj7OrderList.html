@@ -1,0 +1,156 @@
+<script type="text/html" id="content">
+<h1 class="title">订单列表</h1>
+<div class="list_box">
+	<form onsubmit="return false;">
+		<div class="search_box ">
+			<input class="input_field" placeholder="下单人" id="userName"/>
+			<input class="input_field ml20" placeholder="方案人" id="planUserName"/>
+		</div>
+		<div class="search_box mt20">
+			<span class="select_box">
+				<select id="orderType">
+					<option value="">订单类型</option>
+					<option value="0">竞技彩方案订单</option>
+					<option value="1">充值订单</option>
+					<option value="2">套餐订单</option>
+					<option value="3">竞技彩出票订单</option>
+					<option value="4">彩金充值订单</option>
+					<option value="5">晒米冷热</option>
+					<option value="6">极限追盘</option>
+					<option value="7">数字彩出票订单</option>
+					<option value="8">彩票红包订单</option>
+					<option value="9">数字彩方案订单</option>
+				</select>
+				<span class="icon_sel"><span class="arrow_down"></span></span>
+			</span>
+			<span class="select_box ml20">
+				<select id="status">
+					<option value="0">订单状态</option>
+					<option value="1">未付款</option>
+					<option selected="selected" value="2">已付款</option>
+					<option value="3">已退款</option>
+					<option value="4">部分退款</option>
+				</select>
+				<span class="icon_sel"><span class="arrow_down"></span></span>
+			</span>
+			<span class="select_box ml20">
+				<select id="planPrizeStatus">
+					<option value="">方案状态</option>
+					<option value="0">未开奖</option>
+					<option value="1">已中奖</option>
+					<option value="2">未中奖</option>
+				</select>
+				<span class="icon_sel"><span class="arrow_down"></span></span>
+			</span>
+			<span class="select_box ml20">
+				<select id="ticketStatus">
+					<option value="">出票状态</option>
+					<option value="0">未出票</option>
+					<option value="1">出票失败</option>
+					<option value="2">已出票待开奖</option>
+					<option value="3">未中奖</option>
+					<option value="4">已中奖</option>
+					<option value="5">已派奖</option>
+					<option value="6">部分派奖</option>
+					<option value="7">出票中</option>
+					<option value="8">部分出票</option>
+				</select>
+				<span class="icon_sel"><span class="arrow_down"></span></span>
+			</span>
+			<span class="select_box ml20">
+				<select id="planMatchType">
+					<option value="0">比赛类型</option>
+					<option value="1">足球</option>
+					<option value="2">篮球</option>
+				</select>
+				<span class="icon_sel"><span class="arrow_down"></span></span>
+			</span>
+			<span class="select_box ml20">
+				<select id="comboType">
+					<option value="0">套餐类型</option>
+					<option value="1">极限追盘</option>
+					<option value="2">晒米冷热</option>
+				</select>
+				<span class="icon_sel"><span class="arrow_down"></span></span>
+			</span>
+		</div>
+		<div class="search_box mt20">
+			<input class="input_field" placeholder="开始时间" readonly="1" id="beginTime">
+			<input class="input_field ml20" placeholder="结束时间" readonly="1" id="endTime">
+			<input class="btn ml20" type="reset" value="重置"/>
+			<input class="btn ml20" type="submit" value="搜索" id="searchSubmit"/>
+		</div>
+	</form>
+	<div class="table_box mt10">
+		<table>
+			<thead>
+				<tr>
+					<th width="80">订单类型</th>
+					<th width="80">订单状态</th>
+					<th width="80">方案中奖状态</th>
+					<th width="80">出票中奖状态</th>
+					<th width="150">下单人</th>
+					<th width="150">方案人</th>
+					<th width="70">金额</th>
+					<th width="130">下单时间</th>
+				</tr>
+			</thead>
+			<tbody id="glmj7OrderList"></tbody>					
+		</table>
+		<div id="pageCodeBox"></div>
+	</div>
+</div>
+</script>
+
+<script type="text/html" id="glmj7OrderList">
+<% 
+var length = list.length;
+for (var i = 0; i < length; i++) {
+	var order = list[i] || {};
+	var nickName = order.nickName;
+	var realName = order.realName;
+	var userName = nickName;
+	if (realName != '') {
+		userName += '('+realName+')';
+	}
+	var planNickName = order.planNickName;
+	var planRealName = order.planRealName;
+	var planUserName = planNickName;
+	if (planRealName != '') {
+		planUserName += '('+planRealName+')';
+	}
+	var amount = order.amount/100;
+	var orderType = order.orderType;
+	var orderTypeMap = {'0': '方案订单','1': '充值订单','2': '套餐订单','3': '竞技彩出票订单','4': '彩金充值订单','5': '晒米冷热','6': '极限追盘','7': '数字彩出票订单','8': '彩票红包订单','9': '数字彩方案订单'};
+	var status = order.status;
+	var statusMap = {'1': '未付款', '2': '已付款', '3': '已退款', '4': '部分退款'};
+	var planPrizeStatus = order.planPrizeStatus;
+	var planPrizeStatusMap = {'0': '未开奖','1': '已中奖','2': '未中奖'};
+	var ticketStatus =  order.ticketStatus;
+	var ticketStatusMap = {'0': '未出票', '1': '出票失败', '2': '已出票待开奖', '3': '未中奖', '4': '已中奖', '5': '已派奖', '6': '部分派奖', '7': '出票中', '8': '部分出票'};
+	var createTime = order.createTime;
+%>
+	<tr>
+		<td><%=orderTypeMap[orderType]%></td>
+		<td><%=statusMap[status]%></td>
+		<td><%=(orderType==0 || orderType==9)?planPrizeStatusMap[planPrizeStatus]:''%></td>
+		<td><%=(orderType==3 || orderType==7)?ticketStatusMap[ticketStatus]:''%></td>
+		<td><%=userName%></td>
+		<td><%=planUserName%></td>
+		<td><%=amount%></td>
+		<td class="time"><%=createTime%></td>
+	</tr>
+<% } %>
+<% if (length > 0) { %>
+	<tr>
+		<td>总计</td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td><%=totalAmount/100%></td>
+		<td></td>
+	</tr>
+<% } %>
+</script>

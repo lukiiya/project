@@ -1,0 +1,142 @@
+<script type="text/html" id="content">
+<h1 class="title">月份统计</h1>
+<div class="list_box">
+	<div class="search_box">
+		<div>
+			<form onsubmit="return false;">
+				<div class="sel_box">
+					<span>开始年份:</span>
+					<span class="select_box" id="beginYear">
+						<select>
+							<option value="0">请选择</option>
+							<option value="2016">2016</option>
+							<option value="2017">2017</option>
+							<option value="2018">2018</option>
+							<option value="2019">2019</option>
+							<option value="2020">2020</option>
+							<option value="2021">2021</option>
+							<option value="2022">2022</option>
+							<option value="2023">2023</option>
+							<option value="2024">2024</option>
+							<option value="2025">2025</option>
+						</select>
+						<span class="icon_sel"><span class="arrow_down"></span></span>
+					</span>
+					<span>月份:</span>
+					<span class="select_box" id="beginMonth">
+						<select>
+							<option value="0">请选择</option>
+							<option value="1">1</option>
+							<option value="2">2</option>
+							<option value="3">3</option>
+							<option value="4">4</option>
+							<option value="5">5</option>
+							<option value="6">6</option>
+							<option value="7">7</option>
+							<option value="8">8</option>
+							<option value="9">9</option>
+							<option value="10">10</option>
+							<option value="11">11</option>
+							<option value="12">12</option>
+						</select>
+						<span class="icon_sel"><span class="arrow_down"></span></span>
+					</span>
+				</div>
+				——
+				<div class="sel_box">
+					<span>结束年份:</span>
+					<span class="select_box" id="endYear">
+						<select>
+							<option value="0">请选择</option>
+							<option value="2016">2016</option>
+							<option value="2017">2017</option>
+							<option value="2018">2018</option>
+							<option value="2019">2019</option>
+							<option value="2020">2020</option>
+							<option value="2021">2021</option>
+							<option value="2022">2022</option>
+							<option value="2023">2023</option>
+							<option value="2024">2024</option>
+							<option value="2025">2025</option>
+						</select>
+						<span class="icon_sel"><span class="arrow_down"></span></span>
+					</span>
+					<span>月份:</span>
+					<span class="select_box" id="endMonth">
+						<select>
+							<option value="0">请选择</option>
+							<option value="1">1</option>
+							<option value="2">2</option>
+							<option value="3">3</option>
+							<option value="4">4</option>
+							<option value="5">5</option>
+							<option value="6">6</option>
+							<option value="7">7</option>
+							<option value="8">8</option>
+							<option value="9">9</option>
+							<option value="10">10</option>
+							<option value="11">11</option>
+							<option value="12">12</option>
+						</select>
+						<span class="icon_sel"><span class="arrow_down"></span></span>
+					</span>
+				</div>
+				<input class="btn ml20" type="reset" value="重置">
+				<input class="btn ml20" type="submit" value="搜索" id="searchSubmit">
+			</form>
+		</div>
+	</div>
+	<div class="table_box mt20">
+		<table>
+			<thead>
+				<tr>
+					<th width="120">时间</th>
+					<th width="100">专家</th>
+					<th width="100">认证用户</th>
+					<th width="100">微信服务号关注</th>
+					<th width="100">活跃用户(付费或收益)</th>
+					<th width="100">现金消费</th>
+					<th width="100">充值收费</th>
+					<th width="100">收益收费</th>
+					<th width="100">总收益</th>
+					<th width="100">用户充值</th>
+					<th width="100">提款</th>
+				</tr>
+			</thead>
+			<tbody id="statisticsMonthList"></tbody>
+		</table>
+		<div id="pageCodeBox"></div>
+	</div>
+</div>
+</script>
+
+<script type="text/html" id="statisticsMonthList">
+<% 	for ( var i = 0, length = list.length; i < length; i++) {
+	var statisticsMonth = list[i] || {};
+	var statisticsMonthId = statisticsMonth.statisticsMonthId;
+	var createTime = statisticsMonth.createTime;
+	var year = createTime.replace(/(\d{4})-\d{2}-\d{2} \d{2}:\d{2}:\d{2}/,$0) || "";
+	var month = createTime.replace(/\d{4}-(\d{2})-\d{2} \d{2}:\d{2}:\d{2}/,$0) || "";
+//	var = statisticsMonth.;
+//	var = statisticsMonth.;
+//	var = statisticsMonth.;
+//	var = statisticsMonth.;
+//	var = statisticsMonth.;
+//	var = statisticsMonth.;
+//	var = statisticsMonth.;
+%>
+	<tr>
+		<td><%=createTime%>月份</td>
+		<td><%=createTime%></td>
+		<td><%=createTime%></td>
+		<td><%=createTime%></td>
+		<td>付费:<%=createTime%>,收益:<%=createTime%></td>
+		<td><%=createTime%>元</td>
+		<td><%=createTime%>元</td>
+		<td><%=createTime%>元</td>
+		<td><%=createTime%>元</td>
+		<td><%=createTime%></td>
+		<td><%=createTime%></td>
+	</tr>
+<% } %>
+</script>

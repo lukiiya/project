@@ -1,0 +1,66 @@
+<script type="text/html" id="content">
+<h1 class="title">现金消费用户列表</h1>
+<div class="list_box">
+	<div class="search_box">
+		<div>
+			<form onsubmit="return false;">
+				<input class="input_field" placeholder="用户" id="userName"/>
+				<input class="input_field ml20" placeholder="开始时间" readonly="1" id="beginTime">
+				<input class="input_field ml20" placeholder="结束时间" readonly="1" id="endTime">
+				<span class="select_box ml20">
+					<select id="financeType">
+						<option value="">全部</option>
+						<option value="0">方案账户</option>
+						<option value="1">出票账户</option>
+					</select>
+					<span class="icon_sel"><span class="arrow_down"></span></span>
+				</span>
+				<input class="btn ml20" type="reset" value="重置" />
+				<input class="btn ml20" type="submit" value="搜索" id="searchSubmit"/>
+			</form>
+		</div>
+		
+	</div>
+	<div class="table_box mt20">
+		<table>
+			<thead>
+				<tr>
+					<th>昵称</th>
+					<th>姓名</th>
+					<th>数量</th>
+					<th>金额</th>
+				</tr>
+			</thead>
+			<tbody id="userList"></tbody>				
+		</table>
+		<div id="pageCodeBox"></div>
+	</div>
+</div>
+</script>
+
+<script type="text/html" id="userList">
+<% var length = list.length;
+	for (var i = 0; i < length; i++) {
+	var user = list[i] || {};
+	var userId = user.userId;
+	var nickName = user.nickName;
+	var realName = user.realName;
+	var count = user.count;
+	var amount = user.amount/100;
+%>
+	<tr>
+		<td><%=nickName%></td>
+		<td><%=realName%></td>
+		<td userId="<%=userId%>"><a class="examine"><%=count%></a></td>
+		<td><%=amount%></td>
+	</tr>
+<% } %>	
+<% if(length > 0) { %>
+	<tr>
+		<td>总计</td>
+		<td></td>
+		<td><%=totalOrderCount%></td>
+		<td><%=totalOrderAmount/100%></td>
+	</tr>
+<% } %>
+</script>

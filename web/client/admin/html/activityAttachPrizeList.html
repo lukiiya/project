@@ -1,0 +1,65 @@
+<script type="text/html" id="content">
+<h1 class="title">11选5加奖百万</h1>
+<div class="list_box">
+	<div class="search_box">
+		<div>
+			<form onsubmit="return false;">
+				<input class="input_field" placeholder="用户名" id="userName">
+				<input class="input_field ml20" placeholder="期号" id="issue">
+				<input class="input_field ml20" placeholder="订单号" id="orderId">
+				<input class="btn ml20" type="reset" value="重置">
+				<input class="btn ml20" type="submit" value="搜索" id="searchSubmit">
+			</form>
+		</div>
+	</div>
+	<div class="table_box mt20">
+		<table>
+			<thead>
+				<tr>
+					<th width="120">昵称</th>
+					<th width="80">姓名</th>
+					<th width="60">期号</th>
+					<th width="60">订单号</th>
+					<th width="60">加奖金额</th>
+					<th width="80">时间</th>
+				</tr>
+			</thead>
+			<tbody id="activityAttachPrizeList"></tbody>
+		</table>
+		<div id="pageCodeBox"></div>
+	</div>
+</div>
+</script>
+
+<script type="text/html" id="activityAttachPrizeList">
+<% 
+var length = list.length;
+for ( var i = 0; i < length; i++) {
+	var attachPrize = list[i] || {};
+	var nickName = attachPrize.nickName;
+	var realName = attachPrize.realName;
+	var issue = attachPrize.issue;
+	var orderId = attachPrize.orderId;
+	var attachPrizeAmount = attachPrize.attachPrizeAmount/100;
+	var createTime = attachPrize.createTime;
+%>
+	<tr>
+		<td><%=nickName%></td>
+		<td><%=realName%></td>
+		<td><%=issue%></td>
+		<td><%=orderId%></td>
+		<td><%=attachPrizeAmount%></td>
+		<td><%=createTime%></td>
+	</tr>
+<% } %>
+<% if (length > 0) { %>
+<tr>
+	<td>总计</td>
+	<td></td>
+	<td></td>
+	<td></td>
+	<td><%=totalAttachPrizeAmount/100%></td>
+	<td></td>
+</tr>
+<% } %>
+</script>

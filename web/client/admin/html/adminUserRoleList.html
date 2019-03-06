@@ -1,0 +1,140 @@
+<script type="text/html" id="content">
+<h1 class="title">后台角色</h1>
+<div class="list_box">
+	<div class="search_box">
+		<div>
+			<form onsubmit="return false;">
+				<input class="input_field ml20" type="text" placeholder="角色名" id="roleName">
+				<input class="btn ml20" type="reset" value="重置" />
+				<input class="btn ml20" type="submit" value="搜索" id="searchSubmit"/>
+				<input class="btn ml30 mr30" type="button" value="新增角色" id="createAdminUserRole"/>
+			</form>
+		</div>
+	</div>
+	<div class="table_box mt20">
+		<table>
+			<thead>
+				<tr>
+					<th>角色名</th>
+					<th>描述</th>
+					<th>最后修改时间</th>
+					<th width="260">操作</th>
+				</tr>
+			</thead>
+			<tbody id="adminUserRoleList"></tbody>							
+		</table>
+		<div id="pageCodeBox"></div>
+	</div>
+</div>
+</script>
+
+<script type="text/html" id="adminUserRoleList">
+<% for (var i = 0, length = list.length; i < length; i++) {
+	var adminUserRole = list[i] || {};
+	var roleId = adminUserRole.roleId;
+	var roleName = adminUserRole.roleName;
+	var remark = adminUserRole.remark || '';
+	var lastTime = adminUserRole.lastTime;
+%>
+	<tr>
+		<td title="<%=roleName%>"><%=roleName%></td>
+		<td><%=remark%></td>
+		<td><%=lastTime%></td>
+		<td>
+			<a class="examine mr5 setAdminUserRoleFun" roleId="<%=roleId%>">分配功能</a>
+			<a class="examine mr5 editAdminUserRole" roleId="<%=roleId%>">修改</a>
+			<a class="examine deleteAdminUserRole" roleId="<%=roleId%>">删除</a>
+		</td>
+	</tr>
+<% } %>
+</script>
+
+<script type="text/html" id="editAdminUserRole">
+	<h1><%=title%></h1>
+	<input type="hidden" id="editRoleId" value="<%=roleId%>"/>
+	<div class="mt20">角色名：<input class="input_field ml5" placeholder="请输入角色名" id="editRoleName"/></div>
+	<div class="mt20">
+		<div class="mb10">描述：</div>
+		<textarea style="width:100%;height:55px" id="editRemark"></textarea>
+	</div>
+	<div class="mt20" align="center">
+ 		<input class="btn ml20" type="reset" value="取消" id="cancelEditAdminUserRole"/>
+		<input class="btn ml20" type="submit" value="确定" id="sureEditAdminUserRole"/>
+	</div>
+</script>
+
+<script type="text/html" id="setAdminUserRoleFun">
+	<h1 id="setTilte"></h1>
+	<input type="hidden" id="setRoleId" value="<%=roleId%>"/>
+	<div class="mt20">
+		参考角色：
+		<span class="select_box">
+			<select id="referRole"></select>
+			<span class="icon_sel"><span class="arrow_down"></span></span>
+		</span>
+		<div class="mt10" style="width:800px;overflow:hidden;padding:10px;border:1px solid #f2f2f2;">
+			<b>分配菜单：</b>
+			<label>
+				<input id="checkAllMenu" type="checkbox"/>全选
+			</label>
+			<label class="ml10">
+				<input id="showMenuDetail" type="checkbox"/>详细
+			</label>
+			<div class="mt10 clearfix" id="adminUserMenuList"></div>
+		</div>
+		<div class="mt10" style="width:800px;overflow:hidden;padding:10px;border:1px solid #f2f2f2;">
+			<b>分配权限：</b>
+			<label>
+				<input id="checkAllRight" type="checkbox"/>全选
+			</label>
+			<label class="ml10">
+				<input id="showRightDetail" type="checkbox"/>详细
+			</label>
+			<div class="mt10" style="border-top:1px solid #f2f2f2;" id="adminUserRightList"></div>
+		</div>
+	</div>
+	<div class="mt20" align="center">
+ 		<input class="btn ml20" type="reset" value="取消" id="cancelSetAdminUserRoleFun"/>
+		<input class="btn ml20" type="submit" value="确定" id="sureSetAdminUserRoleFun"/>
+	</div>
+</script>
+
+<script type="text/html" id="adminUserRightList">
+<% 
+	for(var i = 0, length = list.length; i < length; i++) {
+	var right = list[i] || {};
+%>
+	<span class="mr10" style="line-height: 30px;white-space:nowrap;">
+		<label>
+			<input id="rightId<%=right.rightId%>" class="rightId" type="checkbox" value="<%=right.rightId%>"/><span class="label"><%=right.rightName%></span>
+			<span class="remark" style="color:#999;width:100%;display:none;">(<%=right.remark%>)</span>
+		</label>
+	</span>
+<%}%>
+</script>
+
+<script type="text/html" id="adminUserMenuList">
+<%
+	for(var parentMenuName in menuMap) {
+%>
+<span class="menuBox mr5 mb5" style="float:left;width:245px;overflow:hidden;padding:5px;border:1px solid #f2f2f2;">
+	<span class="mr10" style="line-height:25px;white-space:nowrap;">
+		<label>
+			<input class="menuId" type="checkbox" value="0"/><b><%=parentMenuName%></b>
+		</label>
+	</span>
+<%
+		var list = menuMap[parentMenuName] || [];
+		for(var i = 0, length = list.length; i < length; i++) {
+		var menu = list[i] || {};
+%>
+		<div class="ml15" style="line-height:25px;white-space:nowrap;">
+			<label>
+				<input id="menuId<%=menu.menuId%>" class="menuId" type="checkbox" value="<%=menu.menuId%>"/><span class="label"><%=menu.menuName%></span>
+				<span class="remark" style="color:#999;width:100%;display:none;">(<%=menu.remark%>)</span>
+			</label>
+		</div>
+		<%}%>
+</span>
+<%}%>
+</script>

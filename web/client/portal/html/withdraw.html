@@ -1,0 +1,48 @@
+<script type="text/html" id="content">
+	<div class="pl10 mt20">
+		<%=financeType==1?'可提彩金':'可收米数'%>：<span class="color_red" id="userFinance"></span>
+	</div>
+	<div class="select_box">
+		<input id="amount" placeholder="输入<%=financeType==1?'彩金':'收米'%>数量" type="number" autocomplete="off"/>
+	</div>
+	<div class="select_box color3 clearfix">
+		换算金额：<span id="amountPrice">0</span>&nbsp;元
+	</div>
+	<% if (financeType == 0) { %>
+		<div class="select_box">
+			<select name="" id="accountName">
+				<option value="" >请选择银行</option>
+				<option value="中国银行" >中国银行</option>
+				<option value="中国建设银行">中国建设银行</option>
+				<option value="中国工商银行">中国工商银行</option>
+				<option value="中国农业银行">中国农业银行</option>
+				<option value="招商银行">招商银行</option>
+			</select>
+		</div>
+		<div class="select_box">
+			<input id="accountUserName" placeholder="输入银行户名" type="text"/>
+		</div>
+		<div class="select_box">
+			<input id="accountNumber" placeholder="输入银行卡号" type="number"/>
+		</div>
+		<div class="select_box">
+			<input id="accountInfo" placeholder="输入开户行所在省、市、县、支行信息" type="text"/>
+		</div>
+	<% } else { %>
+	<div class="select_box">
+		<input id="accountName" placeholder="输入支付宝姓名" type="text"/>
+	</div>
+	<div class="select_box">
+		<input id="accountNumber" placeholder="输入支付宝账号" type="text"/>
+	</div>
+	<% } %>
+	<div class="btn mt30" id="withdrawSubmit">
+		申请
+	</div>
+	<% if (financeType == 1) { %>
+		<p class="mt5">1彩金=1元， 注：只有中奖部分可提现</p>
+	<% } else { %>
+		<p class="mt5">注：<br />1、推荐收益和分享收益才可以收米<br />2、换算金额满一百才可以提现，一周结算一次</p>
+	<% } %>
+	<!--<p class="mt5"><%=financeType==1?'1彩金=1元， 注：只有中奖部分可提现':'注：1、推荐收益和分享收益才可以收米2、换算金额满一百才可以提现，一周结算一次'%></p>-->
+</script>

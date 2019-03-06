@@ -1,0 +1,40 @@
+<script type="text/html" id="content">
+	
+</script>
+
+<script type="text/html" id="activityCotent">
+	<div class="activity_cotent">
+		<div class="a20send128_banner">
+			<img class="img-responsive" src="<%=IMG_PATH%>activity_xyhdlb_logo.png" alt="" />
+			<span class="rules_icon" id="rulesBtn"></span>
+		</div>
+		<ul class="receive_msg" id="receiveList">
+			
+		</ul>
+		<div class="gift_detail">
+			<img class="img-responsive" src="<%=IMG_PATH%>activity_xyhdlb_detail.png" alt="" />
+		</div>
+		<a class="get_btn" id="getBtn"></a>
+	</div>
+</script>
+
+<script type="text/html" id="activityRules">
+	<ul class="rules">
+		<li>1.本次活动每个人都有一次参与机会，同一微信账号和手机号码仅限参与活动一次；</li>
+		<li>2.充值完成后，赠送的优惠券将一次性派发到您的账户，优惠券分期生效，您可以在“我的”－“<span class="color_df">我的优惠券</span>”中查看；</li>
+		<li>3.充20得128元，其中20元作为充值本金可以立即使用，不可提现，中奖奖金随时可以提现，本活动所有发放的优惠券，<span class="color_df">有效期为7天</span>，请及时使用，逾期无效；</li>
+		<li>4.如发现任何形式的作弊，晒米场有权不派发或取消已派发的优惠券；</li>
+		<li>5.本次活动最终解释权归晒米场所有。</li>
+	</ul>
+</script>
+
+<script type="text/html" id="receiveList">
+<% for (var i = 0, length = list.length; i < length; i++) {
+	var user = list[i] || {};
+	var realName = user.realName;
+	var nickName = user.nickName;
+	var userName = realName || nickName;
+%>
+	<li>用户<span>【<%=userName%>】</span>领取了<span class="color_df">大礼包</span></li>
+	<% } %>
+</script>

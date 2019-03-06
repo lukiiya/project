@@ -1,0 +1,81 @@
+<script type="text/html" id="content">
+<h1 class="title">用户分组</h1>
+<div class="list_box">
+	<div class="search_box">
+		<div>
+			<form onsubmit="return false;">
+				<span class="select_box ml20">
+					<select id="publish">
+						<option>全部</option>
+						<option value="1">上架</option>
+						<option value="0">下架</option>
+					</select>
+					<span class="icon_sel"><span class="arrow_down"></span></span>
+				</span>
+				<input class="btn ml20" type="reset" value="重置" />
+				<input class="btn ml20" type="submit" value="搜索" id="searchSubmit"/>
+				<input class="btn ml30 mr30" type="button" value="新增分组" id="createGroup"/>
+			</form>
+		</div>
+	</div>
+	<div class="table_box mt20">
+		<table>
+			<thead>
+				<tr>
+					<th>分组名</th>
+					<th>上下架</th>
+					<th>创建时间</th>
+					<th width="260">操作</th>
+				</tr>
+			</thead>
+			<tbody id="groupList"></tbody>							
+		</table>
+		<div id="pageCodeBox"></div>
+	</div>
+</div>
+</script>
+
+<script type="text/html" id="groupList">
+<% for (var i = 0, length = list.length; i < length; i++) {
+	var group = list[i] || {};
+	var groupId = group.groupId;
+	var name = group.name;
+	var publish = group.publish;
+	var publishMap = {'0': '下架', '1': '上架'};
+	var createTime = group.createTime;
+%>
+	<tr>
+		<td title="<%=name%>"><%=name%></td>
+		<td><%=publishMap[publish]%></td>
+		<td><%=createTime%></td>
+		<td>
+			<a class="examine mr5 groupUser" groupId="<%=groupId%>">查看用户</a>
+			<a class="examine mr5 editGroup" groupId="<%=groupId%>">修改</a>
+			<a class="examine mr5 modifySort" groupId="<%=groupId%>" type="1">上移</a>
+			<a class="examine mr5 modifySort" groupId="<%=groupId%>" type="2">下移</a>
+			<a class="examine mr5 modifySort" groupId="<%=groupId%>" type="3">置顶</a>
+			<a class="examine modifySort" groupId="<%=groupId%>" type="4">置底</a>
+		</td>
+	</tr>
+<% } %>
+</script>
+
+<script type="text/html" id="editGroup">
+	<h1><%=title%></h1>
+	<input type="hidden" id="editGroupId" value="<%=groupId%>"/>
+	<div class="mt20">分组名：<input class="input_field ml5" placeholder="请输入分组名" id="editName"/></div>
+	<div class="mt20">
+		上下架：
+		<span class="select_box">
+			<select id="editPublish">
+				<option value="1">上架</option>
+				<option value="0">下架</option>
+			</select>
+			<span class="icon_sel"><span class="arrow_down"></span></span>
+		</span>
+	</div>
+	<div class="mt20" align="center">
+ 		<input class="btn ml20" type="reset" value="取消" id="cancelEditGroup"/>
+		<input class="btn ml20" type="submit" value="确定" id="sureEditGroup"/>
+	</div>
+</script>

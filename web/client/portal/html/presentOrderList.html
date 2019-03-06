@@ -1,0 +1,92 @@
+<script type="text/html" id="content">
+	<style type="text/css">
+		.content {
+			padding-bottom: 80px;
+		}
+	</style>
+	<div class="ui-flex tab_btn" id="typeBtn">
+		<div class="ui-flex_item" type="1">
+			我的赠送
+		</div>
+		<div class="ui-flex_item" type="2">
+			我的领取
+		</div>
+	</div>
+	<ul class="ssqhb_list" id="prentOrderList">
+		
+	</ul>
+	<div class="fixed_btn">
+		<a class="ensure_btn" id="presentTicket">马上送注双色球</a>
+	</div>
+</script>
+
+<script type="text/html" id="prentOrderList">
+<%
+var length = list.length;
+if (length > 0) {
+	for (var i = 0; i < list.length; i++) { 
+	var amount = list[i].amount/100 || '';
+	var realName = list[i].realName;
+	var nickName = list[i].nickName;
+	var userName = realName || nickName;
+	var createTime = list[i].createTime || "";
+	var presentStatus = list[i].presentStatus || '';
+	var orderNo = list[i].orderNo || '';
+	createTime = createTime.match(/(\d{4}-\d{2}-\d{2}) (\d{2}:\d{2}):\d{2}/);
+	var day = createTime[1];
+	var presentStatusMap = {1: '未领完',2: '已领完',3: '已过期'};
+%>
+	<li class="hb_item" orderNo="<%=orderNo%>">
+		<div class="ui-flex mb5">
+			<span class="ui-flex_item size13"><%=userName%>的彩票</span>
+			<span class="ui-flex_item textR"><%=presentStatusMap[presentStatus]%></span>
+		</div>
+		<div class="ui-flex chrono_cash">
+			<span class="ui-flex_item"><%=day%></span>
+			<span class="ui-flex_item textR"><%=amount%>元</span>
+		</div>
+	</li>
+<% 
+	} 
+} else { %>
+	<div class="no_item">
+		<img class="ssqhb_default" src="<%=IMG_PATH%>ssqhb_default.png"/>
+		<p class="mt15 color9">暂时没有您的赠送记录</p>
+	</div>
+<% } %>
+</script>
+
+<script type="text/html" id="receiveOrderList">
+<%
+var length = list.length;
+if (length > 0) {
+	for (var i = 0; i < list.length; i++) { 
+	var amount = list[i].amount/100 || '';
+	var orderNo = list[i].orderNo;
+	var user = list[i].user || {};
+	var createTime = list[i].createTime || "";
+	createTime = createTime.match(/(\d{4}-\d{2}-\d{2}) (\d{2}:\d{2}):\d{2}/);
+	var day = createTime[1];
+	var nickName = user.nickName;
+	var realName = user.realName;
+	var userName = realName || nickName;
+%>
+	<li class="hb_item" orderNo="<%=orderNo%>">
+		<div class="ui-flex mb5">
+			<span class="ui-flex_item size13"><%=userName%>的彩票</span>
+			<span class="ui-flex_item textR">已领取</span>
+		</div>
+		<div class="ui-flex chrono_cash">
+			<span class="ui-flex_item"><%=day%></span>
+			<span class="ui-flex_item textR"><%=amount%>元</span>
+		</div>
+	</li>
+<% 
+	} 
+} else { %>
+	<div class="no_item">
+		<img class="ssqhb_default" src="<%=IMG_PATH%>ssqhb_default.png"/>
+		<p class="mt15 color9">暂时没有您的领取记录</p>
+	</div>
+<% } %>
+</script>

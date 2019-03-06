@@ -1,0 +1,38 @@
+<script type="text/html" id="content">
+	<div class="charge_top">
+		<span>时间</span>
+		<span>提款数量</span>
+		<span>对应金额</span>
+		<span>状态</span>
+	</div>
+	<ul class="charge_con" id="withdrawList"></ul>
+</script>
+
+<script type="text/html" id="withdrawList">
+<% for (var i = 0, length = list.length; i < length; i++) {
+		var withdraw = list[i] || {};
+		var financeType = withdraw.financeType;
+		var financeTypeMap = {'0': '米粒', '1': '彩金'}; 
+		var amount = withdraw.amount/100 || 0;
+		var status = withdraw.status;
+		var statusMap = {"1":"未审核","2":"已审核","3":"已打款","4":"已拒绝","5":"打款中"};
+		var remark = withdraw.remark || '';
+		var createTime = withdraw.createTime || "";
+		var matchTime = createTime.match(/\d{4}-(\d{2}-\d{2}) (\d{2}:\d{2}):\d{2}/);
+		var day = '';
+		var time = '';
+	if (matchTime) {
+		day = matchTime[1];
+		time = matchTime[2];
+	}
+%>
+	<li class="charge_list">
+		<span><%=day%><br><%=time%></span>
+		<span><%=amount%><%=financeTypeMap[financeType]%></span>
+		<span><%=amount%>元</span>
+		<span remark="<%=remark%>" style="<%=status==4&&remark!=''?'color:#1a739c;text-decoration:underline;':''%>">
+			<%=statusMap[status]%>
+		</span>	
+	</li>
+<% } %>
+</script>

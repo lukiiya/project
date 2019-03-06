@@ -1,0 +1,575 @@
+<script type="text/html" id="content">
+
+</script>
+
+<script type="text/html" id="ticketOrder">
+	<%
+	var isSelfTicket = ticketOrder.isSelfTicket; // 是否自购单
+	var orderNumeric = ticketOrder.orderNumeric || "";
+	var status = ticketOrder.status;
+	var ticketMultiple = ticketOrder.ticketMultiple || 1;
+	var ticketPassType = ticketOrder.ticketPassType || '';
+	ticketPassType = ticketPassType.replace(/1x1/g, '单关');
+	ticketPassType = ticketPassType.replace(/x/g, '串');
+	var planRealName = ticketOrder.planRealName || "";
+	var planNickName = ticketOrder.planNickName || "";
+	var planUserName = planRealName || planNickName;
+	var amount = ticketOrder.amount/100 || 0;
+	var ticketPrizeAmount = +(ticketOrder.ticketPrizeAmount/100 || 0).toFixed(2);
+	var maxTicketPrizeAmount = (ticketOrder.maxTicketPrizeAmount/100 || 0).toFixed(2);
+	var ticketSendPrizeAmount = (ticketOrder.ticketSendPrizeAmount/100 || 0).toFixed(2);
+	var ticketStatus = ticketOrder.ticketStatus;
+	var imgMap = {"0":"zzcp","1":"cpsb","2":"dkj","3":"wzj","4":"yzj","7":"zzcp","8":"dkj","9":"zzcp"};
+	var ticketStatusMap = {"0":"正在出票","1":"出票失败","2":"待开奖","3":"未中奖","4":"已中奖","5":"已派奖","6":"已部分派奖","7":"正在出票","8":"部分出票","9":"正在出票"};
+	var createTime = ticketOrder.createTime && ticketOrder.createTime.replace(/\d{4}-(\d{2}-\d{2} \d{2}:\d{2}):\d{2}/, "$1") || "";
+	var matchList = ticketOrder.matchList || [];
+	var length = matchList.length;
+	var resourceList = ticketOrder.resourceList || [];
+	resourceList = resourceList.join('|');
+	var isTSP = ticketOrder.isTSP;
+	var ticketPrizeDivideStatus = ticketOrder.ticketPrizeDivideStatus; //0=不分成, 1=待分成, 2=已分成, 3=未分成
+	var ticketPrizeDivideAmount = (ticketOrder.ticketPrizeDivideAmount/100 || 0).toFixed(2);
+	var lotteryId = ticketOrder.lotteryId || '';
+	var betContentList = ticketOrder.betContentList || [];
+	var issue = ticketOrder.issue || '';
+	var drawNumber = ticketOrder.drawNumber || '';
+	if (lotteryId == 'FC3D') {
+		drawNumber = drawNumber.split('|')[0];
+	}
+	var drawTime = ticketOrder.drawTime && ticketOrder.drawTime.replace(/\d{4}-(\d{2}-\d{2} \d{2}:\d{2}):\d{2}/, "$1") || ""; //开奖时间
+	var ticketAttachPrizeAmount = +(ticketOrder.ticketAttachPrizeAmount/100).toFixed(2) || 0;
+	var ticketFollowGainAmount = +(ticketOrder.ticketFollowGainAmount/100).toFixed(2) || 0; //跟单分成
+	var tickeTotalAmount = (ticketPrizeAmount + ticketAttachPrizeAmount + ticketFollowGainAmount - ticketPrizeDivideAmount).toFixed(2);
+	tickeTotalAmount = (tickeTotalAmount + '').replace(/\.0+$/, '');
+	var lotteryName = ticketOrder.lotteryName;
+	var guessList = ticketOrder.guessList || [];//猜冠军
+	var publish = ticketOrder.publish || 0; // 0=未发布， 1=已发布   （发布至跟单市场）
+	var isSale = ticketOrder.isSale;
+	var isSelf = ticketOrder.isSelf;
+	var followNo = ticketOrder.followNo || '';
+	var followCount = ticketOrder.followCount || 0;
+	var maxTicketPrizeRate = ticketOrder.maxTicketPrizeRate;
+	var betAmount = ticketOrder.betAmount/100;
+	var maxBettypeOdds = (maxTicketPrizeAmount/(ticketMultiple*2)).toFixed(2);
+	var user = ticketOrder.user || {}; //用户信息
+	var betTag = user.betTag;
+	var userNo = user.userNo;
+	var realName = user.realName;
+	var nickName = user.nickName;
+	var profileImg = user.profileImg;
+	var personalImg = user.personalImg;
+	var userImg = personalImg || profileImg || (IMG_PATH + 'user_profile.png');
+	var userName = realName || nickName;
+	var betTagMap = {'千元户' : 'thousand','万元户': 'ten-thousand', '十万元户': 'hundred-thousand'};
+%>
+	<div class="sta_wrap">
+		<div class="win_wrap">
+			<% if (ticketStatus == 5) { %>
+				<div class="ypj">
+					<span class="ypj_txt">
+						<i class="icon_ypj"></i>
+						已派奖	
+					</span><br />
+					<span class="bonus color_red">
+						<%=tickeTotalAmount%>
+						<% if (ticketAttachPrizeAmount > 0 || ticketFollowGainAmount > 0 || ticketPrizeDivideAmount > 0) { %>
+							<span class="size16">=中奖<%=ticketPrizeAmount%></span>
+						<% } %>
+						<% if (ticketAttachPrizeAmount > 0 && ticketFollowGainAmount > 0) { %>
+							<span class="size16">+加奖<%=ticketAttachPrizeAmount%>+跟单收成<%=ticketFollowGainAmount%></span>
+						<% } else if (ticketAttachPrizeAmount > 0) { %>
+							<span class="size16">+加奖<%=ticketAttachPrizeAmount%></span>
+						<% } else if (ticketFollowGainAmount > 0) { %>
+							<span class="size16">+跟单收成<%=ticketFollowGainAmount%></span>
+						<% } %>
+						<% if (ticketPrizeDivideStatus == 2) { %>
+							<span class="size16">-跟单分成<%=ticketPrizeDivideAmount%></span>
+						<% } %>
+					</span>
+				</div>
+			<% } else if (ticketStatus == 6) { %>
+				<div class="win_status">
+					已部分派奖	
+				</div>
+				<div class="size12">
+					<span class="color_red size12"><%=ticketSendPrizeAmount%></span>元<br /><span class="color9 size12">（剩下的部分会在出票店长确认中奖金额后派出，如果提前派奖金额超出实际中奖，将会扣除超出部分彩金）</span>
+				</div>
+			<% } else if ((ticketStatus == 0 || ticketStatus == 2 || ticketStatus == 7) && (lotteryId == 'JCZQ' || lotteryId == 'JCLQ' || lotteryId == 'JZYP')) { %>
+				<div class="win_status">
+					<i class="icon_<%=imgMap[ticketStatus]%>"></i>
+						<%=ticketStatusMap[ticketStatus]%>	
+				</div>
+				<div class="size12 mt5">
+					最大奖金：<span class="color_red size12"><%=maxTicketPrizeAmount%></span>元<br /><span class="color9 size12">（最终奖金以出票完成的为准）</span>
+				</div>
+			<% } else if (status == 3) { %>
+				<div class="win_status">
+					<i class="icon_ytk"></i>
+						已退款
+				</div>
+			<% } else { %>
+				<div class="win_status">
+					<i class="icon_<%=imgMap[ticketStatus]%>"></i>
+						<%=ticketStatusMap[ticketStatus]%>
+				</div>
+			<% } %>
+		</div>
+	</div>
+	<div class="msg_wrap mb10">
+		<div class="documentary_msg pb10">
+			<% if (isSelf == true) { %>
+				<div class="con_tit clearfix">
+					<span class="fl color6">方案编号：<span class="color3"><%=orderNumeric%></span></span>
+				<% if ((ticketStatus == 2 || ticketStatus == 3 || ticketStatus == 4 || ticketStatus == 5 || ticketStatus == 6) && resourceList) { %>
+					<span class="fr color_g check_ticket" id="showTicketImg" ticketStatus="<%=ticketStatus%>" resourceList="<%=resourceList%>">查看票样</span>
+				<% } else if (isTSP) { %>
+					<span class="fr color_g check_ticket" id="showTicketDetail" ticketStatus="<%=ticketStatus%>">出票详情</span>
+				<% } %>
+				</div>
+			<% } else { %>
+				<div class="color6 ui-flex user_msg">
+					<div>
+						<img class="icon_span img29" src="<%=userImg%>">
+						<span class="personal">
+							<span class="color3"><%=userName%></span>
+							<span class="icon <%=betTagMap[betTag]%>"></span>
+						</span>
+					</div>
+					<div class="size10">返奖：<span class="color_red"><%=maxTicketPrizeRate%>%</span></div>
+				</div>
+			<% } %>
+			<table border="1">
+				<tr>
+					<th>金额</th>
+					<th>倍数</th>
+					<% if (!isSelfTicket) { %>
+					<th>专家</th>
+					<% } %>
+					<th>状态</th>
+				</tr>
+				<tr>
+					<td><span class="color_red"><%=amount%></span>元</td>
+					<td><%=ticketMultiple%></td>
+					<% if (!isSelfTicket) { %>
+					<td><%=planUserName%>
+					</td>
+					<% } %>
+				<% if (ticketStatus == 8 || status == 4) { %>
+					<td>部分出票</td>
+				<% } else if (ticketStatus == 1 || status == 3) { %>
+					<td>出票失败</td>
+				<% } else if (ticketStatus == 2 || ticketStatus == 3 || ticketStatus == 4 || ticketStatus == 5 || ticketStatus == 6) { %>
+					<td>已出票</td>
+				<% } else if (ticketStatus == 0 || ticketStatus == 7 || ticketStatus == 9) { %>
+					<td>正在出票</td>
+				<% } %>
+				</tr>
+			</table>
+		</div>
+	</div>
+	<div class="dty_cont">
+		<div class="con_tit clearfix">
+			<% if ((lotteryId　==　'JCLQ' || lotteryId == 'JCZQ' || lotteryId == 'JZYP') && length != 0) { %>
+				<span class="fl">跟单内容：</span>
+				<span class="fr">过关方式：
+					<span class="color_g"><%=ticketPassType%></span>		
+				</span>
+			<% } else { %>
+				<span class="fl">投注内容：</span>
+				<% if (lotteryId　==　'SJBGJ' || lotteryId　==　'SJBGYJ') { %>
+					<span class="fr">过关方式：
+						<span class="color_g">单关</span>		
+					</span>
+				<% }　%>
+			<% }　%>
+		</div>
+		<% if (lotteryId　==　'SSQ' || lotteryId　==　'DLT') { %>   <!--双色球详情-->
+			<div class="ssqInfo_box">
+				<p><span class="color_g"><%=issue%></span> 期</p>
+				<% if (drawNumber) { %>
+					<div class="clearfix mt5">
+						<p class="fl num_title color9">开奖号码：</p>
+						<ul class="ssqlist fl">
+							<li>
+								<div class="num_wrap">
+									<span class="red_ball">
+									<% 
+										var drawNumberRed;
+										if (lotteryId　==　'SSQ') {
+											drawNumberRed = drawNumber.split('|')[0].split(",");
+										} else if (lotteryId　==　'DLT') {
+											drawNumberRed = drawNumber.split('+')[0].split(",");
+										}
+										for (var j = 0; j < drawNumberRed.length; j++) { 
+											var drawNumberRedUnit = drawNumberRed[j];
+									%>
+										<em class="active"><%=drawNumberRedUnit%></em>
+									<% } %>
+									</span> 
+									<span class="blue_ball">
+									<% 
+										var drawNumberBlue;
+										if (lotteryId　==　'SSQ') {
+											drawNumberBlue = drawNumber.split('|')[1].split(",")
+										} else if (lotteryId　==　'DLT') {
+											drawNumberBlue = drawNumber.split('+')[1].split(",")
+										}
+										for (var k = 0; k < drawNumberBlue.length; k++) { 
+											var drawNumberBlueUnit = drawNumberBlue[k];
+									%>
+										<em class="active"><%=drawNumberBlueUnit%></em>
+									<% } %>
+									</span>
+								</div>
+							</li>
+						</ul>
+					</div>
+				<% } %>
+				<div class="clearfix mt5">
+					<p class="fl num_title color9">投注号码：</p>
+					<ul class="ssqlist fl">
+					<% 
+						for (var i = 0; i < betContentList.length; i++) { 
+							var ssq = betContentList[i] || {};
+							var betContent = ssq.betContent || "";
+							var redBall;
+							var blueBall;
+							if (lotteryId　==　'SSQ') {
+								redBall = betContent.split('|')[0].split(",");
+							} else if (lotteryId　==　'DLT') {
+								redBall = betContent.split('+')[0].split(",")
+							}
+							if (lotteryId　==　'SSQ') {
+								blueBall = betContent.split('|')[1].split(",");
+							} else if (lotteryId　==　'DLT') {
+								blueBall = betContent.split('+')[1].split(",");
+							}
+							var betContentResult = ssq.betContentResult || {};
+							var redActive = betContentResult["red"] || {};
+							var blueActive = betContentResult["blue"] || {}
+					%>
+						<li>
+							<div class="num_wrap">
+								<span class="red_ball">
+								<% 
+									for (var j = 0; j < redBall.length; j++) { 
+										var redBallUnit = redBall[j];
+								%>
+									<em class="<%=drawNumber ? 'borderC' : ''%> <%=redActive[redBallUnit] ? 'active' : ''%>"><%=redBallUnit%></em>
+								<% } %>
+								</span> 
+								<span class="blue_ball">
+								<% 
+									for (var k = 0; k < blueBall.length; k++) { 
+										var blueBallUnit = blueBall[k];
+								%>
+									<em class="<%=drawNumber ? 'borderC' : ''%> <%=blueActive[blueBallUnit] ? 'active' : ''%>"><%=blueBallUnit%></em>
+								<% } %>
+								</span>
+							</div>
+						</li>
+						<% } %>
+					</ul>
+				</div>
+				<% if (!drawNumber) { %>
+				<p class="mt5"><span class="color9 size13">开奖时间：</span>
+					<span class="color6 size13"><%=drawTime%></span>
+				</p>
+				<% } %>
+			</div>
+		<% } else if　(lotteryId　==　'JSK3' || lotteryId　==　'GX11X5' || lotteryId　==　'FC3D') { %>  <!--江苏快3、11选5-->
+			<div class="ssqInfo_box">
+				<p><span class="color_g"><%=issue%></span> 期</p>
+				<% if (drawNumber) { %>
+					<div class="mt5">
+						<p class="num_title color9">开奖号码：<span class="color_red"><%=drawNumber%></span></p>
+					</div>
+				<% } %>
+				<div class="mt5">
+					<ul class="">
+					<% 
+						for (var i = 0; i < betContentList.length; i++) { 
+							var list = betContentList[i] || {};
+							var betContent = list.betContent || "";
+							var betContentResult = list.betContentResult || {};
+							var selectNum = betContentResult.value || [];
+							var name = betContentResult.name || '';
+					%>
+						<li class="mb5">
+							<div class="num_wrap">
+								<span class="num_title color9"><%=name%>：</span>
+								<span>
+									<% 
+										for (var j = 0; j < selectNum.length; j++) { 
+											var singleNum = selectNum[j];
+											var singleNumKey = Object.keys(singleNum)[0];
+											var activeNum = singleNum[singleNumKey];
+									%>
+									<span class="<%=activeNum ? 'color_red' : ''%>"><%=singleNumKey%></span>
+									<% } %>
+								</span>
+							</div>
+						</li>
+						<% } %>
+					</ul>
+				</div>
+				<% if (!drawNumber) { %>
+				<div><span class="color9">开奖时间：</span><%=drawTime%></div>
+				<% } %>
+			</div>
+		<% } else if　(lotteryId　==　'SJBGJ' || lotteryId　==　'SJBGYJ') { %> 
+			<div class="matchInfo_box">
+				<div class="matchInfo_wrap">
+					<div class="mb10"><%=lotteryName%></div>
+					<div class="ui-flex worldcup_selected color3">
+					<% 
+						var length = guessList.length;
+						for (var i = 0; i < length; i++) { 
+							var match = guessList[i] || {};
+							var oddsId = match.oddsId || 0;
+							var odds = match.odds;
+							var team = match.team;
+					%>
+						<% if (lotteryId　==　'SJBGJ' && length > 1) { %>
+							<div class="textBar gj ellipsis"><%=team%> <%=odds%></div>
+						<% } else if (lotteryId　==　'SJBGYJ') { %>
+							<div class="textBar gyj ellipsis"><%=team%> <%=odds%></div>
+						<% } else { %>
+							<div class="textBar ui-flex_item ellipsis"><%=team%> <%=odds%></div>
+						<% } %>
+					<% } %>
+					</div>
+				</div>
+			</div>
+		<% } else { %>  <!--篮球足球-->
+			<% if (length == 0) { %>
+				<div class="noMatch_box">
+					<div class="no_match ui-flex">
+						<img class="no_match_img" src="<%=IMG_PATH%>documentary_noMatchImg.png" /> 
+					</div>
+				</div>
+			<% } else { %>
+				<div class="matchInfo_box">
+				<% 
+					for (var i = 0; i < length; i++) { 
+						var match = matchList[i] || {};
+						var recommend = match.recommend || [];
+						var prize = match.prize || [];
+						var matchId = match.matchId || 0;
+						var oddsId = match.oddsId || 0;
+						var bettypeContent = match.bettypeContent || "";
+						var recommendLength = recommend.length;
+						if (matchId <= 0 || oddsId <= 0 || !recommend || recommendLength <= 0 || !bettypeContent) {
+							continue;
+						}
+						match.beginTime = match.beginTime && match.beginTime.replace(/\d{4}-(\d{2}-\d{2} \d{2}:\d{2}):\d{2}/, "$1") || "";
+						var nullOdds = '--';//赔率为空显示值
+						var concede = match.concede;
+						var Hconcede;
+						var Aconcede;
+						if (concede > 0) {
+							Hconcede = '+' + (concede);
+							Aconcede = -concede;
+						} else {
+							Hconcede = concede;
+							Aconcede = '+' + (-concede)
+						}
+						var bettypeOdds = match.bettypeOdds || {};
+						var bettype = match.bettypeValue || {};
+						var recommendMap = {};
+						for (var j = 0; j < recommendLength; j++) {
+							recommendMap[recommend[j]] = true;
+						}
+						var bettypeResult = match.bettypeResult || {};
+						var number = match.number;
+						var type = match.type || 1;
+					%>
+						<div class="matchInfo_wrap">
+							<div class="matchInfo clearfix">
+								<span class="size14 fl match_name" style="<%=type == 2 ? 'color: #003cff' : ''%>"><span class="color3 mr5"><%=number%></span><%=match.league%></span>
+								<div class="size12 color9 ml5"><%=match.beginTime%></div>
+							</div>
+							<div class="ui-flex color3">
+								<div class="ui-flex_item ellipsis"><%=#type == 2 ? match.away : match.home %></div>
+								 <% if (match.result) { %>
+									<% if (bettypeContent == "BQC") { %>
+									<span class="score color_red"><%=match.result%>(<%=match.halfResult%>)</span>
+									<% } else { %>
+									<span class="score color_red"><%=match.result%></span>
+									<% } %>
+								<% } else { %>
+									vs
+								<% } %> 
+								<div class="ui-flex_item ellipsis textR"><%=#type == 2 ? match.home : match.away %></div>
+							</div>
+						<% if (bettypeContent == "SPF" || bettypeContent == "RQSPF") { %>
+						<div class="ui-flex flex_wrap pl40">
+							<div class="concede"><%=concede > 0 ? '+'+concede : concede%></div>
+							<div class="textBar ui-flex_item positionR <%=recommendMap["S"]?'active':''%>">胜 <%=bettypeOdds["S"]%><%=#bettypeResult["S"]?'<span class="result icon_result"></span>':""%></div>
+							<div class="textBar ui-flex_item ml10 positionR <%=recommendMap["P"]?'active':''%>">平 <%=bettypeOdds["P"]%><%=#bettypeResult["P"]?'<span class="result icon_result"></span>':""%></div>
+							<div class="textBar ui-flex_item ml10 positionR <%=recommendMap["F"]?'active':''%>">负 <%=bettypeOdds["F"]%><%=#bettypeResult["F"]?'<span class="result icon_result"></span>':""%></div>
+						</div>
+						<% } else if (bettypeContent == 'SF' && lotteryId == 'JZYP') { %>
+							<div class="ui-flex mt15 positionR yapan">
+								<div class="textBar ui-flex_item <%=recommendMap["S"]?'active':''%>">主胜<%=Hconcede%><span class="ml15 size12"><%=bettypeOdds['S']%></span></div>
+								<div class="textBar ui-flex_item ml10 <%=recommendMap["F"]?'active':''%>">客胜<%=Aconcede%><span class="ml15 size12"><%=bettypeOdds['F']%></span></div>
+							</div>
+						<% } else if (bettypeContent == 'SF') { %>
+							<div class="ui-flex mt15 positionR">
+								<div class="textBar ui-flex_item <%=recommendMap["F"]?'active':''%>">客胜 <%=bettypeOdds['F']%></div>
+								<div class="textBar ui-flex_item ml10 <%=recommendMap["S"]?'active':''%>">主胜 <%=bettypeOdds['S']%></div>
+							</div>
+						<% } else if (bettypeContent == 'RFSF') { %>
+							<div class="ui-flex mt15 positionR">
+								<div class="textBar ui-flex_item <%=recommendMap["F"]?'active':''%>">客胜<%=Aconcede%><span class="ml15 size12"><%=bettypeOdds['F']%></span></div>
+								<div class="textBar ui-flex_item ml10 <%=recommendMap["S"]?'active':''%>">主胜<%=Hconcede%><span class="ml15 size12"><%=bettypeOdds['S']%></span></div>
+							</div>
+						<% } else if (bettypeContent == "DXF") { %>
+							<div class="ui-flex mt15 flex_wrap">
+								<div class="textBar ui-flex_item positionR <%=recommendMap["D"]?'active':''%>">大于<%=concede%><span class="ml15 size12"><%=bettypeOdds["D"]%></span></div>
+								<div class="textBar ui-flex_item ml10 positionR <%=recommendMap["X"]?'active':''%>">小于<%=concede%><span class="ml15 size12"><%=bettypeOdds["X"]%></div>
+							</div>
+						<% } else { %>
+							<div class="ui-flex flex_wrap">
+								<% for (var j = 0; j < recommendLength; j++) { %>
+								<div class="textBar ui-flex_item positionR <%=j>0?'ml10':''%> active"><%=bettype[recommend[j]]||''%> <%=bettypeOdds[recommend[j]]||nullOdds%><%=#bettypeResult[recommend[j]]?'<span class="result icon_result"></span>':""%></div>
+								<% } %>
+								<% 
+								if (prize.length <= 0) {
+									for (var name in bettypeResult) {
+										if (!bettypeResult[name]) {
+											continue;
+										}
+								%>
+									<div class="textBar ui-flex_item positionR ml10"><%=bettype[name]||''%> <%=bettypeOdds[name]||nullOdds%><span class="result icon_result"></span></div>	
+								<%
+									}
+								}
+								%>
+							</div>
+						<% } %>
+						</div>
+					<% } %>
+				</div>
+			<% } %>
+		<% } %>
+	</div>
+	<% if (publish == 0 && isSelfTicket == true && isSale == true) { %>
+		<div class="bottom">
+			<div class="doc_detail ui-flex">
+				<div class="continue_btn" id="continueBtn">
+					继续投注本方案
+				</div>
+				<div class="share_btn" id="shareMarketBtn">
+					分享方案，赚提成
+				</div>
+			</div>
+		</div>
+	<% } %>
+	<% if (publish == 1 && followNo != '') { %>
+		<div class="bottom">
+			<div class="doc_detail ui-flex">
+				<div class="doc_num" id="followCountBtn">跟单用户(<%=followCount%>)</div>
+				<% if (isSale == true) { %>
+					<div class="doc_btn" id="followBtn" betAmount="<%=betAmount%>" maxBettypeOdds="<%=maxBettypeOdds%>">
+						立即跟单
+					</div>
+				<% } else { %>
+					<div class="abort_btn">
+						已截止跟单
+					</div>
+				<% } %>
+			</div>
+		</div>
+	<% } %>
+</script>
+
+<script type="text/html" id="previewImage">
+<div class="mask" id="showImg" style="background-color: #000000;overflow: auto;">
+	<div class="<%=length==1?'vtc':''%>">
+		<%=#html%>
+	</div>
+</div>
+</script>
+
+<script type="text/html" id="orderTicketList"> 
+	<div class="msg_wrap mb10">
+		<div class="documentary_msg pb10">
+			<div class="con_tit clearfix">
+				<span class="fl color6">方案编号：<span class="color3"><%=orderNumeric%></span></span>
+			</div>
+			<table border="1">
+				<tr>
+					<th>金额</th>
+					<th>倍数</th>
+					<th>状态</th>
+					<th>票码</th>
+				</tr>
+		<%
+			for (var i = 0, length = list.length; i < length; i++) {
+			var ticketItem = list[i] || {};
+			var amount = ticketItem.amount/100;
+			var prizeAmount = ticketItem.prizeAmount/100;
+			var multiple = ticketItem.multiple;
+			var printNo = ticketItem.printNo || "";
+			var status = ticketItem.status;
+			var statusMap = {"0":"未出票","1":"出票失败","2":"待开奖","3":"未中奖","4":"已中奖","5":"已退款"};
+		%>
+				<tr>
+					<td><span class="color_red"><%=amount%></span>元</td>
+					<td><%=multiple%></td>
+					<td>
+						<% if (status == 4) { %>
+							中<span class="color_red"><%=prizeAmount%></span>元
+						<% } else { %>
+							<%=statusMap[status]%>
+						<% } %>
+					</td>
+					<td>
+						<% if (printNo) { %>
+						<a class="showTicketCode" printNo="<%=printNo%>" style="color: #1a739c;">查看</a>
+						<% } %>
+					</td>
+				</tr>
+		<% } %>
+			</table>
+		</div>
+	</div>
+</script>
+
+<script type="text/html" id="userFollowList"> 
+	<div class="follow mb10">
+		<div class="follow_msg clearfix">
+			当前跟单<span	class="color_red"> <%=totalCount%> </span>人，跟单金额<span class="color_red"> <%=totalAmount%> </span>元
+		</div>
+		<table>
+			<tr>
+				<th>用户名称</th>
+				<th>跟单金额</th>
+				<th>奖金</th>
+				<th>跟单时间</th>
+			</tr>
+	<%
+		for (var i = 0, length = list.length; i < length; i++) {
+		var follow = list[i] || {};
+		var amount = follow.amount/100;
+		var ticketPrizeAmount = follow.ticketPrizeAmount/100;
+		var nickName = follow.nickName;
+		var createTime = follow.createTime && follow.createTime.replace(/\d{4}-(\d{2}-\d{2} \d{2}:\d{2}):\d{2}/, "$1") || "";
+	%>
+			<tr>
+				<td><%=nickName%></td>
+				<td><%=amount%></td>
+				<td>
+					<% if (ticketPrizeAmount != 0) { %>
+						<span class="color_red"><%=ticketPrizeAmount%>元</span>
+					<% } %>
+				</td>
+				<td>
+					<%=createTime%>
+				</td>
+			</tr>
+	<% } %>
+		</table>
+	</div>
+</script>

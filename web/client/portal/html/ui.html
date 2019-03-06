@@ -1,0 +1,135 @@
+<!-- 遮罩层 -->
+<script type="text/html" id="mask">
+	<div class="mask" id="<%=id%>" style="z-index:<%=zIndex%>;opacity:<%=opacity%>;filter:alpha(opacity=<%=filter%>)"></div>
+</script>
+
+<!-- 加载中。。。。 -->
+<script type="text/html" id="loading">
+<div id="loadingBox">
+	<div class="mask"></div>
+	<div class="loading ">
+        <div class="loading_overlay"></div>
+        <div class="loading_inner">
+            <p class="loading_spinner"></p>
+            <p class="loading_text">努力加载中...</p>
+        </div>
+    </div>
+</div>
+</script>
+
+<!-- 提示框。。。 -->
+<script type="text/html" id="notice">
+	<div class="pop" id="noticeBox"><%=text%></div>
+</script>
+
+<script type="text/html" id="alert">
+	<div id="alertBox">
+		<div class="mask"></div>
+		<div class="pop pop1">
+			<span><%=#text%></span>
+			<div class="btn" id="alertBtn">确定</div>
+		</div>
+	</div>
+</script>
+
+<script type="text/html" id="attention">
+	<div id="attentionBox">
+		<div class="mask"></div>
+		<div class="pop pop3">
+			<span><%=#text%></span>
+		</div>
+	</div>
+</script>
+
+<script type="text/html" id="confirm">
+	<div id="confirmBox">
+		<div class="mask"></div>
+		<div class="pop pop2">
+		    <span class="alerts" style="padding:20px 10px;line-height:25px;"><%=#text%></span>
+		    <div class="ui-flex bordertop">
+		        <span class="ui-flex_item textBar borderright" id="cancelBtn">取消</span>
+		        <span class="ui-flex_item textBar active" id="sureBtn">确定</span>
+		    </div>
+		</div>
+	</div>
+</script>
+
+<script type="text/html" id="window">
+	<div id="windowBox">
+		<div class="mask"></div>
+		<div class="pop4">
+			<%=#html%>
+		</div>
+	</div>
+</script>
+
+<script type="text/html" id="share">
+	<div id="shareBox">
+		<div class="mask"></div>
+		<div class="direct"></div>
+	</div>
+</script>
+
+<script type="text/html" id="createTicketOrder">
+	<div id="createTicketOrderBox">
+		<div class="mask"></div>
+		<div class="pop6">
+		  <div class="pop6_top">跟单投注</div>
+		  <a class="close_btn" id="closeCreateTicketOrder">X</a>
+		  <div class="pop6_con">
+		    <div class="popInput mt10">
+		    	<span class="icon_decrease_multiple mr5" id="decreaseTicketMultiple"></span>
+		      	<div class="ticket_box">
+		        	<input type="number" value="10" min="10" max="10000" id="ticketMultiple" recommendCount="<%=recommendCount%>" maxBettypeOdds="<%=maxBettypeOdds%>" isSelfFollow="<%=isSelfFollow%>" planAmount="<%=planAmount%>" planType="<%=planType%>" />
+		      	</div>
+		      	<span class="icon_add_multiple ml5" id="addTicketMultiple"></span>
+		      	<span class="ml10 size22">倍</span>
+		    </div>
+		    <% if (matchNum) { %>
+		    	<div class="popText mt10">过关方式：<%=matchNum>1?matchNum+'串1':'单关'%></div>
+		    <% } %>
+		    <div class="popText ellipsis">投注金额：<span id="ticketAmount">0</span> 元</div>
+		    <div class="popText ellipsis">理论最大奖金：<span id="maxPrize">0</span> 元</div>
+		      <% if (matchNum) { %>
+		    	<div class="popText ellipsis">专家提成：中奖奖金的 <span>5%</span></div>
+		    <% } %>
+		    <div class="read mt15">
+		      <label><input type="checkbox" name="tongyi" checked="checked" id="protocol" style="margin-right: 5px;" />已阅读并同意</label>
+		      <span><a id="userVerifyProtocol">《用户代购协议》</a></span>
+		    </div>
+		    <div class="btn pop6Btn" style="background-color: #f63946;" planNo="<%=planNo%>" id="createTicketSubmit">
+		      确定
+		    </div>
+		  </div>
+		</div>
+	</div>
+</script>
+
+<script type="text/html" id="createDigitalTicketOrder">
+	<div id="createTicketOrderBox">
+		<div class="mask"></div>
+		<div class="pop6">
+		  <div class="pop6_top">跟单投注</div>
+		  <a class="close_btn" id="closeCreateTicketOrder">X</a>
+		  <div class="pop6_con">
+		    <div class="popInput mt10">
+		    	<span class="icon_decrease_multiple mr5" id="decreaseTicketMultiple"></span>
+		      	<div class="ticket_box">
+		        	<input type="number" value="10" min="10" max="10000" id="ticketMultiple" recommendCount="<%=recommendCount%>" maxBettypeOdds="<%=maxBettypeOdds%>" planAmount="<%=planAmount%>"/>
+		      	</div>
+		      	<span class="icon_add_multiple ml5" id="addTicketMultiple"></span>
+		      	<span class="ml10 size22">倍</span>
+		    </div>
+		    <div class="popText ellipsis">投注金额：<span id="ticketAmount">0</span> 元</div>
+		    <div class="popText ellipsis">专家提成：中奖奖金的 <span>5%</span></div>
+		    <div class="read mt15">
+		      <label><input type="checkbox" name="tongyi" checked="checked" id="protocol" style="margin-right: 5px;" />已阅读并同意</label>
+		      <span><a id="userVerifyProtocol">《用户代购协议》</a></span>
+		    </div>
+		    <div class="btn pop6Btn" style="background-color: #f63946;" planNo="<%=planNo%>" id="createTicketSubmit">
+		      确定
+		    </div>
+		  </div>
+		</div>
+	</div>
+</script>

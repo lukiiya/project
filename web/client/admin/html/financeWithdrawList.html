@@ -1,0 +1,135 @@
+<script type="text/html" id="content">
+<h1 class="title">提款列表</h1>
+<div class="list_box">
+	<div class="search_box">
+		<div>
+			<form onsubmit="return false;">
+				<div class="search_box ">
+					<input class="input_field" placeholder="用户" id="userName"/>
+					<span class="select_box ml20">
+						<select id="status">
+							<option value="0">全部</option>
+							<option value="1">未审核</option>
+							<option value="2">已审核</option>
+							<option value="3">已打款</option>
+							<option value="4">已拒绝</option>
+							<option value="5">打款中</option>
+						</select>
+						<span class="icon_sel"><span class="arrow_down"></span></span>
+					</span>
+					<span class="select_box ml20">
+						<select id="accountType">
+						<!-- <option>账号类型</option> -->
+							<option value="0">全部</option>
+							<option value="1">微信</option>
+							<option value="2">支付宝</option>
+							<option value="3">银行卡</option>
+						</select>
+						<span class="icon_sel"><span class="arrow_down"></span></span>
+					</span>
+					<span class="select_box ml20">
+						<select id="financeType">
+							<option value="">全部</option>
+							<option value="0">方案账户</option>
+							<option value="1">出票账户</option>
+						</select>
+						<span class="icon_sel"><span class="arrow_down"></span></span>
+					</span>
+					
+				</div>
+				<div class="mt20">
+					<input class="input_field" placeholder="开始时间" readonly="1" id="beginTime">
+					<input class="input_field ml20" placeholder="结束时间" readonly="1" id="endTime">
+					<iframe name="exportReportIframe" style="display:none"></iframe>
+					<input class="btn ml20" type="button" value="导出报表" id="exportReport"/>
+					<input class="btn ml20" type="reset" value="重置" />
+					<input class="btn ml20" type="submit" value="搜索" id="searchSubmit"/>
+				</div>
+			</form>
+		</div>
+	</div>
+	<div class="table_box mt20">
+		<table>
+			<thead>
+				<tr>
+					<th width="60">提款id</th>
+					<th width="50">资金账户</th>
+					<th width="120">昵称</th>
+					<th width="60">姓名</th>
+					<th width="50">金额</th>
+					<th width="60">状态</th>
+					<th width="60">账号类型</th>
+					<th width="160">账号</th>
+					<th width="80">账号名称</th>
+					<th width="60">开户姓名</th>
+					<th width="80">分行信息</th>
+					<th width="60">备注</th>
+					<th width="120">时间</th>
+				</tr>
+			</thead>
+			<tbody id="withdrawList"></tbody>							
+		</table>
+		<div id="pageCodeBox"></div>
+	</div>
+</div>
+</script>
+
+<script type="text/html" id="withdrawList">
+<% var length = list.length;
+	for (var i = 0; i < length; i++) {
+	var withdraw = list[i] || {};
+	var withdrawId = withdraw.withdrawId;
+	var nickName = withdraw.nickName;
+	var realName = withdraw.realName;
+	var amount = withdraw.amount/100;
+	var status = withdraw.status;
+	var statusMap = {'1': '未审核', '2': '已审核', '3': '已打款', '4': '已拒绝', '5': '打款中'};
+	var accountType = withdraw.accountType;
+	var accountTypeMap = {'1': '微信', '2': '支付宝', '3': '银行卡'};
+	var financeType = withdraw.financeType;
+	var financeTypeMap = {'0': '方案', '1': '出票'};
+	var accountNumber = withdraw.accountNumber;
+	var accountName = withdraw.accountName;
+	var accountUserName = withdraw.accountUserName;
+	var accountInfo = withdraw.accountInfo;
+	var remark = withdraw.remark;
+	var createTime = withdraw.createTime;
+%>
+	<tr>
+		<td><%=withdrawId%></td>
+		<td><%=financeTypeMap[financeType]%></td>
+		<td><%=nickName%></td>
+		<td><%=realName%></td>
+		<td><%=amount%></td>
+		<td><%=statusMap[status]%></td>
+		<td><%=accountTypeMap[accountType]%></td>
+		<td><%=accountNumber%></td>
+		<td><%=accountName%></td>
+		<td><%=accountUserName%></td>
+		<td><%=accountInfo%></td>
+		<td>
+			<% if (remark) { %>
+			<a class="examine" remark="<%=remark%>">查看</a>
+			<% } %>
+		</td>
+		<td class="time"><%=createTime%></td>
+	</tr>
+<% } %>
+<% if(length > 0) { %>
+	<tr>
+		<td>总计</td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td><%=totalAmount/100%></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+	</tr>
+<% } %>	
+</script>

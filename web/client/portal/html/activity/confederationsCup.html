@@ -1,0 +1,165 @@
+<script type="text/html" id="content">
+	<div class="activity_FCC_logo">
+		<img class="img-responsive" src="<%=IMG_PATH%>activity_FCC_logo.png" alt="" />
+	</div>
+	<p class="activity_describe mt20">晒米场与乐视体育、腾讯企鹅直播相约2017俄罗斯联合会杯，收看直播节目并且参加联合会杯冠军竞猜活动，将有机会免费获得1888元奖金！请选择出你心目中的冠军球队.</p>
+	<ul class="team_list clearfix" id="teamList">
+		<li class="team_item" teamId="1" id="team1">
+			<div class="item_wrap">
+				<img class="team_logo" src="<%=IMG_PATH%>FCC_Russia.png"/>
+				<div class="name_wrap">
+					<span class="team_name">俄罗斯</span>
+					<span class="dark_shadow"></span>
+				</div>
+				<div class="progress">
+					<div class="progress_bar"></div>
+				</div>
+				<div class="percent">
+					0%
+				</div>
+			</div>
+		</li>
+		<li class="team_item" teamId="2" id="team2">
+			<div class="item_wrap">
+				<img class="team_logo" src="<%=IMG_PATH%>FCC_Nz.png"/>
+				<div class="name_wrap">
+					<span class="team_name">新西兰</span>
+					<span class="dark_shadow"></span>
+				</div>
+				<div class="progress">
+					<div class="progress_bar"></div>
+				</div>
+				<div class="percent">
+					0%
+				</div>
+			</div>
+		</li>
+		<li class="team_item" teamId="3" id="team3">
+			<div class="item_wrap">
+				<img class="team_logo" src="<%=IMG_PATH%>FCC_Portugal.png"/>
+				<div class="name_wrap">
+					<span class="team_name">葡萄牙</span>
+					<span class="dark_shadow"></span>
+				</div>
+				<div class="progress">
+					<div class="progress_bar"></div>
+				</div>
+				<div class="percent">
+					0%
+				</div>
+			</div>
+		</li>
+		<li class="team_item" teamId="4" id="team4">
+			<div class="item_wrap">
+				<img class="team_logo" src="<%=IMG_PATH%>FCC_Mexico.png"/>
+				<div class="name_wrap">
+					<span class="team_name">墨西哥</span>
+					<span class="dark_shadow"></span>
+				</div>
+				<div class="progress">
+					<div class="progress_bar"></div>
+				</div>
+				<div class="percent">
+					0%
+				</div>
+			</div>
+		</li>
+		<li class="team_item" teamId="5" id="team5">
+			<div class="item_wrap">
+				<img class="team_logo" src="<%=IMG_PATH%>FCC_Cameroon.png"/>
+				<div class="name_wrap">
+					<span class="team_name">喀麦隆</span>
+					<span class="dark_shadow"></span>
+				</div>
+				<div class="progress">
+					<div class="progress_bar"></div>
+				</div>
+				<div class="percent">
+					0%
+				</div>
+			</div>
+		</li>
+		<li class="team_item" teamId="6" id="team6">
+			<div class="item_wrap">
+				<img class="team_logo" src="<%=IMG_PATH%>FCC_Chile.png"/>
+				<div class="name_wrap">
+					<span class="team_name">智利</span>
+					<span class="dark_shadow"></span>
+				</div>
+				<div class="progress">
+					<div class="progress_bar"></div>
+				</div>
+				<div class="percent">
+					0%
+				</div>
+			</div>
+		</li>
+		<li class="team_item" teamId="7" id="team7">
+			<div class="item_wrap">
+				<img class="team_logo" src="<%=IMG_PATH%>FCC_Australia.png"/>
+				<div class="name_wrap">
+					<span class="team_name">澳大利亚</span>
+					<span class="dark_shadow"></span>
+				</div>
+				<div class="progress">
+					<div class="progress_bar"></div>
+				</div>
+				<div class="percent">
+					0%
+				</div>
+			</div>
+		</li>
+		<li class="team_item" teamId="8" id="team8">
+			<div class="item_wrap">
+				<img class="team_logo" src="<%=IMG_PATH%>FCC_Germany.png"/>
+				<div class="name_wrap">
+					<span class="team_name">德国</span>
+					<span class="dark_shadow"></span>
+				</div>
+				<div class="progress">
+					<div class="progress_bar"></div>
+				</div>
+				<div class="percent">
+					0%
+				</div>
+			</div>
+		</li>
+	</ul>
+	<div class="btn_wrap" id="submitBtn" style="display: none;">
+		<img class="img-responsive" src="<%=IMG_PATH%>activity_FCC_btn.png"/>
+	</div>
+	<div class="btn_wrap" id="activeBtn" style="display: none">
+		<img class="img-responsive" src="<%=IMG_PATH%>activity_FCC_active_btn.png"/>
+	</div>
+	<div class="guess_result">我的竞猜结果：<span id="guessResult"">无</span></div>
+	<div class="rules_wrap">
+		<h2 class="activity_title">
+			<img class="img-responsive" src="<%=IMG_PATH%>activity_FCC_title.png"/>
+		</h2>
+		<ul class="thumb_list clearfix mt30">
+			<li class="thumb_item fl">
+				<div class="thumb_wrap" id="newUser">
+					<img class="img-responsive" src="<%=IMG_PATH%>activity_FCC_newUser.png" />
+				</div>
+			</li>
+			<li class="thumb_item fl">
+				<div class="thumb_wrap" id="recharge">
+					<img class="img-responsive" src="<%=IMG_PATH%>activity_FCC_recharge.png" />
+				</div>
+			</li>
+			<li class="thumb_item fl">
+				<div class="thumb_wrap" id="award2x1">
+					<img class="img-responsive" src="<%=IMG_PATH%>activity_FCC_award.png" />
+				</div>
+			</li>
+		</ul>
+		<h3 class="rules_title">活动规则：</h3>
+		<pre>1.活动时间:2017-06-17--2017-07-03,决赛赛前截止.
+2.活动期间新注册用户免费送3彩金.
+3.若一个用户猜中冠军将获1888元奖金，多个用户猜中结果将平分奖金.
+4.竞猜奖金将在联合会杯决赛比赛结束后24小时内派发.
+5.本活动最终解释权归晒米场所有!
+					</pre>
+	</div>
+</div>
+</script>

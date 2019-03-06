@@ -1,0 +1,148 @@
+<script type="text/html" id="content">
+<div class="getmoney_wrap clearfix">
+	<div class="fl claim_wrap">
+		<span class="arrow leftIcon_header" id="backBtn"></span>
+		<div class="unclaimed">
+			<span class="size18 mb10">
+				今日可领
+			</span>
+			<span class="size16">
+				<i class="icon_mi_w"></i>
+				<b id="unclaimed">0</b>粒米
+			</span>
+		</div>
+	</div>
+	<div class="fr claim_wrap">
+		<div class="claim">
+			<span class="size18 mb10">
+				已领
+			</span>
+			<span class="size16">
+				<i class="icon_mi_w"></i>
+				<b id="claim">0</b>粒米
+			</span>
+		</div>
+	</div>
+</div>
+<div class="signin_item clearfix positionR">
+	<div class="fl left_title clearfix">
+		<img class="fl img34" src="<%=IMG_PATH%>signin.png"/>
+		<div class="fl ml15">
+			<span class="mb10">10天签到</span><br />
+			<span>
+				<i class="icon_mi_r"></i>
+				21粒米
+			</span>
+		</div>
+	</div>
+	<span class="fr skip_btn" id="signBtn" style="display:none">签到</span>
+</div>
+<div class="signin_item clearfix positionR mt5" style="display: none" id="bindMobileBox">
+	<div class="fl left_title clearfix">
+		<img class="fl img34" src="<%=IMG_PATH%>validate.png"/>
+		<div class="fl ml15">
+			<span class="mb10">验证手机</span><br />
+			<span>
+				<i class="icon_mi_r"></i>
+				8粒米
+			</span>
+		</div>
+	</div>
+	<span class="fr skip_btn" id="bindMobile">验证</span>
+</div>
+<div class="signin_item clearfix positionR mt5">
+	<div class="fl left_title clearfix">
+		<img class="fl img34" src="<%=IMG_PATH%>recharge_mi.png"/>
+		<div class="fl ml15">
+			<span class="mb10">充值送米</span><br />
+			<span class="color_red">
+				冲100送<span id="presentAmount"></span>（不限次数）
+			</span>
+		</div>
+	</div>
+	<span class="fr skip_btn" id="recharge">充值</span>
+</div>
+<div class="signin_item clearfix positionR mt5">
+	<div class="fl left_title clearfix">
+		<img class="fl img34" src="<%=IMG_PATH%>lucky_draw.png"/>
+		<div class="fl ml15">
+			<span class="mb10">免费抽奖</span><br />
+			<span class="color_red">
+				抽iphone、正品球衣
+			</span>
+		</div>
+	</div>
+	<span class="fr skip_btn" id="luckyDraw">去抽奖</span>
+</div>
+<div class="mask" id="signMask" style="display: none">
+	<div class="signin_pop" id="signPop">
+		<img class="signin_img" src="<%=IMG_PATH%>signin_img.png"/>
+		<ul class="signin_content" id="signDay">
+			<li class="positionR">
+				<span class="gray_dot"></span>
+				<span class="ml15">第 1 天</span>
+				<span>1粒米</span>
+				<span class="signStatus" style="display: none">已领</span>
+			</li>
+			<li class="positionR">
+				<span class="gray_dot"></span>
+				<span class="ml15">第 2 天</span>
+				<span>1粒米</span>
+				<span class="signStatus" style="display: none">已领</span>
+			</li>
+			<li class="positionR">
+				<span class="gray_dot"></span>
+				<span class="ml15">第 3 天</span>
+				<span>1粒米</span>
+				<span class="signStatus" style="display: none">已领</span>
+			</li>
+			<li class="positionR">
+				<span class="gray_dot"></span>
+				<span class="ml15">第 4 天</span>
+				<span>1粒米</span>
+				<span class="signStatus" style="display: none">已领</span>
+			</li>
+			<li class="positionR color3">
+				<span class="gray_dot"></span>
+				<span class="ml15">第 5 天</span>
+				<span>5粒米</span>
+				<span class="signStatus" style="display: none">已领</span>
+			</li>
+			<li class="positionR">
+				<span class="gray_dot"></span>
+				<span class="ml15">第 6 天</span>
+				<span>1粒米</span>
+				<span class="signStatus" style="display: none">已领</span>
+			</li>
+			<li class="positionR">
+				<span class="gray_dot"></span>
+				<span class="ml15">第 7 天</span>
+				<span>1粒米</span>
+				<span class="signStatus" style="display: none">已领</span>
+			</li>
+			<li class="positionR">
+				<span class="gray_dot"></span>
+				<span class="ml15">第 8 天</span>
+				<span>1粒米</span>
+				<span class="signStatus" style="display: none">已领</span>
+			</li>
+			<li class="positionR">
+				<span class="gray_dot"></span>
+				<span class="ml15">第 9 天</span>
+				<span>1粒米</span>
+				<span class="signStatus" style="display: none">已领</span>
+			</li>
+			<li class="positionR color3">
+				<span class="gray_dot"></span>
+				<span class="ml15">第10天</span>
+				<span>8粒米</span>
+				<span class="signStatus" style="display: none">已领</span>
+			</li>
+		</ul>
+		<div class="signin_btn mt10 mb10">
+			<span class="sigin_confirm" id="confirmSign">点击签到</span>
+			<span class="sigin_cancel" id="cancelSign">取消</span>
+		</div>
+	</div>
+</div>
+</script>

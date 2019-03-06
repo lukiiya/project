@@ -1,0 +1,119 @@
+<script type="text/html" id="content">
+	<div class="top" id="topBox">
+		<div class="info">
+			<div class="headBox clearfix">
+				<img class="img43" id="userImg"><br /><span class="color3 size14" id="userName"></span>
+				<!--<span class="personal">
+					<span class="color3 size14" id="userName"></span>
+					<br>
+					<span class="phone_num">
+						手机号：<span id="noNum" style="display: none;">无 <span class="bind_btn size10" id="bindMobile">绑定</span></span>
+					</span>
+				</span>-->
+				<span class="btn_small fr" id="editPlan" style="display:none">写推荐</span>
+			</div>
+		</div>
+		<div class="ui-flex oprate">
+			<div class="ui-flex_item pd" id="handsel" style="display: none;">
+				<div class="ui-flex pd20">
+					<div class="charge ui-flex_item textL">
+						<span class="total_amount mb10" id="handselBalance"></span><br />
+						<span class="icon_money icon_style"></span><span class="size13">彩金</span>
+					</div>
+					<div class="ui-flex_item textR">
+						<span class="size13 mr10" href="#charge&financeType=1">充值</span>
+						<span class="size13" href="#withdraw&financeType=1">提款</span>
+					</div>
+				</div>
+			</div>
+			<div class="ui-flex_item pd">
+				<div class="ui-flex pay pd20">
+					<div class="charge ui-flex_item textL">
+						<span class="total_amount mb10" id="userBalance"></span><br />
+						<span class="icon_pay icon_style"></span><span class="size13">米粒</span>
+					</div>
+					<div class="ui-flex_item textR">
+						<span class="size13 mr10" href="#charge&financeType=0">充值</span>
+						<span class="size13" href="#withdraw&financeType=0">提款</span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="tabList"></div>
+	<div class="infoList" id="infoList"></div>
+</script>
+
+<script type="text/html" id="tabList">
+<% if (isABT) { %>
+<div class="ui-flex_item" tab="4">我的跟单</div>
+<% } %>
+<% if (userRight['1'] || userRight['3']) { %>
+	<div class="ui-flex_item" tab="1">我的晒米</div>
+<% } %>
+<% if (userRight['2']) { %>
+	<div class="ui-flex_item" tab="2">分享收成</div>
+<% } %>
+<div class="ui-flex_item" tab="3">我的购买</div>
+</script>
+
+<script type="text/html" id="tabList">
+	<% if (isChannel) { %>
+	<ul class="mt15 user_menu">
+		<li class="ui-flex user_menu_item" tab="9">
+			<span>我的邀请</span>
+			<span class="arrow_right"></span>
+		</li>
+	</ul>
+	<% } %>
+	<ul class="mt15 user_menu">
+		<li class="ui-flex user_menu_item" tab="1">
+			<span>我的投注</span>
+			<span class="arrow_right"></span>
+		</li>
+		<li class="ui-flex user_menu_item" tab="2">
+			<span>我的优惠券</span>
+			<span class="arrow_right"></span>
+		</li>
+		<li class="ui-flex user_menu_item" tab="3">
+			<span>账户明细</span>
+			<span class="arrow_right"></span>
+		</li>
+	</ul>
+	<ul class="mt20 user_menu">
+		<% if (userRight['1'] || userRight['3']) { %>
+		<li class="ui-flex user_menu_item" tab="4">
+			<span>我的晒米</span>
+			<div class="size12 color6">
+				收益<span class="color_red size12"> 50%</span>/单
+				<span class="arrow_right"></span>
+			</div>
+		</li>
+		<% } %>
+		<% if (userRight['2']) { %>
+		<li class="ui-flex user_menu_item" tab="5">
+			<span>分享收成</span>
+			<div class="size12 color6">
+				收益<span class="color_red size12"> 30%</span>/单
+				<span class="arrow_right"></span>
+			</div>
+		</li>
+		<% } %>
+		<li class="ui-flex user_menu_item" tab="6">
+			<span>已购推荐</span>
+			<span class="arrow_right"></span>
+		</li>
+		<!--<li class="ui-flex user_menu_item" tab="8">
+			<span>我的双色球红包</span>
+			<span class="arrow_right"></span>
+		</li>-->
+	</ul>
+	<% if (!isWeixinBrowser) { %>
+		<ul class="mt15 user_menu">
+			<li class="ui-flex user_menu_item" tab="7">
+				<span>我的关注</span>
+				<span class="arrow_right"></span>
+			</li>
+		</ul>
+	<% } %>
+</script>

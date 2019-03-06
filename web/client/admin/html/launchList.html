@@ -1,0 +1,146 @@
+<script type="text/html" id="content">
+<h1 class="title">启动图列表</h1>
+<div class="list_box">
+	<div class="search_box">
+		<div>
+			<form onsubmit="return false;">
+				<span class="select_box">
+					<select id="type">
+						<!--<option>类型</option>-->
+						<option value="1">android</option>
+						<option value="2">ios</option>
+					</select>
+					<span class="icon_sel"><span class="arrow_down"></span></span>
+				</span>
+				<span class="select_box ml20">
+					<select id="publish">
+						<option>全部</option>
+						<option value="1">上架</option>
+						<option value="0">下架</option>
+					</select>
+					<span class="icon_sel"><span class="arrow_down"></span></span>
+				</span>
+				<span class="select_box ml20">
+					<select id="publish">
+						<option>尺寸</option>
+						<option value="1">2X</option>
+						<option value="0">3X</option>
+					</select>
+					<span class="icon_sel"><span class="arrow_down"></span></span>
+				</span>
+				<input class="btn ml20" type="reset" value="重置" />
+				<input class="btn ml20" type="submit" value="搜索" id="searchSubmit"/>
+				<input class="btn ml30 mr30" type="button" value="添加启动图" id="createLaunchImg">
+			</form>
+		</div>
+	</div>
+	<div class="table_box mt20">
+		<table>
+			<thead>
+				<thead>
+					<tr>
+						<th width="80">类型</th>
+						<th width="80">上下架</th>
+						<th width="80">尺寸</th>
+						<th width="100">图片</th>
+						<th width="640">链接地址</th>
+						<th width="200">操作</th>
+					</tr>
+				</thead>
+			</thead>
+			<tbody id="launchList"></tbody>							
+		</table>
+		<div id="pageCodeBox"></div>
+	</div>
+</div>
+</script>
+
+<script type="text/html" id="launchList">
+<% for (var i = 0, length = list.length; i < length; i++) {
+	var launch = list[i] || {};
+	var launchId = launch.launchId;
+	var link = launch.link;
+	var resourceList = launch.resourceList[0] || '';
+	var publish = launch.publish;
+	var publishMap = {'0': '下架', '1': '上架'};
+	var type = launch.type;
+	var typeMap = {'0': 'h5', '1': 'android', '2': 'ios'};
+	var createTime = launch.createTime;
+%>
+	<tr launchId="<%=launchId%>">
+		<td><%=typeMap[type]%></td>
+		<td><%=publishMap[publish]%></td>
+		<td>2X</td>
+		<td>
+			<img class="" src="<%=resourceList%>" alt="" style="width: 100%;vertical-align: middle;"/>
+		</td>
+		<td class="banner_url_wrap"><a class="examine" href="<%=link%>" target="_blank"><%=link%></a></td>
+		<td>
+			<a class="examine mr5 editLaunch" launchId="<%=launchId%>">修改</a>
+			<a class="examine mr5 modifySort modifyUp" launchId="<%=launchId%>" type="1">上移</a>
+			<a class="examine mr5 modifySort modifyDown" launchId="<%=launchId%>" type="2">下移</a>
+			<%if (publish == 0) { %>
+			<a class="examine mr5 publishLaunch" launchId="<%=launchId%>" publish="1">上架</a>
+			<% } else if (publish == 1){ %>
+			<a class="examine mr5 publishLaunch" launchId="<%=launchId%>" publish="0">下架</a>
+			<% } %>
+			<a class="examine mr5 deleteLaunch" launchId="<%=launchId%>">删除</a>
+		</td>
+	</tr>
+<% } %>
+</script>
+
+<script type="text/html" id="editLaunch">
+	<div id="editLaunchBox">
+		<div class="mask"></div>
+		<div class="compile_img_box">
+			<div class="compile_head">
+				<span class="compile_head_title"><%=title%></span>
+				<a class="close_compile_btn" id="closeEditLaunch">
+					<span></span>
+				</a>
+			</div>
+			<div class="compile_cont">
+				<div class="pt15 pb15">
+					<div class="file_select_box" id="fileSelectBox">
+						点击选择图片
+						<input id="fileSelect" name="file" type="file" />
+					</div>
+				</div>
+				<input type="hidden" id="editLaunchId" value="<%=launchId%>" />
+				<div id="previewImg"></div>
+				<ul>
+					<li>
+						<span class="input_tit">链接地址</span><input id="editLink" type="text" />
+					</li>
+					<li>
+						<span class="input_tit">类&emsp;&emsp;型</span>
+						<span class="select_box">
+							<select id="editType">
+								<option>类型</option>
+								<option value="1">android</option>
+								<option value="2">ios</option>
+							</select>
+							<span class="icon_sel"><span class="arrow_down"></span>
+						</span>
+					</li>
+					<li>
+						<span class="input_tit">尺&emsp;&emsp;寸</span>
+						<span class="select_box">
+							<select id="editType">
+								<option>尺寸</option>
+								<option value="1">2X</option>
+								<option value="2">3X</option>
+							</select>
+							<span class="icon_sel"><span class="arrow_down"></span>
+						</span>
+					</li>
+				</ul>
+				<div class="compile_btn_wrap">
+					<span class="ensure_btn" id="sureEditLaunch">确定</span>
+					<span class="cancle_btn" id="cancelEditLaunch">取消</span>
+				</div>
+			</div>
+		</div>
+	</div>
+</script>

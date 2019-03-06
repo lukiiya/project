@@ -1,0 +1,14 @@
+﻿{
+	"version": "2.1.1",
+	"name": "com.shaimii_2.1.1.apk",
+	"size": 11290827,
+	"url": "http://caifu-1251177394.cosgz.myqcloud.com/dist/shaimi/other/android/com.shaimii_2.1.1.apk",
+	"description": "更新11111\n更新22222\n更新33333\n更新44444\n更新55555\n更新66666",
+	"weixinLogin": false,
+	"launchAd": {
+		"@2x": "http://caifu-1251177394.cosgz.myqcloud.com/dist/shaimi/other/ios/launchAd@2x.jpg?2.2.0.20",
+		"@3x": "http://caifu-1251177394.cosgz.myqcloud.com/dist/shaimi/other/ios/launchAd@3x.jpg?2.2.0.20",
+		"@4x": "http://caifu-1251177394.cosgz.myqcloud.com/dist/shaimi/other/ios/launchAd@4x.jpg?2.2.0.20"
+	},
+	"VLogin": true
+}

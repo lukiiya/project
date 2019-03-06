@@ -1,0 +1,224 @@
+<script type="text/html" id="content">
+<div class="container <%=className%>" id="pageContainer">
+    <div class="header <%=showHeader?'':'hide'%>" id="pageHeader" style="<%=isScrollHeader?'z-index:12;height:0;display:none':''%>">
+    	<% if (isSimpleHeader) { %>
+    	<div class="header_bar">
+			<%=title%>
+		</div>
+		<% } else if (isUserVerifyHeader) { %>
+        <div class="com_fixedbar header_bar">
+            <span class="arrow leftIcon_header"></span>
+            <div class="header_tab clearfix" id="userVerifyTab">
+                <span class="" type="1">申请专家</span>
+                <span class="" type="2">申请店长</span>
+            </div>
+        </div>
+        <% } else if (isWithdrawHeader) { %>
+        <div class="com_fixedbar header_bar">
+			<span class="arrow leftIcon_header"></span>
+			<div class="header_tab clearfix" id="withdrawTab" style="display: none;">
+				<span class="" financeType="0">米粒</span>
+				<span class="" financeType="1">彩金</span>
+			</div>
+			<span class="rightIcon_top color14 mr5">提款记录</span>
+		</div>
+		<% } else if (isMatchHeader) { %>
+        <div class="com_fixedbar header_bar">
+			<span class="arrow leftIcon_header"></span>
+			<div class="header_tab clearfix" id="matchTab">
+				<span class="" type="1">足 球</span>
+				<span class="" type="2">篮 球</span>
+			</div>
+			<span class="rightIcon_top color14 mr5"><%=rightButtonText%></span>
+		</div>
+		<% } else if (isFocusHeader) { %>
+	    <div class="com_fixedbar header_bar">
+			<span class="arrow leftIcon_header"></span>
+			<div class="header_tab clearfix" id="focusTab">
+				<span class="" type="1">我的关注</span>
+				<span class="" type="2">全部专家</span>
+			</div>
+		</div>
+		<% } else if (isUserRankHeader) { %>
+	    <div class="com_fixedbar header_bar">
+			<span class="arrow leftIcon_header"></span>
+			<div class="header_tab clearfix" id="userRankTab">
+				<span class="" type="1">红人榜</span>
+				<span class="" type="2">胜率榜</span>
+				<span class="" type="3">盈利榜</span>
+			</div>
+		</div>
+		<% } else if (isHotMatchHeader) { %>
+        <div class="com_fixedbar header_bar">
+			<div class="header_tab clearfix" id="matchTab">
+				<span class="" type="1">足 球</span>
+				<span class="" type="2">篮 球</span>
+			</div>
+			<span class="rightIcon_top color14"><%=rightButtonText%></span>
+		</div>
+		<% } else if (isRechargeHeader) { %>
+        <div class="com_fixedbar header_bar">
+			<span class="arrow leftIcon_header"></span>
+			<div class="header_tab clearfix" id="rechargeTab" style="display: none;">
+				<span class="" financeType="0">米粒</span>
+				<span class="" financeType="1">彩金</span>
+			</div>
+			<span class="rightIcon_top color14 mr5"><%=rightButtonText%></span>
+		</div>
+		<% } else if (isTurnplateHeader) { %>
+        <div class="com_fixedbar header_bar" style="background-color: #e8552d;">
+			<span class="arrow leftIcon_header" id="goBack"></span>
+			<%=title%>
+		</div>
+		<% } else if (isSupplierHeader) { %>
+		<div class="com_fixedbar header_bar">
+			<%=title%>
+			 <span class="rightIcon_top color14"><%=rightButtonText%></span>
+		</div>
+		<% } else if (isOrderTicketListHeader) { %>
+			 <div class="com_fixedbar header_bar">
+			 	<span class="arrow leftIcon_header" id="goBack"></span>
+				<%=title%>
+			</div>
+		<% } else if (isLeftIconHeader) { %>
+			<div class="com_fixedbar header_bar">
+				<span class="arrow leftIcon_header"></span>
+				<%=title%>
+			</div>
+		<% } else if (isFinanceHeader) { %>	
+			<div class="com_fixedbar header_bar">
+				<span class="arrow leftIcon_header"></span>
+				<div class="header_tab clearfix" id="financeTab">
+					<span class="" financeType="1">彩金</span>
+					<span class="" financeType="0">米粒</span>
+				</div>
+			</div>
+		<% } else if (isSsqHbHeader) { %>	
+			<div class="com_fixedbar header_bar">
+            <span class="arrow leftIcon_header" style=""></span>
+                <span class="rightIcon_top color14"></span>
+                <%=title%>
+                <span class="rightIcon_top color14"><%=rightButtonText%></span>
+        	</div>
+        	<% if (!isApp) { %>
+	        	<div class="ssqhb_banner" id="ssqhbDownload">
+					<img class="img-responsive" src="<%=IMG_PATH%>ssqhb_banner.jpg"/>
+					<a class="del_btn" id="closeSsqHbBanner"><span class="del"></span></a>
+				</div>
+			<% } %>
+		<% } else if (isDigitalHeader) { %>
+			<div class="header_bar" style="text-align: left;">
+				<span class="arrow leftIcon_header"></span>
+				<div class="title_wrap" id="digitalTitleWrap">
+					<span class="title_type">玩<br />法</span>
+					<span class="title_txt" id="digitalTitleTxt"></span>
+					<i class="triangle_down"></i>
+				</div>
+			</div>
+			<span class="rightIcon_top color14 mr5" id="assistantBtn">
+				<i class="icon_assistant"></i>
+				助手
+			</span>
+			<div class="assistant_menu" id="assistantMenu" style="display: none;">
+				<dl id="assistantMenuContent">
+					<dd id="recentlyDraw">历史开奖</dd>
+					<dd id="digitalRule">玩法说明</dd>
+				</dl>
+			</div>
+		<% } else if (isRecommendHeader) { %>
+	        <div class="com_fixedbar header_bar">
+	        	<span class="arrow leftIcon_header"></span>
+				<div class="header_tab clearfix" id="recommendTab">
+					<span class="" tab="1">推荐</span>
+					<span class="" tab="2">复盘</span>
+				</div>
+				<% if (rightButtonText) { %>
+	                <span class="rightIcon_top color14"><%=rightButtonText%></span>
+	            <% } else { %>
+	                <span class="icon_span img18 icon_home rightIcon_top"></span>
+	            <% } %>
+			</div>
+		<% } else if (isFootballHeader) { %>
+	        <div class="com_fixedbar header_bar">
+	        	<span class="arrow leftIcon_header"></span>
+				<div class="header_tab clearfix" id="footballTab">
+					<span class="" tab="1">混合过关</span>
+					<span class="" tab="2">胜平负单关</span>
+				</div>
+				<% if (rightButtonText) { %>
+	                <span class="rightIcon_top color14"><%=rightButtonText%></span>
+	            <% } else { %>
+	                <span class="icon_span img18 icon_home rightIcon_top"></span>
+	            <% } %>
+			</div>
+        <% } else { %>
+        	<div class="com_fixedbar header_bar">
+            <span class="arrow leftIcon_header" style="<%=showFooter? 'display: none':''%>"></span>
+            <%=title%>
+            <% if (rightButtonText) { %>
+                <span class="rightIcon_top color14"><%=rightButtonText%></span>
+            <% } else { %>
+                <span class="icon_span img18 icon_home rightIcon_top"></span>
+            <% } %>
+        	</div>
+        <% } %>
+    </div>
+    <div class="content" id="pageContent" style="<%=showFooter?'bottom: 48px;':''%><%=showHeader?'top: 48px;':''%>"></div>
+    <div class="footer <%=showFooter?'':'hide'%>" id="pageFooter">
+		<ul class="footer_bar ui-flex">
+			<li class="ui-flex_item">
+				<a class="active" href="#home">
+					<i class="icon_foot icon01"></i>
+				</a>
+			</li>
+			<li class="ui-flex_item">
+				<a href="#hotMatch">
+					<i class="icon_foot icon02"></i>
+				</a>
+			</li>
+			<!--<li class="ui-flex_item">
+				<a href="#ticketFollow">
+					<i class="icon_foot icon06"></i>
+				</a>
+			</li>-->
+			<% if (isWeixinBrowser) { %>
+				<li class="ui-flex_item">
+					<a href="#focusList">
+						<i class="icon_foot icon05"></i>
+					</a>
+				</li>
+			<% } else { %>
+				<!-- <li class="ui-flex_item">
+					<a href="#lotteryHall">
+						<i class="icon_foot icon08"></i>
+					</a>
+				</li> -->
+			<% } %>
+			<!--<li class="fl">
+				<a href="#userList">
+					<i class="icon_foot icon03"></i>
+				</a>
+			</li>-->
+			<li class="ui-flex_item">
+				<a href="#my">
+					<i class="icon_foot icon04"></i>
+				</a>
+			</li>
+			<!-- <li class="ui-flex_item">
+				<a href="#download">
+					<i class="icon07"></i>
+				</a>
+			</li> -->
+		</ul>
+	</div>
+</div>
+</script>
+
+<script type="text/html" id="hongBao">
+<div class="red_packet">
+    <a class="close_btn"><img class="img-responsive" src="<%=IMG_PATH%>close.png"/></a>           
+    <a class="open"><img class="img-responsive" src="<%=IMG_PATH%>open.png" alt="打开" /></a>
+    <a class="bonus_a">100万元红包，先到先得></a>
+</div>
+</script>
+

@@ -1,0 +1,21 @@
+﻿{
+	"version": "2.5.0",
+	"name": "com.shaimii_2.5.0.apk",
+	"size": 11290827,
+	"url": "http://caifu-1251177394.cosgz.myqcloud.com/dist/shaimi/other/android/com.shaimii_2.5.0.apk",
+	"description": "更新11111\n更新22222\n更新33333\n更新44444\n更新55555\n更新66666",
+	"weixinLogin": false,
+	"launchAd": {
+		"@2x": "http://caifu-1251177394.cosgz.myqcloud.com/dist/shaimi/other/ios/launchAdJc@2x.jpg?2.6.0.18",
+		"@3x": "http://caifu-1251177394.cosgz.myqcloud.com/dist/shaimi/other/ios/launchAdJc@3x.jpg?2.6.0.18",
+		"@4x": "http://caifu-1251177394.cosgz.myqcloud.com/dist/shaimi/other/ios/launchAdJc@3x.jpg?2.6.0.18"
+	},
+	"launchAdCp": {
+		"@2x": "http://caifu-1251177394.cosgz.myqcloud.com/dist/shaimi/other/ios/launchAdCp@2x.jpg?2.2.0.18",
+		"@3x": "http://caifu-1251177394.cosgz.myqcloud.com/dist/shaimi/other/ios/launchAdCp@3x.jpg?2.2.0.18",
+		"@4x": "http://caifu-1251177394.cosgz.myqcloud.com/dist/shaimi/other/ios/launchAdCp@4x.jpg?2.2.0.18"
+	},
+	"jcVLogin": true,
+	"cpVLogin": true,
+	"cpProVLogin": true
+}

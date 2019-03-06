@@ -1,0 +1,1587 @@
+update t_user set userRight=3,realName='',tag='彩店店长',remark='' where userId=182 limit 1;
+update t_user set userRight=3,realName='林同文',tag='彩店店长',remark='厦门市集美区乐海路136号，站点号96431' where userId=336 limit 1;
+update t_user set userRight=3,realName='',tag='彩店店长',remark='' where userId=346 limit 1;
+update t_user set userRight=3,realName='',tag='彩店店长',remark='' where userId=338 limit 1;
+update t_user set userRight=3,realName='',tag='彩店店长',remark='' where userId=363 limit 1;
+update t_user set userRight=3,realName='',tag='彩店店长',remark='浙江宁波市马园路260号（原门牌72号）马园大厦一楼马园体彩店' where userId=350 limit 1;
+update t_user set userRight=3,realName='',tag='彩店店长',remark='天津市河东区津塘路2号' where userId=348 limit 1;
+update t_user set userRight=3,realName='',tag='彩店店长',remark='芜湖市镜湖区天门山路香苑电子商贸街6-21门面' where userId=349 limit 1;
+update t_user set userRight=3,realName='',tag='彩店店长',remark='山西省运城市黄河大厦东50米巷内' where userId=366 limit 1;
+update t_user set userRight=3,realName='',tag='彩店店长',remark='吉林省敦化市阳光城2期' where userId=358 limit 1;
+update t_user set userRight=3,realName='',tag='彩店店长',remark='山东省禹城市丰顺巷体彩20081' where userId=367 limit 1;
+update t_user set userRight=3,realName='',tag='彩店店长',remark='天津市河北区王串场六号路107好体育彩票' where userId=362 limit 1;
+update t_user set userRight=3,realName='江西陈小辉',tag='彩店店长',remark='' where userId=359 limit 1;
+update t_user set userRight=3,realName='',tag='彩店店长',remark='南宁市新阳路西平桥遇安街55-5号' where userId=365 limit 1;
+
+update t_user set userRight=3,realName='',tag='彩店店长',remark='' where userId=399 limit 1;
+
+
+
+
+
+
+select userId,nickName,realName,userRight from t_user order by userId desc limit 100;
+select userId,nickName,realName,userRight  from t_user where nickName like '%宝鸡%';
+
+
+
+
+
+
+update t_group set relateId='12,13,15' where groupId=1 limit 1;
+
+update t_group set relateId='5,298,182,336,346,338,363,350,348,349,366,358,367,362,359,365,347,401,461,399,351,422' where groupId=2 limit 1;
+
+update t_group set relateId='17,21,7,10,11' where groupId=4 limit 1;
+
+update t_group set relateId='1' where groupId=5 limit 1;
+
+update t_user set remark='Hua，爱尔兰籍华人，现任职于立博（Ladbrokes）旗下的欧洲体育博彩交易平台部门，担任操盘手，负责足球赛事盘口赔率风险控制以及交易超过10年。' where userId=17 limit 1;
+
+
+update t_user set personalImg='http://caifu-1251177394.cosgz.myqcloud.com/dist/shaimi/img/profile/hualin.jpg' where userId=17 limit 1;
+
+update t_user set personalImg='http://caifu-1251177394.cosgz.myqcloud.com/dist/shaimi/img/profile/xinge.jpg' where userId=7 limit 1;
+
+update t_user set personalImg='http://caifu-1251177394.cosgz.myqcloud.com/dist/shaimi/img/profile/vip.jpg' where userId=9 limit 1;
+
+update t_user set personalImg='http://caifu-1251177394.cosgz.myqcloud.com/dist/shaimi/img/profile/xiaohei.png' where userId=13 limit 1;
+
+
+update t_user set realName='' where userId=11 limit 1;
+
+
+update t_plan set publist='13' where planId=19 limit 1;
+
+
+select resourceId from t_plan
+
+
+insert t_resource set type=1,createTime=now();
+
+update t_user set tag='富力切尔西俱乐部教练' where userId=21 limit 1;
+
+
+update t_user set userRight=3 where userId=17 limit 1;
+update t_user set userRight=3 where userId=21 limit 1;
+
+
+
+
+/usr/local/mysql/bin/mysqldump -uroot -ptUNRC0EjXIokmRJs shaimi  > /data/shaimi_bak/mysql/shaimi_201607031212.sql
+
+
+select personalImg from t_user where personalImg!='';
+
+
+update t_plan set publish=0 where planId=121 limit 1;
+
+
+
+//查看推广收益
+select userId,sum(amount)  from t_finance_income where type=2  group by userId;
+
+//查询购买用户
+select t2.userId,t2.nickName,t2.realName, sum(t1.amount) as amount from t_finance_record as t1,t_user as t2 where t1.type=1 and t1.userId=t2.userId group by t1.userId;
+
+
+select * from t_finance_record where type=2;
+
+
+人员：陈智
+时间：2016-07-23(周六)
+原因：android 0.2版本开发
+
+人员：高卫
+时间：2016-07-23(周六)
+原因：ios 0.2版本开发
+
+
+人员：骆善志
+时间：2016-07-23(周六)
+原因：web 0.3版本开发
+
+
+
+人员：陈智
+时间：2016-07-30(周六)
+原因：android 0.2版本开发
+
+人员：高卫
+时间：2016-07-30(周六)
+原因：ios 0.2版本开发
+
+
+人员：骆善志
+时间：2016-07-30(周六)
+原因：配合app绑定数据
+
+
+人员：陈智
+时间：2016-08-13(周六)
+原因：android 0.2版本开发
+
+人员：高卫
+时间：2016-08-13(周六)
+原因：ios 0.2版本开发
+
+
+人员：骆善志
+时间：2016-08-13(周六)
+原因：热门赛事
+
+
+
+
+
+
+0.2版本
+
+记得把付款通知注释解除
+
+
+修复创建时间:
+update t_finance_income set createTime=lastTime;
+update t_finance_record set createTime=lastTime;
+update t_match set createTime=lastTime;
+update t_match_odds set createTime=lastTime;
+update t_group set sort=groupId,publish=1;
+
+表添加：
+alter table t_user add identityImg varchar(255) default '' comment '身份证照' after personalImg;
+alter table t_user add index userRight (`userRight`);
+alter table t_user modify businessImg varchar(255) default '' comment '营业执照';
+alter table t_group add sort int default 0 comment '排序(大值在最前)' after relateId;
+alter table t_group add index sort (`sort`);
+alter table t_group add publish tinyint default 0 comment '上下架, 0=下架, 1=上架' after sort;
+alter table t_finance_withdraw add remark text comment '备注' after accountName;
+alter table t_match add index sportteryMatchId (`sportteryMatchId`);
+alter table t_match_odds add index sportteryMatchId (`sportteryMatchId`);
+alter table t_match add halfResult varchar(255) default '' comment '半场比赛结果' after result;
+alter table t_plan add prizeStatus tinyint default 0 comment '中奖状态, 0=未开奖, 1=已中奖, 2=未中奖' after matchBeginTime;
+alter table t_order add orderType tinyint default 0 comment '订单类型, 0=方案订单, 1=充值订单, 2=套餐订单' after orderId;
+alter table t_order add comboId int default 0 comment '套餐id' after spreaderRealName;
+alter table t_finance_record modify type tinyint default 0 comment '类型, 1=消费, 2=收益, 3=提款, 4=充值';
+alter table t_finance_income add nickName varchar(255) default '' comment '昵称' after userId;
+alter table t_finance_income add realName varchar(255) default '' comment '真实姓名' after nickName;
+
+
+
+表修复
+1. timer/fix_finance_consume.php
+2. timer/fix_finance_income_user.php
+3. timer/fix_finance_income_record.php
+4. timer/spider_www_sporttery_cn.php
+5. timer/plan_prize.php
+
+
+create table `t_finance_consume` (
+  `consumeId` int auto_increment comment '消费id',
+  `userId` int not null comment '用户id',
+  `nickName` varchar(255) default '' comment '昵称',
+	`realName` varchar(255) default '' comment '真实姓名',
+	`orderId` int default 0 comment '订单id',
+  `type` tinyint default 0 comment '类型, 1=现金消费, 2=充值消费, 3=收益消费',
+  `amount` int default 0 comment '金额',
+  `remark` text comment '备注',
+  `createTime` datetime default 0 comment '创建时间',
+	`lastTime` timestamp default current_timestamp on update current_timestamp comment '最后修改时间',
+	`discard` tinyint default 0 comment '是否被删除, 0=未删除, 1=已删除',
+	primary key (`consumeId`),
+  index userId (`userId`),
+  index orderId (`orderId`),
+	index type (`type`)
+) engine=InnoDB default charset=utf8 comment='消费表';
+
+create table `t_finance_charge` (
+  `chargeId` int auto_increment comment '充值id',
+  `userId` int not null comment '用户id',
+  `nickName` varchar(255) default '' comment '昵称',
+	`realName` varchar(255) default '' comment '真实姓名',
+	`orderId` int default 0 comment '订单id',
+  `type` tinyint default 0 comment '类型, 1=用户充值, 2=平台充值',
+  `amount` int default 0 comment '金额',
+  `remark` text comment '备注',
+  `createTime` datetime default 0 comment '创建时间',
+	`lastTime` timestamp default current_timestamp on update current_timestamp comment '最后修改时间',
+	`discard` tinyint default 0 comment '是否被删除, 0=未删除, 1=已删除',
+	primary key (`chargeId`),
+  index userId (`userId`),
+  index orderId (`orderId`),
+	index type (`type`)
+) engine=InnoDB default charset=utf8 comment='充值表';
+
+create table `t_combo` (
+	`comboId` int auto_increment comment '套餐id',
+	`comboType` tinyint default 0 comment '套餐类型, 1=极限追盘',
+	`title` varchar(255) default "" comment '标题',
+	`amount` int default 0 comment '金额',
+	`presentAmount` int default 0 comment '赠送金额',
+	`spanTime` int default 0 comment '套餐时长(秒数)',
+	`publish` tinyint default 0 comment '上下架, 0=下架, 1=上架',
+	`remark` text comment '套餐备注',
+	`createTime` datetime default 0 comment '创建时间',
+	`lastTime` timestamp default current_timestamp on update current_timestamp comment '最后修改时间',
+	`discard` tinyint default 0 comment '是否被删除, 0=未删除, 1=已删除',
+	primary key (`comboId`),
+	index comboType (`comboType`)
+) engine=InnoDB default charset=utf8 comment='套餐表';
+
+create table `t_finance` (
+  `financeId` int auto_increment comment '资金id',
+	`userId` int not null comment '用户id',
+	`nickName` varchar(255) default '' comment '昵称',
+	`realName` varchar(255) default '' comment '真实姓名',
+	`cashConsumeSumAmount` int default 0 comment '现金消费总额',
+	`chargeConsumeSumAmount` int default 0 comment '充值消费总额',
+	`incomeConsumeSumAmount` int default 0 comment '收益消费总额',
+	`consumeSumAmount` int default 0 comment '消费总额(现金+充值+收益)',
+	`recommendIncomeSumAmount` int default 0 comment '推荐收益总额',
+	`spreadIncomeSumAmount` int default 0 comment '推广收益总额',
+	`incomeSumAmount` int default 0 comment '收益总额(推荐+推广)',
+  `withdrawingSumAmount` int default 0 comment '待提款总额(未审核+已审核)',
+	`withdrewSumAmount` int default 0 comment '已提款总额(已打款)',
+	`withdrawSumAmount` int default 0 comment '提款总额(未审核+已审核+已打款)',
+	`userChargeSumAmount` int default 0 comment '用户充值总额',
+	`platformChargeSumAmount` int default 0 comment '平台充值总额',
+	`chargeSumAmount` int default 0 comment '充值总额(用户充值+平台充值)',
+	`chargeAmount` int default 0 comment '当前剩余充值',
+	`incomeAmount` int default 0 comment '当前剩余收益',
+	`dataVersion` int default 0 comment '数据版本',
+	`createTime` datetime default 0 comment '创建时间',
+	`lastTime` timestamp default current_timestamp on update current_timestamp comment '最后修改时间',
+	`discard` tinyint default 0 comment '是否被删除, 0=未删除, 1=已删除',
+	primary key (`financeId`),
+	unique key `userId` (`userId`)
+) engine=InnoDB default charset=utf8 comment='资金明细表';
+
+create table `t_user_verify` (
+	`verifyId` int auto_increment comment '审核id',
+	`userId` int not null comment '用户id',
+	`nickName` varchar(255) default '' comment '昵称',
+	`realName` varchar(255) default '' comment '真实姓名',
+	`type` tinyint default 0 comment '类型, 1=专家, 2=店长',
+	`phone` varchar(255) default '' comment '电话',
+	`personalImg` varchar(255) default '' comment '个人或店照片地址',
+	`identityImg` varchar(255) default '' comment '身份证正面图片',
+	`businessImg` varchar(255) default '' comment '营业执照地址',
+	`address` varchar(255) default '' comment '地址',
+	`remark` text comment '用户备注(专家介绍)',
+	`status` tinyint default 0 comment '1=未审核, 2=已审核, 3=已拒绝',
+	`createTime` datetime default 0 comment '创建(注册)时间',
+	`lastTime` timestamp default current_timestamp on update current_timestamp comment '最后修改时间',
+	`discard` tinyint default 0 comment '是否被删除, 0=未删除, 1=已删除',
+	primary key (`verifyId`),
+	index userId (`userId`),
+	index type (`type`),
+	index status (`status`)
+) engine=InnoDB default charset=utf8 comment='用户审核表(专家,站长审核)';
+
+create table `t_jxzp` (
+	`jxzpId` int auto_increment comment '极限追盘id',
+	`type` tinyint default 0 comment '类型, 1=胜平负, 2=输赢盘',
+	`teamName` varchar(255) default "" comment '球队名称',
+	`matchId` int default 0 comment '比赛id',
+	`oddsId` int default 0 comment '赔率id',
+	`recommend` varchar(255) default "" comment '比赛推荐, S,P,F',
+  `closeTime` datetime default 0 comment '结束时间',
+  `status` tinyint default 0 comment 'type=1(1=连胜,2=连平,3=连负), type=2(1=连赢盘,2=连输盘)',
+  `recentContinue` int default 0 comment '近期连续',
+  `historyContinue` int default 0 comment '历史连续',
+	`publish` tinyint default 0 comment '上下架, 0=下架, 1=上架',
+	`remark` text comment '备注',
+	`createTime` datetime default 0 comment '创建时间',
+	`lastTime` timestamp default current_timestamp on update current_timestamp comment '最后修改时间',
+	`discard` tinyint default 0 comment '是否被删除, 0=未删除, 1=已删除',
+	primary key (`jxzpId`),
+	index type (`type`),
+	index matchId (`matchId`),
+	index status (`status`),
+	index publish (`publish`)
+) engine=InnoDB default charset=utf8 comment='极限追盘表';
+
+create table `t_admin_user` (
+	`userId` int auto_increment comment '用户id',
+	`userRight` bigint default 0 comment '用户权限',
+	`userName` varchar(255) default '' comment '用户名',
+	`loginName` varchar(255) default '' comment '登录名',
+	`password` varchar(255) not null comment '密码',
+	`createTime` datetime default 0 comment '创建时间',
+	`lastTime` timestamp default current_timestamp on update current_timestamp comment '最后修改时间',
+	`discard` tinyint default 0 comment '是否被删除, 0=未删除, 1=已删除',
+	primary key (`userId`),
+	unique key `loginName` (`loginName`)
+) engine=InnoDB default charset=utf8 comment='后台用户表';
+
+insert into t_group set type='1',name='网络红人',createTime=now(); 
+
+INSERT INTO `t_admin_user` (`userId`, `userRight`, `userName`, `loginName`, `password`, `createTime`, `lastTime`, `discard`) VALUES
+	(1, 0, '晒米场', 'shaimi', 'ca10ba178b6bf9d74b29e571e28b976b', '2016-07-13 23:04:46', '2016-07-13 23:04:51', 0);
+
+
+INSERT INTO `t_combo` (`comboId`, `comboType`, `title`, `amount`, `presentAmount`, `spanTime`, `publish`, `remark`, `createTime`, `lastTime`, `discard`) VALUES
+(1, 1, '88元/周', 8800, 800, 604800, 1, '极限追盘, 88元/周', '2016-07-09 22:24:44', '2016-07-09 22:27:47', 0),
+(2, 1, '350元/月', 35000, 5000, 2678400, 1, '极限追盘, 350元/月', '2016-07-09 22:27:23', '2016-07-09 22:50:56', 0),
+(3, 1, '4000元/年', 400000, 100000, 31536000, 1, '极限追盘, 4000元/年', '2016-07-09 22:36:30', '2016-07-09 22:40:31', 0);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#0.3版本
+alter table t_plan modify prizeStatus tinyint default 0 comment '中奖状态, 0=未开奖, 1=已中奖, 2=未中奖';
+
+INSERT INTO `t_match_bettype` (`bettypeId`, `type`, `name`, `content`, `value`, `createTime`, `lastTime`, `discard`) VALUES
+	(3, 1, '比分', 'BF', '{"1:0":"1:0","2:0":"2:0","2:1":"2:1","3:0":"3:0","3:1":"3:1","3:2":"3:2","4:0":"4:0","4:1":"4:1","4:2":"4:2","5:0":"5:0","5:1":"5:1","5:2":"5:2","SQT":"胜其他","0:0":"0:0","1:1":"1:1","2:2":"2:2","3:3":"3:3","PQT":"平其他","0:1":"0:1","0:2":"0:2","1:2":"1:2","0:3":"0:3","1:3":"1:3","2:3":"2:3","0:4":"0:4","1:4":"1:4","2:4":"2:4","0:5":"0:5","1:5":"1:5","2:5":"2:5","FQT":"负其他"}', '2016-07-22 11:03:09', '2016-07-22 11:03:32', 0),
+	(4, 1, '总进球', 'ZJQ', '{"0":"0球","1":"1球","2":"2球","3":"3球","4":"4球","5":"5球","6":"6球","7+":"7+球"}', '2016-07-22 13:27:21', '2016-07-22 14:03:38', 0),
+	(5, 1, '半全场', 'BQC', '{"SS":"胜胜","SP":"胜平","SF":"胜负","PS":"平胜","PP":"平平","PF":"平负","FS":"负胜","FP":"负平","FF":"负负"}', '2016-07-22 14:04:00', '2016-07-22 14:04:15', 0);
+
+
+
+
+
+#活动
+select count(*) as totalCount 都缺少 discard=0
+
+INSERT INTO `t_activity` (`activityId`, `activityName`, `beginTime`, `endTime`, `sumAmount`, `sumCount`, `amount`, `count`, `remark`, `createTime`, `lastTime`, `discard`) VALUES
+	(1, '100万红包', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 100000000, 26315, 0, 0, '1、每个微信用户可以领一次红包；\r\n2、每个手机号只能领一次红包；\r\n3、活动送出100万红包后将停止派送，要领请尽快。\r\n4、所领的红包仅限晒米场使用，不可提现;\r\n5、最终的活动解释权归晒米场（shaimii.com）所有。', '2016-07-25 18:41:08', '2016-07-26 11:14:05', 0);
+
+文件: 
+external/ucpaas
+module/Common.php
+controller/Activity.php
+controller/Sms.php
+dao/Activity.php
+dao/Sms.php
+service/Activity.php
+service/Sms.php
+
+
+
+create table `t_activity` (
+  `activityId` int auto_increment comment '活动id',
+  `activityName` varchar(255) default '' comment '活动名称',
+	`beginTime` datetime default 0 comment '开始时间',
+	`endTime` datetime default 0 comment '结束时间',
+	`sumAmount` int default 0 comment '总金额',
+	`sumCount` int default 0 comment '总数量',
+	`amount` int default 0 comment '消耗金额',
+	`count` int default 0 comment '消耗数量',
+	`remark` text comment '备注',
+	`createTime` datetime default 0 comment '创建时间',
+	`lastTime` timestamp default current_timestamp on update current_timestamp comment '最后修改时间',
+	`discard` tinyint default 0 comment '是否被删除, 0=未删除, 1=已删除',
+	primary key (`activityId`)
+) engine=InnoDB default charset=utf8 comment='活动表';
+
+create table `t_activity_hongbao` (
+  `hongbaoId` int auto_increment comment '手机id',
+  `activityId` int not null comment '活动id',
+  `activityName` varchar(255) default '' comment '活动名称',
+	`userId` int not null comment '用户id',
+	`nickName` varchar(255) default '' comment '昵称',
+	`realName` varchar(255) default '' comment '真实姓名',
+	`mobile` varchar(11) not null comment '手机号',
+	`presentAmount` int default 0 comment '赠送金额',
+	`createTime` datetime default 0 comment '创建时间',
+	`lastTime` timestamp default current_timestamp on update current_timestamp comment '最后修改时间',
+	`discard` tinyint default 0 comment '是否被删除, 0=未删除, 1=已删除',
+	primary key (`hongbaoId`),
+	index activityId (`activityId`),
+	index userId (`userId`)
+) engine=InnoDB default charset=utf8 comment='红包活动表';
+
+create table `t_sms_code` (
+	`mobile` varchar(11) not null comment '手机号',
+	`code` varchar(6) not null comment '验证码',
+	`time` timestamp default current_timestamp on update current_timestamp comment '时间',
+	primary key (`mobile`)
+) engine=InnoDB default charset=utf8 comment='短信验证码';
+
+create table `t_sms_code_count` (
+  `userId` int not null comment '用户id',
+	`nickName` varchar(255) default '' comment '昵称',
+	`realName` varchar(255) default '' comment '真实姓名',
+	`count` int default 0 comment '次数',
+	`time` datetime default 0 comment '时间',
+	`lastTime` timestamp default current_timestamp on update current_timestamp comment '最后修改时间',
+	primary key (`userId`)
+) engine=InnoDB default charset=utf8 comment='短信验证码计数表';
+
+
+
+
+
+
+
+
+
+
+
+
+#极限追盘修复
+alter table t_jxzp add `matchBeginTime` datetime default 0 comment '比赛开始时间' after matchId;
+alter table t_jxzp add `prizeStatus` tinyint default 0 comment '中奖状态, 0=未开奖, 1=已中奖, 2=未中奖' after oddsId;
+alter table t_jxzp add `prize` varchar(255) default "" comment '比赛中奖, S,P,F' after recommend;
+alter table t_jxzp add `bettypeResult` varchar(255) default "" comment '玩法结果' after prize;
+alter table t_jxzp add `bettypePrize` varchar(255) default "" comment '玩法中奖, S,P,F' after bettypeResult;
+
+insert into t_user set nickName='丹丹',sex='2',openId='virtual_abe03a1df0d2d43f2b6bf9bd11eec853';
+insert into t_user set nickName='卢欢',sex='2',openId='virtual_395f35e74b5da59728bc5ff3ba6b7f83';
+insert into t_user set nickName='梁小燕',sex='2',openId='virtual_9f2f8c47ac9b41e219c96ea5433be445';
+insert into t_user set nickName='Sam',sex='1',openId='virtual_ba0e0cde1bf72c28d435c89a66afc61a';
+
+update t_user set openOpenId=openId,unionId=openId where userId=1335 limit 1;
+
+
+
+update t_user set createTime=now() where userId=1334 limit 1;
+update t_user set createTime=now() where userId=1333 limit 1;
+update t_user set createTime=now() where userId=1332 limit 1;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#unionid修复
+alter table t_user modify `openId` varchar(255) default '' comment '微信公众平台openId';
+alter table t_user add `unionId` varchar(255) default '' comment '微信unionid' after openId;
+alter table t_user add `openOpenId` varchar(255) default '' comment '微信开放平台openId' after openId;
+alter table t_user drop index openId;
+create unique index unionId on t_user(unionId);
+select userId,nickName,realName,openId,openOpenId,unionId from t_user where (unionId='' or openId='' or openOpenId='');
+
+
+select prizeStatus,createTime from t_plan where userId=17 and prizeStatus=1 and discard=0 and (createTime>='2016-08-01 00:00:00' and createTime<'2016-08-08 00:00:00') order by planId desc;
+
+美女推波 448元
+彩店实单 912元
+合买大V 52元
+推荐专家 3204元
+竞彩高手 1794元
+特邀大咖 1832元
+
+
+select planNickName,planRealName,sum(amount) from t_order where status=2 and planUserId in(12,15,13,1334,1333,1332);
+
+
+update t_plan set publish=0 where planId=1139 limit 1;
+
+
+
+
+
+
+
+
+
+
+
+热门赛事
+alter table t_match add `planId` text comment '关联的方案id(id,id,id)' after sportteryMatchId;
+alter table t_match add `orderId` text comment '关联的订单id(id,id,id)' after planId;
+alter table t_match add `planCount` int default 0 comment '关联的方案数量' after orderId;
+alter table t_match add `orderCount` int default 0 comment '关联的订单数量' after planCount;
+create table `t_feedback` (
+  `feedbackId` int auto_increment comment '反馈id',
+	`userId` int not null comment '用户id',
+	`nickName` varchar(255) default '' comment '昵称',
+	`realName` varchar(255) default '' comment '真实姓名',
+	`content` text comment '内容',
+	`createTime` datetime default 0 comment '创建时间',
+	`lastTime` timestamp default current_timestamp on update current_timestamp comment '最后修改时间',
+	`discard` tinyint default 0 comment '是否被删除, 0=未删除, 1=已删除',
+	primary key (`feedbackId`),
+	index userId (`userId`)
+) engine=InnoDB default charset=utf8 comment='意见反馈表';
+
+alter table t_match add `homeLogoImg` varchar(255) default '' comment '主队图标' after away;
+alter table t_match add `awayLogoImg` varchar(255) default '' comment '客队图标' after homeLogoImg;
+
+
+
+
+
+
+
+
+
+
+
+alter table t_plan add `readCount` int default 0 comment '阅读数' after shareCount;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+insert into t_user set nickName='林美眉',sex='2',userRight=1,createTime=now(),openId='virtual_046dda583d34283e8e6985cf2762e7e1',openOpenId='virtual_046dda583d34283e8e6985cf2762e7e1',unionId='virtual_046dda583d34283e8e6985cf2762e7e1';
+
+insert into t_user set nickName='莞城赌圣',sex='1',userRight=1,createTime=now(),openId='virtual_d69426b85827b9021c15646fe38f8151',openOpenId='virtual_d69426b85827b9021c15646fe38f8151',unionId='virtual_d69426b85827b9021c15646fe38f8151';
+
+insert into t_user set nickName='IT数据',sex='1',userRight=1,createTime=now(),openId='virtual_e6fe76cd0fffe2cbfa904e6609b10597',openOpenId='virtual_e6fe76cd0fffe2cbfa904e6609b10597',unionId='virtual_e6fe76cd0fffe2cbfa904e6609b10597';
+
+
+insert into t_user set nickName='金钱无价',sex='1',userRight=1,createTime=now(),openId='virtual_8893659aa5d9733df833955dce72f3cc',openOpenId='virtual_8893659aa5d9733df833955dce72f3cc',unionId='virtual_8893659aa5d9733df833955dce72f3cc';
+
+
+insert into t_user set nickName='拉伊奥拉',sex='1',userRight=1,createTime=now(),openId='virtual_cec46d7aa7960face391d6de6c7794b9',openOpenId='virtual_cec46d7aa7960face391d6de6c7794b9',unionId='virtual_cec46d7aa7960face391d6de6c7794b9';
+
+insert into t_user set nickName='彩虹',sex='1',userRight=1,createTime=now(),openId='virtual_279d6446d2d040824e9497aa1e789543',openOpenId='virtual_279d6446d2d040824e9497aa1e789543',unionId='virtual_279d6446d2d040824e9497aa1e789543';
+
+insert into t_user set nickName='彩神VIP专享',sex='1',userRight=1,createTime=now(),openId='virtual_dbd112e3d7e901ceb36ce2ed900a5acb',openOpenId='virtual_dbd112e3d7e901ceb36ce2ed900a5acb',unionId='virtual_dbd112e3d7e901ceb36ce2ed900a5acb';
+
+insert into t_user set nickName='萌神竞彩',sex='1',userRight=1,createTime=now(),openId='virtual_2c4d9c8066ce9ff7412dd22922412219',openOpenId='virtual_2c4d9c8066ce9ff7412dd22922412219',unionId='virtual_2c4d9c8066ce9ff7412dd22922412219';
+
+insert into t_user set nickName='荐彩致富',sex='1',userRight=1,createTime=now(),openId='virtual_0e3be7de1967d51771f0bab8ac751f27',openOpenId='virtual_0e3be7de1967d51771f0bab8ac751f27',unionId='virtual_0e3be7de1967d51771f0bab8ac751f27';
+
+insert into t_user set nickName='烟花妹妹',sex='2',userRight=1,createTime=now(),openId='virtual_2fd3a7b363c75bee5d125e56d7333131',openOpenId='virtual_2fd3a7b363c75bee5d125e56d7333131',unionId='virtual_2fd3a7b363c75bee5d125e56d7333131';
+
+
+
+alter table t_plan add `rich` tinyint default 0 comment '是否豪单, 0=普通单, 1=豪单' after readCount;
+alter table t_plan add `mockReadCount` int default 0 comment '虚假阅读数' after readCount;
+
+
+
+alter table t_plan add `prizeAmount` float default 0 comment '奖金金额(1元为单位，用在计算盈利率)' after prizeStatus;
+alter table t_plan add `costAmount` int default 0 comment '成本金额(1元为单位，用在计算盈利率)' after prizeStatus;
+
+
+陆慧明、杨天婴、曲昌春、杨澍、杨震、颜强、老鬼、宋昭毅、关小刀、王雷中
+
+
+insert into t_user set nickName='陆慧明',sex='1',userRight=1,createTime=now(),openId='virtual_e062ea2512bf5b506513772bc3235c4d',openOpenId='virtual_e062ea2512bf5b506513772bc3235c4d',unionId='virtual_e062ea2512bf5b506513772bc3235c4d';
+
+insert into t_user set nickName='杨天婴',sex='1',userRight=1,createTime=now(),openId='virtual_3f6b84742676f3d5bb731c57fed0f0b1',openOpenId='virtual_3f6b84742676f3d5bb731c57fed0f0b1',unionId='virtual_3f6b84742676f3d5bb731c57fed0f0b1';
+
+insert into t_user set nickName='曲昌春',sex='1',userRight=1,createTime=now(),openId='virtual_6387b49aa0f31f82f2607fb429c3cdfb',openOpenId='virtual_6387b49aa0f31f82f2607fb429c3cdfb',unionId='virtual_6387b49aa0f31f82f2607fb429c3cdfb';
+
+insert into t_user set nickName='杨澍',sex='1',userRight=1,createTime=now(),openId='virtual_5b81a294b519757d7bb813b67b5a0cca',openOpenId='virtual_5b81a294b519757d7bb813b67b5a0cca',unionId='virtual_5b81a294b519757d7bb813b67b5a0cca';
+
+insert into t_user set nickName='杨震',sex='1',userRight=1,createTime=now(),openId='virtual_fe75e6bac46d4002576770fbab0a2339',openOpenId='virtual_fe75e6bac46d4002576770fbab0a2339',unionId='virtual_fe75e6bac46d4002576770fbab0a2339';
+
+insert into t_user set nickName='颜强',sex='1',userRight=1,createTime=now(),openId='virtual_a3ce3a727b4e109742c6294af0338773',openOpenId='virtual_a3ce3a727b4e109742c6294af0338773',unionId='virtual_a3ce3a727b4e109742c6294af0338773';
+
+insert into t_user set nickName='老鬼',sex='1',userRight=1,createTime=now(),openId='virtual_9b7d01a168095925c3ea3c72fb8204f4',openOpenId='virtual_9b7d01a168095925c3ea3c72fb8204f4',unionId='virtual_9b7d01a168095925c3ea3c72fb8204f4';
+
+insert into t_user set nickName='宋昭毅',sex='1',userRight=1,createTime=now(),openId='virtual_ac23105f9a265cd6fcea93f6bf1f00ce',openOpenId='virtual_ac23105f9a265cd6fcea93f6bf1f00ce',unionId='virtual_ac23105f9a265cd6fcea93f6bf1f00ce';
+
+insert into t_user set nickName='关小刀',sex='1',userRight=1,createTime=now(),openId='virtual_12b5053e3db7080a23788183b880e7df',openOpenId='virtual_12b5053e3db7080a23788183b880e7df',unionId='virtual_12b5053e3db7080a23788183b880e7df';
+
+insert into t_user set nickName='王雷中',sex='1',userRight=1,createTime=now(),openId='virtual_7c10e32a34c1b3c662eb2ebf7f410c0e',openOpenId='virtual_7c10e32a34c1b3c662eb2ebf7f410c0e',unionId='virtual_7c10e32a34c1b3c662eb2ebf7f410c0e';
+
+
+
+
+
+
+
+
+
+INSERT INTO `t_weixin_key` (`publicName`,`createTime`) VALUES ('晒米场公众平台',now());
+
+
+
+
+alter table t_match_odds add `single` tinyint default 0 comment '是否允许单关销售, 0=不允许, 1=允许' after saleTime;
+
+
+
+
+
+
+alter table t_user add `subscribe` tinyint default 0 comment '是否关注公众号, 0=未关注, 1=已关注' after unionId;
+
+
+
+
+
+
+
+
+
+
+出票sql：
+
+
+
+
+
+alter table t_order add `ticketUserId` int default 0 comment '出票用户id' after spreaderRealName;
+alter table t_order add `ticketNickName` varchar(255) default '' comment '出票用户昵称' after ticketUserId;
+alter table t_order add `ticketRealName` varchar(255) default '' comment '出票用户真实姓名' after ticketNickName;
+alter table t_order add `ticketImg` varchar(255) default '' comment '出票上传票样图片' after ticketRealName;
+alter table t_order add `ticketMultiple` int default 0 comment '用户投注倍数' after ticketImg;
+alter table t_order add `ticketStatus` tinyint default 0 comment '出票状态, 1=出票失败, 2=已出票待开奖, 3=未中奖, 4=已中奖, 5=已派奖' after ticketMultiple;
+alter table t_order add `ticketPrizeAmount` int default 0 comment '派奖金额' after ticketStatus;
+
+alter table t_order add index ticketUserId (`ticketUserId`);
+alter table t_order add index ticketStatus (`ticketStatus`);
+
+
+
+
+alter table t_finance add `financeType` tinyint default 0 comment '资金类型, 0=方案, 1=出票' after financeId;
+alter table t_finance drop index userId;
+alter table t_finance add unique key `user` (`userId`, `financeType`);
+
+alter table t_finance_record add `financeType` tinyint default 0 comment '资金类型, 0=方案, 1=出票' after recordId;
+alter table t_finance_consume add `financeType` tinyint default 0 comment '资金类型, 0=方案, 1=出票' after consumeId;
+alter table t_finance_withdraw add `financeType` tinyint default 0 comment '资金类型, 0=方案, 1=出票' after withdrawId;
+alter table t_finance_income add `financeType` tinyint default 0 comment '资金类型, 0=方案, 1=出票' after incomeId;
+alter table t_finance_charge add `financeType` tinyint default 0 comment '资金类型, 0=方案, 1=出票' after chargeId;
+
+
+alter table t_finance add index financeType (`financeType`);
+alter table t_finance_record add index financeType (`financeType`);
+alter table t_finance_consume add index financeType (`financeType`);
+alter table t_finance_withdraw add index financeType (`financeType`);
+alter table t_finance_income add index financeType (`financeType`);
+alter table t_finance_charge add index financeType (`financeType`);
+
+
+
+select * from t_order where orderType=3 and status=2
+select * from t_finance where financeType=1
+select * from t_finance_record where financeType=1
+select * from t_finance_consume where financeType=1
+select * from t_finance_income where financeType=1
+select * from t_finance_withdraw where financeType=1
+select * from t_finance_charge where financeType=1
+
+
+
+
+
+
+
+
+alter table t_library_team add `shortSimplifiedName` varchar(255) default '' comment ' 短简体名' after englishName;
+alter table t_library_team add `shortTraditionalName` varchar(255) default '' comment '短繁体名' after shortSimplifiedName;
+alter table t_library_team add `shortEnglishName` varchar(255) default '' comment '短英文名' after shortTraditionalName;
+
+
+
+
+
+
+
+
+
+
+alter table t_plan add `matchType` tinyint default 0 comment '类型, 1=足球, 2=篮球' after planId;
+update t_plan set matchType=1 where matchType=0;
+
+alter table t_order add `planMatchType` tinyint default 0 comment '比赛类型, 1=足球, 2=篮球' after planRealName;
+update t_order set planMatchType=1 where where planMatchType=0 and orderType in(0,3);
+
+
+
+
+
+
+insert into t_user set nickName='William',sex='1',userRight=1,createTime=now(),openId='virtual_604c8dd5066ee30539037569a028dc9b',openOpenId='virtual_604c8dd5066ee30539037569a028dc9b',unionId='virtual_604c8dd5066ee30539037569a028dc9b';
+
+insert into t_user set nickName='张佳玮',sex='1',userRight=1,createTime=now(),openId='virtual_bc5262c6a8726f95a44a56a19dd5f07c',openOpenId='virtual_bc5262c6a8726f95a44a56a19dd5f07c',unionId='virtual_bc5262c6a8726f95a44a56a19dd5f07c';
+
+
+
+
+alter table t_plan add `saleTicket` tinyint default 0 comment '可否售票, 0=不可售票， 1=可售票' after resourceId;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+alter table t_user add `source` tinyint default 0 comment '来源, 0=平台, 1=话费红包, 2=体彩' after spreaderRealName;
+alter table t_user add index subscribe (`subscribe`);
+alter table t_user add index source (`source`);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+alter table t_finance_withdraw add `accountUserName` varchar(255) default '' comment '账号用户名' after accountName;
+alter table t_finance_withdraw add `accountInfo` varchar(255) default '' comment '账号信息' after accountUserName;
+
+
+alter table t_user add `channel` int default 0 comment '渠道' after source;
+alter table t_user add index channel (`channel`);
+
+
+'来源, 0=平台, 1=话费红包, 2=体彩'
+
+
+alter table t_user modify source tinyint default 0 comment '来源, 0=h5, 1=android, 2=ios';
+
+update t_user set source=0
+
+select count(*) from t_user where channel=0;
+
+
+
+
+
+
+alter table t_order add `source` tinyint default 0 comment '来源, 0=h5, 1=android, 2=ios' after status;
+
+
+
+alter table t_finance_trade add `source` tinyint default 0 comment '来源, 0=h5, 1=android, 2=ios' after amount;
+alter table t_finance_trade add `channel` int default 0 comment '渠道' after source;
+
+
+
+
+
+alter table t_finance_record add `source` tinyint default 0 comment '来源，0=h5,1=安卓,2=ios' after channel;
+
+
+
+
+
+
+alter table `t_finance_record` drop column channel;  
+
+
+
+用户提款短信时间
+
+
+
+
+
+
+insert into t_user set nickName='Macaus',sex='1',userRight=1,createTime=now(),openId='virtual_71a8a15b6c1fce0b251181cc950b30da',openOpenId='virtual_71a8a15b6c1fce0b251181cc950b30da',unionId='virtual_71a8a15b6c1fce0b251181cc950b30da';
+
+
+insert into t_user set nickName='Bwin',sex='1',userRight=1,createTime=now(),openId='virtual_bb22a6e998ce56084be2be84b5825bad',openOpenId='virtual_bb22a6e998ce56084be2be84b5825bad',unionId='virtual_bb22a6e998ce56084be2be84b5825bad';
+
+
+
+insert into t_user set nickName='杀庄小分队',sex='1',userRight=1,createTime=now(),openId='virtual_7c6ca9da2fc0fcee087bd45b766301de',openOpenId='virtual_7c6ca9da2fc0fcee087bd45b766301de',unionId='virtual_7c6ca9da2fc0fcee087bd45b766301de';
+
+
+
+
+
+alter table t_user add `openOpenIdJc` varchar(255) default '' comment '微信开放平台openid(竞彩分支)' after openOpenId;
+
+
+
+
+
+
+
+
+
+
+
+
+insert into t_activity set activityName="幸运大转盘",remark="1、每消费一次可获得一次抽奖机会；\r\n2、获得的米粒直接发放到您的账户，可购买专家推荐；\r\n3、获得球衣、iPhone大礼的用户请于三个工作日内联系晒米场客服微信：shaimichang，方便奖品发放，三个工作日内不联系视为放弃，本活动无需任何费用，谨防诈骗；\r\n4、晒米场保留法律范围内的对活动的解释权。",beginTime=curdate(),createTime=now();
+
+
+
+
+
+
+alter table t_order add `planPrizeStatus` tinyint default 0 comment '方案中奖状态, 0=未开奖, 1=已中奖, 2=未中奖' after planMatchBeginTime;
+alter table t_order add index planPrizeStatus (`planPrizeStatus`);
+alter table t_order add `matchId` int default 0 comment '比赛id(晒米冷热,极限追盘)' after comboId;
+alter table t_order add index comboId (`comboId`);
+alter table t_order add index matchId (`matchId`);
+
+
+
+
+
+
+
+
+
+alter table t_match add `winBetRate` varchar(50) default '' comment '胜投注比例' after sportteryMatchId;
+alter table t_match add `drawBetRate` varchar(50) default '' comment '平投注比例' after winBetRate;
+alter table t_match add `loseBetRate` varchar(50) default '' comment '负投注比例' after drawBetRate;
+
+
+
+
+
+
+
+
+alter table t_order add `ticketExpectPrizeAmount` int default 0 comment '预计派奖金额' after ticketPrizeAmount;
+alter table t_order add `ticketSendPrizeAmount` int default 0 comment '已派奖金额' after ticketExpectPrizeAmount;
+
+站长填写金额事物
+12-29 24:30(过12点)
+
+
+INSERT INTO `t_activity` (`activityId`, `activityName`, `beginTime`, `endTime`, `sumAmount`, `sumCount`, `amount`, `count`, `remark`, `createTime`, `lastTime`, `discard`) VALUES
+	(3, '彩金充值送5%', '2017-01-01 00:00:00', '2017-01-10 23:59:59', 0, 0, 0, 0, '彩金充值加送5%，人人有份，多充多得！', '2017-01-01 00:00:00', '2017-01-01 00:00:00', 0);
+
+
+
+
+
+update t_activity set endTime='2017-01-15 23:59:59' where activityId=3 limit 1;
+
+
+
+01-03 22:00
+01-06 22:00
+01-09 21:30
+01-12 21:30
+01-13 21:30
+
+
+update t_order set ticketUserId="2034",ticketNickName="欧海捷",ticketRealName="欧海捷 深圳" where ticketStatus=0 and orderId="18715" limit 1 
+
+1 |         0 | 晒米场    | shaimi    | 6edfad12b5762fdc8cba5a7dbc10f538 | 2016-07-13 23:04:46 | 2016-09-19 20:24:17 |       0
+
+
+
+drop table t_admin_user;
+
+
+
+
+
+
+
+
+
+手动改，米粒->彩金
+
+update t_order set orderType=4 where orderId=19049 and orderType=1 limit 1;
+
+update t_finance_trade set financeType=1 where orderId=19049 and financeType=0 limit 1;
+
+
+update t_finance_record set financeType=1 where recordId=43054 and financeType=0 limit 1;
+update t_finance_record set discard=1 where recordId=43055 and financeType=0 limit 1;
+
+update t_finance_charge set financeType=1 where chargeId=20824 and financeType=0 limit 1;
+update t_finance_charge set discard=1 where chargeId=20825 and financeType=0 limit 1;
+
+
+
+
+
+
+
+
+
+
+
+
+
+alter table t_plan add `matchLength` tinyint default 0 comment '比赛场次' after matchRecommend;
+
+
+
+insert into t_activity set activityName="2017春节红包",remark="1、随机2 - 50元彩金红包；\n2、2月3日(大年初七)开始领取；\n3、每人一次机会。",beginTime="2017-02-03 00:00:00",endTime="2017-02-28 23:59:59",createTime=now();
+
+
+
+
+
+
+alter table t_order add `ticketUnit` int default 0 comment '用户投注注数' after ticketImg;
+alter table t_order add `ticketSupplierId` int default 0 comment '出票供应商id' after ticketSendPrizeAmount;
+alter table t_order add `ticketSupplierName` varchar(255) default '' comment '出票供应商名称' after ticketSupplierId;
+alter table t_order add index ticketSupplierId (`ticketSupplierId`);
+
+
+
+INSERT INTO `t_lottery` (`lotteryId`, `lotteryName`, `remark`, `createTime`, `lastTime`, `discard`) VALUES
+	('JZSPF', '竞足胜平负', NULL, '2016-06-15 20:38:25', '2016-06-15 23:32:40', 0),
+	('JZRQSPF', '竞足让球胜平负', NULL, '2016-06-15 20:40:06', '2016-06-17 12:01:06', 0),
+	('JZBF', '竞足比分', NULL, '2016-07-22 11:03:09', '2016-07-22 11:03:32', 0),
+	('JZZJQ', '竞足总进球', NULL, '2016-07-22 13:27:21', '2016-07-22 14:03:38', 0),
+	('JZBQC', '竞足半全场', NULL, '2016-07-22 14:04:00', '2016-07-22 14:04:15', 0),
+	('JZHHGG', '竞足混合过关', NULL, '2016-07-22 14:04:00', '2016-11-25 10:17:43', 0),
+	('JLSF', '竞篮胜负', NULL, '2016-07-22 14:04:00', '2016-10-27 17:14:06', 0),
+	('JLRFSF', '竞篮让分胜负', NULL, '2016-07-22 14:04:00', '2016-10-27 17:14:27', 0),
+	('JLSFC', '竞篮胜分差', NULL, '2016-07-22 14:04:00', '2016-11-25 10:17:43', 0),
+	('JLDXF', '竞篮大小分', NULL, '2016-07-22 14:04:00', '2016-10-27 17:19:25', 0),
+	('JLHHGG', '竞篮混合过关', NULL, '2016-07-22 14:04:00', '2016-10-27 17:19:25', 0);
+
+
+INSERT INTO `t_ticket_supplier` (`supplierId`, `supplierName`, `remark`, `createTime`, `lastTime`, `discard`) VALUES
+	(1, '纵贯出票', NULL, '2017-02-02 15:14:23', '2017-02-02 15:14:30', 0);
+
+
+
+
+
+
+
+alter table t_order add `ticketPassType` varchar(255) default '' comment '过关方式(MxN,MxN,MxN)' after ticketMultiple;
+
+
+alter table t_ticket add `passType` varchar(50) default '' comment '过关方式, MxN' after issue;
+alter table t_ticket add `betContent` text comment '投注格式' after passType;
+alter table t_ticket add `matchRecommend` text comment '比赛推荐' after betContent;
+
+
+select count(*) from t_order where orderType=3 and ticketPassType='';
+select count(*) from t_ticket where passType='' or betContent='' or matchRecommend='';
+
+
+
+
+alter table t_match add `commonMatchId` varchar(50) default null comment '通用matchId' after halfResult;
+alter table t_match add unique key `typeCommonMatchId` (`type`, `commonMatchId`);
+
+alter table t_match_odds add unique key `matchIdBettypeContent` (`matchId`, `bettypeContent`);
+
+
+alter table t_match add `sportteryHalfResult` varchar(255) default '' comment '中国竞彩网半场比赛结果' after sportteryMatchId;
+alter table t_match add `sportteryResult` varchar(255) default '' comment '中国竞彩网全场比赛结果' after sportteryHalfResult;
+alter table t_match add `sportteryResultTime` datetime default 0 comment '中国竞彩网比赛结果时间' after sportteryResult;
+
+
+
+
+alter table t_match add `okoooMatchId` int default 0 comment '澳客网比赛id' after sportteryResultTime;
+alter table t_match add `okoooHalfResult` varchar(255) default '' comment '澳客网半场比赛结果' after okoooMatchId;
+alter table t_match add `okoooResult` varchar(255) default '' comment '澳客网全场比赛结果' after okoooHalfResult;
+alter table t_match add `okoooResultTime` datetime default 0 comment '澳客网比赛结果时间' after okoooResult;
+
+
+alter table t_match add `leidataMatchId` int default 0 comment '雷达体育比赛id' after okoooResultTime;
+alter table t_match add `leidataHalfResult` varchar(255) default '' comment '雷达体育半场比赛结果' after leidataMatchId;
+alter table t_match add `leidataResult` varchar(255) default '' comment '雷达体育全场比赛结果' after leidataHalfResult;
+alter table t_match add `leidataResultTime` datetime default 0 comment '雷达体育比赛结果时间' after leidataResult;
+
+
+select home,away,type,halfResult,sportteryHalfResult,okoooHalfResult,leidataHalfResult,result,sportteryResult,okoooResult,leidataResult from t_match where okoooResult!='' or leidataResult!='' order by beginTime desc;
+
+select home,away,type,sportteryResultTime,okoooResultTime,leidataResultTime from t_match where okoooResult!='' or leidataResult!='' order by beginTime desc;
+
+select home,away,type,halfResult,sportteryHalfResult,okoooHalfResult,leidataHalfResult,result,sportteryResult,okoooResult,leidataResult from t_match where okoooResult='取消' or leidataResult='取消' order by beginTime desc;
+
+select home,away,type,halfResult,sportteryHalfResult,okoooHalfResult,leidataHalfResult,result,sportteryResult,okoooResult,leidataResult from t_match where matchId="28060";
+
+
+
+
+alter table t_finance add `prizeIncomeSumAmount` int default 0 comment '中奖收益总额' after spreadIncomeSumAmount;
+alter table t_finance add `divideIncomeSumAmount` int default 0 comment '分成收益总额' after prizeIncomeSumAmount;
+
+
+alter table t_order add `ticketPrizeDivideStatus` tinyint default 0 comment '中奖分成状态, 0=不分成, 1=待分成, 2=已分成, 3=未分成' after ticketSupplierName;
+alter table t_order add `ticketPrizeDivideAmount` int default 0 comment '中奖分成金额' after ticketPrizeDivideStatus;
+
+
+
+
+alter table t_match add `attachPrize` int default 0 comment '加奖(16位二进制), 预留3,预留2,预留1,总进球,[半全场|大小分],[比分|胜分差],[让球胜平负|让分胜负],[胜平负|胜负],预留5,预留4,预留3,预留2,预留1,连串,包含,单关' after orderCount;
+
+
+
+
+
+
+alter table t_order add `ticketAttachPrizeStatus` tinyint default 0 comment '加奖状态, 0=不加奖, 1=待加奖, 2=已加奖, 3=未加奖' after ticketPrizeDivideAmount;
+alter table t_order add `ticketAttachPrizeAmount` int default 0 comment '加奖金额' after ticketAttachPrizeStatus;
+
+
+
+
+
+
+
+
+alter table t_finance add `chargeFreezeSumAmount` int default 0 comment '充值冻结总额' after chargeSumAmount;
+alter table t_finance add `incomeFreezeSumAmount` int default 0 comment '收益冻结总额' after chargeFreezeSumAmount;
+
+create table `t_order_batch` (
+  `batchId` int auto_increment comment '批量id',
+	`userId` int not null comment '用户id',
+	`nickName` varchar(255) default '' comment '昵称',
+	`realName` varchar(255) default '' comment '真实姓名',
+	`orderId` varchar(1000) default "" comment '订单id(id,id,id)',
+	`amount` int default 0 comment '金额',
+	`status` tinyint default 0 comment '批量状态, 1=未付款, 2=已付款, 3=已处理',
+	`tradeType` tinyint default 0 comment '交易方式, 0=爱贝, 1=支付宝, 2=威富通, 3=苹果支付, 4=爱贝合作',
+	`tradeNo` varchar(50) default '' comment '交易流水编码',
+  `tradeTime` datetime default 0 comment '交易时间',
+  `source` tinyint default 0 comment '来源, 0=h5, 1=android, 2=ios',
+  `channel` int default 0 comment '渠道',
+	`remark` text comment '备注',
+	`createTime` datetime default 0 comment '创建时间',
+	`lastTime` timestamp default current_timestamp on update current_timestamp comment '最后修改时间',
+	`discard` tinyint default 0 comment '是否被删除, 0=未删除, 1=已删除',
+	primary key (`batchId`),
+	index userId (`userId`),
+	index status (`status`),
+	index source (`source`),
+	index channel (`channel`)
+) engine=InnoDB default charset=utf8 comment='订单批量表';
+
+create table `t_finance_freeze` (
+  `freezeId` int auto_increment comment '冻结id',
+  `financeType` tinyint default 0 comment '资金类型, 0=方案, 1=出票',
+  `userId` int not null comment '用户id',
+  `nickName` varchar(255) default '' comment '昵称',
+	`realName` varchar(255) default '' comment '真实姓名',
+	`orderId` int default 0 comment '订单id',
+  `type` tinyint default 0 comment '类型, 1=充值, 2=收益',
+  `status` tinyint default 0 comment '状态, 1=冻结, 2=解冻',
+  `amount` int default 0 comment '金额',
+  `remark` text comment '备注',
+  `createTime` datetime default 0 comment '创建时间',
+	`lastTime` timestamp default current_timestamp on update current_timestamp comment '最后修改时间',
+	`discard` tinyint default 0 comment '是否被删除, 0=未删除, 1=已删除',
+	primary key (`freezeId`),
+	index financeType (`financeType`),
+  index userId (`userId`),
+  index orderId (`orderId`),
+	index type (`type`),
+	index status (`status`),
+	unique key `orderIdType` (`orderId`,`type`)
+) engine=InnoDB default charset=utf8 comment='冻结表';
+
+
+source=1&tradeType=0&betContent=[{"matchType":1,"ticketMultiple":10,"matchRecommend":[{"matchId":8070,"oddsId":37233,"recommend":["S"]},{"matchId":8071,"oddsId":37239,"recommend":["P"]}],"ticketPassType":["2x1"]},{"matchType":1,"ticketMultiple":15,"matchRecommend":[{"matchId":8072,"oddsId":37243,"recommend":["S"]},{"matchId":8073,"oddsId":37248,"recommend":["S"]},{"matchId":8074,"oddsId":37253,"recommend":["P"]}],"ticketPassType":["2x1","3x1"]},{"matchType":1,"ticketMultiple":20,"matchRecommend":[{"matchId":8071,"oddsId":37239,"recommend":["S"]}],"ticketPassType":["1x1"]}]
+
+
+alter table t_order add index orderType (`orderType`);
+
+
+
+查询异常资金：
+select * from t_finance where (incomeAmount < 0 or chargeAmount < 0) and financeType=1;
+
+重复方案支付:
+
+select count(planId) as count,planId,orderId from t_order where planId>0 and orderType=0 and status=2 group by userId,planId order by count desc limit 10;
+
+(8040,8041)
+(4672,4673)
+(12798,12799)
+
+
+| financeId | financeType | userId | nickName     | realName     | cashConsumeSumAmount | chargeConsumeSumAmount | incomeConsumeSumAmount | consumeSumAmount | recommendIncomeSumAmount | spreadIncomeSumAmount | prizeIncomeSumAmount | divideIncomeSumAmount | incomeSumAmount | withdrawingSumAmount | withdrewSumAmount | withdrawSumAmount | userChargeSumAmount | platformChargeSumAmount | chargeSumAmount | chargeFreezeSumAmount | incomeFreezeSumAmount | chargeAmount | incomeAmount | dataVersion | createTime          | lastTime            | discard |
++-----------+-------------+--------+--------------+--------------+----------------------+------------------------+------------------------+------------------+--------------------------+-----------------------+----------------------+-----------------------+-----------------+----------------------+-------------------+-------------------+---------------------+-------------------------+-----------------+-----------------------+-----------------------+--------------+--------------+-------------+---------------------+---------------------+---------+
+|      9988 |           1 |  98291 | 恐怖绅士     | 恐怖绅士     |              2365000 |               18621600 |                 582600 |         21569200 |                        0 |                     0 |             19026998 |                  1660 |        19028658 |                    0 |          18446000 |          18446000 |            16915300 |                 2324500 |        19239800 |                     0 |                     0 |       618200 |           58 |       10462 | 2017-03-01 12:43:49 | 2017-04-21 10:30:55 |       0 |
++-----------+-------------+--------+--------------+--------------+----------------------+------------------------+------------------------+------------------+--------------------------+-----------------------+----------------------+-----------------------+-----------------+----------------------+-------------------+-------------------+---------------------+-------------------------+-----------------+-----------------------+-----------------------+--------------+--------------+-------------+---------------------+---------------------+---------+
+1 row in set (0.00 sec)
+
+
+消费总额：21569200
+提款总额：18446000
+充值总额：19239800
+收益总额：19028658
+总出：21569200 - 2365000 + 18446000 = 37650200
+总进：19239800 + 19028658 = 38268458
+余额消费：19204200
+彩金剩余: 618258
+
+19208600
+19204200
+
+21573600
+21569200
+
+
+alter table t_statistics_user_date add `planTicketOrderCount` int default 0 comment '方案出票单数量' after planPrizeAmount;
+alter table t_statistics_user_date add `planTicketOrderAmount` int default 0 comment '方案出票单金额' after planTicketOrderCount;
+
+
+alter table t_order add `ticketPrizeVerifyStatus` tinyint default 0 comment '中奖审核状态, 0=不审核, 1=待审核, 2=已审核' after ticketAttachPrizeAmount;
+alter table t_order add `issue` varchar(50) default '' comment '期号' after ticketPrizeVerifyStatus;
+alter table t_order add `lotteryId` varchar(50) default '' comment '彩种id' after issue;
+alter table t_order add `lotteryName` varchar(255) default '' comment '彩种名称' after lotteryId;
+alter table t_order add `betContent` text comment '投注格式' after lotteryName;
+
+
+alter table t_order add index ticketPrizeDivideStatus (`ticketPrizeDivideStatus`);
+alter table t_order add index ticketAttachPrizeStatus (`ticketAttachPrizeStatus`);
+alter table t_order add index ticketPrizeVerifyStatus (`ticketPrizeVerifyStatus`);
+alter table t_order add index issue (`issue`);
+alter table t_order add index lotteryId (`lotteryId`);
+
+
+alter table t_ticket add `betType` varchar(50) default '' comment '玩法' after passType;
+
+alter table t_ticket add index passType (`passType`);
+alter table t_ticket add index betType (`betType`);
+
+
+alter table t_lottery add `sort` tinyint default 0 comment '排序' after lotteryName;
+alter table t_lottery add `sale` tinyint default 0 comment '是否开售, 0=未开售, 1=已开售' after sort;
+alter table t_lottery add `publish` tinyint default 0 comment '上下架, 0=下架, 1=上架' after sale;
+
+alter table t_lottery add index sort (`sort`);
+alter table t_lottery add index sale (`sale`);
+alter table t_lottery add index publish (`publish`);
+
+insert into t_lottery set lotteryId='SSQ',lotteryName='双色球',sale=1,publish=1;
+
+
+二同号单选：2TDX:11,22,33,44#5,6
+二同号复选：2TFX:11*,22*,44*
+二不同号：2BT:1,2,3,4,5,6
+三同号单选：3TDX:111,222,333,444
+三同号通选：3TTX:777
+三连号通选：3LTX:789
+三不同号：3BT:1,2,3,4,5,6
+和值：HZ:3,4,5,6,18
+
+
+
+1. 二同号单选	2TDX
+疑问: 
+	是否支持相同的投注内容，例如：1,1,2;1,1,2;1,1,2 ?
+
+
+
+2. 二同号复选	2TFX
+疑问: 
+	是否支持相同的投注内容，例如：11*,33*,55*,11*,33*,55* ?
+
+
+
+3. 二不同号复式	2BTFS
+疑问: 
+	是否支持相同的投注内容，例如：12,13,23,12,13,23 ?
+	假设是单式，但能不能用复式玩法出，例如：12 ?
+
+
+
+4. 三同号单选	3TDX
+疑问: 
+	是否支持相同的投注内容，例如：1,1,1;2,2,2;1,1,1;2,2,2 ?
+
+
+
+5. 三同号通选	3TTX
+疑问: 
+	是否支持相同的投注内容，例如：7,7,7;7,7,7;7,7,7 ?
+
+
+
+6. 三连号通选	3LTX
+疑问: 
+	是否支持相同的投注内容，例如：7,8,9;7,8,9;7,8,9 ?
+
+
+7. 三不同号单式 3BTDS
+疑问: 
+	是否支持相同的投注内容，例如：1,2,3;2,3,4;1,2,3;2,3,4 ?
+
+
+8. 和值	HZ
+疑问: 
+	是否支持相同的投注内容，例如：3,4,5,3,4,5 ?
+
+
+
+
+
+insert into t_lottery set lotteryId='JSK3',lotteryName='江苏快3',sale=1,publish=1;
+
+
+alter table t_lottery_issue change zhcwDrawNumber `drawNumber1` varchar(255) default "" comment '开奖号码1';
+alter table t_lottery_issue change lecaiDrawNumber `drawNumber2` varchar(255) default "" comment '开奖号码2';
+alter table t_lottery_issue change okoooDrawNumber `drawNumber3` varchar(255) default "" comment '开奖号码3';
+
+select issue,drawNumber,drawTime,beginTime,endTime from t_lottery_issue where lotteryId='JSK3' and now()<beginTime and drawNumber="" order by issue desc;
+
+
+alter table t_match_odds add `sale` tinyint default 0 comment '是否开售, 0=未开售, 1=已开售' after single;
+alter table t_match_odds add index single (`single`);
+alter table t_match_odds add index sale (`sale`);
+
+update t_match_odds set sale=1;
+
+select count(*) from t_match_odds where sale=0;
+
+insert into t_lottery set lotteryId='DLT',lotteryName='大乐透',sale=1,publish=1;
+
+
+
+
+alter table t_order add `ticketAppend` tinyint default 0 comment '是否追加, 0=不追加, 1=追加(大乐透)' after ticketPassType;
+
+alter table t_ticket add `append` tinyint default 0 comment '是否追加, 0=不追加, 1=追加(大乐透)' after passType;
+
+
+index lotteryId (`lotteryId`),
+index issue (`issue`),
+
+
+alter table t_lottery_issue add index lotteryId (`lotteryId`);
+alter table t_lottery_issue add index issue (`issue`);
+
+
+
+alter table t_order add `presentOrderId` int default null comment '赠送订单id' after ticketPrizeVerifyStatus;
+alter table t_order add `presentNum` int default 0 comment '赠送数量' after presentOrderId;
+alter table t_order add `presentReceived` int default 0 comment '已领取数量' after presentNum;
+alter table t_order add `presentRemark` text comment '赠送祝福语' after presentReceived;
+alter table t_order add unique key `userIdPresentOrderId` (`userId`, `presentOrderId`);
+
+insert into t_activity set activityName="2017联合会杯新用户送3彩金",remark="2017联合会杯新用户送3彩金",beginTime='2017-06-17 00:00:00',endTime='2017-07-03 23:59:59',createTime=now();
+insert into t_activity set activityName="2017联合会杯冠军竞彩",remark="2017联合会杯冠军竞彩",beginTime='2017-06-17 00:00:00',endTime='2017-07-03 02:00:00',createTime=now();
+
+
+
+
+
+
+
+
+
+insert into t_lottery set lotteryId='GX11X5',lotteryName='广西11选5',sale=1,publish=1;
+
+insert into t_lottery set lotteryId='FC3D',lotteryName='福彩3D',sale=1,publish=1;
+
+
+
+1251177394.cdn.myqcloud.com/1251177394/cqo2oresource
+
+
+
+7月份62799订单，少派22.75元
+
+
+//数字彩方案增加字段
+alter table t_plan add `planType` tinyint default 0 comment '类型, 1=竞技彩方案, 2=数字彩方案' after planId;
+alter table t_plan add `lotteryId` varchar(50) default "" comment '彩种id' after title;
+alter table t_plan add `lotteryName` varchar(255) default "" comment '彩种名称' after lotteryId;
+alter table t_plan add `issue` varchar(50) default "" comment '期号' after lotteryName;
+alter table t_plan add `betContent` text comment '数字彩推荐投注格式' after saleTicket;
+alter table t_plan add `saleTime` datetime default 0 comment '截止销售时间' after matchBeginTime;
+alter table t_plan add index planType (`planType`);
+alter table t_plan add index lotteryId (`lotteryId`);
+
+alter table t_order add `planType` tinyint default 0 comment '类型, 1=竞技彩方案, 2=数字彩方案' after planId;
+alter table t_order add index planType (`planType`);
+
+
+select count(*) from t_plan;
+select count(*) from t_plan where planType=1;
+update t_plan set planType=1;
+update t_plan set saleTime=FROM_UNIXTIME(UNIX_TIMESTAMP(matchBeginTime)+7200, '%Y-%m-%d %H:%i:%S');
+
+select FROM_UNIXTIME(UNIX_TIMESTAMP(matchBeginTime)+7200, '%Y-%m-%d %H:%i:%S') from t_plan limit 1
+
+SELECT count(*) from t_order WHERE orderType=0
+update t_order set planType=1 WHERE orderType=0;
+
+
+同步方案 planType 和 saleTime
+同步订单 planType
+
+
+
+
+
+
+
+
+
+
+
+
+
+同步出票订单 planType,lotteryId
+
+insert into t_activity set activityName="11选5加奖百万",remark="11选5加奖百万",beginTime='2017-08-01 00:00:00',endTime='2017-08-31 23:59:59',sumAmount='100000000',createTime=now();
+
+
+update t_order set lotteryId="JCLQ",LotteryName="竞彩篮球" where orderType=3 and planMatchType=2;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+alter table t_article add `sort` int default 0 comment '排序,和id一致' after articleLink;
+alter table t_article add index sort (`sort`);
+update t_article set sort = articleId;
+
+
+
+
+alter table t_order add `userCouponId` int default 0 comment '用户优惠券id' after matchId;
+<<<<<<< .mine
+alter table t_finance add `couponConsumeSumAmount` int default 0 comment '优惠券消费总额' after incomeConsumeSumAmount;
+
+
+
+双色球：
+142474
+138837
+大乐透：
+142448
+106923
+江苏快3：
+141423
+107471
+广西11选5：
+142392
+117842
+福彩3D：
+134515
+107896
+竞彩足球：
+143166
+102883
+竞彩篮板：
+116892
+107543
+
+
+insert t_channel set userId=106580,NickName='天天向上',remark='天天向上',createtime=now();=======
+
+复盘表新增发布字段
+alter table t_replay add publish tinyint default 0 comment '上下架, 0=下架, 1=上架' after mockReadCount;
+update t_replay set publish=1 where publish=0;
+>>>>>>> .r5555
+
+
+
+insert t_channel set userId=106580,NickName='天天向上',remark='天天向上',createtime=now();
+
+
+
+alter table t_channel add unique key `userId` (`userId`);
+
+
+
+
+select rowkey,issue,lotteryId,lotteryName,drawNumber,drawNumber1,drawNumber2,drawNumber3,drawTime,beginTime,endTime from t_lottery_issue where lotteryId='FC3D' order by issue desc limit 20;
+
+delete from t_lottery_issue where lotteryId='FC3D' and issue > '2017153';
+
+
+
+/usr/local/mysql/bin/mysqldump -uroot -ptUNRC0EjXIokmRJs shaimi t_finance > /data/finance.sql;
+
+alter table t_finance rename t_finance_extra
+
+
+
+
+江苏快3
+betContent:3BT:1,2,3,4,5;3TDX:111,222,555;2BT:1,3,5;2TDX:55#2,3;HZ:3,4,5,6,7,8,9,1
+
+
+重庆时时彩(CQSSC)
+五星直选：WXZHX:5,7|6|5|5,6|5,6
+五星通选：WXTX:5,7|6|5|5,6|5,6
+三星直选：SXZHX:5,7|6|5,6
+三星组三：SXZUS:5,7,8
+三星组六：SXZUL:5,7,8,9
+二星直选：EXZHX:5,7|6,8
+二星直选和值：EXZHXHZ:5,18
+二星组选：EXZUX:5,7,8
+二星组选和值：EXZUXHZ:5,7,8
+一星：YX:5,7
+大小单双：DXDS:1|3  //1=小,2=大,3=单,4=双
+
+
+insert into t_lottery set lotteryId='CQSSC',lotteryName='重庆时时彩',sale=1,publish=1,createTime=now();
+
+
+
+
+
+
+
+
+mysql> select count(*) from t_finance_extra;
++----------+
+| count(*) |
++----------+
+|    30384 |
++----------+
+
+
+已更新 30408 个资金账户
+INFO - 更新资金账户完成
+Array
+(
+)
+
+已更新 30482 个资金账户
+INFO - 更新资金账户完成
+Array
+(
+)
+
+已更新 30526 个资金账户
+INFO - 更新资金账户完成
+Array
+(
+)
+
+已更新 30602 个资金账户
+INFO - 更新资金账户完成
+Array
+(
+)
+
+已更新 30730 个资金账户
+INFO - 更新资金账户完成
+Array
+(
+)
+
+---------------------------
+TortoiseSVN
+---------------------------
+The repository at 'svn://111.230.229.46/shaimi' has uuid
+ '0389cc95-4bd4-4908-9c8c-2d542631a423', but the WC has
+ '1cdb529c-990c-4677-914b-2c7f79fe7e76'
+---------------------------
+确定   
+---------------------------
+
+
+insert into t_activity set activityName="2018年春节红包",remark="2018年春节红包，分三个阶段领取：\r\n2018-02-16 08:00:00至2018-02-16 18:00:00\r\n2018-02-20 08:00:00至2018-02-20 18:00:00\r\n2018-02-22 08:00:00至2018-02-22 18:00:00",beginTime="2018-02-16 08:00:00",endTime="2018-02-22 18:00:00",createTime=now();
+
+
+
+新版外包：
+t_lottery加彩种
+t_lottery_issue加彩种期号
+优惠券表高频彩兼容
+用户优惠券表高频彩兼容
+
+
+alter table t_guess change status `sale` tinyint default 0 comment '是否开售, 0=未开售, 1=已开售';
+
+
+INSERT INTO `shaimi`.`t_lottery` (`lotteryId`, `lotteryName`, `sale`, `publish`, `createTime`) VALUES ('SJBGJ', '世界杯冠军', '1', '1', '2018-03-21 16:10:09');
+INSERT INTO `shaimi`.`t_lottery` (`lotteryId`, `lotteryName`, `sale`, `publish`, `createTime`) VALUES ('SJBGYJ', '世界杯冠亚军', '1', '1', '2018-03-21 16:10:09');
+
+
+alter table t_order add `publish` tinyint default 0 comment '上下架, 0=下架, 1=上架, 上架订单可以被跟单' after presentRemark;
+alter table t_order add index publish (`publish`);
+
+
+alter table t_order add `saleTicket` tinyint default 0 comment '可否售票, 0=不可售票， 1=可售票' after publish;
+alter table t_order add index saleTicket (`saleTicket`);
+
+
+
+insert into t_activity set activityName="天天抢红包",remark="30个红包，30张优惠券；每天14：00到20：00领取",createTime=now();
+
+insert into t_activity set activityName="满额抢优惠券",remark="当天消费满500可领竞技彩100减2；满3000可领竞技彩250减5；满8000可领竞技彩400减8",createTime=now();
+
+双色球 149574
+
+
+alter table `t_activity_hongbao_daily` drop column sendDate;  
+
+
+alter table t_user add `forbid` tinyint default 0 comment '是否封号, 0=允许, 1=封号' after spreaderRealName;
+
+
+alter table t_match add `live` text comment '直播数据' after attachPrize;
+
+
+
+
+
+
+
+
+
+
+
+mysql> select nickName,realName,incomeAmount,sum(chargeAmount) from t_finance where chargeAmount < 0 and financeType=1 order by chargeAmount asc;
++-----------+----------+--------------+-------------------+
+| nickName  | realName | incomeAmount | sum(chargeAmount) |
++-----------+----------+--------------+-------------------+
+| 双刃剑    |          |         7936 |            -38030 |
++-----------+----------+--------------+-------------------+
+
+
+mysql> select nickName,realName,sum(incomeAmount),chargeAmount from t_finance where incomeAmount < 0 and financeType=1 order by incomeAmount asc;
++----------+----------+-------------------+--------------+
+| nickName | realName | sum(incomeAmount) | chargeAmount |
++----------+----------+-------------------+--------------+
+| 乍得     |          |          -1199500 |          200 |
++----------+----------+-------------------+--------------+
+
+
+mysql> select sum(incomeAmount+chargeAmount) from t_finance_extra where financeType=1;
++--------------------------------+
+| sum(incomeAmount+chargeAmount) |
++--------------------------------+
+|                       12135280 |
++--------------------------------+

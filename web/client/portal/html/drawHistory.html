@@ -1,0 +1,171 @@
+<script type="text/html" id="content">
+	
+</script>
+
+<script type="text/html" id="SSQ">
+	<div class="dty_cont">
+		<div class="ssqInfo_box">
+			<ul class="ssqlist" id="SSQdrawList">
+				
+			</ul>
+		</div>
+	</div>
+</script>
+
+<script type="text/html" id="SSQdrawList">
+	<% 
+	for (var i = 0; i < list.length; i++) { 
+		var issue = list[i].issue;
+		var drawNumber = list[i].drawNumber || '';
+		var drawTime = list[i].drawTime || "";
+		var lotteryId = list[i].lotteryId;
+		drawTime = drawTime.match(/(\d{4}-\d{2}-\d{2}) (\d{2}:\d{2}):\d{2}/);
+		var day = drawTime[1];
+		var week = new Date(day.replace(/-/g, "/")).getDay();
+		var weekMap = ['周日','周一','周二','周三','周四','周五','周六'];
+	%>
+	<li>
+		<p class="clearfix"><span class="fl"><%=issue%>期</span><span class="fr color9 size13"><%=day%> (<%=weekMap[week]%>)</span></p>
+		<div class="num_wrap mt10">
+			<span class="red_ball">
+			<% 	var drawNumberRed;
+				if (lotteryId == 'SSQ') {
+					drawNumberRed = drawNumber.split('|')[0].split(",");
+				} else if (lotteryId == 'DLT') {
+					drawNumberRed = drawNumber.split('+')[0].split(",");
+				}
+				for (var j = 0; j < drawNumberRed.length; j++) { 
+					var drawNumberRedUnit = drawNumberRed[j];
+			%>
+				<em><%=drawNumberRedUnit%></em>
+			<% } %>
+			</span> 
+			<span class="blue_ball">
+			<% 	var drawNumberBlue;
+				if (lotteryId == 'SSQ') {
+					drawNumberBlue = drawNumber.split('|')[1].split(",");
+				} else if (lotteryId == 'DLT') {
+					drawNumberBlue = drawNumber.split('+')[1].split(",");
+				}
+				for (var k = 0; k < drawNumberBlue.length; k++) { 
+					var drawNumberBlueUnit = drawNumberBlue[k];
+			%>
+				<em><%=drawNumberBlueUnit%></em>
+			<% } %>
+			</span>
+		</div>
+	</li>
+	<% } %>
+</script>
+
+
+<script type="text/html" id="JSK3">
+	<ul class="k3draw_list" id="K3drawList"></ul>
+</script>
+
+<script type="text/html" id="K3drawList">
+<% for (var i = 0, length = list.length; i < length; i++) {
+	var issue = list[i].issue;
+	var drawNumber = list[i].drawNumber || '';
+	drawNumber = drawNumber.split(',');
+	var drawFeature = list[i].drawFeature || '';
+	var drawTime = list[i].drawTime || "";
+	drawTime = drawTime.match(/\d{4}-(\d{2}-\d{2}) (\d{2}:\d{2}):\d{2}/);
+	var day = '';
+	var time = '';
+	if (drawTime && drawTime.length == 3) {
+		day = drawTime[1];
+		time = drawTime[2];
+	}
+%>
+	<li class="draw_item">
+		<div class="issue_msg">
+			<span><%=issue%>期</span> 
+			<span><%=time%></span>
+		</div>
+		<div class="draw_num">
+			<span class="num_icon">
+				<i class="icon_dice_<%=drawNumber[0]%>"></i>
+				<i class="icon_dice_<%=drawNumber[1]%>"></i>
+				<i class="icon_dice_<%=drawNumber[2]%>"></i>
+			</span>
+			<span class="ml15 k3_describe"><%=drawFeature%></span>
+		</div>
+	</li>
+<% } %>
+</script>
+
+<script type="text/html" id="GX11X5">
+	<div class="ssqInfo_box">
+		<ul class="ssqlist" id="GX11X5DrawList">
+			
+		</ul>
+	</div>
+</script>
+
+<script type="text/html" id="GX11X5DrawList">
+<% 
+	for (var i = 0; i < list.length; i++) { 
+		var issue = list[i].issue;
+		var drawNumber = list[i].drawNumber || '';
+		var drawTime = list[i].drawTime || "";
+		var lotteryId = list[i].lotteryId;
+		drawTime = drawTime.replace(/\d{4}-(\d{2}-\d{2} \d{2}:\d{2}):\d{2}/, "$1") || "";
+	%>
+	<li>
+		<p class="clearfix"><span class="fl"><%=issue%>期</span><span class="fr color9 size13"><%=drawTime%> </p>
+		<div class="num_wrap mt10">
+			<span class="red_ball">
+			<% 	var drawNumberRed = drawNumber.split(",");
+				for (var j = 0; j < drawNumberRed.length; j++) { 
+					var drawNumberRedUnit = drawNumberRed[j];
+			%>
+				<em><%=drawNumberRedUnit%></em>
+			<% } %>
+			</span> 
+			</span>
+		</div>
+	</li>
+	<% } %>
+</script>
+
+<script type="text/html" id="FC3D">
+	<div class="fc3dInfo_box">
+		<ul class="ssqlist" id="fc3dDrawList">
+			
+		</ul>
+	</div>
+</script>
+
+<script type="text/html" id="fc3dDrawList">
+	<% 
+	for (var i = 0; i < list.length; i++) { 
+		var issue = list[i].issue;
+		var drawNumber = list[i].drawNumber || '';
+		var drawTime = list[i].drawTime || "";
+		var lotteryId = list[i].lotteryId;
+		drawTime = drawTime.match(/(\d{4}-\d{2}-\d{2}) (\d{2}:\d{2}):\d{2}/);
+		var day = drawTime[1];
+		var week = new Date(day.replace(/-/g, "/")).getDay();
+		var weekMap = ['周日','周一','周二','周三','周四','周五','周六'];
+		var testNum = drawNumber.split('|')[1].split(',').join(' ');
+	%>
+	<li>
+		<p class="clearfix"><span class="fl"><%=issue%>期</span><span class="fr color9 size13"><%=day%> (<%=weekMap[week]%>)</span></p>
+		<div class="num_wrap mt10">
+			<span class="red_ball">
+			<% 	var drawNumberRed;
+				drawNumberRed = drawNumber.split('|')[0].split(",");
+				for (var j = 0; j < drawNumberRed.length; j++) { 
+					var drawNumberRedUnit = drawNumberRed[j];
+			%>
+				<em><%=drawNumberRedUnit%></em>
+			<% } %>
+			</span>
+			<span class="test_num color6 size15">
+				试机号：<span class="size15"><%=testNum%></span>
+			</span>
+		</div>
+	</li>
+	<% } %>
+</script>

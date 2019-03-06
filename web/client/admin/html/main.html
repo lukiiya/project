@@ -1,0 +1,57 @@
+<script type="text/html" id="content">
+<div class="container <%=className%>" id="pageContainer">
+    <div class="header clearfix" id="pageHeader">
+        <div class="header_left">
+            <img class="icon_log" src="<%=IMG_PATH%>icon_log.png" href="#index"><span class="header_title">后台管理</span>
+        </div>
+        <div class="header_right" style="display:none" id="loginUserInfoBox">
+            <span class="icon_default_head"></span><span class="ml10" id="loginUserName"></span>
+            <span class="modifyPsd" href="#password">修改密码</span>
+            <span class="exit" href="#login&unlogin=true">退出</span>
+        </div>
+    </div>      
+    <div class="content mt10 clearfix">
+        <div class="leftBox fl" id="pageMenu" style="display:none">
+            <ul id="menuList"></ul>
+        </div>
+        <div class="rightBox" id="pageContent"></div>
+    </div>
+</div>
+</script>
+
+<script type="text/html" id="menuList">
+<%
+    var keys = Object.keys(menuMap);
+    keys.sort(function (a, b) {
+        var ret = 0;
+        if (a == '后台管理') {
+            ret = 1;
+        }
+        return ret;
+    });
+    for(var j = 0, len = keys.length; j < len; j++) {
+        var parentMenuName = keys[j] || '';
+%>
+<li>
+    <div class="menu_one"><span class="icon_menu icon_content"></span><%=parentMenuName%></div>
+    <div class="menu_two_box clearfix">
+    <%
+        var list = menuMap[parentMenuName] || [];
+        for(var i = 0, length = list.length; i < length; i++) {
+            var menu = list[i] || {};
+            var menuName = menu.menuName || '';
+            var href = menu.path || '';
+            var activeHref = href;
+            if (href == '#activityList') {
+                activeHref = '#(activityList|activityHongBaoList|activityTurnplateList|activityChargeList)';
+            } else if (href == '#groupList') {
+                activeHref = '#(groupList|groupUserList)';
+            }
+    %>
+        <div class="menu_two" href="<%=href%>" activeHref="<%=activeHref%>"><span class="act_bar"></span><span class="item"><%=menuName%></span></div>
+        <%}%>
+    </div>
+</li>
+<%}%>
+</script>
+

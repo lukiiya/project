@@ -1,0 +1,224 @@
+<script type="text/html" id="content">
+<h1 class="title">用户列表</h1>
+<div class="list_box">
+	<form onsubmit="return false;">
+		<div class="search_box">
+			<span class="select_box">
+				<select id="forbid">
+					<option value="">访问(全部)</option>
+					<option value="0">允许</option>
+					<option value="1">封号</option>
+				</select>
+				<span class="icon_sel"><span class="arrow_down"></span></span>
+			</span>
+			<span class="select_box ml20">
+				<select id="userRight">
+					<option value="">权限(全部)</option>
+					<option value="1">竞技彩专家</option>
+					<option value="2">推手</option>
+					<option value="3">站长</option>
+					<option value="4">数字彩专家</option>
+				</select>
+				<span class="icon_sel"><span class="arrow_down"></span></span>
+			</span>
+			<span class="select_box ml20">
+				<select id="subscribe">
+					<option value="">公众号(全部)</option>
+					<option value="0">未关注</option>
+					<option value="1">已关注</option>
+				</select>
+				<span class="icon_sel"><span class="arrow_down"></span></span>
+			</span>
+			<span class="select_box ml20">
+				<select id="source">
+					<option value="">来源(全部)</option>
+					<option value="0">h5</option>
+					<option value="1">android</option>
+					<option value="2">ios</option>
+				</select>
+				<span class="icon_sel"><span class="arrow_down"></span></span>
+			</span>
+			<span class="select_box ml20">
+				<select id="channel"></select>
+				<span class="icon_sel"><span class="arrow_down"></span></span>
+			</span>
+		</div>
+		<div class="search_box mt20">
+			<input class="input_field" placeholder="用户" id="userName"/>
+			<input class="input_field ml20" placeholder="电话" id="phone"/>
+			<input class="btn ml20" type="reset" value="重置" />
+			<input class="btn ml20" type="submit" value="搜索" id="searchSubmit"/>
+		</div>
+	</form>
+	<div class="table_box mt20">
+		<table>
+			<thead>
+				<tr>
+					<th width="50">来源</th>
+					<th width="50">公众号</th>
+					<th width="80">昵称</th>
+					<th width="70">姓名</th>
+					<th width="40">类型</th>
+					<th width="40">简介</th>
+					<th width="90">电话</th>
+					<th width="60">微信头像</th>
+					<th width="60">个人头像</th>
+					<th width="60">身份证</th>
+					<th width="60">营业执照</th>
+					<th width="40">性别</th>
+					<th width="100">地区</th>
+					<th width="130">注册时间</th>
+					<th width="240">操作</th>
+				</tr>
+			</thead>
+			<tbody id="userList"></tbody>							
+		</table>
+		<div id="pageCodeBox"></div>
+	</div>
+</div>
+</script>
+
+<script type="text/html" id="userList">
+<% for (var i = 0, length = list.length; i < length; i++) {
+	var user = list[i] || {};
+	var userId = user.userId;
+	var nickName = user.nickName || '';
+	var realName = user.realName || '';
+	var userName = nickName;
+	if (realName) {
+		userName += '(' + realName +  ')';	
+	}
+	userName = userName.replace(/['"\n<>]/g, '');
+	var userRight = user.userRight;
+	var userRightMap = {'1': '竞技彩专家', '2': '推手', '3': '站长', '4': '数字彩专家'};
+	var subscribe = user.subscribe;
+	var source = user.source;
+	var sourceMap = {'0': 'h5','1': 'android','2': 'ios'};
+	var tag = user.tag;
+	var remark = user.remark;
+	var phone = user.phone;
+	var address = user.address;
+	var profileImg = user.profileImg;
+	var personalImg = user.personalImg;
+	var identityImg = user.identityImg;
+	var businessImg = user.businessImg;
+	var sex = user.sex;
+	var sexMap = {'0': '未知', '1': '男性', '2': '女性'};
+	var country = user.country;
+	var province = user.province;
+	var city = user.city;
+	var area = country + province + city;
+	var forbid = user.forbid;
+	var createTime = user.createTime;
+%>
+	<tr>
+		<td><%=sourceMap[source]%></td>
+		<td><%=subscribe==1?'已关注':'未关注'%></td>
+		<td title="<%=nickName%>"><%=nickName%></td>
+		<td title="<%=realName%>"><%=realName%></td>
+		<td><%=userRightMap[userRight]%></td>
+		<td>
+			<% if (remark) { %>
+			<a class="examine" remark="<%=remark%>">查看</a>
+			<% } %>	
+		</td>
+		<td title="<%=phone%>"><%=phone%></td>
+		<td>
+			<% if (profileImg) { %>
+			<a class="examine" profileImg="<%=profileImg%>">查看</a>
+			<% } %>	
+		</td>
+		<td>
+			<% if (personalImg) { %>
+			<a class="examine" personalImg="<%=personalImg%>">查看</a>
+			<% } %>	
+		</td>
+		<td>
+			<% if (identityImg) { %>
+			<a class="examine" identityImg="<%=identityImg%>">查看</a>
+			<% } %>	
+		</td>
+		<td>
+			<% if (businessImg) { %>
+			<a class="examine" businessImg="<%=businessImg%>">查看</a>
+			<% } %>	
+		</td>
+		<td><%=sexMap[sex]%></td>
+		<td title="<%=area%>"><%=area%></td>
+		<td><%=createTime%></td>
+		<td>
+			<a class="examine loginUser" userId="<%=userId%>">登录</a>
+			<a class="examine modifyUser" userId="<%=userId%>">修改</a>
+			<a class="examine chargeUser" userId="<%=userId%>" userName="<%=userName%>">充值</a>
+			<a class="examine modifyUserRight" userId="<%=userId%>">权限</a>
+			<a class="examine userArticle" userId="<%=userId%>">文章</a>
+			<a class="examine setChannel" userId="<%=userId%>" userName="<%=userName%>">代理商</a>
+			<a class="examine forbidUser" userId="<%=userId%>" userName="<%=userName%>" forbid="<%=forbid%>"><%=forbid==1?'解封':'封号'%></a>
+		</td>
+	</tr>
+<% } %>
+</script>
+
+<script type="text/html" id="modifyUser">
+	<h1>修改用户信息</h1>
+	<input type="hidden" id="modifyUserId" value="<%=userId%>"/>
+	<div class="mt20">姓名：<input class="input_field" placeholder="请输入姓名" id="modifyRealName"/></div>
+	<div class="mt20">标签：<input class="input_field" placeholder="请输入标签" id="modifyTag"/></div>
+	<div class="mt20">电话：<input class="input_field" placeholder="请输入电话" id="modifyPhone"/></div>
+	<div class="mt20">地址：<input class="input_field" placeholder="请输入地址" id="modifyAddress"/></div>
+	<div class="mt20">头像：<input class="input_field" placeholder="请输入头像url地址" id="modifyPersonalImg"/></div>
+	<div class="mt20">简介：<textarea class="input_field" rows="3" placeholder="请输入简介" id="modifyRemark"></textarea></div>
+	<div class="mt20" align="center">
+ 		<input class="btn ml20" type="reset" value="取消" id="cancelModifyUser"/>
+		<input class="btn ml20" type="submit" value="确定" id="sureModifyUser"/>
+	</div>
+</script>
+
+<script type="text/html" id="modifyUserRight">
+	<h1>修改用户权限</h1>
+	<input type="hidden" id="modifyUserId" value="<%=userId%>"/>
+	<div class="mt20" id="modifyUserRightBox">
+		<input type="hidden" id="modifyUserRight"/>
+		<label><input type="checkbox" index="1"/>竞技彩推荐</label><label class="ml10"><input type="checkbox" index="2"/>推广</label><label class="ml10"><input type="checkbox" index="3"/>数字彩推荐</label>
+	</div>
+	<div class="mt20" align="center">
+		<input class="btn ml20" type="reset" value="取消" id="cancelModifyUserRight"/>
+		<input class="btn ml20" type="submit" value="确定" id="sureModifyUserRight"/>
+	</div>
+</script>
+
+<script type="text/html" id="chargeUser">
+	<h1><span id="chargeUserName"><%=userName%></span> 充值</h1>
+	<input type="hidden" id="chargeUserId" value="<%=userId%>"/>
+	<div class="mt20">
+		账户类型：
+		<span class="select_box" style="width:165px">
+			<select id="chargeFinanceType" style="width:165px">
+				<option value="">全部</option>
+				<option value="0">方案账户(米粒)</option>
+				<option value="1">出票账户(彩金)</option>
+			</select>
+			<span class="icon_sel"><span class="arrow_down"></span></span>
+		</span>
+	</div>
+	<div class="mt20">金额：<input class="input_field" placeholder="请输入金额" id="chargeAmount"/></div>
+	<div class="mt20">描述：<input class="input_field" placeholder="请输入描述" id="chargeRemark"/></div>
+	<div class="mt20" align="center">
+ 		<input class="btn ml20" type="reset" value="取消" id="cancelChargeUser"/>
+		<input class="btn ml20" type="submit" value="确定" id="sureChargeUser"/>
+	</div>
+</script>
+
+<script type="text/html" id="setChannel">
+	<h1><%=userName%> <b style="color:#ff0000"><%=channel>0&&discard===0?'取消':'设置'%>代理商</b>？</h1>
+	<input type="hidden" id="setChannel" value="<%=channel%>"/>
+	<input type="hidden" id="setUserId" value="<%=userId%>"/>
+	<input type="hidden" id="setDiscard" value="<%=discard%>"/>
+	<% if (!(channel>0&&discard===0)) { %>
+	<div class="mt20">备注：<textarea class="input_field" rows="3" placeholder="请输入备注" id="setRemark"></textarea></div>
+	<% } %>
+	<div class="mt20" align="center">
+ 		<input class="btn ml20" type="reset" value="取消" id="cancelSetChannel"/>
+		<input class="btn ml20" type="submit" value="确定" id="sureSetChannel"/>
+	</div>
+</script>

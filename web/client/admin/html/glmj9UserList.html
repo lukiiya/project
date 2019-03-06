@@ -1,0 +1,80 @@
+<script type="text/html" id="content">
+<h1 class="title">用户列表</h1>
+<div class="list_box">
+	<div class="search_box">
+		<div>
+			<form onsubmit="return false;">
+				<input class="input_field" placeholder="用户" id="userName"/>
+				<input class="input_field ml20" placeholder="电话" id="phone"/>
+				<input class="btn ml20" type="reset" value="重置" />
+				<input class="btn ml20" type="submit" value="搜索" id="searchSubmit"/>
+			</form>
+		</div>
+	</div>
+	<div class="table_box mt20">
+		<table>
+			<thead>
+				<tr>
+					<th width="100">昵称</th>
+					<th width="80">姓名</th>
+					<th width="120">标签</th>
+					<th width="40">简介</th>
+					<th width="100">电话</th>
+					<th width="60">微信头像</th>
+					<th width="60">个人头像</th>
+					<th width="40">性别</th>
+					<th width="100">地区</th>
+					<th width="130">注册时间</th>
+				</tr>
+			</thead>
+			<tbody id="glmj9UserList"></tbody>							
+		</table>
+		<div id="pageCodeBox"></div>
+	</div>
+</div>
+</script>
+
+<script type="text/html" id="glmj9UserList">
+<% for (var i = 0, length = list.length; i < length; i++) {
+	var user = list[i] || {};
+	var nickName = user.nickName;
+	var realName = user.realName;
+	var tag = user.tag;
+	var remark = user.remark;
+	var phone = user.phone;
+	var profileImg = user.profileImg;
+	var personalImg = user.personalImg;
+	var sex = user.sex;
+	var sexMap = {'0': '未知', '1': '男性', '2': '女性'};
+	var country = user.country;
+	var province = user.province;
+	var city = user.city;
+	var area = country + province + city;
+	var createTime = user.createTime;
+%>
+	<tr>
+		<td title="<%=nickName%>"><%=nickName%></td>
+		<td title="<%=realName%>"><%=realName%></td>
+		<td title="<%=tag%>"><%=tag%></td>
+		<td>
+			<% if (remark) { %>
+			<a class="examine" remark="<%=remark%>">查看</a>
+			<% } %>	
+		</td>
+		<td title="<%=phone%>"><%=phone%></td>
+		<td>
+			<% if (profileImg) { %>
+			<a class="examine" profileImg="<%=profileImg%>">查看</a>
+			<% } %>	
+		</td>
+		<td>
+			<% if (personalImg) { %>
+			<a class="examine" personalImg="<%=personalImg%>">查看</a>
+			<% } %>	
+		</td>
+		<td><%=sexMap[sex]%></td>
+		<td title="<%=area%>"><%=area%></td>
+		<td><%=createTime%></td>
+	</tr>
+<% } %>
+</script>

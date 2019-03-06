@@ -1,0 +1,71 @@
+<script type="text/html" id="content">
+	<div id="incomeList"></div>
+</script>
+
+<script type="text/html" id="incomeList">
+	<%
+		for (var i = 0, length = list.length; i < length; i++) {
+			var year = list[i].year || '';
+			var mouthList = list[i].mouthList || [];
+	%>
+	<div class="incomeDate year clearfix">
+		<span class="fl"><%=year%>年</span>
+		<span class="arrow arrow_up"></span>
+	</div>
+	<ul class="menu incomeContent" style="<%=i==0?'':'display:none'%>">
+		<% 
+			for (var j = 0, len = mouthList.length; j < len; j++) {
+			var item = mouthList[j];
+			var totalFund = (item.totalFund/100).toFixed(2) || 0;
+			var month = item.month;
+			var date = new Date();
+			var curMonth = date.getMonth() + 1;
+			var curYear = date.getFullYear();
+			var jcFund = item.jcFund;
+			var gpFund = item.gpFund;
+		%>
+		<li class="ui-flex menu_bar" jcFund='<%=jcFund%>' gpFund='<%=gpFund%>' month='<%=month%>'>
+			<% if (year == curYear && month == curMonth) { %>
+				<span>当月</span>
+			<% } else { %>
+				<span><%=month%>月</span>
+			<% } %>
+			<div>
+				<span class="color_red mr5"><%=totalFund%>元</span>
+				<span class="arrow_right"></span>
+			</div>
+		</li>
+		<% } %>
+	</ul>
+<% } %>
+</script>
+
+<script type="text/html" id="incomeDetail">
+	<div class="earning_detail">
+		<table align="center">
+			<thead>
+				<tr>
+					<th width="33.3%">竞技彩</th>
+					<th width="33.3%">高频彩</th>
+					<th width="33.3%">总收益</th>
+				</tr>
+			</thead>
+			<tbody align="center" id="detailData">
+				
+			</tbody>
+		</table>
+	</div>
+</script>
+
+<script type="text/html" id="detailData">
+	<%
+		var jcFund = +((incomeData.jcFund/100).toFixed(2));
+		var gpFund = +((incomeData.gpFund/100).toFixed(2));
+		var totalfund = ((incomeData.jcFund + incomeData.gpFund)/100).toFixed(2);
+	%>
+	<tr>
+		<td id="jcFund"><%=jcFund%></td>
+		<td id="gpFund"><%=gpFund%></td>
+		<td class="color_red"><%=totalfund%></td>
+	</tr>
+</script>
