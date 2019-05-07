@@ -34,16 +34,22 @@ return [
     | Supported: "session", "token"
     |
     */
+    //--guard主要是为了不同表的用户实现隔离式登入
 
     'guards' => [
         'web' => [
-            'driver' => 'session',
-            'provider' => 'users',
+            'driver' => 'jwt',
+            'provider' => 'user',
         ],
 
         'api' => [
-            'driver' => 'token',
+            'driver' => 'jwt',
             'provider' => 'users',
+        ],
+
+        'admin' => [
+            'driver' => 'jwt',
+            'provider' => 'admins',
         ],
     ],
 
@@ -64,16 +70,20 @@ return [
     |
     */
 
+    /*
+     * 通过providers来存取用户数据
+     * */
+
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
-            'model' => App\User::class,
+            'model' => App\Models\User::class,
         ],
 
-        // 'users' => [
-        //     'driver' => 'database',
-        //     'table' => 'users',
-        // ],
+        'admins' => [
+            'driver' => 'eloquent',
+            'table' => App\Models\Admin::class,
+        ],
     ],
 
     /*
